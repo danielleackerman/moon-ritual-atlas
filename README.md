@@ -1,10 +1,16 @@
+<p align="center">
+  <a href="https://moon-ritual-atlas.vercel.app/">
+    <img src="https://image.thum.io/get/width/1400/crop/1100/https://moon-ritual-atlas.vercel.app/" alt="Open the current Moon Ritual Atlas experience" width="100%">
+  </a>
+</p>
+
 # Moon Ritual Atlas
 
 **A future-facing lunar ritual atlas for full moons, new moons, eclipses, and seasonal thresholds.**
 
-Moon Ritual Atlas is being built as a consumer-facing ritual experience: a mobile-first place to enter the lunar cycle through guided rituals, symbolic tools, reflective prompts, and visually rich ritual pages.
+Moon Ritual Atlas is being built as a consumer-facing ritual experience: a mobile-first place to enter the lunar cycle through guided rituals, symbolic tools, reflective prompts, visually rich ritual pages, and grounded closing actions.
 
-The long-term vision is an expanding atlas of lunar moments — not a single page, not a one-off ritual, and not a generic moon blog. Each moon can become its own guided experience, with ritual paths, notecard-style steps, saved reflections, and practical closing actions.
+The goal is an expanding atlas of lunar moments — not a single page, not a one-off ritual, and not a generic moon blog. Each moon can become its own guided experience: a ritual index, a path finder, notecard-style ritual steps, reflective tools, and one material action that helps the ritual enter real life.
 
 <p>
   <a href="https://moon-ritual-atlas.vercel.app/"><strong>Open the live atlas →</strong></a>
@@ -28,21 +34,15 @@ The atlas is designed to grow into a ritual library for lunar and seasonal work:
 - **Material action prompts** that turn ritual into one grounded next step
 - **Future visual system** with collage, antique object plates, ritual marginalia, moon imagery, and symbolic illustrations
 
-The goal is a spiritual product that feels modern, alive, elegant, and practical — mystical without being cluttered, grounded without becoming dry.
+The product direction is modern, alive, elegant, and practical — mystical without being cluttered, grounded without becoming dry.
 
 ---
 
 ## Featured now: Full Moon in Capricorn
 
-The first live experience in the atlas is the **Full Moon in Capricorn Ritual Index**.
+The first live room in the atlas is the **Full Moon in Capricorn Ritual Index**.
 
 It is built around money, maturity, self-authority, ancestral patterns, structure, and the adult self who can build.
-
-<p align="center">
-  <a href="https://moon-ritual-atlas.vercel.app/">
-    <img src="assets/readme/atlas-hero.svg" alt="Open the current Full Moon in Capricorn experience" width="100%">
-  </a>
-</p>
 
 **Current live experience:**  
 [https://moon-ritual-atlas.vercel.app/](https://moon-ritual-atlas.vercel.app/)
