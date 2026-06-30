@@ -1,61 +1,69 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="720" viewBox="0 0 1400 720" role="img" aria-labelledby="title desc">
-  <title id="title">Moon Ritual Atlas hero preview</title>
-  <desc id="desc">Editorial preview graphic for the Moon Ritual Atlas showing a moon, ritual cards, and Dawn/Dusk atmosphere.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760" role="img" aria-labelledby="title desc">
+  <title id="title">Current Full Moon in Capricorn page preview</title>
+  <desc id="desc">A site-linked preview of the current Moon Ritual Atlas Capricorn experience, showing the Dusk mode hero with a large textured moon.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0c0e1c"/>
-      <stop offset="0.45" stop-color="#171327"/>
-      <stop offset="1" stop-color="#f1ded2"/>
-    </linearGradient>
-    <radialGradient id="glow" cx="50%" cy="45%" r="55%">
-      <stop offset="0" stop-color="#f6f0e5" stop-opacity="0.85"/>
-      <stop offset="0.38" stop-color="#d9d9d3" stop-opacity="0.18"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    <radialGradient id="sky" cx="52%" cy="37%" r="88%">
+      <stop offset="0" stop-color="#18152c"/>
+      <stop offset="0.48" stop-color="#0d0e1d"/>
+      <stop offset="1" stop-color="#080915"/>
     </radialGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="26" stdDeviation="24" flood-color="#000000" flood-opacity="0.28"/>
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.24"/>
+      <stop offset="0.42" stop-color="#777a86" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="moonBase" cx="42%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#ebe7dc"/>
+      <stop offset="0.44" stop-color="#bbb9b1"/>
+      <stop offset="1" stop-color="#74756f"/>
+    </radialGradient>
+    <filter id="moonTexture" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="5" seed="29" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0" result="gray"/>
+      <feBlend in="SourceGraphic" in2="gray" mode="multiply"/>
     </filter>
-    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
-      <path d="M42 0H0V42" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="42" stdDeviation="28" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+    <pattern id="grid" width="52" height="52" patternUnits="userSpaceOnUse">
+      <path d="M52 0H0V52" fill="none" stroke="#ffffff" stroke-opacity="0.055" stroke-width="1"/>
     </pattern>
   </defs>
-  <rect width="1400" height="720" rx="44" fill="url(#bg)"/>
-  <rect width="1400" height="720" rx="44" fill="url(#grid)"/>
-  <circle cx="1080" cy="130" r="260" fill="url(#glow)"/>
-  <g opacity="0.65">
-    <circle cx="166" cy="104" r="2" fill="#f6f0e5"/>
-    <circle cx="262" cy="164" r="1.5" fill="#f6f0e5"/>
-    <circle cx="406" cy="86" r="1.2" fill="#f6f0e5"/>
-    <circle cx="1210" cy="214" r="1.5" fill="#f6f0e5"/>
-    <path d="M498 150v22M487 161h22" stroke="#f6f0e5" stroke-width="2" stroke-linecap="round"/>
+  <rect width="1400" height="760" fill="url(#sky)"/>
+  <rect width="1400" height="760" fill="url(#grid)"/>
+  <g opacity="0.76">
+    <circle cx="58" cy="94" r="1.3" fill="#f3ecdd"/><circle cx="188" cy="132" r="1" fill="#f3ecdd"/><circle cx="308" cy="88" r="1.1" fill="#f3ecdd"/><circle cx="486" cy="150" r="1" fill="#f3ecdd"/><circle cx="628" cy="76" r="1.2" fill="#f3ecdd"/><circle cx="806" cy="130" r="1" fill="#f3ecdd"/><circle cx="1012" cy="86" r="1.3" fill="#f3ecdd"/><circle cx="1250" cy="138" r="1.1" fill="#f3ecdd"/><circle cx="1340" cy="230" r="1" fill="#f3ecdd"/><circle cx="72" cy="388" r="1" fill="#f3ecdd"/><circle cx="286" cy="442" r="1" fill="#f3ecdd"/><circle cx="1080" cy="402" r="1.2" fill="#f3ecdd"/><circle cx="1302" cy="616" r="1" fill="#f3ecdd"/>
+    <path d="M1116 322v42M1095 343h42" stroke="#f3ecdd" stroke-width="2" opacity="0.9"/>
+    <path d="M990 526v24M978 538h24" stroke="#f3ecdd" stroke-width="1.5" opacity="0.72"/>
+    <path d="M428 612v26M415 625h26" stroke="#f3ecdd" stroke-width="1.4" opacity="0.6"/>
   </g>
-  <g transform="translate(86 78)">
-    <text x="0" y="0" fill="#d7d2c8" font-family="Inter, system-ui, sans-serif" font-size="18" letter-spacing="8">CURRENT EXPERIENCE</text>
-    <text x="0" y="78" fill="#f8f4eb" font-family="Georgia, serif" font-size="82" font-weight="500">Moon Ritual Atlas</text>
-    <text x="0" y="132" fill="#d7d2c8" font-family="Georgia, serif" font-size="34" font-style="italic">Full Moon in Capricorn · Money, maturity, and self-authority</text>
-    <g transform="translate(0 188)">
-      <rect x="0" y="0" width="190" height="48" rx="24" fill="#f8f4eb"/>
-      <text x="30" y="31" fill="#171923" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="700">Open live site</text>
-    </g>
-    <g transform="translate(212 188)">
-      <rect x="0" y="0" width="186" height="48" rx="24" fill="none" stroke="#f8f4eb" stroke-opacity="0.5"/>
-      <text x="28" y="31" fill="#f8f4eb" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="600">Browse rituals</text>
-    </g>
+  <g>
+    <rect x="0" y="0" width="1400" height="78" fill="#090a16" fill-opacity="0.66"/>
+    <circle cx="48" cy="39" r="13" fill="#f3ecdd"/>
+    <path d="M54 28a13 13 0 1 0 0 22 16 16 0 0 1 0-22Z" fill="#15142a"/>
+    <text x="82" y="32" fill="#f3ecdd" font-family="Georgia, serif" font-size="26" font-weight="600">Capricorn</text>
+    <text x="82" y="58" fill="#a7a0b4" font-family="Inter, Arial, sans-serif" font-size="14" letter-spacing="6">FULL MOON RITUALS</text>
+    <text x="1035" y="45" fill="#b9b2c3" font-family="Inter, Arial, sans-serif" font-size="20">All rituals</text>
+    <rect x="1164" y="20" width="110" height="38" rx="19" fill="none" stroke="#686177"/>
+    <text x="1187" y="45" fill="#b9b2c3" font-family="Inter, Arial, sans-serif" font-size="17" letter-spacing="4">DUSK</text>
+    <circle cx="1248" cy="39" r="11" fill="#88aec9"/>
   </g>
-  <g filter="url(#shadow)" transform="translate(800 270)">
-    <rect x="54" y="-42" width="380" height="310" rx="34" fill="#fafaf6" opacity="0.78"/>
-    <rect x="24" y="-16" width="420" height="332" rx="36" fill="#f3f3ef" opacity="0.92"/>
-    <rect x="0" y="14" width="460" height="344" rx="38" fill="#ffffff" opacity="0.94"/>
-    <circle cx="82" cy="96" r="58" fill="#f9f9f6" stroke="#d3d4d4" stroke-width="2"/>
-    <path d="M58 106l38-56 17 25 15-18 42 49z" fill="none" stroke="#2a3038" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
-    <rect x="58" y="182" width="144" height="38" rx="19" fill="#f5f5f2" stroke="#cfd1d2"/>
-    <text x="78" y="207" fill="#2a3038" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="800" letter-spacing="4">STEP 01</text>
-    <text x="58" y="282" fill="#22262d" font-family="Georgia, serif" font-size="54" font-weight="700">Gather the</text>
-    <text x="58" y="338" fill="#22262d" font-family="Georgia, serif" font-size="54" font-weight="700">elements</text>
+  <circle cx="700" cy="322" r="375" fill="url(#halo)"/>
+  <g filter="url(#shadow)">
+    <circle cx="700" cy="322" r="235" fill="url(#moonBase)" filter="url(#moonTexture)"/>
+    <circle cx="628" cy="226" r="29" fill="#74766f" opacity="0.25"/>
+    <circle cx="764" cy="282" r="38" fill="#6e7069" opacity="0.22"/>
+    <circle cx="654" cy="396" r="44" fill="#5d5f5a" opacity="0.18"/>
+    <circle cx="823" cy="404" r="26" fill="#f2eee4" opacity="0.18"/>
+    <circle cx="573" cy="336" r="20" fill="#f0ece2" opacity="0.24"/>
+    <circle cx="735" cy="190" r="17" fill="#f2eee4" opacity="0.2"/>
+    <circle cx="700" cy="322" r="235" fill="none" stroke="#ece7dd" stroke-opacity="0.16" stroke-width="3"/>
   </g>
-  <g transform="translate(92 600)" opacity="0.78">
-    <rect x="0" y="0" width="158" height="8" rx="4" fill="#f8f4eb"/>
-    <rect x="176" y="0" width="158" height="8" rx="4" fill="#f8f4eb" opacity="0.35"/>
-    <rect x="352" y="0" width="158" height="8" rx="4" fill="#f8f4eb" opacity="0.35"/>
+  <g transform="translate(0 594)">
+    <path d="M0 0h52" stroke="#c9a567" stroke-width="2"/>
+    <text x="72" y="8" fill="#c9a567" font-family="Inter, Arial, sans-serif" font-size="18" letter-spacing="8">JUNE 29, 2026 · 8°14′ CAPRICORN</text>
+    <path d="M640 -10v26M627 3h26" stroke="#c9a567" stroke-width="1.4" opacity="0.8"/>
+    <text x="0" y="88" fill="#f3ecdd" font-family="Georgia, serif" font-size="62" font-weight="400">The Full Moon in <tspan fill="#c9a567" font-style="italic">Capricorn</tspan></text>
+    <text x="0" y="138" fill="#a7a0b4" font-family="Georgia, serif" font-size="28" font-style="italic">The child is heard. The adult takes the keys.</text>
   </g>
 </svg>
