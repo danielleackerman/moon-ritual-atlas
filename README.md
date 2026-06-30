@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://moon-ritual-atlas.vercel.app/">
-    <img src="https://image.thum.io/get/width/1400/crop/1100/https://moon-ritual-atlas.vercel.app/" alt="Open the current Moon Ritual Atlas experience" width="100%">
+    <img src="assets/readme/atlas-hero.svg" alt="Open the current Full Moon in Capricorn experience" width="100%">
   </a>
 </p>
 
@@ -35,6 +35,10 @@ The atlas is designed to grow into a ritual library for lunar and seasonal work:
 - **Future visual system** with collage, antique object plates, ritual marginalia, moon imagery, and symbolic illustrations
 
 The product direction is modern, alive, elegant, and practical — mystical without being cluttered, grounded without becoming dry.
+
+<p align="center">
+  <img src="assets/readme/feature-strip.svg" alt="Moon Ritual Atlas feature highlights" width="100%">
+</p>
 
 ---
 
