@@ -1,69 +1,135 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760" role="img" aria-labelledby="title desc">
   <title id="title">Current Full Moon in Capricorn page preview</title>
-  <desc id="desc">A site-linked preview of the current Moon Ritual Atlas Capricorn experience, showing the Dusk mode hero with a large textured moon.</desc>
+  <desc id="desc">A site-linked preview of the current Moon Ritual Atlas Capricorn experience with a large moon, star field, Dusk toggle, and Full Moon in Capricorn title.</desc>
   <defs>
-    <radialGradient id="sky" cx="52%" cy="37%" r="88%">
-      <stop offset="0" stop-color="#18152c"/>
-      <stop offset="0.48" stop-color="#0d0e1d"/>
+    <radialGradient id="sky" cx="50%" cy="38%" r="82%">
+      <stop offset="0" stop-color="#19162f"/>
+      <stop offset="0.50" stop-color="#0e1022"/>
       <stop offset="1" stop-color="#080915"/>
     </radialGradient>
+    <radialGradient id="moon" cx="40%" cy="34%" r="68%">
+      <stop offset="0" stop-color="#efebe1"/>
+      <stop offset="0.42" stop-color="#c4c2b9"/>
+      <stop offset="0.78" stop-color="#8d8e87"/>
+      <stop offset="1" stop-color="#62645f"/>
+    </radialGradient>
     <radialGradient id="halo" cx="50%" cy="50%" r="50%">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.24"/>
-      <stop offset="0.42" stop-color="#777a86" stop-opacity="0.12"/>
-      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="0.55" stop-color="#61709a" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="moonBase" cx="42%" cy="35%" r="70%">
-      <stop offset="0" stop-color="#ebe7dc"/>
-      <stop offset="0.44" stop-color="#bbb9b1"/>
-      <stop offset="1" stop-color="#74756f"/>
-    </radialGradient>
-    <filter id="moonTexture" x="-10%" y="-10%" width="120%" height="120%">
-      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="5" seed="29" result="noise"/>
-      <feColorMatrix in="noise" type="saturate" values="0" result="gray"/>
-      <feBlend in="SourceGraphic" in2="gray" mode="multiply"/>
-    </filter>
-    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="42" stdDeviation="28" flood-color="#000000" flood-opacity="0.55"/>
-    </filter>
+    <linearGradient id="moonShade" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="0.48" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.28"/>
+    </linearGradient>
     <pattern id="grid" width="52" height="52" patternUnits="userSpaceOnUse">
-      <path d="M52 0H0V52" fill="none" stroke="#ffffff" stroke-opacity="0.055" stroke-width="1"/>
+      <path d="M52 0H0V52" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
     </pattern>
+    <clipPath id="moonClip"><circle cx="700" cy="318" r="235"/></clipPath>
   </defs>
   <rect width="1400" height="760" fill="url(#sky)"/>
   <rect width="1400" height="760" fill="url(#grid)"/>
-  <g opacity="0.76">
-    <circle cx="58" cy="94" r="1.3" fill="#f3ecdd"/><circle cx="188" cy="132" r="1" fill="#f3ecdd"/><circle cx="308" cy="88" r="1.1" fill="#f3ecdd"/><circle cx="486" cy="150" r="1" fill="#f3ecdd"/><circle cx="628" cy="76" r="1.2" fill="#f3ecdd"/><circle cx="806" cy="130" r="1" fill="#f3ecdd"/><circle cx="1012" cy="86" r="1.3" fill="#f3ecdd"/><circle cx="1250" cy="138" r="1.1" fill="#f3ecdd"/><circle cx="1340" cy="230" r="1" fill="#f3ecdd"/><circle cx="72" cy="388" r="1" fill="#f3ecdd"/><circle cx="286" cy="442" r="1" fill="#f3ecdd"/><circle cx="1080" cy="402" r="1.2" fill="#f3ecdd"/><circle cx="1302" cy="616" r="1" fill="#f3ecdd"/>
-    <path d="M1116 322v42M1095 343h42" stroke="#f3ecdd" stroke-width="2" opacity="0.9"/>
-    <path d="M990 526v24M978 538h24" stroke="#f3ecdd" stroke-width="1.5" opacity="0.72"/>
-    <path d="M428 612v26M415 625h26" stroke="#f3ecdd" stroke-width="1.4" opacity="0.6"/>
+  <g>
+    <circle cx="540" cy="317" r="1.2" fill="#f3ecdd" opacity="0.66"/>
+    <circle cx="1338" cy="221" r="0.8" fill="#f3ecdd" opacity="0.83"/>
+    <circle cx="382" cy="183" r="0.8" fill="#f3ecdd" opacity="0.42"/>
+    <circle cx="1210" cy="184" r="0.8" fill="#f3ecdd" opacity="0.75"/>
+    <circle cx="1239" cy="29" r="1.2" fill="#f3ecdd" opacity="0.32"/>
+    <circle cx="446" cy="519" r="1.6" fill="#f3ecdd" opacity="0.36"/>
+    <circle cx="477" cy="627" r="0.8" fill="#f3ecdd" opacity="0.52"/>
+    <circle cx="296" cy="278" r="1.2" fill="#f3ecdd" opacity="0.50"/>
+    <circle cx="735" cy="687" r="1.2" fill="#f3ecdd" opacity="0.85"/>
+    <circle cx="808" cy="107" r="1.2" fill="#f3ecdd" opacity="0.66"/>
+    <circle cx="1268" cy="58" r="1.2" fill="#f3ecdd" opacity="0.70"/>
+    <circle cx="798" cy="87" r="1.0" fill="#f3ecdd" opacity="0.52"/>
+    <circle cx="732" cy="581" r="0.8" fill="#f3ecdd" opacity="0.43"/>
+    <circle cx="516" cy="374" r="1.6" fill="#f3ecdd" opacity="0.44"/>
+    <circle cx="574" cy="689" r="1.6" fill="#f3ecdd" opacity="0.42"/>
+    <circle cx="1160" cy="525" r="1.2" fill="#f3ecdd" opacity="0.56"/>
+    <circle cx="739" cy="629" r="1.0" fill="#f3ecdd" opacity="0.59"/>
+    <circle cx="1131" cy="99" r="1.0" fill="#f3ecdd" opacity="0.35"/>
+    <circle cx="181" cy="245" r="1.6" fill="#f3ecdd" opacity="0.62"/>
+    <circle cx="248" cy="366" r="0.8" fill="#f3ecdd" opacity="0.40"/>
+    <circle cx="619" cy="484" r="1.6" fill="#f3ecdd" opacity="0.76"/>
+    <circle cx="738" cy="457" r="1.0" fill="#f3ecdd" opacity="0.53"/>
+    <circle cx="540" cy="472" r="1.6" fill="#f3ecdd" opacity="0.52"/>
+    <circle cx="871" cy="220" r="1.0" fill="#f3ecdd" opacity="0.57"/>
+    <circle cx="1186" cy="252" r="1.2" fill="#f3ecdd" opacity="0.55"/>
+    <circle cx="1211" cy="651" r="1.6" fill="#f3ecdd" opacity="0.51"/>
+    <circle cx="247" cy="684" r="1.2" fill="#f3ecdd" opacity="0.82"/>
+    <circle cx="105" cy="708" r="1.2" fill="#f3ecdd" opacity="0.40"/>
+    <circle cx="1010" cy="279" r="0.8" fill="#f3ecdd" opacity="0.31"/>
+    <circle cx="774" cy="682" r="1.0" fill="#f3ecdd" opacity="0.80"/>
+    <circle cx="544" cy="630" r="1.6" fill="#f3ecdd" opacity="0.44"/>
+    <circle cx="491" cy="264" r="1.2" fill="#f3ecdd" opacity="0.63"/>
+    <circle cx="1125" cy="555" r="1.2" fill="#f3ecdd" opacity="0.41"/>
+    <circle cx="1070" cy="460" r="1.2" fill="#f3ecdd" opacity="0.32"/>
+    <circle cx="592" cy="490" r="1.0" fill="#f3ecdd" opacity="0.31"/>
+    <circle cx="1266" cy="324" r="1.6" fill="#f3ecdd" opacity="0.87"/>
+    <circle cx="262" cy="357" r="0.8" fill="#f3ecdd" opacity="0.66"/>
+    <circle cx="1334" cy="394" r="1.2" fill="#f3ecdd" opacity="0.64"/>
+    <circle cx="770" cy="87" r="1.6" fill="#f3ecdd" opacity="0.49"/>
+    <circle cx="759" cy="590" r="1.2" fill="#f3ecdd" opacity="0.82"/>
+    <circle cx="464" cy="584" r="0.8" fill="#f3ecdd" opacity="0.77"/>
+    <circle cx="1165" cy="208" r="1.0" fill="#f3ecdd" opacity="0.45"/>
+    <circle cx="474" cy="514" r="1.6" fill="#f3ecdd" opacity="0.87"/>
+    <circle cx="456" cy="395" r="1.2" fill="#f3ecdd" opacity="0.33"/>
+    <circle cx="443" cy="39" r="1.0" fill="#f3ecdd" opacity="0.81"/>
+    <circle cx="876" cy="255" r="1.6" fill="#f3ecdd" opacity="0.33"/>
+    <circle cx="364" cy="125" r="0.8" fill="#f3ecdd" opacity="0.78"/>
+    <circle cx="1327" cy="74" r="1.6" fill="#f3ecdd" opacity="0.46"/>
+    <circle cx="186" cy="590" r="0.8" fill="#f3ecdd" opacity="0.47"/>
+    <circle cx="1028" cy="239" r="1.2" fill="#f3ecdd" opacity="0.87"/>
+    <path d="M1104 315v44M1082 337h44" stroke="#f3ecdd" stroke-width="2.2" opacity="0.88"/>
+    <path d="M970 545v24M958 557h24" stroke="#f3ecdd" stroke-width="1.5" opacity="0.65"/>
+    <path d="M418 620v26M405 633h26" stroke="#f3ecdd" stroke-width="1.4" opacity="0.58"/>
   </g>
   <g>
-    <rect x="0" y="0" width="1400" height="78" fill="#090a16" fill-opacity="0.66"/>
+    <rect x="0" y="0" width="1400" height="78" fill="#080914" fill-opacity="0.72"/>
     <circle cx="48" cy="39" r="13" fill="#f3ecdd"/>
-    <path d="M54 28a13 13 0 1 0 0 22 16 16 0 0 1 0-22Z" fill="#15142a"/>
+    <path d="M55 28a13 13 0 1 0 0 22 16 16 0 0 1 0-22Z" fill="#15142a"/>
     <text x="82" y="32" fill="#f3ecdd" font-family="Georgia, serif" font-size="26" font-weight="600">Capricorn</text>
-    <text x="82" y="58" fill="#a7a0b4" font-family="Inter, Arial, sans-serif" font-size="14" letter-spacing="6">FULL MOON RITUALS</text>
-    <text x="1035" y="45" fill="#b9b2c3" font-family="Inter, Arial, sans-serif" font-size="20">All rituals</text>
-    <rect x="1164" y="20" width="110" height="38" rx="19" fill="none" stroke="#686177"/>
-    <text x="1187" y="45" fill="#b9b2c3" font-family="Inter, Arial, sans-serif" font-size="17" letter-spacing="4">DUSK</text>
+    <text x="82" y="58" fill="#aaa1ba" font-family="Inter, Arial, sans-serif" font-size="14" letter-spacing="6">FULL MOON RITUALS</text>
+    <text x="1034" y="45" fill="#c4bbca" font-family="Inter, Arial, sans-serif" font-size="20">All rituals</text>
+    <rect x="1164" y="20" width="110" height="38" rx="19" fill="none" stroke="#6c657c" stroke-width="1.5"/>
+    <text x="1186" y="45" fill="#c4bbca" font-family="Inter, Arial, sans-serif" font-size="17" letter-spacing="4">DUSK</text>
     <circle cx="1248" cy="39" r="11" fill="#88aec9"/>
   </g>
-  <circle cx="700" cy="322" r="375" fill="url(#halo)"/>
-  <g filter="url(#shadow)">
-    <circle cx="700" cy="322" r="235" fill="url(#moonBase)" filter="url(#moonTexture)"/>
-    <circle cx="628" cy="226" r="29" fill="#74766f" opacity="0.25"/>
-    <circle cx="764" cy="282" r="38" fill="#6e7069" opacity="0.22"/>
-    <circle cx="654" cy="396" r="44" fill="#5d5f5a" opacity="0.18"/>
-    <circle cx="823" cy="404" r="26" fill="#f2eee4" opacity="0.18"/>
-    <circle cx="573" cy="336" r="20" fill="#f0ece2" opacity="0.24"/>
-    <circle cx="735" cy="190" r="17" fill="#f2eee4" opacity="0.2"/>
-    <circle cx="700" cy="322" r="235" fill="none" stroke="#ece7dd" stroke-opacity="0.16" stroke-width="3"/>
+  <circle cx="700" cy="318" r="380" fill="url(#halo)"/>
+  <g>
+    <circle cx="700" cy="318" r="235" fill="url(#moon)"/>
+    <g clip-path="url(#moonClip)">
+      <circle cx="622" cy="225" r="30" fill="#5f615c" opacity="0.25"/>
+      <circle cx="762" cy="292" r="42" fill="#f3efe4" opacity="0.22"/>
+      <circle cx="651" cy="398" r="48" fill="#5f615c" opacity="0.18"/>
+      <circle cx="820" cy="404" r="28" fill="#5f615c" opacity="0.18"/>
+      <circle cx="570" cy="344" r="20" fill="#f3efe4" opacity="0.25"/>
+      <circle cx="730" cy="190" r="18" fill="#5f615c" opacity="0.2"/>
+      <circle cx="690" cy="318" r="70" fill="#5f615c" opacity="0.1"/>
+      <circle cx="780" cy="210" r="55" fill="#f3efe4" opacity="0.12"/>
+      <circle cx="610" cy="470" r="55" fill="#5f615c" opacity="0.1"/>
+      <circle cx="835" cy="325" r="65" fill="#5f615c" opacity="0.12"/>
+      <circle cx="544" cy="258" r="35" fill="#f3efe4" opacity="0.11"/>
+      <circle cx="714" cy="445" r="22" fill="#5f615c" opacity="0.18"/>
+      <circle cx="635" cy="302" r="16" fill="#5f615c" opacity="0.18"/>
+      <circle cx="860" cy="250" r="16" fill="#f3efe4" opacity="0.16"/>
+      <circle cx="598" cy="178" r="18" fill="#5f615c" opacity="0.12"/>
+      <circle cx="535" cy="420" r="12" fill="#5f615c" opacity="0.18"/>
+      <circle cx="760" cy="480" r="20" fill="#f3efe4" opacity="0.13"/>
+      <circle cx="664" cy="151" r="12" fill="#5f615c" opacity="0.15"/>
+      <path d="M482 330c88-34 149-31 232-4 73 24 142 22 220-17" fill="none" stroke="#f3efe4" stroke-opacity="0.16" stroke-width="34"/>
+      <path d="M510 248c95 8 152 8 230-9 69-15 121-15 176 10" fill="none" stroke="#343632" stroke-opacity="0.12" stroke-width="24"/>
+      <path d="M500 456c68-20 154-14 234 2 76 15 136 9 191-20" fill="none" stroke="#f3efe4" stroke-opacity="0.12" stroke-width="20"/>
+      <circle cx="700" cy="318" r="235" fill="url(#moonShade)"/>
+    </g>
+    <circle cx="700" cy="318" r="235" fill="none" stroke="#f1eadf" stroke-opacity="0.18" stroke-width="3"/>
   </g>
   <g transform="translate(0 594)">
-    <path d="M0 0h52" stroke="#c9a567" stroke-width="2"/>
+    <path d="M0 0h54" stroke="#c9a567" stroke-width="2"/>
     <text x="72" y="8" fill="#c9a567" font-family="Inter, Arial, sans-serif" font-size="18" letter-spacing="8">JUNE 29, 2026 · 8°14′ CAPRICORN</text>
     <path d="M640 -10v26M627 3h26" stroke="#c9a567" stroke-width="1.4" opacity="0.8"/>
-    <text x="0" y="88" fill="#f3ecdd" font-family="Georgia, serif" font-size="62" font-weight="400">The Full Moon in <tspan fill="#c9a567" font-style="italic">Capricorn</tspan></text>
-    <text x="0" y="138" fill="#a7a0b4" font-family="Georgia, serif" font-size="28" font-style="italic">The child is heard. The adult takes the keys.</text>
+    <text x="0" y="88" fill="#f3ecdd" font-family="Georgia, serif" font-size="72" font-weight="400">The Full Moon in <tspan fill="#c9a567" font-style="italic">Capricorn</tspan></text>
+    <text x="0" y="140" fill="#b0a9bd" font-family="Georgia, serif" font-size="28" font-style="italic">The child is heard. The adult takes the keys.</text>
   </g>
 </svg>
