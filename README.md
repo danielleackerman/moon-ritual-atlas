@@ -1,46 +1,68 @@
-<p align="center">
-  <img src="assets/readme/atlas-hero.svg" alt="Moon Ritual Atlas preview" width="100%">
-</p>
-
 # Moon Ritual Atlas
 
-**A living ritual atlas for lunar experiences — beginning with the Full Moon in Capricorn.**
+**A future-facing lunar ritual atlas for full moons, new moons, eclipses, and seasonal thresholds.**
 
-This is a mobile-first ritual product prototype: part moon guide, part ritual index, part notecard deck, part reflective tool. The current experience is built around the **Full Moon in Capricorn** and its themes of money, maturity, self-authority, ancestral patterns, and the adult self who can build.
+Moon Ritual Atlas is being built as a consumer-facing ritual experience: a mobile-first place to enter the lunar cycle through guided rituals, symbolic tools, reflective prompts, and visually rich ritual pages.
+
+The long-term vision is an expanding atlas of lunar moments — not a single page, not a one-off ritual, and not a generic moon blog. Each moon can become its own guided experience, with ritual paths, notecard-style steps, saved reflections, and practical closing actions.
 
 <p>
-  <a href="https://moon-ritual-atlas.vercel.app/"><strong>Open the live site →</strong></a>
+  <a href="https://moon-ritual-atlas.vercel.app/"><strong>Open the live atlas →</strong></a>
 </p>
 
-> Source repo is private while the project is in active design/product iteration. The live Vercel deployment is public for mobile testing and review.
+> The GitHub repo is private while the product is being designed and built. The Vercel site is public for mobile testing and review.
 
 ---
 
-## Current experience
+## What Moon Ritual Atlas is becoming
 
-Moon Ritual Atlas currently includes one complete lunar experience:
+The atlas is designed to grow into a ritual library for lunar and seasonal work:
 
-### Full Moon in Capricorn Ritual Index
+- **Full moon ritual indexes** by zodiac sign
+- **New moon intention rituals** by sign and theme
+- **Eclipse and threshold rituals** for heavier astrological portals
+- **Seasonal ritual collections** tied to solstices, equinoxes, and turning points
+- **Ritual Path Finder** experiences that recommend practices based on what the user is moving through
+- **Guided notecard ritual pages** that feel tactile, focused, and mobile-friendly
+- **Reflective tools** for writing, copying, exporting, and saving ritual notes
+- **Material action prompts** that turn ritual into one grounded next step
+- **Future visual system** with collage, antique object plates, ritual marginalia, moon imagery, and symbolic illustrations
 
-A guided ritual hub with:
+The goal is a spiritual product that feels modern, alive, elegant, and practical — mystical without being cluttered, grounded without becoming dry.
 
-- **Dawn / Dusk modes** for atmospheric viewing
-- **Ritual Path Finder** for choosing the right practice
-- **Ritual index cards** organized by theme
-- **Guided notecard ritual pages** with step-by-step flow
-- **Swipe navigation** across ritual steps
-- **Copy / export / receipt flow** for saving notes and commitments
-- **Soft motion pass** inspired by calm spiritual-tech product interfaces
+---
+
+## Featured now: Full Moon in Capricorn
+
+The first live experience in the atlas is the **Full Moon in Capricorn Ritual Index**.
+
+It is built around money, maturity, self-authority, ancestral patterns, structure, and the adult self who can build.
 
 <p align="center">
-  <img src="assets/readme/ritual-flow.svg" alt="Moon Ritual Atlas ritual flow" width="100%">
+  <a href="https://moon-ritual-atlas.vercel.app/">
+    <img src="assets/readme/atlas-hero.svg" alt="Open the current Full Moon in Capricorn experience" width="100%">
+  </a>
 </p>
+
+**Current live experience:**  
+[https://moon-ritual-atlas.vercel.app/](https://moon-ritual-atlas.vercel.app/)
+
+### What is live in the Capricorn page
+
+- Dawn / Dusk modes
+- Ritual Path Finder
+- Ritual index cards organized by theme
+- Guided notecard ritual pages
+- Swipe navigation through ritual steps
+- Copy / export / receipt flow
+- Soft motion pass for main page and ritual cards
+- Mobile-friendly static deployment through Vercel
 
 ---
 
-## Ritual inventory
+## Current Capricorn ritual collection
 
-The Capricorn experience includes all 11 rituals from the current build:
+The Capricorn experience includes 11 rituals:
 
 ### Core Capricorn
 
@@ -67,38 +89,37 @@ The Capricorn experience includes all 11 rituals from the current build:
 
 ---
 
-## Product direction
+## Design direction
 
-The long-term vision is a ritual atlas that can expand beyond one moon:
+The current Capricorn page is the first room in a larger atlas.
 
-- Full moon experiences by sign
-- New moon experiences
-- Eclipse rituals
-- Seasonal ritual collections
-- Saved ritual paths
-- Reflective tools and downloadable notes
-- A deeper illustration/collage system inspired by antique field manuals and modern spiritual product design
+The visual direction is moving toward:
 
-The current site intentionally starts simple: one rich, complete Capricorn full moon experience, structured so it can grow later.
-
----
-
-## Design notes
-
-The working visual direction combines:
-
-- **Modern ritual product UI**
-- **Cool gray / black-white ritual notecards**
-- **Dawn and Dusk atmosphere** instead of generic light/dark modes
-- **Card-stack interaction** for ritual steps
-- **Calm movement**: soft reveal, subtle swipe physics, gentle progress animation
-- Future direction: collage pages, antique line-drawing object plates, ritual marginalia, and a Cancer ↔ Capricorn axis animation
+- modern ritual product UI
+- Dawn and Dusk atmosphere instead of generic light/dark mode
+- cool gray / black-white ritual notecard pages
+- card-stack interaction for ritual steps
+- calm movement inspired by spiritual-tech product interfaces
+- future collage layers, object plates, marginalia, moon fragments, and antique line-drawing illustrations
 
 ---
 
-## Tech
+## Roadmap
 
-This is currently a static HTML prototype:
+Planned next passes:
+
+- Make rituals addressable with hash links, e.g. `#ritual/paid-gifts`
+- Add localStorage fallback for notes, bookmarks, mode, and receipt fields
+- Add accessibility polish: focus trap, Escape-to-close, visible focus states, reduced-motion checks
+- Build the full Ritual Atlas visual layer: collage, object plates, field-manual details, and ritual marginalia
+- Add a meaningful Cancer ↔ Capricorn axis interaction
+- Expand from Capricorn into future full moon and new moon experiences
+
+---
+
+## Project notes
+
+This is currently a static HTML prototype.
 
 ```text
 index.html
@@ -108,58 +129,18 @@ assets/readme/
 
 No build step is required right now.
 
----
-
-## Local preview
-
-Open the site locally:
-
-```bash
-open index.html
-```
-
-Or serve it locally:
-
-```bash
-python3 -m http.server 5173
-```
-
-Then open:
-
-```text
-http://localhost:5173
-```
-
----
-
-## Deploy
-
-Live site:
+Live deployment:
 
 ```text
 https://moon-ritual-atlas.vercel.app/
 ```
 
-Deployment is handled through Vercel from the private GitHub repo.
+Vercel setup:
 
-Current setup:
-
-- GitHub repo: `danielleackerman/moon-ritual-atlas`
-- Default branch: `main`
-- Vercel project: `moon-ritual-atlas`
+- Project: `moon-ritual-atlas`
 - Framework preset: `Other`
 - Build command: none
 - Output directory: default / root
-
----
-
-## Next planned passes
-
-- Add hash-linked ritual routes, e.g. `#ritual/paid-gifts`
-- Add localStorage fallback for notes, bookmarks, mode, and receipt fields
-- Add accessibility polish: focus trap, Escape-to-close, visible focus states, reduced-motion checks
-- Add full Ritual Atlas visual pass: collage layers, object plates, marginalia, antique line drawings
-- Add a meaningful Cancer ↔ Capricorn axis animation
 
 ---
 
