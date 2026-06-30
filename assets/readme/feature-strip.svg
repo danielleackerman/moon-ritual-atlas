@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="340" viewBox="0 0 1400 340" role="img" aria-labelledby="title desc">
+  <title id="title">Moon Ritual Atlas feature strip</title>
+  <desc id="desc">A panel of current Moon Ritual Atlas features including Dawn and Dusk modes, Ritual Path Finder, notecard ritual pages, and mobile swipe flow.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0d19"/>
+      <stop offset="1" stop-color="#171429"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f2f2ee"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.24"/>
+    </filter>
+  </defs>
+  <rect width="1400" height="340" rx="32" fill="url(#bg)"/>
+  <g transform="translate(34 30)" filter="url(#shadow)">
+    <rect width="300" height="280" rx="28" fill="url(#paper)"/>
+    <text x="28" y="46" fill="#2a3038" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800" letter-spacing="4">MODES</text>
+    <text x="28" y="86" fill="#1e2329" font-family="Georgia, serif" font-size="34" font-weight="700">Dawn / Dusk</text>
+    <circle cx="74" cy="152" r="34" fill="#f7f3ea" stroke="#d1d3d4" stroke-width="2"/>
+    <path d="M88 126a30 30 0 1 0 0 52 34 34 0 0 1 0-52Z" fill="#111422"/>
+    <circle cx="200" cy="152" r="34" fill="#182344"/>
+    <circle cx="190" cy="148" r="18" fill="#f4efe4"/>
+    <text x="28" y="224" fill="#5e6670" font-family="Inter, Arial, sans-serif" font-size="18">Atmospheric viewing modes with a clean ritual mood switch.</text>
+  </g>
+  <g transform="translate(374 30)" filter="url(#shadow)">
+    <rect width="300" height="280" rx="28" fill="url(#paper)"/>
+    <text x="28" y="46" fill="#2a3038" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800" letter-spacing="4">GUIDE</text>
+    <text x="28" y="86" fill="#1e2329" font-family="Georgia, serif" font-size="34" font-weight="700">Path Finder</text>
+    <rect x="38" y="128" width="224" height="38" rx="19" fill="#f6f6f2" stroke="#d1d3d4"/>
+    <text x="58" y="153" fill="#2a3038" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700">I need money movement</text>
+    <rect x="38" y="178" width="184" height="38" rx="19" fill="#1f2430"/>
+    <text x="60" y="203" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700">Paid Gifts Ritual</text>
+    <text x="28" y="248" fill="#5e6670" font-family="Inter, Arial, sans-serif" font-size="18">A quick guided decision point for choosing the right ritual path.</text>
+  </g>
+  <g transform="translate(714 30)" filter="url(#shadow)">
+    <rect width="300" height="280" rx="28" fill="url(#paper)"/>
+    <text x="28" y="46" fill="#2a3038" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800" letter-spacing="4">RITUAL PAGES</text>
+    <text x="28" y="86" fill="#1e2329" font-family="Georgia, serif" font-size="34" font-weight="700">Notecard Flow</text>
+    <rect x="96" y="118" width="150" height="124" rx="24" fill="#f8f8f4" stroke="#d1d3d4"/>
+    <rect x="78" y="108" width="150" height="124" rx="24" fill="#f2f2ee" stroke="#d1d3d4"/>
+    <rect x="58" y="98" width="150" height="124" rx="24" fill="#ffffff" stroke="#d1d3d4"/>
+    <circle cx="92" cy="130" r="20" fill="#f8f8f4" stroke="#d1d3d4"/>
+    <path d="M81 141l12-17 6 9 5-6 16 15z" fill="none" stroke="#2a3038" stroke-width="2.8" stroke-linejoin="round"/>
+    <text x="78" y="182" fill="#1f2430" font-family="Georgia, serif" font-size="26" font-weight="700">Gather the</text>
+    <text x="78" y="210" fill="#1f2430" font-family="Georgia, serif" font-size="26" font-weight="700">elements</text>
+    <text x="28" y="248" fill="#5e6670" font-family="Inter, Arial, sans-serif" font-size="18">Guided ritual steps in a tactile, card-stack experience.</text>
+  </g>
+  <g transform="translate(1054 30)" filter="url(#shadow)">
+    <rect width="312" height="280" rx="28" fill="url(#paper)"/>
+    <text x="28" y="46" fill="#2a3038" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800" letter-spacing="4">MOBILE</text>
+    <text x="28" y="86" fill="#1e2329" font-family="Georgia, serif" font-size="34" font-weight="700">Swipe + Save</text>
+    <rect x="38" y="118" width="112" height="148" rx="24" fill="#111422"/>
+    <rect x="48" y="130" width="92" height="124" rx="18" fill="#f7f7f3"/>
+    <path d="M70 176h48M70 198h36M70 220h54" stroke="#2a3038" stroke-width="4" stroke-linecap="round"/>
+    <path d="M175 188h82" stroke="#1f2430" stroke-width="4" stroke-linecap="round"/>
+    <path d="M245 170l22 18-22 18" fill="none" stroke="#1f2430" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="170" y="238" fill="#5e6670" font-family="Inter, Arial, sans-serif" font-size="16">Swipe, copy notes,<tspan x="170" dy="20">export reflections,</tspan><tspan x="170" dy="20">and take the receipt.</tspan></text>
+  </g>
+</svg>
