@@ -1291,6 +1291,281 @@ footer .foot-inner.in{
   .topbar nav a{font-size:.62rem!important;}
 }
 
+
+
+/* ═══════════ MOBILE NAVIGATION — APPROVED CANCER DRAWER ═══════════ */
+.menu-toggle,
+.mobile-menu-layer{
+  display:none;
+}
+
+@media(max-width:640px){
+  html.has-js .topbar .desktop-nav{
+    display:none!important;
+  }
+
+  html.has-js .menu-toggle{
+    position:relative;
+    display:grid;
+    place-items:center;
+    flex:0 0 44px;
+    width:44px;
+    height:44px;
+    margin:-11px -11px -11px 0;
+    padding:0;
+    border:0;
+    border-radius:0;
+    background:transparent;
+    color:#f2ece5;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+    z-index:2;
+  }
+
+  .menu-toggle span{
+    position:absolute;
+    left:11px;
+    width:22px;
+    height:1.5px;
+    border-radius:1px;
+    background:currentColor;
+    transform-origin:center;
+    transition:transform .3s var(--ease),opacity .2s ease,background-color .3s var(--ease);
+  }
+
+  .menu-toggle span:nth-child(1){transform:translateY(-6px)}
+  .menu-toggle span:nth-child(2){transform:translateY(0)}
+  .menu-toggle span:nth-child(3){transform:translateY(6px)}
+  .topbar.on-light .menu-toggle{color:#2f2521}
+
+  html.has-js .mobile-menu-layer{
+    position:fixed;
+    inset:0;
+    z-index:220;
+    display:block;
+    visibility:hidden;
+    pointer-events:none;
+  }
+
+  .mobile-menu-dim{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    padding:0;
+    border:0;
+    background:rgba(1,5,14,.78);
+    opacity:0;
+    cursor:pointer;
+    transition:opacity .32s var(--ease),visibility 0s linear .32s;
+  }
+
+  .mobile-menu-panel{
+    position:absolute;
+    inset:0 auto 0 0;
+    width:min(84vw,360px);
+    height:100vh;
+    height:100dvh;
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    color:#f2ece5;
+    background-color:#071224;
+    background-image:url('cancer-menu-approved-background.jpg');
+    background-repeat:no-repeat;
+    background-position:center top;
+    background-size:cover;
+    box-shadow:22px 0 58px rgba(0,4,13,.56);
+    transform:translate3d(-102%,0,0);
+    transition:transform .32s var(--ease);
+    will-change:transform;
+  }
+
+  .mobile-menu-panel::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    background:linear-gradient(180deg,rgba(3,9,20,.06) 0%,rgba(3,9,20,0) 48%,rgba(28,61,96,.08) 78%,rgba(20,47,77,.14) 100%);
+  }
+
+  .mobile-menu-head,
+  .mobile-menu-content{
+    position:relative;
+    z-index:1;
+  }
+
+  .mobile-menu-head{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    min-height:72px;
+    padding:
+      max(17px,env(safe-area-inset-top))
+      calc(17px + env(safe-area-inset-right))
+      10px
+      calc(17px + env(safe-area-inset-left));
+  }
+
+  .mobile-menu-brand{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    color:#f2ece5;
+    font-family:var(--ff-display);
+    font-size:1rem;
+    font-weight:400;
+    line-height:1;
+    letter-spacing:.005em;
+    text-shadow:0 1px 18px rgba(2,6,15,.74);
+  }
+
+  .mobile-menu-brand svg{
+    width:24px;
+    height:24px;
+    flex:none;
+  }
+
+  .mobile-menu-close{
+    position:relative;
+    flex:0 0 44px;
+    width:44px;
+    height:44px;
+    margin-right:-9px;
+    padding:0;
+    border:0;
+    border-radius:0;
+    background:transparent;
+    color:#f2ece5;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  .mobile-menu-close span{
+    position:absolute;
+    top:21px;
+    left:9px;
+    width:27px;
+    height:1.5px;
+    background:currentColor;
+    transform-origin:center;
+  }
+
+  .mobile-menu-close span:first-child{transform:rotate(45deg)}
+  .mobile-menu-close span:last-child{transform:rotate(-45deg)}
+
+  .mobile-menu-content{
+    padding:
+      max(clamp(126px,17vh,164px),calc(env(safe-area-inset-top) + 112px))
+      calc(22px + env(safe-area-inset-right))
+      calc(34px + env(safe-area-inset-bottom))
+      calc(22px + env(safe-area-inset-left));
+  }
+
+  .mobile-menu-title{
+    margin:0;
+    font-family:var(--ff-ui);
+    font-size:.68rem;
+    font-weight:500;
+    line-height:1.25;
+    letter-spacing:.26em;
+    text-transform:uppercase;
+    color:#f2ece5;
+    text-shadow:0 1px 16px rgba(2,6,15,.78);
+  }
+
+  .mobile-menu-nav{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:17px;
+    margin-top:31px;
+  }
+
+  .mobile-menu-nav a{
+    display:inline-block;
+    min-height:24px;
+    padding:2px 0;
+    font-family:var(--ff-ui);
+    font-size:.78rem;
+    font-weight:500;
+    font-style:normal;
+    line-height:1.45;
+    letter-spacing:.19em;
+    text-transform:uppercase;
+    color:#f2ece5;
+    text-shadow:0 1px 15px rgba(2,6,15,.82);
+    transition:color .22s var(--ease),transform .22s var(--ease);
+  }
+
+  .mobile-menu-nav a:hover,
+  .mobile-menu-nav a:focus-visible,
+  .mobile-menu-nav a[aria-current="location"]{
+    color:#d3917c;
+    font-style:italic;
+  }
+
+  .mobile-menu-nav a:hover,
+  .mobile-menu-nav a:focus-visible{
+    transform:translateX(2px);
+  }
+
+  .mobile-menu-nav a:focus-visible,
+  .mobile-menu-brand:focus-visible,
+  .mobile-menu-close:focus-visible,
+  .menu-toggle:focus-visible,
+  .mobile-menu-dim:focus-visible{
+    outline:1px solid currentColor;
+    outline-offset:5px;
+  }
+
+  body.menu-open{
+    overscroll-behavior:none;
+  }
+
+  body.menu-open .mobile-menu-layer{
+    visibility:visible;
+    pointer-events:auto;
+  }
+
+  body.menu-open .mobile-menu-dim{
+    opacity:1;
+    transition-delay:0s;
+  }
+
+  body.menu-open .mobile-menu-panel{
+    transform:translate3d(0,0,0);
+  }
+}
+
+@media(max-width:350px){
+  .mobile-menu-content{
+    padding-top:max(112px,calc(env(safe-area-inset-top) + 98px));
+    padding-right:calc(19px + env(safe-area-inset-right));
+    padding-left:calc(19px + env(safe-area-inset-left));
+  }
+
+  .mobile-menu-nav{
+    gap:14px;
+    margin-top:26px;
+  }
+
+  .mobile-menu-title{font-size:.62rem}
+  .mobile-menu-nav a{font-size:.72rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .menu-toggle span,
+  .mobile-menu-dim,
+  .mobile-menu-panel,
+  .mobile-menu-nav a{
+    transition-duration:.01ms!important;
+  }
+}
 </style>
 </head>
 <body>
@@ -1302,14 +1577,39 @@ footer .foot-inner.in{
       <svg class="g" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="rgba(236,227,210,.3)" stroke-width="1.1"/><path d="M15.4 5.6a7 7 0 1 0 0 12.8 8.2 8.2 0 0 1 0-12.8Z" fill="#E7B266"/></svg>
       <span><b>Moon Ritual Atlas</b><s>The Midnight House</s></span>
     </div>
-    <nav>
-      <a href="#thesis" class="n-hide">The house</a>
-      <a href="#finder" class="n-hide">Which room</a>
-      <a href="#index">All rooms</a>
-      <a href="#closing">Walk the house</a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#thesis" class="n-hide">The House</a>
+      <a href="#finder" class="n-hide">Which Room</a>
+      <a href="#index">All Rooms</a>
+      <a href="#closing">Walk the House</a>
     </nav>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<div class="mobile-menu-layer" aria-hidden="true">
+  <button class="mobile-menu-dim" type="button" tabindex="-1" aria-label="Close navigation"></button>
+  <aside class="mobile-menu-panel" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Moon Ritual Atlas navigation" tabindex="-1">
+    <div class="mobile-menu-head">
+      <a class="mobile-menu-brand" href="#top" aria-label="Moon Ritual Atlas — return to top">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".34" stroke-width="1.1"/><path d="M15.4 5.6a7 7 0 1 0 0 12.8 8.2 8.2 0 0 1 0-12.8Z" fill="currentColor"/></svg>
+        <span>Moon Ritual Atlas</span>
+      </a>
+      <button class="mobile-menu-close" type="button" aria-label="Close navigation"><span></span><span></span></button>
+    </div>
+    <div class="mobile-menu-content">
+      <p class="mobile-menu-title">New Moon in Cancer</p>
+      <nav class="mobile-menu-nav" aria-label="Cancer page navigation">
+        <a href="#thesis" aria-current="location">The House</a>
+        <a href="#finder">Which Room</a>
+        <a href="#index">All Rooms</a>
+        <a href="#closing">Walk the House</a>
+      </nav>
+    </div>
+  </aside>
+</div>
 
 <!-- ═══════════ HERO — WATER + MOON PRIMARY ═══════════ -->
 <main class="dark-journey">
@@ -1538,6 +1838,182 @@ document.querySelectorAll('.rev,.rev-moon').forEach(el=>io.observe(el));
   addEventListener('scroll', sync, {passive:true});
   addEventListener('resize', sync);
   sync();
+})();
+
+
+/* mobile navigation — approved Cancer drawer */
+(function(){
+  document.documentElement.classList.add('has-js');
+
+  var body=document.body;
+  var topbar=document.getElementById('topbar');
+  var toggle=topbar&&topbar.querySelector('.menu-toggle');
+  var layer=document.querySelector('.mobile-menu-layer');
+  var panel=document.getElementById('mobile-menu');
+  var closeButton=document.querySelector('.mobile-menu-close');
+  var dim=document.querySelector('.mobile-menu-dim');
+  var brand=document.querySelector('.mobile-menu-brand');
+  var links=panel?Array.from(panel.querySelectorAll('.mobile-menu-nav a[href^="#"]')):[];
+  var main=document.querySelector('main');
+  var mobileQuery=matchMedia('(max-width:640px)');
+  var reducedMotion=matchMedia('(prefers-reduced-motion:reduce)');
+  var isOpen=false;
+  var lastFocus=null;
+  var lockState=null;
+  var mainWasInert=false;
+
+  if(!toggle||!layer||!panel||!closeButton||!dim||!links.length) return;
+
+  function setCurrent(hash){
+    links.forEach(function(link){
+      if(link.getAttribute('href')===hash) link.setAttribute('aria-current','location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  function syncCurrent(){
+    var marker=scrollY+(innerHeight*.34);
+    var current=links[0];
+    links.forEach(function(link){
+      var target=document.querySelector(link.getAttribute('href'));
+      if(target&&target.offsetTop<=marker) current=link;
+    });
+    setCurrent(current.getAttribute('href'));
+  }
+
+  function lockScroll(){
+    var y=scrollY;
+    lockState={
+      y:y,
+      position:body.style.position,
+      top:body.style.top,
+      left:body.style.left,
+      right:body.style.right,
+      width:body.style.width,
+      overflow:body.style.overflow
+    };
+    body.style.position='fixed';
+    body.style.top='-'+y+'px';
+    body.style.left='0';
+    body.style.right='0';
+    body.style.width='100%';
+    body.style.overflow='hidden';
+  }
+
+  function unlockScroll(){
+    if(!lockState) return;
+    var y=lockState.y;
+    body.style.position=lockState.position;
+    body.style.top=lockState.top;
+    body.style.left=lockState.left;
+    body.style.right=lockState.right;
+    body.style.width=lockState.width;
+    body.style.overflow=lockState.overflow;
+    lockState=null;
+
+    var html=document.documentElement;
+    var priorBehavior=html.style.scrollBehavior;
+    html.style.scrollBehavior='auto';
+    scrollTo(0,y);
+    html.style.scrollBehavior=priorBehavior;
+  }
+
+  function openMenu(){
+    if(isOpen||!mobileQuery.matches) return;
+    isOpen=true;
+    lastFocus=document.activeElement;
+    syncCurrent();
+    lockScroll();
+    body.classList.add('menu-open');
+    layer.setAttribute('aria-hidden','false');
+    toggle.setAttribute('aria-expanded','true');
+    toggle.setAttribute('aria-label','Close navigation');
+    mainWasInert=main?main.inert:false;
+    if(main) main.inert=true;
+    requestAnimationFrame(function(){closeButton.focus()});
+  }
+
+  function closeMenu(restoreFocus){
+    if(!isOpen) return;
+    isOpen=false;
+    body.classList.remove('menu-open');
+    layer.setAttribute('aria-hidden','true');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-label','Open navigation');
+    if(main) main.inert=mainWasInert;
+    unlockScroll();
+    if(restoreFocus!==false&&lastFocus&&mobileQuery.matches) lastFocus.focus();
+  }
+
+  function goTo(hash){
+    var target=document.querySelector(hash);
+    if(!target) return;
+    setCurrent(hash);
+    closeMenu(false);
+    requestAnimationFrame(function(){
+      target.scrollIntoView({behavior:reducedMotion.matches?'auto':'smooth',block:'start'});
+      if(history.replaceState) history.replaceState(null,'',hash);
+    });
+  }
+
+  function trapFocus(event){
+    if(!isOpen) return;
+    if(event.key==='Escape'){
+      event.preventDefault();
+      closeMenu();
+      return;
+    }
+    if(event.key!=='Tab') return;
+
+    var focusable=[brand,closeButton].concat(links).filter(function(el){
+      return el&&el.getClientRects().length&&!el.hasAttribute('disabled');
+    });
+    var first=focusable[0];
+    var last=focusable[focusable.length-1];
+    if(event.shiftKey&&document.activeElement===first){
+      event.preventDefault();
+      last.focus();
+    }else if(!event.shiftKey&&document.activeElement===last){
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
+  toggle.addEventListener('click',openMenu);
+  closeButton.addEventListener('click',function(){closeMenu()});
+  dim.addEventListener('click',function(){closeMenu()});
+
+  brand.addEventListener('click',function(event){
+    event.preventDefault();
+    goTo('#top');
+  });
+
+  links.forEach(function(link){
+    link.addEventListener('click',function(event){
+      event.preventDefault();
+      goTo(link.getAttribute('href'));
+    });
+  });
+
+  document.addEventListener('keydown',trapFocus);
+
+  var scrollFrame=0;
+  addEventListener('scroll',function(){
+    if(scrollFrame||isOpen) return;
+    scrollFrame=requestAnimationFrame(function(){
+      syncCurrent();
+      scrollFrame=0;
+    });
+  },{passive:true});
+
+  function handleViewport(event){
+    if(!event.matches) closeMenu(false);
+  }
+
+  if(mobileQuery.addEventListener) mobileQuery.addEventListener('change',handleViewport);
+  else mobileQuery.addListener(handleViewport);
+
+  syncCurrent();
 })();
 </script>
 </body>
