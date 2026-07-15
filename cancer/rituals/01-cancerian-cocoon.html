@@ -39,9 +39,16 @@ button,textarea{font:inherit}
 button{color:inherit}
 a{color:inherit}
 ::selection{background:rgba(179,111,105,.22)}
+
 .ritual-page{position:fixed;inset:0;display:flex;flex-direction:column;isolation:isolate;background:var(--paper)}
-.ritual-page::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(242,228,222,.18) 34%,rgba(234,214,208,.28)),var(--paper-tex),var(--fallback-tex),var(--paper);background-position:center;background-size:cover,cover,220px,auto;opacity:.98}
-.ritual-page::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(78% 44% at 50% -8%,rgba(255,255,255,.62),transparent 70%),radial-gradient(48% 55% at 100% 74%,rgba(110,133,122,.08),transparent 72%),radial-gradient(42% 46% at 0% 40%,rgba(179,111,105,.07),transparent 72%)}
+.ritual-page::before{content:"";position:absolute;inset:0;z-index:-2;background:
+  linear-gradient(180deg,rgba(255,255,255,.28),rgba(242,228,222,.18) 34%,rgba(234,214,208,.28)),
+  var(--paper-tex),var(--fallback-tex),var(--paper);background-position:center;background-size:cover,cover,220px,auto;opacity:.98}
+.ritual-page::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:
+  radial-gradient(78% 44% at 50% -8%,rgba(255,255,255,.62),transparent 70%),
+  radial-gradient(48% 55% at 100% 74%,rgba(110,133,122,.08),transparent 72%),
+  radial-gradient(42% 46% at 0% 40%,rgba(179,111,105,.07),transparent 72%)}
+
 .topbar{position:relative;z-index:5;display:flex;align-items:center;gap:15px;min-height:70px;padding:12px clamp(16px,3.6vw,44px);border-bottom:1px solid var(--line);background:rgba(242,228,222,.82);backdrop-filter:blur(16px);box-shadow:0 12px 34px -34px rgba(75,53,64,.8)}
 .back-link,.icon-button{border:1px solid var(--line-strong);background:rgba(255,250,247,.66);min-width:42px;height:42px;border-radius:999px;display:inline-grid;place-items:center;text-decoration:none;cursor:pointer;transition:.22s var(--ease)}
 .back-link:hover,.icon-button:hover{background:var(--surface-strong);border-color:var(--ink);transform:translateY(-1px)}
@@ -53,11 +60,13 @@ a{color:inherit}
 .actions{display:flex;gap:8px}
 .icon-button{width:auto;padding:0 13px;gap:7px;display:inline-flex;font-family:var(--ff-ui);font-size:.76rem}
 .icon-button span{white-space:nowrap}
+
 .progress-wrap{position:relative;z-index:4;padding:13px clamp(18px,4vw,48px) 12px;background:rgba(242,228,222,.56);border-bottom:1px solid rgba(75,53,64,.08)}
 .progress-track{display:flex;gap:8px;max-width:920px;margin:0 auto}
 .progress-dot{appearance:none;flex:1;height:4px;padding:0;border:0;border-radius:999px;background:rgba(75,53,64,.13);cursor:pointer;transition:.28s var(--ease)}
 .progress-dot.done{background:var(--sage)}
 .progress-dot.current{background:var(--ink);box-shadow:0 0 0 1px rgba(75,53,64,.08)}
+
 .scroll{position:relative;z-index:2;flex:1;overflow-y:auto;overscroll-behavior:contain;padding:clamp(24px,5vw,58px) clamp(16px,4vw,48px) 150px;scroll-behavior:smooth}
 .stage{width:min(900px,100%);margin:0 auto}
 .step-shell{position:relative}
@@ -67,8 +76,7 @@ a{color:inherit}
 .step-card{position:relative;border:1px solid var(--line-strong);border-radius:30px;background:rgba(255,250,247,.78);box-shadow:var(--shadow);padding:clamp(26px,5.8vw,62px);overflow:hidden;animation:arrive .42s var(--ease)}
 .step-card::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(145deg,rgba(255,255,255,.42),transparent 38%)}
 @keyframes arrive{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.step-grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(190px,270px);gap:clamp(26px,6vw,76px);align-items:start}
-.step-grid.single{grid-template-columns:1fr}
+.step-grid{position:relative;display:grid;grid-template-columns:1fr;align-items:start}
 .step-copy{min-width:0}
 .step-count{font-family:var(--ff-ui);font-size:.65rem;font-weight:600;letter-spacing:.19em;text-transform:uppercase;color:var(--sage);margin-bottom:12px}
 .step-title{font-family:var(--ff-display);font-weight:400;font-size:clamp(2.15rem,6vw,4.25rem);line-height:.92;letter-spacing:-.025em;margin:0 0 24px;max-width:13ch}
@@ -77,34 +85,35 @@ a{color:inherit}
 .prose p{font-size:clamp(1rem,1.7vw,1.08rem);line-height:1.72;margin:0 0 17px}
 .prose p:last-child{margin-bottom:0}
 .prose .quiet-note{color:var(--muted);font-size:.96rem}
-.motif{position:sticky;top:0;display:grid;place-items:center;min-height:250px}
-.cocoon-mark{width:min(220px,100%);aspect-ratio:1;position:relative;display:grid;place-items:center;color:var(--rose)}
-.cocoon-mark::before{content:"";position:absolute;inset:7%;border:1px solid rgba(75,53,64,.22);border-radius:49% 51% 47% 53% / 60% 58% 42% 40%;transform:rotate(-9deg);background:radial-gradient(circle at 44% 35%,rgba(255,255,255,.75),rgba(179,111,105,.07) 54%,rgba(110,133,122,.08));box-shadow:12px 18px 42px -32px rgba(75,53,64,.75)}
-.cocoon-mark::after{content:"";position:absolute;inset:19% 26%;border:1px solid rgba(179,111,105,.42);border-radius:50%;transform:rotate(16deg);box-shadow:0 0 0 14px rgba(179,111,105,.035),0 0 0 28px rgba(110,133,122,.025)}
-.cocoon-mark svg{position:relative;width:54%;height:54%;z-index:1}
-.motif-caption{font-family:var(--ff-ui);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);text-align:center;margin-top:-18px}
+
 .meta-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:28px 0 0}
 .meta-item{border-top:1px solid var(--line);padding:13px 0 0}
 .meta-item span{display:block;font-family:var(--ff-ui);font-size:.59rem;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:5px}
 .meta-item strong{font-family:var(--ff-display);font-size:1.03rem;font-weight:500}
+
 .callout{margin:24px 0;border:1px solid rgba(110,133,122,.28);border-radius:20px;padding:20px 22px;background:rgba(244,238,232,.52);box-shadow:6px 7px 0 -3px rgba(110,133,122,.16)}
 .callout .label{font-family:var(--ff-ui);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);font-weight:600;margin-bottom:9px}
 .callout p{margin:0;font-size:1rem;line-height:1.65}
+
 .gather-list{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .gather-list li{position:relative;padding:14px 15px 14px 42px;border:1px solid var(--line);border-radius:15px;background:rgba(255,252,250,.58);font-size:.95rem;line-height:1.46}
 .gather-list li::before{content:"";position:absolute;left:17px;top:19px;width:9px;height:9px;border:1px solid var(--sage);border-radius:50%;box-shadow:inset 0 0 0 2px rgba(255,252,250,.7)}
+
 .numbered{counter-reset:item;list-style:none;margin:22px 0 0;padding:0;display:grid;gap:13px}
 .numbered li{counter-increment:item;position:relative;padding:0 0 0 44px;font-size:1rem;line-height:1.62}
 .numbered li::before{content:counter(item,decimal-leading-zero);position:absolute;left:0;top:1px;font-family:var(--ff-ui);font-size:.68rem;letter-spacing:.08em;color:var(--rose);font-weight:600}
+
 .incant{position:relative;margin:28px 0 8px;padding:24px 26px 24px 32px;border-left:2px solid var(--rose);background:linear-gradient(90deg,rgba(179,111,105,.08),transparent);border-radius:0 18px 18px 0}
 .incant p{font-family:var(--ff-display);font-style:italic;font-size:clamp(1.2rem,2.7vw,1.52rem);line-height:1.55;margin:0 0 3px}
 .incant p:last-child{margin-bottom:0}
+
 .prompt-grid{display:grid;gap:18px;margin-top:24px}
 .journal label{display:block;font-family:var(--ff-display);font-style:italic;font-size:1.18rem;line-height:1.3;margin-bottom:9px}
 .journal textarea{display:block;width:100%;min-height:112px;resize:vertical;border:1px solid var(--line-strong);border-radius:17px;background:rgba(255,252,250,.70);padding:15px 16px;color:var(--ink);font-family:var(--ff-body);font-size:1rem;line-height:1.55;transition:.2s var(--ease)}
 .journal textarea::placeholder{color:var(--faint)}
 .journal textarea:focus{border-color:var(--sage);background:rgba(255,253,251,.92)}
 .saved-flag{height:16px;margin-top:6px;font-family:var(--ff-ui);font-size:.64rem;letter-spacing:.06em;color:var(--faint)}
+
 .tide-mark{margin-top:28px;padding:24px;border:1px solid rgba(154,113,63,.38);border-radius:22px;background:linear-gradient(145deg,rgba(255,248,239,.72),rgba(179,111,105,.07));position:relative}
 .tide-mark::before{content:"TIDE MARK";display:block;font-family:var(--ff-ui);font-size:.61rem;letter-spacing:.22em;color:var(--gold);font-weight:600;margin-bottom:12px}
 .tide-mark label{font-family:var(--ff-display);font-size:1.34rem;font-style:italic;line-height:1.35}
@@ -112,6 +121,7 @@ a{color:inherit}
 .integration{margin-top:24px;padding-top:22px;border-top:1px solid var(--line)}
 .integration h3{font-family:var(--ff-ui);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);margin:0 0 9px}
 .integration p{margin:0;line-height:1.68}
+
 .bottom-nav{position:absolute;z-index:6;left:0;right:0;bottom:0;display:flex;align-items:center;gap:12px;padding:18px clamp(16px,4vw,48px) calc(18px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:linear-gradient(0deg,rgba(242,228,222,.99) 58%,rgba(242,228,222,.90));backdrop-filter:blur(16px)}
 .nav-status{flex:1;text-align:center;font-family:var(--ff-ui);font-size:.71rem;letter-spacing:.09em;text-transform:uppercase;color:var(--faint)}
 .nav-button{border:1px solid var(--line-strong);border-radius:999px;background:rgba(255,250,247,.78);min-height:46px;padding:0 22px;display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--ff-ui);font-size:.84rem;font-weight:500;cursor:pointer;transition:.22s var(--ease)}
@@ -122,46 +132,347 @@ a{color:inherit}
 .nav-button svg{width:17px;height:17px}
 .toast{position:fixed;z-index:20;left:50%;bottom:106px;transform:translate(-50%,18px);background:var(--ink);color:var(--paper-light);padding:11px 18px;border-radius:999px;font-family:var(--ff-ui);font-size:.77rem;opacity:0;pointer-events:none;transition:.28s var(--ease)}
 .toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:760px){.topbar{min-height:64px;padding:10px 13px;gap:10px}.icon-button{width:42px;padding:0}.icon-button span{display:none}.progress-wrap{padding:10px 16px}.progress-track{gap:5px}.progress-dot{height:3px}.scroll{padding:22px 13px 132px}.step-card{border-radius:24px;padding:26px 20px 32px}.step-shell::before{inset:9px 12px -9px}.step-shell::after{inset:5px 6px -5px}.step-grid{grid-template-columns:1fr;gap:22px}.motif{position:relative;min-height:170px;order:-1}.cocoon-mark{width:165px}.motif-caption{margin-top:-12px}.step-title{font-size:clamp(2.35rem,13vw,3.6rem);max-width:11ch;margin-bottom:18px}.gather-list{grid-template-columns:1fr}.bottom-nav{padding:13px 13px calc(13px + env(safe-area-inset-bottom));gap:8px}.nav-status{display:none}.nav-button{padding:0 17px;min-height:44px}.nav-button.primary{margin-left:auto}}
-@media(max-width:420px){.title-lockup h1{font-size:1.08rem}.eyebrow{font-size:.57rem}.back-link,.icon-button{min-width:39px;height:39px}.nav-button{font-size:.79rem;padding:0 14px}.meta-grid{grid-template-columns:1fr}}
+
+@media(max-width:760px){
+  .topbar{min-height:64px;padding:10px 13px;gap:10px}
+  .icon-button{width:42px;padding:0}.icon-button span{display:none}
+  .progress-wrap{padding:10px 16px}
+  .progress-track{gap:5px}.progress-dot{height:3px}
+  .scroll{padding:22px 13px 132px}
+  .step-card{border-radius:24px;padding:26px 20px 32px}
+  .step-shell::before{inset:9px 12px -9px}.step-shell::after{inset:5px 6px -5px}
+  .step-grid{grid-template-columns:1fr;gap:22px}
+  .step-title{font-size:clamp(2.35rem,13vw,3.6rem);max-width:11ch;margin-bottom:18px}
+  .gather-list{grid-template-columns:1fr}
+  .bottom-nav{padding:13px 13px calc(13px + env(safe-area-inset-bottom));gap:8px}
+  .nav-status{display:none}.nav-button{padding:0 17px;min-height:44px}.nav-button.primary{margin-left:auto}
+}
+@media(max-width:420px){
+  .title-lockup h1{font-size:1.08rem}.eyebrow{font-size:.57rem}
+  .back-link,.icon-button{min-width:39px;height:39px}
+  .nav-button{font-size:.79rem;padding:0 14px}
+  .meta-grid{grid-template-columns:1fr}
+}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <main class="ritual-page" id="ritualPage">
-<header class="topbar"><a class="back-link" href="../index.html#index" aria-label="Back to the Cancer ritual index"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m6 6-6-6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="title-lockup"><div class="eyebrow">New Moon in Cancer · Ritual 01</div><h1>The Cancerian Cocoon</h1></div><div class="actions"><button class="icon-button" id="copyNotes" type="button" aria-label="Copy ritual notes"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M5 15V5a2 2 0 0 1 2-2h8" stroke="currentColor" stroke-width="1.5"/></svg><span>Copy notes</span></button><button class="icon-button" id="exportNotes" type="button" aria-label="Export ritual notes"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 19h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Export</span></button></div></header>
-<div class="progress-wrap" aria-label="Ritual progress"><div class="progress-track" id="progressTrack"></div></div>
-<div class="scroll" id="scrollRegion" tabindex="-1"><div class="stage"><div class="step-shell"><article class="step-card" id="stepCard" aria-live="polite"></article></div></div></div>
-<footer class="bottom-nav"><button class="nav-button" id="prevButton" type="button"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m6 6-6-6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Back</button><div class="nav-status" id="navStatus"></div><button class="nav-button primary" id="nextButton" type="button"><span>Continue</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button></footer>
-</main><div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <header class="topbar">
+    <a class="back-link" href="../index.html#index" aria-label="Back to the Cancer ritual index">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m6 6-6-6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <div class="title-lockup">
+      <div class="eyebrow">New Moon in Cancer · Ritual 01</div>
+      <h1>The Cancerian Cocoon</h1>
+    </div>
+    <div class="actions">
+      <button class="icon-button" id="copyNotes" type="button" aria-label="Copy ritual notes">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M5 15V5a2 2 0 0 1 2-2h8" stroke="currentColor" stroke-width="1.5"/></svg><span>Copy notes</span>
+      </button>
+      <button class="icon-button" id="exportNotes" type="button" aria-label="Export ritual notes">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 19h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Export</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="progress-wrap" aria-label="Ritual progress">
+    <div class="progress-track" id="progressTrack"></div>
+  </div>
+
+  <div class="scroll" id="scrollRegion" tabindex="-1">
+    <div class="stage">
+      <div class="step-shell">
+        <article class="step-card" id="stepCard" aria-live="polite"></article>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bottom-nav">
+    <button class="nav-button" id="prevButton" type="button">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m6 6-6-6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back
+    </button>
+    <div class="nav-status" id="navStatus"></div>
+    <button class="nav-button primary" id="nextButton" type="button">
+      <span>Continue</span>
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </footer>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
-const STORAGE_PREFIX='moon-ritual-atlas:v1:cancer:ritual-01:';const memoryFallback=new Map();const storage={get(key){try{return localStorage.getItem(STORAGE_PREFIX+key)}catch(_){return memoryFallback.get(key)??null}},set(key,value){try{localStorage.setItem(STORAGE_PREFIX+key,value)}catch(_){memoryFallback.set(key,value)}}};
-const shellMotif=`<div><div class="cocoon-mark" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none"><path d="M69 20c-17 7-29 24-29 43 0 17 9 31 22 38-4-10-3-21 2-30 5-10 14-17 25-19-4-15-11-27-20-32Z" stroke="currentColor" stroke-width="1.4"/><path d="M42 51c12 2 23 8 31 18M40 67c9 0 18 3 25 9M49 36c8 2 15 6 21 12" stroke="currentColor" stroke-width="1" opacity=".55"/></svg></div><div class="motif-caption">A temporary room of no demand</div></div>`;
-function journalField(id,label,placeholder){return `<div class="journal"><label for="note-${id}">${label}</label><textarea id="note-${id}" data-note="${id}" placeholder="${placeholder}"></textarea><div class="saved-flag" id="saved-${id}"></div></div>`}
-const steps=[
-{title:'Enter the <em>cocoon</em>',lede:'Stop producing long enough to perceive what is trying to reach you.',body:`<div class="prose"><p>Build a temporary room in which your body is not being asked to perform, explain, decide, improve, or hurry.</p><p>The Cancer New Moon calls for a yin interval: quiet, sidestepping, active rest, the cocoon, and a temporary withdrawal from ordinary routine. This is not avoidance. It is the change of conditions necessary for another form of knowledge to become audible.</p><p class="quiet-note">The message may rise as an image, mood, bodily pull, remembered phrase, dream fragment, or sudden desire that does not fit the day’s plan.</p></div><div class="meta-grid"><div class="meta-item"><span>Depth</span><strong>Shoreline</strong></div><div class="meta-item"><span>Time</span><strong>20–40 minutes</strong></div><div class="meta-item"><span>Mode</span><strong>Quiet · Home · Sensory</strong></div><div class="meta-item"><span>Best for</span><strong>Overstimulation · uncertainty</strong></div></div>`},
-{title:'Gather the <em>elements</em>',lede:'Choose ordinary objects that help the body recognize protection without turning the ritual into another performance.',body:`<ul class="gather-list"><li>One blanket, shawl, robe, or protective piece of fabric</li><li>A glass or bowl of water</li><li>One pillow or cushion</li><li>A low lamp or candle</li><li>A shell, smooth stone, photograph, soft object, or household object associated with safety</li><li>Optional: a quiet instrumental track, rain sound, or open window</li></ul><div class="callout"><div class="label">Keep outside the cocoon—for now</div><p>Do not bring the journal into the first portion of the ritual. The quiet is not another assignment.</p></div>`},
-{title:'Prepare the <em>room</em>',lede:'Make one small place feel different from the life continuing around it.',body:`<div class="prose"><p>Choose a small place in your home that can be changed for the duration of the ritual. It may be a corner of the bed, a chair by a window, a place on the floor, a bathtub without water, or a blanket beneath a table.</p></div><ol class="numbered"><li>Reduce the light.</li><li>Silence notifications.</li><li>Move work materials out of reach.</li><li>Place the water nearby.</li><li>Put the protective object where you can see or touch it.</li></ol><div class="callout"><div class="label">The condition</div><p>The rest of the house cannot be heard while you are still performing the outer life.</p></div>`},
-{title:'Cross the small <em>threshold</em>',lede:'Release the demand to know, fix, and move quickly.',body:`<div class="prose"><p>Wrap yourself in the blanket or fabric. Touch the protective object.</p></div><div class="incant"><p>For this little while, nothing is required of me.</p><p>I do not have to produce the answer.</p><p>I am making the conditions in which the answer may find me.</p></div><div class="prose"><p>Take three slow drinks of water. With each one, release a different demand:</p></div><ol class="numbered"><li>The demand to know</li><li>The demand to fix</li><li>The demand to move quickly</li></ol>`},
-{title:'Let the body <em>arrange itself</em>',lede:'The ritual is teaching the difference between noticing and explaining.',body:`<div class="prose"><p>Set a timer for fifteen or twenty minutes. During that time, do not hold a formal posture. Let your body choose.</p><p>It may curl, stretch, lie flat, sit upright, shift repeatedly, or become still. Notice where the body wants covering and where it wants air. Notice whether the jaw softens, the shoulders lower, the belly releases, or irritation rises when nothing is happening.</p><p>Do not interpret the response.</p></div><div class="incant"><p>Not yet. The house is still growing quiet.</p></div>`},
-{title:'Receive the first <em>visitor</em>',lede:'Ask once. Then let the first thing that arrives remain unexamined.',body:`<div class="prose"><p>After the timer ends, remain in place and ask only once:</p></div><div class="incant"><p>What becomes perceptible when I stop demanding an answer?</p></div><div class="prose"><p>Wait without repeating the question.</p><p>The response may be a sentence. It may be the awareness that you are tired. It may be anger, grief, appetite, relief, boredom, a memory, an image of a person, or the desire to go somewhere else in the house.</p><p class="quiet-note">Whatever comes first is the visitor. Do not interrogate it.</p></div>`},
-{title:'Record without <em>expanding</em>',lede:'Write no more than three lines. Stop before the writing becomes analysis.',body:`<div class="prompt-grid">${journalField('body','What I noticed in my body:','A sensation, movement, release, resistance, temperature, pressure, or need.')}${journalField('visitor','What entered when the room grew quiet:','The first sentence, feeling, image, memory, appetite, or awareness.')}${journalField('not-force','What I will not force tonight:','Name the answer, decision, repair, or movement you are releasing from pressure.')}</div>`},
-{title:'Close with the <em>Tide Mark</em>',lede:'Quiet is not emptiness. Rest is not failure. Save only the sentence that belongs to this threshold.',body:`<div class="incant"><p>I do not confuse quiet with emptiness.</p><p>I do not confuse rest with failure.</p><p>The unseen part of the work is still work.</p><p>The house can speak because I have stopped shouting instructions through it.</p></div><div class="tide-mark">${journalField('tide-mark','When nothing was required, I became aware of…','Save one sentence only.')}</div><div class="integration"><h3>Lunar-cycle integration</h3><p>For the next seven days, create one five-minute cocoon each day. Use the same object. Do not require a revelation. Repetition is the point: the body learns that this room exists and can be returned to.</p></div>`}
+const RITUAL_ID = 'cancerian-cocoon';
+const STORAGE_PREFIX = 'moon-ritual-atlas:v1:cancer:ritual-01:';
+const memoryFallback = new Map();
+
+const storage = {
+  get(key){
+    try { return localStorage.getItem(STORAGE_PREFIX + key); }
+    catch (_) { return memoryFallback.get(key) ?? null; }
+  },
+  set(key,value){
+    try { localStorage.setItem(STORAGE_PREFIX + key, value); }
+    catch (_) { memoryFallback.set(key,value); }
+  }
+};
+
+const steps = [
+  {
+    title:'Enter the <em>cocoon</em>',
+    lede:'Stop producing long enough to perceive what is trying to reach you.',
+    body:`
+      <div class="prose">
+        <p>Build a temporary room in which your body is not being asked to perform, explain, decide, improve, or hurry.</p>
+        <p>The Cancer New Moon calls for a yin interval: quiet, sidestepping, active rest, the cocoon, and a temporary withdrawal from ordinary routine. This is not avoidance. It is the change of conditions necessary for another form of knowledge to become audible.</p>
+        <p class="quiet-note">The message may rise as an image, mood, bodily pull, remembered phrase, dream fragment, or sudden desire that does not fit the day’s plan.</p>
+      </div>
+      <div class="meta-grid">
+        <div class="meta-item"><span>Depth</span><strong>Shoreline</strong></div>
+        <div class="meta-item"><span>Time</span><strong>20–40 minutes</strong></div>
+        <div class="meta-item"><span>Mode</span><strong>Quiet · Home · Sensory</strong></div>
+        <div class="meta-item"><span>Best for</span><strong>Overstimulation · uncertainty</strong></div>
+      </div>`
+  },
+  {
+    title:'Gather the <em>elements</em>',
+    lede:'Choose ordinary objects that help the body recognize protection without turning the ritual into another performance.',
+    body:`
+      <ul class="gather-list">
+        <li>One blanket, shawl, robe, or protective piece of fabric</li>
+        <li>A glass or bowl of water</li>
+        <li>One pillow or cushion</li>
+        <li>A low lamp or candle</li>
+        <li>A shell, smooth stone, photograph, soft object, or household object associated with safety</li>
+        <li>Optional: a quiet instrumental track, rain sound, or open window</li>
+      </ul>
+      <div class="callout"><div class="label">Keep outside the cocoon—for now</div><p>Do not bring the journal into the first portion of the ritual. The quiet is not another assignment.</p></div>`
+  },
+  {
+    title:'Prepare the <em>room</em>',
+    lede:'Make one small place feel different from the life continuing around it.',
+    body:`
+      <div class="prose">
+        <p>Choose a small place in your home that can be changed for the duration of the ritual. It may be a corner of the bed, a chair by a window, a place on the floor, a bathtub without water, or a blanket beneath a table.</p>
+      </div>
+      <ol class="numbered">
+        <li>Reduce the light.</li>
+        <li>Silence notifications.</li>
+        <li>Move work materials out of reach.</li>
+        <li>Place the water nearby.</li>
+        <li>Put the protective object where you can see or touch it.</li>
+      </ol>
+      <div class="callout"><div class="label">The condition</div><p>The rest of the house cannot be heard while you are still performing the outer life.</p></div>`
+  },
+  {
+    title:'Cross the small <em>threshold</em>',
+    lede:'Release the demand to know, fix, and move quickly.',
+    body:`
+      <div class="prose"><p>Wrap yourself in the blanket or fabric. Touch the protective object.</p></div>
+      <div class="incant">
+        <p>For this little while, nothing is required of me.</p>
+        <p>I do not have to produce the answer.</p>
+        <p>I am making the conditions in which the answer may find me.</p>
+      </div>
+      <div class="prose"><p>Take three slow drinks of water. With each one, release a different demand:</p></div>
+      <ol class="numbered"><li>The demand to know</li><li>The demand to fix</li><li>The demand to move quickly</li></ol>`
+  },
+  {
+    title:'Let the body <em>arrange itself</em>',
+    lede:'The ritual is teaching the difference between noticing and explaining.',
+    body:`
+      <div class="prose">
+        <p>Set a timer for fifteen or twenty minutes. During that time, do not hold a formal posture. Let your body choose.</p>
+        <p>It may curl, stretch, lie flat, sit upright, shift repeatedly, or become still. Notice where the body wants covering and where it wants air. Notice whether the jaw softens, the shoulders lower, the belly releases, or irritation rises when nothing is happening.</p>
+        <p>Do not interpret the response.</p>
+      </div>
+      <div class="incant"><p>Not yet. The house is still growing quiet.</p></div>`
+  },
+  {
+    title:'Receive the first <em>visitor</em>',
+    lede:'Ask once. Then let the first thing that arrives remain unexamined.',
+    body:`
+      <div class="prose"><p>After the timer ends, remain in place and ask only once:</p></div>
+      <div class="incant"><p>What becomes perceptible when I stop demanding an answer?</p></div>
+      <div class="prose">
+        <p>Wait without repeating the question.</p>
+        <p>The response may be a sentence. It may be the awareness that you are tired. It may be anger, grief, appetite, relief, boredom, a memory, an image of a person, or the desire to go somewhere else in the house.</p>
+        <p class="quiet-note">Whatever comes first is the visitor. Do not interrogate it.</p>
+      </div>`
+  },
+  {
+    title:'Record without <em>expanding</em>',
+    lede:'Write no more than three lines. Stop before the writing becomes analysis.',
+    body:`
+      <div class="prompt-grid">
+        ${journalField('body','What I noticed in my body:','A sensation, movement, release, resistance, temperature, pressure, or need.')}
+        ${journalField('visitor','What entered when the room grew quiet:','The first sentence, feeling, image, memory, appetite, or awareness.')}
+        ${journalField('not-force','What I will not force tonight:','Name the answer, decision, repair, or movement you are releasing from pressure.')}
+      </div>`
+  },
+  {
+    title:'Close with the <em>Tide Mark</em>',
+    lede:'Quiet is not emptiness. Rest is not failure. Save only the sentence that belongs to this threshold.',
+    body:`
+      <div class="incant">
+        <p>I do not confuse quiet with emptiness.</p>
+        <p>I do not confuse rest with failure.</p>
+        <p>The unseen part of the work is still work.</p>
+        <p>The house can speak because I have stopped shouting instructions through it.</p>
+      </div>
+      <div class="tide-mark">
+        ${journalField('tide-mark','When nothing was required, I became aware of…','Save one sentence only.')}
+      </div>
+      <div class="integration">
+        <h3>Lunar-cycle integration</h3>
+        <p>For the next seven days, create one five-minute cocoon each day. Use the same object. Do not require a revelation. Repetition is the point: the body learns that this room exists and can be returned to.</p>
+      </div>`
+  }
 ];
-let currentStep=clamp(Number(storage.get('progress'))||0,0,steps.length-1);let saveTimers=new Map();const card=document.getElementById('stepCard'),scrollRegion=document.getElementById('scrollRegion'),progressTrack=document.getElementById('progressTrack'),prevButton=document.getElementById('prevButton'),nextButton=document.getElementById('nextButton'),navStatus=document.getElementById('navStatus'),toast=document.getElementById('toast');
-function clamp(value,min,max){return Math.min(Math.max(value,min),max)}
-function stripHTML(value){const temp=document.createElement('div');temp.innerHTML=value;return temp.textContent||''}
-function renderProgress(){progressTrack.innerHTML=steps.map((_,index)=>`<button class="progress-dot ${index<currentStep?'done':''} ${index===currentStep?'current':''}" type="button" data-step="${index}" aria-label="Go to step ${index+1}: ${stripHTML(steps[index].title)}" ${index===currentStep?'aria-current="step"':''}></button>`).join('');progressTrack.querySelectorAll('[data-step]').forEach(button=>button.addEventListener('click',()=>goToStep(Number(button.dataset.step))))}
-function renderStep(){const step=steps[currentStep];card.innerHTML=`<div class="step-grid ${currentStep===6||currentStep===7?'single':''}"><div class="step-copy"><div class="step-count">Step ${String(currentStep+1).padStart(2,'0')} of ${String(steps.length).padStart(2,'0')}</div><h2 class="step-title">${step.title}</h2><p class="lede">${step.lede}</p>${step.body}</div>${currentStep===6||currentStep===7?'':`<aside class="motif">${shellMotif}</aside>`}</div>`;restoreNotes();bindNotes();renderProgress();prevButton.disabled=currentStep===0;navStatus.textContent=`Step ${currentStep+1} of ${steps.length}`;nextButton.querySelector('span').textContent=currentStep===steps.length-1?'Return to index':'Continue';storage.set('progress',String(currentStep));scrollRegion.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
-function goToStep(index){currentStep=clamp(index,0,steps.length-1);renderStep()}
-function restoreNotes(){card.querySelectorAll('[data-note]').forEach(field=>{field.value=storage.get('note:'+field.dataset.note)||''})}
-function bindNotes(){card.querySelectorAll('[data-note]').forEach(field=>{field.addEventListener('input',()=>{const key=field.dataset.note;storage.set('note:'+key,field.value);const flag=document.getElementById('saved-'+key);if(flag)flag.textContent='Saving…';clearTimeout(saveTimers.get(key));saveTimers.set(key,setTimeout(()=>{if(flag)flag.textContent='Saved in this browser'},350))})})}
-function collectNotes(){const fields=[['What I noticed in my body',storage.get('note:body')],['What entered when the room grew quiet',storage.get('note:visitor')],['What I will not force tonight',storage.get('note:not-force')],['Tide Mark — When nothing was required, I became aware of…',storage.get('note:tide-mark')]].filter(([,value])=>value&&value.trim());const lines=['THE CANCERIAN COCOON','New Moon in Cancer · Ritual 01',''];if(!fields.length)lines.push('No notes have been written yet.');fields.forEach(([label,value])=>lines.push(label+'\n'+value.trim()+'\n'));return lines.join('\n')}
-async function copyNotes(){const text=collectNotes();try{await navigator.clipboard.writeText(text);showToast('Notes copied')}catch(_){const helper=document.createElement('textarea');helper.value=text;document.body.appendChild(helper);helper.select();document.execCommand('copy');helper.remove();showToast('Notes copied')}}
-function exportNotes(){const blob=new Blob([collectNotes()],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='cancerian-cocoon-notes.txt';document.body.appendChild(link);link.click();link.remove();URL.revokeObjectURL(url);showToast('Notes exported')}
-function showToast(message){toast.textContent=message;toast.classList.add('show');clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>toast.classList.remove('show'),1800)}
-async function loadExactPaperTexture(){try{const response=await fetch('../index.html',{cache:'force-cache'});if(!response.ok)return;const html=await response.text(),match=html.match(/--paper-tex\s*:\s*(url\('data:image\/jpeg;base64,[^']+'\))/);if(match)document.documentElement.style.setProperty('--paper-tex',match[1])}catch(_){}}
-prevButton.addEventListener('click',()=>goToStep(currentStep-1));nextButton.addEventListener('click',()=>{if(currentStep===steps.length-1){window.location.href='../index.html#index';return}goToStep(currentStep+1)});document.getElementById('copyNotes').addEventListener('click',copyNotes);document.getElementById('exportNotes').addEventListener('click',exportNotes);window.addEventListener('keydown',event=>{const active=document.activeElement;if(active&&(active.tagName==='TEXTAREA'||active.tagName==='INPUT'))return;if(event.key==='ArrowRight'&&currentStep<steps.length-1){event.preventDefault();goToStep(currentStep+1)}if(event.key==='ArrowLeft'&&currentStep>0){event.preventDefault();goToStep(currentStep-1)}if(event.key==='Escape')window.location.href='../index.html#index'});loadExactPaperTexture();renderStep();
+
+function journalField(id,label,placeholder){
+  return `<div class="journal"><label for="note-${id}">${label}</label><textarea id="note-${id}" data-note="${id}" placeholder="${placeholder}"></textarea><div class="saved-flag" id="saved-${id}"></div></div>`;
+}
+
+let currentStep = clamp(Number(storage.get('progress')) || 0, 0, steps.length - 1);
+let saveTimers = new Map();
+
+const card = document.getElementById('stepCard');
+const scrollRegion = document.getElementById('scrollRegion');
+const progressTrack = document.getElementById('progressTrack');
+const prevButton = document.getElementById('prevButton');
+const nextButton = document.getElementById('nextButton');
+const navStatus = document.getElementById('navStatus');
+const toast = document.getElementById('toast');
+
+function clamp(value,min,max){ return Math.min(Math.max(value,min),max); }
+
+function renderProgress(){
+  progressTrack.innerHTML = steps.map((_,index) => `<button class="progress-dot ${index < currentStep ? 'done' : ''} ${index === currentStep ? 'current' : ''}" type="button" data-step="${index}" aria-label="Go to step ${index + 1}: ${stripHTML(steps[index].title)}" ${index === currentStep ? 'aria-current="step"' : ''}></button>`).join('');
+  progressTrack.querySelectorAll('[data-step]').forEach(button => button.addEventListener('click',() => goToStep(Number(button.dataset.step))));
+}
+
+function renderStep(){
+  const step = steps[currentStep];
+  card.innerHTML = `<div class="step-grid">
+    <div class="step-copy">
+      <div class="step-count">Step ${String(currentStep + 1).padStart(2,'0')} of ${String(steps.length).padStart(2,'0')}</div>
+      <h2 class="step-title">${step.title}</h2>
+      <p class="lede">${step.lede}</p>
+      ${step.body}
+    </div>
+  </div>`;
+
+  restoreNotes();
+  bindNotes();
+  renderProgress();
+  prevButton.disabled = currentStep === 0;
+  navStatus.textContent = `Step ${currentStep + 1} of ${steps.length}`;
+  const nextLabel = nextButton.querySelector('span');
+  nextLabel.textContent = currentStep === steps.length - 1 ? 'Return to index' : 'Continue';
+  storage.set('progress', String(currentStep));
+  scrollRegion.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+  requestAnimationFrame(() => card.focus?.());
+}
+
+function goToStep(index){
+  currentStep = clamp(index,0,steps.length - 1);
+  renderStep();
+}
+
+function restoreNotes(){
+  card.querySelectorAll('[data-note]').forEach(field => {
+    field.value = storage.get('note:' + field.dataset.note) || '';
+  });
+}
+
+function bindNotes(){
+  card.querySelectorAll('[data-note]').forEach(field => {
+    field.addEventListener('input',() => {
+      const key = field.dataset.note;
+      storage.set('note:' + key, field.value);
+      const flag = document.getElementById('saved-' + key);
+      if(flag) flag.textContent = 'Saving…';
+      clearTimeout(saveTimers.get(key));
+      const timer = setTimeout(() => { if(flag) flag.textContent = 'Saved in this browser'; },350);
+      saveTimers.set(key,timer);
+    });
+  });
+}
+
+function collectNotes(){
+  const fields = [
+    ['What I noticed in my body', storage.get('note:body')],
+    ['What entered when the room grew quiet', storage.get('note:visitor')],
+    ['What I will not force tonight', storage.get('note:not-force')],
+    ['Tide Mark — When nothing was required, I became aware of…', storage.get('note:tide-mark')]
+  ].filter(([,value]) => value && value.trim());
+  const lines = ['THE CANCERIAN COCOON','New Moon in Cancer · Ritual 01',''];
+  if(!fields.length) lines.push('No notes have been written yet.');
+  fields.forEach(([label,value]) => lines.push(label + '\n' + value.trim() + '\n'));
+  return lines.join('\n');
+}
+
+async function copyNotes(){
+  const text = collectNotes();
+  try {
+    await navigator.clipboard.writeText(text);
+    showToast('Notes copied');
+  } catch (_) {
+    const helper = document.createElement('textarea');
+    helper.value = text; document.body.appendChild(helper); helper.select();
+    document.execCommand('copy'); helper.remove(); showToast('Notes copied');
+  }
+}
+
+function exportNotes(){
+  const blob = new Blob([collectNotes()],{type:'text/plain;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url; link.download = 'cancerian-cocoon-notes.txt';
+  document.body.appendChild(link); link.click(); link.remove();
+  URL.revokeObjectURL(url); showToast('Notes exported');
+}
+
+function showToast(message){
+  toast.textContent = message; toast.classList.add('show');
+  clearTimeout(showToast.timer); showToast.timer = setTimeout(() => toast.classList.remove('show'),1800);
+}
+
+function stripHTML(value){
+  const temp = document.createElement('div'); temp.innerHTML = value; return temp.textContent || '';
+}
+
+async function loadExactPaperTexture(){
+  try {
+    const response = await fetch('../index.html',{cache:'force-cache'});
+    if(!response.ok) return;
+    const html = await response.text();
+    const match = html.match(/--paper-tex\s*:\s*(url\('data:image\/jpeg;base64,[^']+'\))/);
+    if(match) document.documentElement.style.setProperty('--paper-tex',match[1]);
+  } catch (_) {
+    // The built-in fallback keeps the page readable when opened directly from disk.
+  }
+}
+
+prevButton.addEventListener('click',() => goToStep(currentStep - 1));
+nextButton.addEventListener('click',() => {
+  if(currentStep === steps.length - 1){ window.location.href = '../index.html#index'; return; }
+  goToStep(currentStep + 1);
+});
+document.getElementById('copyNotes').addEventListener('click',copyNotes);
+document.getElementById('exportNotes').addEventListener('click',exportNotes);
+window.addEventListener('keydown',event => {
+  const active = document.activeElement;
+  if(active && (active.tagName === 'TEXTAREA' || active.tagName === 'INPUT')) return;
+  if(event.key === 'ArrowRight' && currentStep < steps.length - 1){ event.preventDefault(); goToStep(currentStep + 1); }
+  if(event.key === 'ArrowLeft' && currentStep > 0){ event.preventDefault(); goToStep(currentStep - 1); }
+  if(event.key === 'Escape') window.location.href = '../index.html#index';
+});
+
+loadExactPaperTexture();
+renderStep();
 </script>
 </body>
 </html>
