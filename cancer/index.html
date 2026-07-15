@@ -1009,6 +1009,18 @@ footer .foot-inner.in{
 .topbar.on-light .brand s{color:rgba(70,55,48,.62)!important;text-shadow:none!important;}
 .topbar.on-light .brand .g path{fill:#4a3a34!important;}
 
+/* On pale ground, the sticky header becomes a restrained warm surface.
+   Dark sections retain the fully transparent treatment above. */
+.topbar.on-light,
+.topbar.scrolled.on-light{
+  background:rgba(242,222,213,.94)!important;
+  background-color:rgba(242,222,213,.94)!important;
+  border-bottom:1px solid rgba(74,48,45,.12)!important;
+  box-shadow:0 10px 30px rgba(58,34,40,.10)!important;
+  backdrop-filter:blur(12px) saturate(112%)!important;
+  -webkit-backdrop-filter:blur(12px) saturate(112%)!important;
+}
+
 
 
 /* ═══ MOBILE HERO REPAIR — one moon, dedicated visual stage, content below ═══ */
@@ -1834,7 +1846,7 @@ document.querySelectorAll('.rev,.rev-moon').forEach(el=>io.observe(el));
     var light;
     if(r.bottom <= navB){ light = true; }                 /* past the journey: paper */
     else if(r.top >= navB){ light = false; }              /* above it: dark */
-    else { light = ((navB - r.top) / r.height) > 0.86; }  /* gradient has gone pale */
+    else { light = ((navB - r.top) / r.height) > 0.60; }  /* warm ground begins before the paper section */
     tb.classList.toggle('on-light', light);
   }
   addEventListener('scroll', sync, {passive:true});
