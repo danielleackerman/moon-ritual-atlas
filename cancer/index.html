@@ -1594,8 +1594,8 @@ a.card:focus-visible,a.pstep:focus-visible{outline:2px solid currentColor;outlin
 
 @media(min-width:901px) and (max-width:1180px){
   .hero-moon{
-    background-size:clamp(100%,calc(150.8% - 4.3vw),112%) auto;
-    background-position:center top;
+    background-size:clamp(91%,calc(137.2% - 3.9vw),102%) auto;
+    background-position:center clamp(42px,4.5vw,54px);
   }
 }
 
@@ -1611,12 +1611,12 @@ a.card:focus-visible,a.pstep:focus-visible{outline:2px solid currentColor;outlin
 
   .hero-scene{
     background-size:auto clamp(760px,86vw,800px);
-    background-position:64% 0;
+    background-position:64% -10px;
   }
 
   .hero-moon{
-    background-size:auto clamp(1090px,122vw,1120px);
-    background-position:63% clamp(-170px,-18vw,-160px);
+    background-size:auto clamp(992px,111vw,1019px);
+    background-position:63% calc(clamp(-170px,-18vw,-160px) + 70px);
   }
 
   .hero-atmosphere{
@@ -1638,12 +1638,12 @@ a.card:focus-visible,a.pstep:focus-visible{outline:2px solid currentColor;outlin
 
   .hero-scene{
     background-size:auto clamp(720px,146vw,760px)!important;
-    background-position:64% 0!important;
+    background-position:64% -10px!important;
   }
 
   .hero-moon{
-    background-size:auto clamp(820px,210vw,1095px)!important;
-    background-position:63% clamp(-165px,-31vw,-104px)!important;
+    background-size:auto clamp(746px,191vw,996px)!important;
+    background-position:63% calc(clamp(-165px,-31vw,-104px) + 70px)!important;
   }
 
   .hero-atmosphere{
