@@ -1589,6 +1589,165 @@ footer .foot-inner.in{
 a.card,a.pstep{color:inherit;text-decoration:none}
 a.card:focus-visible,a.pstep:focus-visible{outline:2px solid currentColor;outline-offset:5px}
 /* END ATLAS NAVIGATION + CANCER RITUAL LINK REPAIR */
+
+/* CANCER HERO COMPOSITION POLISH — true independent water and moon layers */
+
+.hero-water{
+  position:absolute;
+  left:0;
+  width:100%;
+  z-index:0;
+  pointer-events:none;
+  background-repeat:no-repeat;
+  filter:none!important;
+  box-shadow:none!important;
+  clip-path:none!important;
+  -webkit-mask-image:none!important;
+          mask-image:none!important;
+  will-change:transform;
+  animation:waterTide 16s var(--ease) infinite;
+}
+
+.hero-water-top{
+  top:6px;
+  height:230px;
+  background-image:url("assets/hero/upper-water.png");
+  background-position:center top;
+  background-size:128% auto;
+}
+
+.hero-water-bottom{
+  top:560px;
+  height:250px;
+  opacity:.86;
+  background-image:url("assets/hero/lower-water.png");
+  background-position:center top;
+  background-size:118% auto;
+  animation-delay:-4s;
+}
+
+.hero-moon{
+  z-index:1;
+}
+
+/* The independent transparent water assets need no covering atmosphere. */
+.hero-atmosphere{
+  display:none!important;
+}
+
+@media(min-width:901px) and (max-width:1180px){
+  .hero-water-top{
+    top:6px;
+    height:190px;
+    background-size:136% auto;
+  }
+
+  .hero-moon{
+    background-size:clamp(83%,calc(124.8% - 3.55vw),93%) auto;
+    background-position:center clamp(108px,9.8vw,118px);
+  }
+
+  .hero-water-bottom{
+    top:clamp(505px,48vw,555px);
+    height:220px;
+    background-size:122% auto;
+  }
+}
+
+@media(min-width:641px) and (max-width:900px){
+  .ritual-hero,
+  .ritual-hero-wrap{
+    min-height:clamp(960px,112vw,1040px);
+  }
+
+  .ritual-hero-art{
+    height:clamp(875px,102vw,920px);
+  }
+
+  .hero-water-top{
+    top:6px;
+    height:170px;
+    background-size:142% auto;
+  }
+
+  .hero-moon{
+    height:clamp(875px,102vw,920px);
+    background-size:auto clamp(880px,99vw,910px);
+    background-position:63% clamp(0px,.7vw,7px);
+  }
+
+  .hero-water-bottom{
+    top:clamp(455px,56vw,500px);
+    height:195px;
+    background-size:126% auto;
+  }
+
+  .hero-atmosphere{
+    top:clamp(545px,62vw,580px);
+    height:325px;
+  }
+
+  .ritual-hero-copy{
+    min-height:clamp(860px,100vw,920px);
+    padding-top:clamp(570px,64vw,580px);
+  }
+}
+
+@media(max-width:640px){
+  .hero-moon{
+    height:clamp(820px,168vw,875px)!important;
+    background-size:auto clamp(670px,170vw,885px)!important;
+    background-position:63% clamp(0px,1vw,6px)!important;
+  }
+
+  .hero-water-top{
+    top:6px!important;
+    height:clamp(165px,38vw,195px)!important;
+    background-size:185% auto!important;
+    background-position:58% top!important;
+  }
+
+  .hero-water-bottom{
+    top:clamp(470px,98vw,500px)!important;
+    height:clamp(190px,56.25vw,360px)!important;
+    opacity:.96!important;
+    background-size:150% auto!important;
+    background-position:77% top!important;
+  }
+
+  .hero-atmosphere{
+    top:clamp(520px,105vw,560px)!important;
+    height:315px!important;
+  }
+
+  .ritual-hero-copy{
+    padding-top:clamp(530px,109vw,570px)!important;
+  }
+}
+
+@media(max-width:350px){
+  .hero-water-top{
+    top:5px!important;
+    height:142px!important;
+    background-size:190% auto!important;
+    background-position:58% top!important;
+  }
+
+  .hero-moon{
+    height:720px!important;
+    background-size:auto 585px!important;
+    background-position:63% 0!important;
+  }
+
+  .hero-water-bottom{
+    top:425px!important;
+    height:210px!important;
+    opacity:.96!important;
+    background-size:155% auto!important;
+    background-position:75% top!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1638,8 +1797,9 @@ a.card:focus-visible,a.pstep:focus-visible{outline:2px solid currentColor;outlin
 <!-- ═══════════ HERO — WATER + MOON PRIMARY ═══════════ -->
 <main class="dark-journey">
 <section class="hero ritual-hero" id="top">
-  <div class="hero-scene" aria-hidden="true"></div>
+  <div class="hero-water hero-water-top" aria-hidden="true"></div>
   <div class="hero-moon rev-moon" aria-hidden="true"></div>
+  <div class="hero-water hero-water-bottom" aria-hidden="true"></div>
   <div class="hero-atmosphere" aria-hidden="true"></div>
   <div class="wrap ritual-hero-wrap">
     <div class="ritual-hero-copy">
