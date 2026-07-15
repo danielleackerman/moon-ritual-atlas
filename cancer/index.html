@@ -1589,6 +1589,73 @@ footer .foot-inner.in{
 a.card,a.pstep{color:inherit;text-decoration:none}
 a.card:focus-visible,a.pstep:focus-visible{outline:2px solid currentColor;outline-offset:5px}
 /* END ATLAS NAVIGATION + CANCER RITUAL LINK REPAIR */
+
+/* CANCER HERO COMPOSITION POLISH — scale and spacing only */
+
+@media(min-width:901px) and (max-width:1180px){
+  .hero-moon{
+    background-size:clamp(100%,calc(150.8% - 4.3vw),112%) auto;
+    background-position:center top;
+  }
+}
+
+@media(min-width:641px) and (max-width:900px){
+  .ritual-hero,
+  .ritual-hero-wrap{
+    min-height:clamp(960px,112vw,1040px);
+  }
+
+  .ritual-hero-art{
+    height:clamp(875px,102vw,920px);
+  }
+
+  .hero-scene{
+    background-size:auto clamp(760px,86vw,800px);
+    background-position:64% 0;
+  }
+
+  .hero-moon{
+    background-size:auto clamp(1090px,122vw,1120px);
+    background-position:63% clamp(-170px,-18vw,-160px);
+  }
+
+  .hero-atmosphere{
+    top:clamp(545px,62vw,580px);
+    height:325px;
+  }
+
+  .ritual-hero-copy{
+    min-height:clamp(860px,100vw,920px);
+    padding-top:clamp(570px,64vw,580px);
+  }
+}
+
+@media(max-width:640px){
+  .hero-scene,
+  .hero-moon{
+    height:clamp(820px,168vw,875px)!important;
+  }
+
+  .hero-scene{
+    background-size:auto clamp(720px,146vw,760px)!important;
+    background-position:64% 0!important;
+  }
+
+  .hero-moon{
+    background-size:auto clamp(820px,210vw,1095px)!important;
+    background-position:63% clamp(-165px,-31vw,-104px)!important;
+  }
+
+  .hero-atmosphere{
+    top:clamp(520px,105vw,560px)!important;
+    height:315px!important;
+  }
+
+  .ritual-hero-copy{
+    padding-top:clamp(530px,109vw,570px)!important;
+  }
+}
+
 </style>
 </head>
 <body>
