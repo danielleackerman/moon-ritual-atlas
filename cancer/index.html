@@ -1601,6 +1601,9 @@ a.card:focus-visible,a.pstep:focus-visible{outline:2px solid currentColor;outlin
   background-repeat:no-repeat;
   filter:none!important;
   box-shadow:none!important;
+  clip-path:none!important;
+  -webkit-mask-image:none!important;
+          mask-image:none!important;
   will-change:transform;
   animation:waterTide 16s var(--ease) infinite;
 }
@@ -1625,6 +1628,11 @@ a.card:focus-visible,a.pstep:focus-visible{outline:2px solid currentColor;outlin
 
 .hero-moon{
   z-index:1;
+}
+
+/* The independent transparent water assets need no covering atmosphere. */
+.hero-atmosphere{
+  display:none!important;
 }
 
 @media(min-width:901px) and (max-width:1180px){
@@ -1694,17 +1702,17 @@ a.card:focus-visible,a.pstep:focus-visible{outline:2px solid currentColor;outlin
 
   .hero-water-top{
     top:6px!important;
-    height:clamp(138px,30vw,154px)!important;
-    background-size:150% auto!important;
-    background-position:center top!important;
+    height:clamp(165px,38vw,195px)!important;
+    background-size:185% auto!important;
+    background-position:58% top!important;
   }
 
   .hero-water-bottom{
-    top:clamp(455px,94vw,475px)!important;
-    height:clamp(165px,35vw,188px)!important;
-    opacity:.84!important;
-    background-size:132% auto!important;
-    background-position:center top!important;
+    top:clamp(470px,98vw,500px)!important;
+    height:clamp(190px,56.25vw,360px)!important;
+    opacity:.96!important;
+    background-size:150% auto!important;
+    background-position:77% top!important;
   }
 
   .hero-atmosphere{
@@ -1720,8 +1728,9 @@ a.card:focus-visible,a.pstep:focus-visible{outline:2px solid currentColor;outlin
 @media(max-width:350px){
   .hero-water-top{
     top:5px!important;
-    height:120px!important;
-    background-size:154% auto!important;
+    height:142px!important;
+    background-size:190% auto!important;
+    background-position:58% top!important;
   }
 
   .hero-moon{
@@ -1731,9 +1740,11 @@ a.card:focus-visible,a.pstep:focus-visible{outline:2px solid currentColor;outlin
   }
 
   .hero-water-bottom{
-    top:405px!important;
-    height:150px!important;
-    background-size:136% auto!important;
+    top:425px!important;
+    height:210px!important;
+    opacity:.96!important;
+    background-size:155% auto!important;
+    background-position:75% top!important;
   }
 }
 
