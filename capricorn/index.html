@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Spectral:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ============ TOKENS ============ */
 :root{
@@ -550,18 +551,346 @@ body.pointer-active{cursor:grabbing}
   .step-card{transform:none!important}
 }
 
+
+
+/* ═══════════ CAPRICORN MOBILE DRAWER — MOONLIT CIRRUS ═══════════ */
+.cap-menu-toggle,
+.cap-mobile-menu-layer{
+  display:none;
+}
+
+@media(max-width:920px){
+  .topbar .desktop-nav{
+    display:none!important;
+  }
+
+  .cap-menu-toggle{
+    position:relative;
+    display:grid;
+    place-items:center;
+    flex:0 0 44px;
+    width:44px;
+    height:44px;
+    margin-left:auto;
+    margin-right:-10px;
+    padding:0;
+    border:0;
+    border-radius:0;
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+    z-index:2;
+  }
+
+  .cap-menu-toggle span{
+    position:absolute;
+    left:11px;
+    width:22px;
+    height:1.5px;
+    border-radius:1px;
+    background:currentColor;
+    transform-origin:center;
+    transition:transform .3s var(--ease),opacity .2s ease;
+  }
+  .cap-menu-toggle span:nth-child(1){transform:translateY(-6px)}
+  .cap-menu-toggle span:nth-child(2){transform:translateY(0)}
+  .cap-menu-toggle span:nth-child(3){transform:translateY(6px)}
+
+  .cap-mobile-menu-layer{
+    position:fixed;
+    inset:0;
+    z-index:220;
+    display:block;
+    visibility:hidden;
+    pointer-events:none;
+  }
+
+  .cap-mobile-menu-dim{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    padding:0;
+    border:0;
+    background:linear-gradient(90deg,rgba(5,6,20,.26),rgba(5,6,20,.10) 58%,rgba(5,6,20,.025));
+    opacity:0;
+    cursor:pointer;
+    transition:opacity .3s var(--ease),visibility 0s linear .3s;
+  }
+
+  .cap-mobile-menu-panel{
+    position:absolute;
+    inset:0 auto 0 0;
+    width:clamp(248px,72vw,300px);
+    height:100vh;
+    height:100dvh;
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    color:#F3ECDD;
+    background-color:rgba(13,14,35,.955);
+    background-image:
+      radial-gradient(92% 38% at 108% -2%,rgba(218,216,244,.27),rgba(158,149,211,.13) 39%,transparent 68%),
+      var(--stars),
+      linear-gradient(180deg,rgba(19,17,50,.98),rgba(10,12,33,.965));
+    background-size:auto,cover,auto;
+    background-position:center,center top,center;
+    box-shadow:22px 0 56px rgba(0,0,0,.38);
+    transform:translate3d(-102%,0,0);
+    transition:transform .32s var(--ease);
+    will-change:transform;
+  }
+
+  .cap-mobile-menu-panel::before{
+    content:"";
+    position:absolute;
+    z-index:0;
+    top:-12%;
+    right:-30%;
+    width:108%;
+    height:40%;
+    pointer-events:none;
+    background:radial-gradient(ellipse at 100% 0%,rgba(231,229,249,.25),rgba(171,163,220,.10) 43%,transparent 72%);
+    filter:blur(14px);
+  }
+
+  .cap-mobile-menu-shell{
+    position:relative;
+    z-index:1;
+    min-height:100%;
+    display:flex;
+    flex-direction:column;
+    padding:
+      max(18px,env(safe-area-inset-top))
+      calc(19px + env(safe-area-inset-right))
+      calc(20px + env(safe-area-inset-bottom))
+      calc(19px + env(safe-area-inset-left));
+  }
+
+  .cap-mobile-menu-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:12px;
+  }
+
+  .cap-mobile-menu-brand{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    color:#F3ECDD;
+    font-family:"Spectral",Georgia,serif;
+    font-size:1rem;
+    font-weight:400;
+    line-height:1;
+    letter-spacing:.005em;
+    text-transform:none;
+    text-shadow:0 1px 18px rgba(2,4,16,.72);
+  }
+  .cap-mobile-menu-brand svg{width:24px;height:24px;flex:none}
+
+  .cap-mobile-menu-close{
+    position:relative;
+    flex:0 0 44px;
+    width:44px;
+    height:44px;
+    margin:-9px -9px 0 0;
+    padding:0;
+    border:0;
+    border-radius:0;
+    background:transparent;
+    color:#F3ECDD;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .cap-mobile-menu-close span{
+    position:absolute;
+    top:21px;
+    left:9px;
+    width:27px;
+    height:1.5px;
+    background:currentColor;
+    transform-origin:center;
+  }
+  .cap-mobile-menu-close span:first-child{transform:rotate(45deg)}
+  .cap-mobile-menu-close span:last-child{transform:rotate(-45deg)}
+
+  .cap-mobile-menu-title{
+    margin:clamp(66px,10vh,88px) 0 0;
+    font-family:"Instrument Sans",system-ui,sans-serif;
+    font-size:.68rem;
+    font-weight:500;
+    line-height:1.25;
+    letter-spacing:.26em;
+    text-transform:uppercase;
+    color:#F3ECDD;
+    text-shadow:0 1px 16px rgba(2,4,16,.78);
+    white-space:nowrap;
+  }
+
+  .cap-mobile-menu-nav{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:17px;
+    margin-top:31px;
+  }
+  .cap-mobile-menu-nav a{
+    display:inline-block;
+    min-height:24px;
+    padding:2px 0;
+    font-family:"Instrument Sans",system-ui,sans-serif;
+    font-size:.78rem;
+    font-weight:500;
+    font-style:normal;
+    line-height:1.45;
+    letter-spacing:.19em;
+    text-transform:uppercase;
+    color:#F3ECDD;
+    text-shadow:0 1px 15px rgba(2,4,16,.82);
+    transition:color .22s var(--ease),transform .22s var(--ease);
+  }
+  .cap-mobile-menu-nav a:hover,
+  .cap-mobile-menu-nav a:focus-visible,
+  .cap-mobile-menu-nav a[aria-current="location"]{
+    color:var(--stone);
+    font-style:italic;
+  }
+  .cap-mobile-menu-nav a:hover,
+  .cap-mobile-menu-nav a:focus-visible{
+    transform:translateX(2px);
+  }
+
+  .cap-mobile-menu-mode{
+    margin-top:auto;
+    padding-top:25px;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+  }
+  .cap-mobile-menu-mode-button{
+    position:relative;
+    width:49px;
+    height:25px;
+    flex:none;
+    padding:0;
+    border:1px solid color-mix(in srgb,var(--stone) 58%,transparent);
+    border-radius:999px;
+    background:rgba(255,255,255,.035);
+    cursor:pointer;
+  }
+  .cap-mobile-menu-mode-button i{
+    position:absolute;
+    top:3px;
+    left:27px;
+    width:17px;
+    height:17px;
+    border-radius:50%;
+    background:#F3ECDD;
+    box-shadow:0 0 14px rgba(243,236,221,.44);
+    transition:left .28s var(--ease),background .28s var(--ease);
+  }
+
+  html[data-mode="dawn"] .cap-mobile-menu-dim{
+    background:linear-gradient(90deg,rgba(65,45,62,.18),rgba(65,45,62,.06) 58%,transparent);
+  }
+  html[data-mode="dawn"] .cap-mobile-menu-panel{
+    color:#2B2118;
+    background-color:rgba(246,239,227,.965);
+    background-image:
+      radial-gradient(94% 39% at 108% -2%,rgba(205,188,225,.34),rgba(228,206,218,.18) 40%,transparent 69%),
+      radial-gradient(circle at 16% 18%,rgba(168,116,42,.20) 0 1px,transparent 1.2px),
+      radial-gradient(circle at 73% 12%,rgba(94,124,166,.19) 0 .8px,transparent 1px),
+      radial-gradient(circle at 44% 34%,rgba(168,116,42,.14) 0 .8px,transparent 1px),
+      linear-gradient(180deg,rgba(248,241,234,.98),rgba(239,221,221,.97));
+  }
+  html[data-mode="dawn"] .cap-mobile-menu-brand,
+  html[data-mode="dawn"] .cap-mobile-menu-close{color:#2B2118;text-shadow:none}
+  html[data-mode="dawn"] .cap-mobile-menu-title{color:rgba(43,33,24,.62)}
+  html[data-mode="dawn"] .cap-mobile-menu-nav a{text-shadow:none}
+  html[data-mode="dawn"] .cap-mobile-menu-mode-button{background:rgba(255,255,255,.35)}
+  html[data-mode="dawn"] .cap-mobile-menu-mode-button i{
+    left:3px;
+    background:#A8742A;
+    box-shadow:none;
+  }
+
+  .cap-mobile-menu-brand:focus-visible,
+  .cap-mobile-menu-close:focus-visible,
+  .cap-menu-toggle:focus-visible,
+  .cap-mobile-menu-dim:focus-visible,
+  .cap-mobile-menu-nav a:focus-visible,
+  .cap-mobile-menu-mode-button:focus-visible{
+    outline:1px solid currentColor;
+    outline-offset:5px;
+  }
+
+  body.cap-menu-open{overscroll-behavior:none}
+  body.cap-menu-open .cap-mobile-menu-layer{visibility:visible;pointer-events:auto}
+  body.cap-menu-open .cap-mobile-menu-dim{opacity:1;transition-delay:0s}
+  body.cap-menu-open .cap-mobile-menu-panel{transform:translate3d(0,0,0)}
+}
+
+@media(max-width:350px){
+  .cap-mobile-menu-panel{width:248px}
+  .cap-mobile-menu-shell{padding-left:17px;padding-right:17px}
+  .cap-mobile-menu-nav{gap:14px;margin-top:26px}
+  .cap-mobile-menu-title{margin-top:58px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .cap-menu-toggle span,
+  .cap-mobile-menu-dim,
+  .cap-mobile-menu-panel,
+  .cap-mobile-menu-nav a,
+  .cap-mobile-menu-mode-button i{
+    transition-duration:.01ms!important;
+  }
+}
+
+
+
+/* ═══ CAPRICORN DRAWER — DAWN LINK CONTRAST ═══ */
+@media(max-width:640px){
+  html[data-mode="dawn"] .cap-mobile-menu-nav a{
+    color:rgba(43,33,24,.62);
+  }
+  html[data-mode="dawn"] .cap-mobile-menu-nav a:hover,
+  html[data-mode="dawn"] .cap-mobile-menu-nav a:focus-visible,
+  html[data-mode="dawn"] .cap-mobile-menu-nav a[aria-current="location"]{
+    color:var(--stone);
+  }
+}
+
+
+/* ATLAS NAVIGATION + CAPRICORN DRAWER REPAIR */
+.topbar .brand{text-decoration:none}
+.cap-mobile-menu-title{display:block;text-decoration:none}
+@media(max-width:920px){
+  html[data-mode="dawn"] .cap-mobile-menu-nav a{
+    color:rgba(43,33,24,.68);
+  }
+  html[data-mode="dawn"] .cap-mobile-menu-nav a:hover,
+  html[data-mode="dawn"] .cap-mobile-menu-nav a:focus-visible,
+  html[data-mode="dawn"] .cap-mobile-menu-nav a[aria-current="location"]{
+    color:var(--stone);
+  }
+}
+/* END ATLAS NAVIGATION + CAPRICORN DRAWER REPAIR */
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add('has-cap-menu')</script>
 
 <!-- TOPBAR -->
 <header class="topbar" id="topbar">
   <div class="inner">
-    <div class="brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <a class="brand" href="../index.html" aria-label="Moon Ritual Atlas archive">
       <svg class="glyph" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="var(--stone)" stroke-width="1.3"/><path d="M15.5 6.4a7 7 0 1 0 0 11.2 8.4 8.4 0 0 1 0-11.2Z" fill="var(--moon)"/></svg>
       <span>Capricorn<small>Full Moon Rituals</small></span>
-    </div>
-    <nav>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="../cancer/index.html">Cancer</a>
       <a href="#navigator" class="hide-sm">Tonight</a>
       <a href="#finder" class="hide-sm">Find a path</a>
       <a href="#index">All rituals</a>
@@ -569,8 +898,39 @@ body.pointer-active{cursor:grabbing}
         <span id="modeLabel">Dusk</span><span class="knob"><i></i></span>
       </button>
     </nav>
+    <button class="cap-menu-toggle" type="button" aria-expanded="false" aria-controls="cap-mobile-menu" aria-label="Open navigation">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<div class="cap-mobile-menu-layer" aria-hidden="true">
+  <button class="cap-mobile-menu-dim" type="button" tabindex="-1" aria-label="Close navigation"></button>
+  <aside class="cap-mobile-menu-panel" id="cap-mobile-menu" role="dialog" aria-modal="true" aria-label="Capricorn page navigation" tabindex="-1">
+    <div class="cap-mobile-menu-shell">
+      <div class="cap-mobile-menu-head">
+        <a class="cap-mobile-menu-brand" href="../index.html" aria-label="Moon Ritual Atlas archive">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".34" stroke-width="1.1"/><path d="M15.4 5.6a7 7 0 1 0 0 12.8 8.2 8.2 0 0 1 0-12.8Z" fill="currentColor"/></svg>
+          <span>Moon Ritual Atlas</span>
+        </a>
+        <button class="cap-mobile-menu-close" type="button" aria-label="Close navigation"><span></span><span></span></button>
+      </div>
+
+      <a class="cap-mobile-menu-title" href="#topbar">Full Moon in Capricorn</a>
+
+      <nav class="cap-mobile-menu-nav" aria-label="Capricorn navigation">
+        <a href="../cancer/index.html">New Moon in Cancer</a>
+        <a href="#navigator" aria-current="location">Tonight</a>
+        <a href="#finder">Find a Path</a>
+        <a href="#index">All Rituals</a>
+      </nav>
+
+      <div class="cap-mobile-menu-mode">
+        <button class="cap-mobile-menu-mode-button" id="capMobileModeBtn" type="button" aria-label="Switch to dawn mode"><i></i></button>
+      </div>
+    </div>
+  </aside>
+</div>
 
 <!-- HERO -->
 <section class="hero wrap">
@@ -2479,6 +2839,158 @@ document.getElementById('modeBtn').addEventListener('click',async()=>{
 function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove('show'),2000); }
 
 window.addEventListener('scroll',()=>{ document.getElementById('topbar').classList.toggle('scrolled',window.scrollY>20); });
+
+
+
+
+/* Capricorn mobile drawer — moonlit cirrus */
+(function(){
+  var body=document.body;
+  var toggle=document.querySelector('.cap-menu-toggle');
+  var layer=document.querySelector('.cap-mobile-menu-layer');
+  var panel=document.getElementById('cap-mobile-menu');
+  var closeButton=document.querySelector('.cap-mobile-menu-close');
+  var dim=document.querySelector('.cap-mobile-menu-dim');
+  var titleLink=document.querySelector('.cap-mobile-menu-title[href^="#"]');
+  var mobileModeButton=document.getElementById('capMobileModeBtn');
+  var desktopModeButton=document.getElementById('modeBtn');
+  var links=panel?Array.from(panel.querySelectorAll('.cap-mobile-menu-nav a[href^="#"]')):[];
+  var mobileQuery=window.matchMedia('(max-width:920px)');
+  var reducedMotion=window.matchMedia('(prefers-reduced-motion:reduce)');
+  var isOpen=false;
+  var lastFocus=null;
+  var lockY=0;
+  var inerted=[];
+
+  if(!toggle||!layer||!panel||!closeButton||!dim) return;
+
+  function syncMode(){
+    var mode=document.documentElement.getAttribute('data-mode')==='dawn'?'Dawn':'Dusk';
+    if(mobileModeButton) mobileModeButton.setAttribute('aria-label','Switch to '+(mode==='Dusk'?'dawn':'dusk')+' mode');
+  }
+
+  function setCurrent(hash){
+    links.forEach(function(link){
+      if(link.getAttribute('href')===hash) link.setAttribute('aria-current','location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  function syncCurrent(){
+    if(!links.length) return;
+    var marker=window.scrollY+(window.innerHeight*.34);
+    var current=links[0];
+    links.forEach(function(link){
+      var target=document.querySelector(link.getAttribute('href'));
+      if(target&&target.offsetTop<=marker) current=link;
+    });
+    setCurrent(current.getAttribute('href'));
+  }
+
+  function lockPage(){
+    lockY=window.scrollY;
+    body.style.position='fixed';
+    body.style.top=(-lockY)+'px';
+    body.style.left='0';
+    body.style.right='0';
+    body.style.width='100%';
+    Array.from(body.children).forEach(function(node){
+      if(node===layer||node.tagName==='SCRIPT') return;
+      if(!node.inert){node.inert=true;inerted.push(node)}
+    });
+  }
+
+  function unlockPage(){
+    inerted.forEach(function(node){node.inert=false});
+    inerted=[];
+    body.style.position='';
+    body.style.top='';
+    body.style.left='';
+    body.style.right='';
+    body.style.width='';
+    window.scrollTo(0,lockY);
+  }
+
+  function openMenu(){
+    if(isOpen||!mobileQuery.matches) return;
+    isOpen=true;
+    lastFocus=document.activeElement;
+    syncCurrent();
+    syncMode();
+    lockPage();
+    body.classList.add('cap-menu-open');
+    layer.setAttribute('aria-hidden','false');
+    toggle.setAttribute('aria-expanded','true');
+    toggle.setAttribute('aria-label','Close navigation');
+    window.requestAnimationFrame(function(){closeButton.focus()});
+  }
+
+  function closeMenu(restoreFocus){
+    if(!isOpen) return;
+    isOpen=false;
+    body.classList.remove('cap-menu-open');
+    layer.setAttribute('aria-hidden','true');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-label','Open navigation');
+    unlockPage();
+    if(restoreFocus!==false&&lastFocus&&typeof lastFocus.focus==='function') lastFocus.focus();
+  }
+
+  function trapFocus(event){
+    if(!isOpen||event.key!=='Tab') return;
+    var focusable=Array.from(panel.querySelectorAll('a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"])'));
+    if(!focusable.length) return;
+    var first=focusable[0],last=focusable[focusable.length-1];
+    if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}
+    else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}
+  }
+
+  toggle.addEventListener('click',function(){isOpen?closeMenu():openMenu()});
+  closeButton.addEventListener('click',function(){closeMenu()});
+  dim.addEventListener('click',function(){closeMenu()});
+
+
+  if(titleLink){
+    titleLink.addEventListener('click',function(event){
+      var target=document.querySelector(titleLink.getAttribute('href'));
+      if(!target) return;
+      event.preventDefault();
+      closeMenu(false);
+      window.setTimeout(function(){
+        target.scrollIntoView({behavior:reducedMotion.matches?'auto':'smooth',block:'start'});
+      },reducedMotion.matches?0:120);
+    });
+  }
+
+links.forEach(function(link){
+    link.addEventListener('click',function(event){
+      var hash=link.getAttribute('href');
+      var target=document.querySelector(hash);
+      if(!target) return;
+      event.preventDefault();
+      setCurrent(hash);
+      closeMenu(false);
+      window.setTimeout(function(){
+        target.scrollIntoView({behavior:reducedMotion.matches?'auto':'smooth',block:'start'});
+      },reducedMotion.matches?0:120);
+    });
+  });
+
+  if(mobileModeButton&&desktopModeButton){
+    mobileModeButton.addEventListener('click',function(){desktopModeButton.click();syncMode()});
+  }
+  new MutationObserver(syncMode).observe(document.documentElement,{attributes:true,attributeFilter:['data-mode']});
+
+  document.addEventListener('keydown',function(event){
+    if(!isOpen) return;
+    if(event.key==='Escape'){event.preventDefault();closeMenu();return}
+    trapFocus(event);
+  });
+  window.addEventListener('scroll',syncCurrent,{passive:true});
+  mobileQuery.addEventListener('change',function(event){if(!event.matches) closeMenu(false)});
+  syncMode();
+  syncCurrent();
+})();
 
 
 /* ============================================================

@@ -1311,7 +1311,7 @@ footer .foot-inner.in{
   display:none;
 }
 
-@media(max-width:640px){
+@media(max-width:920px){
   html.has-js .topbar .desktop-nav{
     display:none!important;
   }
@@ -1580,6 +1580,14 @@ footer .foot-inner.in{
     transition-duration:.01ms!important;
   }
 }
+
+
+/* ATLAS NAVIGATION + CANCER RITUAL LINK REPAIR */
+.topbar .brand{text-decoration:none}
+.mobile-menu-title{display:block;text-decoration:none}
+a.card,a.pstep{color:inherit;text-decoration:none}
+a.card:focus-visible,a.pstep:focus-visible{outline:2px solid currentColor;outline-offset:5px}
+/* END ATLAS NAVIGATION + CANCER RITUAL LINK REPAIR */
 </style>
 </head>
 <body>
@@ -1587,11 +1595,12 @@ footer .foot-inner.in{
 
 <header class="topbar" id="topbar">
   <div class="inner">
-    <div class="brand" onclick="scrollTo({top:0,behavior:'smooth'})">
+    <a class="brand" href="../index.html" aria-label="Moon Ritual Atlas archive">
       <svg class="g" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="rgba(236,227,210,.3)" stroke-width="1.1"/><path d="M15.4 5.6a7 7 0 1 0 0 12.8 8.2 8.2 0 0 1 0-12.8Z" fill="#E7B266"/></svg>
       <span><b>Moon Ritual Atlas</b><s>The Midnight House</s></span>
-    </div>
+    </a>
     <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="../capricorn/index.html">Capricorn</a>
       <a href="#thesis" class="n-hide">The House</a>
       <a href="#finder" class="n-hide">Which Room</a>
       <a href="#index">All Rooms</a>
@@ -1607,15 +1616,16 @@ footer .foot-inner.in{
   <button class="mobile-menu-dim" type="button" tabindex="-1" aria-label="Close navigation"></button>
   <aside class="mobile-menu-panel" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Moon Ritual Atlas navigation" tabindex="-1">
     <div class="mobile-menu-head">
-      <a class="mobile-menu-brand" href="#top" aria-label="Moon Ritual Atlas — return to top">
+      <a class="mobile-menu-brand" href="../index.html" aria-label="Moon Ritual Atlas archive">
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".34" stroke-width="1.1"/><path d="M15.4 5.6a7 7 0 1 0 0 12.8 8.2 8.2 0 0 1 0-12.8Z" fill="currentColor"/></svg>
         <span>Moon Ritual Atlas</span>
       </a>
       <button class="mobile-menu-close" type="button" aria-label="Close navigation"><span></span><span></span></button>
     </div>
     <div class="mobile-menu-content">
-      <p class="mobile-menu-title">New Moon in Cancer</p>
+      <a class="mobile-menu-title" href="#top">New Moon in Cancer</a>
       <nav class="mobile-menu-nav" aria-label="Cancer page navigation">
+        <a href="../capricorn/index.html">Full Moon in Capricorn</a>
         <a href="#thesis" aria-current="location">The House</a>
         <a href="#finder">Which Room</a>
         <a href="#index">All Rooms</a>
@@ -1764,6 +1774,20 @@ const ROOMS={
  11:{n:"Rewrite the House Story",place:"The blueprint room",icon:"blueprint",ess:"Change the beliefs living in the rooms of your inner home.",time:"40–75 min",depth:"Deep Water",modes:["Story","Home"],tide:"One room rewritten in present tense"},
  12:{n:"The Unwritten Room",place:"The room with no furniture yet",icon:"unwritten",ess:"Give the emerging reality daily evidence and somewhere to land.",time:"30–60 min + 14 nights",depth:"Inner Room",modes:["Story","Integration"],tide:"Fourteen lines of new-story evidence"},
 };
+const ROOM_URLS={
+  1:"rituals/01-cancerian-cocoon.html",
+  2:"rituals/02-midnight-well.html",
+  3:"rituals/03-unfinished-letter.html",
+  4:"rituals/04-lost-and-found-room.html",
+  5:"rituals/05-maternal-line-table.html",
+  6:"rituals/06-release-the-need-to-be-needed.html",
+  7:"rituals/07-crab-walk-detour.html",
+  8:"rituals/08-overflowing-cup.html",
+  9:"rituals/09-hearth-and-shield.html",
+  10:"rituals/10-crossroads-and-the-key.html",
+  11:"rituals/11-rewrite-the-house-story.html",
+  12:"rituals/12-unwritten-room.html"
+};
 const MOVEMENTS=[
  {rn:"I",name:"The House Grows Quiet",fn:"Downshift · sensory listening · nonverbal contact",rooms:[1,2]},
  {rn:"II",name:"What Returns",fn:"Return · retrieval · family memory",rooms:[3,4,5]},
@@ -1788,7 +1812,7 @@ MOVEMENTS.forEach(m=>{
   const g=document.createElement('div');g.className='grid';
   m.rooms.forEach(id=>{
     const r=ROOMS[id];
-    const c=document.createElement('div');c.className='card';
+    const c=document.createElement('a');c.className='card';c.href=ROOM_URLS[id];c.setAttribute('aria-label','Open '+r.n);
     c.innerHTML=`
       <div class="top"><span class="no">${String(id).padStart(2,'0')}</span><div class="mk">${ICON[r.icon]}</div></div>
       <h4>${r.n}</h4>
@@ -1822,7 +1846,7 @@ fo.addEventListener('click',e=>{
   const ps=document.getElementById('pathSteps');ps.innerHTML='';
   p.rooms.forEach((id,i)=>{
     const r=ROOMS[id];
-    const s=document.createElement('div');s.className='pstep';s.style.setProperty('--i',i);
+    const s=document.createElement('a');s.className='pstep';s.href=ROOM_URLS[id];s.setAttribute('aria-label','Open '+r.n);s.style.setProperty('--i',i);
     s.innerHTML=`<span class="pn">${i+1}</span><div class="pi">${ICON[r.icon]}</div>
       <div class="pb"><h4>${r.n}</h4><p>${r.place} · ${r.depth}</p></div><span class="pgo">→</span>`;
     ps.appendChild(s);
@@ -1867,9 +1891,10 @@ document.querySelectorAll('.rev,.rev-moon').forEach(el=>io.observe(el));
   var closeButton=document.querySelector('.mobile-menu-close');
   var dim=document.querySelector('.mobile-menu-dim');
   var brand=document.querySelector('.mobile-menu-brand');
+  var titleLink=document.querySelector('.mobile-menu-title[href^="#"]');
   var links=panel?Array.from(panel.querySelectorAll('.mobile-menu-nav a[href^="#"]')):[];
   var main=document.querySelector('main');
-  var mobileQuery=matchMedia('(max-width:640px)');
+  var mobileQuery=matchMedia('(max-width:920px)');
   var reducedMotion=matchMedia('(prefers-reduced-motion:reduce)');
   var isOpen=false;
   var lastFocus=null;
@@ -1979,7 +2004,7 @@ document.querySelectorAll('.rev,.rev-moon').forEach(el=>io.observe(el));
     }
     if(event.key!=='Tab') return;
 
-    var focusable=[brand,closeButton].concat(links).filter(function(el){
+    var focusable=[brand,closeButton,titleLink].concat(links).filter(function(el){
       return el&&el.getClientRects().length&&!el.hasAttribute('disabled');
     });
     var first=focusable[0];
@@ -1997,12 +2022,26 @@ document.querySelectorAll('.rev,.rev-moon').forEach(el=>io.observe(el));
   closeButton.addEventListener('click',function(){closeMenu()});
   dim.addEventListener('click',function(){closeMenu()});
 
-  brand.addEventListener('click',function(event){
-    event.preventDefault();
-    goTo('#top');
-  });
+  /* CANCER DRAWER ARCHIVE BRAND LINK */
+  if(brand){
+    brand.addEventListener('click',function(event){
+      event.preventDefault();
+      var destination=brand.href;
+      closeMenu(false);
+      window.location.assign(destination);
+    });
+  }
+  /* END CANCER DRAWER ARCHIVE BRAND LINK */
 
-  links.forEach(function(link){
+
+  if(titleLink){
+    titleLink.addEventListener('click',function(event){
+      event.preventDefault();
+      goTo(titleLink.getAttribute('href'));
+    });
+  }
+
+links.forEach(function(link){
     link.addEventListener('click',function(event){
       event.preventDefault();
       goTo(link.getAttribute('href'));
