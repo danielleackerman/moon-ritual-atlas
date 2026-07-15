@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Moon Ritual Atlas</title>
+<meta name="description" content="A growing archive of ritual experiences for full moons, new moons, and the thresholds between.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#111217;
+  --bg-soft:#17191f;
+  --panel:#1b1d24;
+  --ink:#f0ede6;
+  --muted:#a5a4a0;
+  --line:rgba(240,237,230,.15);
+  --line-soft:rgba(240,237,230,.08);
+  --silver:#c9c9c4;
+  --gold:#b9a887;
+  --cancer:#b98b8d;
+  --capricorn:#858aa9;
+  --display:"Spectral", Georgia, serif;
+  --ui:"Instrument Sans", system-ui, sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{
+  margin:0;
+  min-width:320px;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 50% 18%, rgba(157,160,174,.08), transparent 30rem),
+    radial-gradient(circle at 12% 48%, rgba(185,168,135,.04), transparent 24rem),
+    linear-gradient(180deg,#0e0f14 0%,#121319 54%,#101116 100%);
+  font-family:var(--ui);
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.35;
+  background-image:
+    radial-gradient(circle at 12% 19%,rgba(255,255,255,.6) 0 1px,transparent 1.4px),
+    radial-gradient(circle at 81% 12%,rgba(255,255,255,.38) 0 1px,transparent 1.4px),
+    radial-gradient(circle at 68% 68%,rgba(255,255,255,.26) 0 1px,transparent 1.4px),
+    radial-gradient(circle at 28% 79%,rgba(255,255,255,.34) 0 1px,transparent 1.4px);
+  background-size:310px 310px,420px 420px,370px 370px,460px 460px;
+  mask-image:linear-gradient(to bottom,black 0%,rgba(0,0,0,.5) 48%,transparent 92%);
+}
+a{color:inherit}
+button,a{font:inherit}
+button{color:inherit}
+button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset:5px}
+.skip-link{position:fixed;left:1rem;top:-5rem;z-index:100;padding:.7rem 1rem;background:var(--ink);color:var(--bg);text-decoration:none}
+.skip-link:focus{top:1rem}
+.site-header{
+  position:relative;
+  z-index:20;
+  width:min(1180px,calc(100% - 48px));
+  margin:0 auto;
+  min-height:88px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--line-soft);
+}
+.brand{text-decoration:none;display:flex;align-items:center;gap:11px;font-family:var(--display);font-size:1.05rem;letter-spacing:.04em}
+.brand-mark{width:22px;height:22px;border:1px solid rgba(240,237,230,.45);border-radius:50%;position:relative;display:inline-block}
+.brand-mark::after{content:"";position:absolute;inset:3px 3px 3px 9px;border-radius:50%;background:var(--ink)}
+.header-link{text-decoration:none;text-transform:uppercase;letter-spacing:.15em;font-size:.68rem;color:var(--muted);transition:color .25s ease}
+.header-link:hover{color:var(--ink)}
+.hero{width:min(1180px,calc(100% - 48px));margin:0 auto;padding:94px 0 40px;text-align:center;position:relative;z-index:2}
+.eyebrow{margin:0 0 18px;text-transform:uppercase;letter-spacing:.28em;font-size:.68rem;color:var(--gold);font-weight:500}
+h1{margin:0;font-family:var(--display);font-size:clamp(3.7rem,8vw,7.5rem);font-weight:300;line-height:.86;letter-spacing:-.055em}
+.hero-copy{max-width:650px;margin:28px auto 0;font-family:var(--display);font-size:clamp(1.08rem,2vw,1.35rem);font-weight:300;color:var(--silver);line-height:1.55}
+.instrument-section{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:20px 0 108px;position:relative;z-index:2}
+.instrument-intro{text-align:center;margin-bottom:22px;color:var(--muted);font-size:.76rem;text-transform:uppercase;letter-spacing:.16em}
+.wheel-wrap{position:relative;display:grid;place-items:center;min-height:min(760px,83vw)}
+.wheel{
+  width:min(720px,80vw);
+  aspect-ratio:1;
+  position:relative;
+  border-radius:50%;
+  isolation:isolate;
+}
+.wheel::before{
+  content:"";
+  position:absolute;
+  inset:3.5%;
+  border-radius:50%;
+  border:1px solid rgba(240,237,230,.18);
+  box-shadow:0 0 70px rgba(210,211,220,.035),inset 0 0 70px rgba(210,211,220,.025);
+}
+.ring{position:absolute;border:1px solid var(--line-soft);border-radius:50%;pointer-events:none}
+.ring--outer{inset:9.5%}
+.ring--middle{inset:23.5%;border-style:dashed;border-color:rgba(240,237,230,.09)}
+.ring--inner{inset:35%}
+.axis{position:absolute;inset:8%;border-radius:50%;pointer-events:none;opacity:.22;background:linear-gradient(90deg,transparent calc(50% - .5px),var(--line) 50%,transparent calc(50% + .5px)),linear-gradient(0deg,transparent calc(50% - .5px),var(--line) 50%,transparent calc(50% + .5px))}
+.zodiac-list,.phase-list{list-style:none;margin:0;padding:0}
+.orbit-item{position:absolute;left:50%;top:50%;z-index:4;transform:translate(-50%,-50%)}
+.zodiac-node{
+  width:66px;
+  min-height:66px;
+  display:grid;
+  place-items:center;
+  gap:0;
+  color:#6f7078;
+  text-decoration:none;
+  text-align:center;
+  transition:color .25s ease,transform .25s var(--ease),text-shadow .25s ease;
+}
+.zodiac-node .glyph{font-family:Georgia,serif;font-size:1.25rem;line-height:1}
+.zodiac-node .name{display:block;margin-top:7px;font-size:.55rem;line-height:1;text-transform:uppercase;letter-spacing:.12em}
+.zodiac-node[data-live="true"]{color:var(--silver);cursor:pointer}
+.zodiac-node[data-sign="Cancer"][data-live="true"]{color:#d8b9b8}
+.zodiac-node[data-sign="Capricorn"][data-live="true"]{color:#c4c7dc}
+.zodiac-node[data-live="true"]::before{
+  content:"";
+  position:absolute;
+  width:42px;height:42px;
+  border:1px solid currentColor;
+  border-radius:50%;
+  opacity:.2;
+  transition:transform .25s var(--ease),opacity .25s ease;
+}
+.zodiac-node[data-live="true"]:hover,.zodiac-node[data-live="true"]:focus-visible{transform:scale(1.08);text-shadow:0 0 20px currentColor}
+.zodiac-node[data-live="true"]:hover::before,.zodiac-node[data-live="true"]:focus-visible::before{transform:scale(1.2);opacity:.42}
+.zodiac-node[aria-disabled="true"]{cursor:default}
+.phase-node{
+  width:38px;height:38px;
+  padding:0;
+  display:grid;
+  place-items:center;
+  border:0;
+  border-radius:50%;
+  background:transparent;
+  cursor:pointer;
+  transition:transform .25s var(--ease);
+}
+.phase-node:hover,.phase-node:focus-visible{transform:scale(1.18)}
+.phase-disc,.center-moon{
+  display:block;
+  border-radius:50%;
+  border:1px solid rgba(240,237,230,.23);
+  background-color:#edeae2;
+  box-shadow:inset -4px -4px 8px rgba(0,0,0,.13),0 0 12px rgba(240,237,230,.06);
+}
+.phase-disc{width:19px;height:19px}
+.phase--new{background:#191b22}
+.phase--waxing-crescent{background:radial-gradient(circle at 34% 50%,#191b22 0 56%,transparent 57%),#edeae2}
+.phase--first-quarter{background:linear-gradient(90deg,#191b22 0 50%,#edeae2 50%)}
+.phase--waxing-gibbous{background:radial-gradient(circle at 5% 50%,#191b22 0 50%,transparent 51%),#edeae2}
+.phase--full{background:#edeae2}
+.phase--waning-gibbous{background:radial-gradient(circle at 95% 50%,#191b22 0 50%,transparent 51%),#edeae2}
+.phase--last-quarter{background:linear-gradient(90deg,#edeae2 0 50%,#191b22 50%)}
+.phase--waning-crescent{background:radial-gradient(circle at 66% 50%,#191b22 0 56%,transparent 57%),#edeae2}
+.center-display{
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:31%;
+  aspect-ratio:1;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  z-index:5;
+  background:radial-gradient(circle at 42% 33%,rgba(255,255,255,.035),transparent 36%),rgba(17,18,23,.93);
+  border:1px solid rgba(240,237,230,.17);
+  box-shadow:0 0 60px rgba(211,211,219,.07),inset 0 0 36px rgba(240,237,230,.025);
+  overflow:hidden;
+}
+.center-display::before{content:"";position:absolute;inset:9%;border:1px solid var(--line-soft);border-radius:50%}
+.center-content{position:relative;z-index:2;padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%}
+.center-kicker{margin:0 0 8px;text-transform:uppercase;letter-spacing:.18em;color:var(--gold);font-size:.53rem;line-height:1.3}
+.center-moon{width:48px;height:48px;margin:0 0 13px;transition:background .35s ease,transform .35s var(--ease),box-shadow .35s ease}
+.center-title{margin:0;font-family:var(--display);font-size:clamp(.95rem,2vw,1.35rem);font-weight:400;line-height:1.12}
+.center-meta{margin:7px 0 0;color:var(--muted);font-size:.6rem;line-height:1.4;max-width:150px}
+.center-link{display:inline-block;margin-top:10px;color:var(--ink);text-decoration:none;font-size:.56rem;text-transform:uppercase;letter-spacing:.14em;border-bottom:1px solid rgba(240,237,230,.35);padding-bottom:2px}
+.center-link[hidden]{display:none}
+.wheel-note{text-align:center;margin:2px auto 0;max-width:560px;color:#85868c;font-size:.78rem;line-height:1.6}
+.live-key{display:inline-flex;align-items:center;gap:8px;margin-top:13px;color:var(--muted);font-size:.67rem;text-transform:uppercase;letter-spacing:.12em}
+.live-key::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--silver);box-shadow:0 0 10px rgba(240,237,230,.5)}
+.archive{position:relative;z-index:2;border-top:1px solid var(--line-soft);background:rgba(8,9,13,.26);padding:104px 0 120px}
+.archive-inner{width:min(1060px,calc(100% - 48px));margin:0 auto}
+.section-heading{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;margin-bottom:42px}
+.section-heading p{margin:0;text-transform:uppercase;letter-spacing:.22em;font-size:.67rem;color:var(--gold)}
+h2{margin:7px 0 0;font-family:var(--display);font-weight:300;font-size:clamp(2.3rem,5vw,4.5rem);letter-spacing:-.035em;line-height:1}
+.archive-count{color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;padding-bottom:7px}
+.moon-list{border-top:1px solid var(--line)}
+.moon-entry{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1.65fr) minmax(140px,.7fr) minmax(100px,.45fr) 48px;
+  gap:28px;
+  align-items:center;
+  padding:30px 0;
+  border-bottom:1px solid var(--line);
+  text-decoration:none;
+  transition:padding .3s var(--ease),background .3s ease;
+}
+.moon-entry::before{content:"";position:absolute;left:-18px;right:-18px;top:0;bottom:0;border-radius:2px;opacity:0;transition:opacity .3s ease;background:rgba(255,255,255,.018)}
+.moon-entry:hover::before,.moon-entry:focus-visible::before{opacity:1}
+.entry-main{display:grid;grid-template-columns:44px minmax(0,1fr);gap:18px;align-items:center;position:relative;z-index:2}
+.entry-symbol{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-family:Georgia,serif;font-size:1rem}
+.moon-entry--cancer .entry-symbol{color:#d8b9b8;border-color:rgba(216,185,184,.3)}
+.moon-entry--capricorn .entry-symbol{color:#c4c7dc;border-color:rgba(196,199,220,.3)}
+.entry-phase{margin:0 0 5px;color:var(--muted);font-size:.62rem;text-transform:uppercase;letter-spacing:.15em}
+.entry-title{margin:0;font-family:var(--display);font-size:clamp(1.35rem,2.4vw,2rem);font-weight:400;line-height:1.15}
+.entry-detail{position:relative;z-index:2}
+.entry-label{display:block;color:#76777d;font-size:.56rem;text-transform:uppercase;letter-spacing:.15em;margin-bottom:4px}
+.entry-value{color:var(--silver);font-size:.78rem}
+.entry-arrow{position:relative;z-index:2;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;transition:transform .28s var(--ease),border-color .28s ease}
+.entry-arrow svg{width:16px;height:16px}
+.moon-entry:hover .entry-arrow,.moon-entry:focus-visible .entry-arrow{transform:translateX(5px);border-color:rgba(240,237,230,.35)}
+.archive-future{margin:28px 0 0;color:#77787d;font-family:var(--display);font-size:1rem;font-style:italic;text-align:center}
+.site-footer{border-top:1px solid var(--line-soft);width:min(1180px,calc(100% - 48px));margin:0 auto;padding:30px 0 44px;display:flex;justify-content:space-between;gap:20px;color:#74757a;font-size:.66rem;text-transform:uppercase;letter-spacing:.14em}
+@media (max-width:780px){
+  .site-header{width:min(100% - 32px,1180px);min-height:72px}
+  .brand{font-size:.95rem}
+  .hero{width:min(100% - 32px,1180px);padding:76px 0 20px}
+  h1{font-size:clamp(3.5rem,17vw,5.4rem);line-height:.9}
+  .hero-copy{font-size:1.05rem;max-width:470px;margin-top:22px}
+  .instrument-section{padding:10px 0 84px}
+  .wheel-wrap{min-height:min(590px,108vw)}
+  .wheel{width:min(620px,100%)}
+  .zodiac-node{width:46px;min-height:46px}
+  .zodiac-node .glyph{font-size:1.08rem}
+  .zodiac-node .name{display:none}
+  .zodiac-node[data-live="true"]::before{width:34px;height:34px}
+  .phase-node{width:32px;height:32px}
+  .phase-disc{width:16px;height:16px}
+  .center-display{width:34%}
+  .center-content{padding:10px}
+  .center-moon{width:38px;height:38px;margin-bottom:8px}
+  .center-kicker{font-size:.45rem;margin-bottom:6px}
+  .center-title{font-size:clamp(.8rem,3.6vw,1.05rem)}
+  .center-meta{font-size:.5rem;margin-top:5px;max-width:108px}
+  .center-link{font-size:.46rem;margin-top:7px}
+  .wheel-note{padding:0 28px;font-size:.72rem}
+  .archive{padding:78px 0 90px}
+  .archive-inner{width:min(100% - 32px,1060px)}
+  .section-heading{grid-template-columns:1fr;margin-bottom:30px}
+  .archive-count{display:none}
+  .moon-entry{grid-template-columns:minmax(0,1fr) 42px;gap:14px;padding:25px 0}
+  .moon-entry::before{left:0;right:0}
+  .entry-main{grid-template-columns:38px minmax(0,1fr);gap:14px}
+  .entry-symbol{width:38px;height:38px}
+  .entry-detail{display:none}
+  .entry-arrow{width:38px;height:38px}
+  .site-footer{width:min(100% - 32px,1180px);flex-direction:column;align-items:flex-start}
+}
+@media (max-width:430px){
+  .hero{padding-top:64px}
+  .eyebrow{font-size:.61rem;letter-spacing:.24em}
+  .wheel-wrap{min-height:430px}
+  .wheel{width:100%}
+  .wheel::before{inset:5%}
+  .ring--outer{inset:11%}
+  .ring--middle{inset:25%}
+  .ring--inner{inset:36%}
+  .axis{inset:9%}
+  .center-display{width:35%}
+  .center-moon{width:32px;height:32px}
+  .center-meta{display:none}
+  .center-link{font-size:.42rem}
+  .phase-node{width:28px;height:28px}
+  .phase-disc{width:14px;height:14px}
+  .zodiac-node{width:38px;min-height:38px}
+  .zodiac-node .glyph{font-size:.96rem}
+  .wheel-note{margin-top:8px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#archive">Skip to moon archive</a>
+<header class="site-header">
+  <a class="brand" href="./" aria-label="Moon Ritual Atlas home"><span class="brand-mark" aria-hidden="true"></span><span>Moon Ritual Atlas</span></a>
+  <a class="header-link" href="#archive">Moon Archive</a>
+</header>
+<main>
+  <section class="hero" aria-labelledby="page-title">
+    <p class="eyebrow">A living lunar archive</p>
+    <h1 id="page-title">Moon Ritual<br>Atlas</h1>
+    <p class="hero-copy">A growing collection of ritual worlds for full moons, new moons, and the thresholds between.</p>
+  </section>
+
+  <section class="instrument-section" aria-labelledby="instrument-title">
+    <p class="instrument-intro" id="instrument-title">Choose a sign or trace the lunar cycle</p>
+    <div class="wheel-wrap">
+      <div class="wheel" id="celestial-wheel" aria-label="Interactive zodiac and lunar phase wheel">
+        <div class="ring ring--outer" aria-hidden="true"></div>
+        <div class="ring ring--middle" aria-hidden="true"></div>
+        <div class="ring ring--inner" aria-hidden="true"></div>
+        <div class="axis" aria-hidden="true"></div>
+
+        <ol class="zodiac-list" aria-label="Zodiac signs">
+          <li class="orbit-item zodiac-item"><span class="zodiac-node" data-sign="Aries" data-live="false" aria-disabled="true"><span class="glyph" aria-hidden="true">♈︎</span><span class="name">Aries</span></span></li>
+          <li class="orbit-item zodiac-item"><span class="zodiac-node" data-sign="Taurus" data-live="false" aria-disabled="true"><span class="glyph" aria-hidden="true">♉︎</span><span class="name">Taurus</span></span></li>
+          <li class="orbit-item zodiac-item"><span class="zodiac-node" data-sign="Gemini" data-live="false" aria-disabled="true"><span class="glyph" aria-hidden="true">♊︎</span><span class="name">Gemini</span></span></li>
+          <li class="orbit-item zodiac-item"><a class="zodiac-node" data-sign="Cancer" data-live="true" href="cancer/index.html" aria-label="Open New Moon in Cancer"><span class="glyph" aria-hidden="true">♋︎</span><span class="name">Cancer</span></a></li>
+          <li class="orbit-item zodiac-item"><span class="zodiac-node" data-sign="Leo" data-live="false" aria-disabled="true"><span class="glyph" aria-hidden="true">♌︎</span><span class="name">Leo</span></span></li>
+          <li class="orbit-item zodiac-item"><span class="zodiac-node" data-sign="Virgo" data-live="false" aria-disabled="true"><span class="glyph" aria-hidden="true">♍︎</span><span class="name">Virgo</span></span></li>
+          <li class="orbit-item zodiac-item"><span class="zodiac-node" data-sign="Libra" data-live="false" aria-disabled="true"><span class="glyph" aria-hidden="true">♎︎</span><span class="name">Libra</span></span></li>
+          <li class="orbit-item zodiac-item"><span class="zodiac-node" data-sign="Scorpio" data-live="false" aria-disabled="true"><span class="glyph" aria-hidden="true">♏︎</span><span class="name">Scorpio</span></span></li>
+          <li class="orbit-item zodiac-item"><span class="zodiac-node" data-sign="Sagittarius" data-live="false" aria-disabled="true"><span class="glyph" aria-hidden="true">♐︎</span><span class="name">Sagittarius</span></span></li>
+          <li class="orbit-item zodiac-item"><a class="zodiac-node" data-sign="Capricorn" data-live="true" href="capricorn/index.html" aria-label="Open Full Moon in Capricorn"><span class="glyph" aria-hidden="true">♑︎</span><span class="name">Capricorn</span></a></li>
+          <li class="orbit-item zodiac-item"><span class="zodiac-node" data-sign="Aquarius" data-live="false" aria-disabled="true"><span class="glyph" aria-hidden="true">♒︎</span><span class="name">Aquarius</span></span></li>
+          <li class="orbit-item zodiac-item"><span class="zodiac-node" data-sign="Pisces" data-live="false" aria-disabled="true"><span class="glyph" aria-hidden="true">♓︎</span><span class="name">Pisces</span></span></li>
+        </ol>
+
+        <ol class="phase-list" aria-label="Lunar phases">
+          <li class="orbit-item phase-item"><button class="phase-node" type="button" data-phase="new" data-title="New Moon" data-copy="Begin in darkness. Listen for what is forming." aria-label="Preview New Moon"><span class="phase-disc phase--new" aria-hidden="true"></span></button></li>
+          <li class="orbit-item phase-item"><button class="phase-node" type="button" data-phase="waxing-crescent" data-title="Waxing Crescent" data-copy="Protect the first fragile evidence of becoming." aria-label="Preview Waxing Crescent"><span class="phase-disc phase--waxing-crescent" aria-hidden="true"></span></button></li>
+          <li class="orbit-item phase-item"><button class="phase-node" type="button" data-phase="first-quarter" data-title="First Quarter" data-copy="Choose movement. Meet resistance with form." aria-label="Preview First Quarter"><span class="phase-disc phase--first-quarter" aria-hidden="true"></span></button></li>
+          <li class="orbit-item phase-item"><button class="phase-node" type="button" data-phase="waxing-gibbous" data-title="Waxing Gibbous" data-copy="Refine what is growing before revelation." aria-label="Preview Waxing Gibbous"><span class="phase-disc phase--waxing-gibbous" aria-hidden="true"></span></button></li>
+          <li class="orbit-item phase-item"><button class="phase-node" type="button" data-phase="full" data-title="Full Moon" data-copy="See clearly. Honor what has reached fullness." aria-label="Preview Full Moon"><span class="phase-disc phase--full" aria-hidden="true"></span></button></li>
+          <li class="orbit-item phase-item"><button class="phase-node" type="button" data-phase="waning-gibbous" data-title="Waning Gibbous" data-copy="Share the harvest. Name what the cycle taught." aria-label="Preview Waning Gibbous"><span class="phase-disc phase--waning-gibbous" aria-hidden="true"></span></button></li>
+          <li class="orbit-item phase-item"><button class="phase-node" type="button" data-phase="last-quarter" data-title="Last Quarter" data-copy="Release the structure that has completed its work." aria-label="Preview Last Quarter"><span class="phase-disc phase--last-quarter" aria-hidden="true"></span></button></li>
+          <li class="orbit-item phase-item"><button class="phase-node" type="button" data-phase="waning-crescent" data-title="Waning Crescent" data-copy="Rest, integrate, and make room for the unseen." aria-label="Preview Waning Crescent"><span class="phase-disc phase--waning-crescent" aria-hidden="true"></span></button></li>
+        </ol>
+
+        <div class="center-display" aria-live="polite">
+          <div class="center-content">
+            <p class="center-kicker" id="center-kicker">Featured moon</p>
+            <span class="center-moon phase--new" id="center-moon" aria-hidden="true"></span>
+            <p class="center-title" id="center-title">New Moon<br>in Cancer</p>
+            <p class="center-meta" id="center-meta">July 14, 2026 · 12 rituals</p>
+            <a class="center-link" id="center-link" href="cancer/index.html">Enter Cancer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="wheel-note">The luminous signs are open. The others remain in orbit until their ritual worlds are added.</p>
+    <div style="text-align:center"><span class="live-key">2 moons live</span></div>
+  </section>
+
+  <section class="archive" id="archive" aria-labelledby="archive-title">
+    <div class="archive-inner">
+      <div class="section-heading">
+        <div>
+          <p>The growing collection</p>
+          <h2 id="archive-title">Moon Archive</h2>
+        </div>
+        <span class="archive-count">2 moons · 23 rituals</span>
+      </div>
+
+      <div class="moon-list">
+        <a class="moon-entry moon-entry--cancer" href="cancer/index.html">
+          <div class="entry-main">
+            <span class="entry-symbol" aria-hidden="true">♋︎</span>
+            <div>
+              <p class="entry-phase">New Moon</p>
+              <h3 class="entry-title">Cancer</h3>
+            </div>
+          </div>
+          <div class="entry-detail"><span class="entry-label">Date</span><span class="entry-value">July 14, 2026</span></div>
+          <div class="entry-detail"><span class="entry-label">Rituals</span><span class="entry-value">12 rooms</span></div>
+          <span class="entry-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+
+        <a class="moon-entry moon-entry--capricorn" href="capricorn/index.html">
+          <div class="entry-main">
+            <span class="entry-symbol" aria-hidden="true">♑︎</span>
+            <div>
+              <p class="entry-phase">Full Moon</p>
+              <h3 class="entry-title">Capricorn</h3>
+            </div>
+          </div>
+          <div class="entry-detail"><span class="entry-label">Date</span><span class="entry-value">June 29, 2026</span></div>
+          <div class="entry-detail"><span class="entry-label">Rituals</span><span class="entry-value">11 rituals</span></div>
+          <span class="entry-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+      </div>
+      <p class="archive-future">New ritual worlds will enter the atlas as they are built.</p>
+    </div>
+  </section>
+</main>
+<footer class="site-footer"><span>Moon Ritual Atlas</span><span>A living archive of lunar practice</span></footer>
+<script>
+(() => {
+  const wheel = document.getElementById('celestial-wheel');
+  const zodiacItems = [...wheel.querySelectorAll('.zodiac-item')];
+  const phaseItems = [...wheel.querySelectorAll('.phase-item')];
+  const centerKicker = document.getElementById('center-kicker');
+  const centerMoon = document.getElementById('center-moon');
+  const centerTitle = document.getElementById('center-title');
+  const centerMeta = document.getElementById('center-meta');
+  const centerLink = document.getElementById('center-link');
+  const moonClasses = ['phase--new','phase--waxing-crescent','phase--first-quarter','phase--waxing-gibbous','phase--full','phase--waning-gibbous','phase--last-quarter','phase--waning-crescent'];
+
+  const defaults = {
+    kicker:'Featured moon',
+    title:'New Moon<br>in Cancer',
+    meta:'July 14, 2026 · 12 rituals',
+    href:'cancer/index.html',
+    link:'Enter Cancer',
+    phase:'new'
+  };
+
+  const signData = {
+    Cancer:{kicker:'New moon · live',title:'Cancer',meta:'July 14, 2026 · 12 rituals',href:'cancer/index.html',link:'Enter Cancer',phase:'new'},
+    Capricorn:{kicker:'Full moon · live',title:'Capricorn',meta:'June 29, 2026 · 11 rituals',href:'capricorn/index.html',link:'Enter Capricorn',phase:'full'}
+  };
+
+  function layoutOrbit(items, radiusRatio, startAngle){
+    const size = wheel.getBoundingClientRect().width;
+    const radius = size * radiusRatio;
+    items.forEach((item,index) => {
+      const degrees = startAngle + (360 / items.length) * index;
+      const radians = degrees * Math.PI / 180;
+      const x = Math.cos(radians) * radius;
+      const y = Math.sin(radians) * radius;
+      item.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+    });
+  }
+
+  function layout(){
+    const width = wheel.getBoundingClientRect().width;
+    layoutOrbit(zodiacItems, width < 430 ? .425 : .435, -90);
+    layoutOrbit(phaseItems, width < 430 ? .285 : .292, -90);
+  }
+
+  function setMoon(phase){
+    centerMoon.classList.remove(...moonClasses);
+    centerMoon.classList.add(`phase--${phase}`);
+  }
+
+  function show(data){
+    centerKicker.textContent = data.kicker;
+    centerTitle.innerHTML = data.title;
+    centerMeta.textContent = data.meta;
+    setMoon(data.phase);
+    if(data.href){
+      centerLink.hidden = false;
+      centerLink.href = data.href;
+      centerLink.textContent = data.link;
+    } else {
+      centerLink.hidden = true;
+    }
+  }
+
+  function restore(){show(defaults)}
+
+  wheel.querySelectorAll('.zodiac-node[data-live="true"]').forEach(node => {
+    const data = signData[node.dataset.sign];
+    node.addEventListener('mouseenter',() => show(data));
+    node.addEventListener('focus',() => show(data));
+  });
+
+  wheel.querySelectorAll('.phase-node').forEach(node => {
+    const data = {
+      kicker:'Lunar phase',
+      title:node.dataset.title,
+      meta:node.dataset.copy,
+      phase:node.dataset.phase,
+      href:'',
+      link:''
+    };
+    node.addEventListener('mouseenter',() => show(data));
+    node.addEventListener('focus',() => show(data));
+    node.addEventListener('click',() => show(data));
+  });
+
+  wheel.addEventListener('mouseleave',restore);
+  wheel.addEventListener('focusout',event => {
+    if(!wheel.contains(event.relatedTarget)) restore();
+  });
+
+  layout();
+  window.addEventListener('resize',layout,{passive:true});
+})();
+</script>
+</body>
+</html>
