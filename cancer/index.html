@@ -1894,6 +1894,22 @@ a.card:focus-visible,a.pstep:focus-visible{outline:2px solid currentColor;outlin
   }
 }
 
+/* DESKTOP LOWER-WATER REVEAL — START */
+
+/*
+  Reveal the lower-water artwork without changing its scale or position.
+  The taller canvas allows its natural taper to finish instead of exposing
+  the hard lower boundary of the former 250px rendering box.
+*/
+@media(min-width:921px){
+  .hero-water-bottom{
+    height:clamp(360px,28vw,500px)!important;
+    overflow:visible!important;
+  }
+}
+
+/* DESKTOP LOWER-WATER REVEAL — END */
+
 /* Tablet: preserve continuity from the mobile composition while reducing blur. */
 @media(min-width:641px) and (max-width:900px){
   .hero-water-top{
