@@ -1651,6 +1651,15 @@ a.card:focus-visible,a.pstep:focus-visible{outline:2px solid currentColor;outlin
 /* The independent transparent water assets need no covering atmosphere. */
 .hero-atmosphere{
   display:none!important;
+  background:none!important;
+}
+
+.ritual-hero::after,
+.hero-moon::before,
+.hero-moon::after{
+  display:none!important;
+  content:none!important;
+  background:none!important;
 }
 
 @media(min-width:901px) and (max-width:1180px){
@@ -1984,7 +1993,16 @@ a.card:focus-visible,a.pstep:focus-visible{outline:2px solid currentColor;outlin
 @media(min-width:901px){
   .hero-water-top{
     top:clamp(-58px,calc(8px - 4vw),-28px)!important;
-    background-size:clamp(90%,calc(147% - 3.22vw),118%) auto!important;
+    background-size:clamp(82%,calc(159% - 4.55vw),118%) auto!important;
+    background-position:center top!important;
+  }
+
+  .hero-moon{
+    background-position:
+      calc(50% + clamp(0px,calc(4vw - 36px),32px))
+      clamp(56px,calc(167px - 6.2vw),112px)!important;
+    filter:none!important;
+    box-shadow:none!important;
   }
 
   .hero-water-bottom{
