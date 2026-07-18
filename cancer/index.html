@@ -1651,6 +1651,15 @@ a.card:focus-visible,a.pstep:focus-visible{outline:2px solid currentColor;outlin
 /* The independent transparent water assets need no covering atmosphere. */
 .hero-atmosphere{
   display:none!important;
+  background:none!important;
+}
+
+.ritual-hero::after,
+.hero-moon::before,
+.hero-moon::after{
+  display:none!important;
+  content:none!important;
+  background:none!important;
 }
 
 @media(min-width:901px) and (max-width:1180px){
@@ -1771,6 +1780,295 @@ a.card:focus-visible,a.pstep:focus-visible{outline:2px solid currentColor;outlin
     background-position:75% top!important;
   }
 }
+
+
+
+/* CANCER HERO MOTION REPAIR — START */
+
+/* Restore visible tidal movement to both independent water layers. */
+@keyframes waterTide{
+  0%,100%{
+    transform:translate3d(-1.1%,4px,0) scale(1.012);
+  }
+  50%{
+    transform:translate3d(1.1%,-8px,0) scale(1.022);
+  }
+}
+
+/* Give the Cancer moon a more visible, slow floating breath. */
+@keyframes moonBreath{
+  0%,100%{
+    opacity:.96;
+    transform:translate3d(0,-2px,0) scale(1);
+  }
+  50%{
+    opacity:1;
+    transform:translate3d(0,-15px,0) scale(1.018);
+  }
+}
+
+/* A second copy of each transparent water asset brightens and shifts,
+   creating glistening highlights without changing the approved artwork. */
+@keyframes cancerWaterGlisten{
+  0%,100%{
+    opacity:.12;
+    transform:translate3d(-1.4%,0,0) scale(1.01);
+    filter:brightness(1.25) contrast(1.04);
+  }
+  50%{
+    opacity:.38;
+    transform:translate3d(1.4%,-2px,0) scale(1.025);
+    filter:brightness(1.9) contrast(1.14);
+  }
+}
+
+.hero-water{
+  overflow:hidden;
+  animation:waterTide 11s var(--ease) infinite;
+}
+
+.hero-water::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background-image:inherit;
+  background-repeat:inherit;
+  background-position:inherit;
+  background-size:inherit;
+  mix-blend-mode:screen;
+  opacity:.12;
+  animation:cancerWaterGlisten 6.4s ease-in-out infinite;
+  will-change:transform,opacity,filter;
+}
+
+.hero-water-top::after{
+  animation-duration:5.8s;
+}
+
+.hero-water-bottom{
+  animation-delay:-5.5s;
+}
+
+.hero-water-bottom::after{
+  animation-duration:7.2s;
+  animation-delay:-2.8s;
+}
+
+.rev-moon.in{
+  animation:moonBreath 8.5s var(--ease) infinite;
+}
+
+/* Raise the moon in the mobile composition without moving the copy or water. */
+@media(max-width:640px){
+  .hero-moon{
+    top:clamp(34px,9vw,46px)!important;
+  }
+}
+
+/* DESKTOP + TABLET HERO REFINEMENT — START */
+
+/* Restrained ambient movement for every viewport above mobile. */
+@keyframes waterTideDesktop{
+  0%,100%{
+    transform:translate3d(-0.18%,1px,0) scale(1.001);
+  }
+  50%{
+    transform:translate3d(0.18%,-2px,0) scale(1.004);
+  }
+}
+
+@keyframes moonBreathDesktop{
+  0%,100%{
+    opacity:.985;
+    transform:translate3d(0,-1px,0) scale(1);
+  }
+  50%{
+    opacity:1;
+    transform:translate3d(0,-6px,0) scale(1.006);
+  }
+}
+
+@media(min-width:641px){
+  .hero-water{
+    animation:waterTideDesktop 18s var(--ease) infinite!important;
+  }
+
+  .hero-water-bottom{
+    animation-delay:-9s!important;
+  }
+
+  .rev-moon.in{
+    animation:moonBreathDesktop 14s var(--ease) infinite!important;
+  }
+}
+
+/* DESKTOP LOWER-WATER REVEAL — START */
+
+/*
+  Reveal the lower-water artwork without changing its scale or position.
+  The taller canvas allows its natural taper to finish instead of exposing
+  the hard lower boundary of the former 250px rendering box.
+*/
+@media(min-width:921px){
+  .hero-water-bottom{
+    height:clamp(360px,28vw,500px)!important;
+    overflow:visible!important;
+  }
+}
+
+/* DESKTOP LOWER-WATER REVEAL — END */
+
+/* Tablet: preserve continuity from the mobile composition while reducing blur. */
+@media(min-width:641px) and (max-width:900px){
+  .hero-water-top{
+    background-size:clamp(118%,calc(153% - 4vw),128%) auto!important;
+  }
+
+  .hero-water-bottom{
+    background-size:clamp(110%,calc(137% - 3vw),118%) auto!important;
+  }
+
+  .hero-moon{
+    background-size:auto clamp(870px,97vw,900px)!important;
+  }
+}
+
+/* Laptop: continue the reduction gradually rather than snapping. */
+@media(min-width:901px) and (max-width:1180px){
+  .hero-water-top{
+    background-size:clamp(108%,calc(154% - 4vw),118%) auto!important;
+  }
+
+  .hero-water-bottom{
+    background-size:clamp(104%,calc(137% - 3vw),110%) auto!important;
+  }
+
+  .hero-moon{
+    background-size:auto clamp(880px,78vw,940px)!important;
+  }
+}
+
+/* Large desktop: restore image clarity and a more balanced moon scale. */
+@media(min-width:1181px){
+  .hero-water-top{
+    background-size:clamp(100%,calc(144.5% - 3.1vw),108%) auto!important;
+  }
+
+  .hero-water-bottom{
+    background-size:clamp(100%,calc(122.2% - 1.55vw),104%) auto!important;
+  }
+
+  .hero-moon{
+    background-size:auto clamp(920px,65vw,1000px)!important;
+  }
+}
+
+/* DESKTOP + TABLET HERO REFINEMENT — END */
+
+/* DESKTOP WATER SPACING — START */
+
+/*
+  Preserve the mobile composition at 640px, then progressively:
+  - shrink both water assets
+  - raise the upper water
+  - lower the bottom water
+  - widen the quiet space around the moon
+*/
+
+/* Transitional tablet range: continuous from the existing mobile values. */
+@media(min-width:641px) and (max-width:900px){
+  .hero-water-top{
+    top:clamp(-28px,calc(80px - 11.8vw),6px)!important;
+    background-size:clamp(118%,calc(350% - 26vw),185%) auto!important;
+  }
+
+  .hero-water-bottom{
+    top:clamp(500px,calc(252px + 38.7vw),600px)!important;
+    background-size:clamp(110%,calc(249% - 15.5vw),150%) auto!important;
+  }
+}
+
+/* Desktop: smaller water assets with substantially wider separation. */
+@media(min-width:901px){
+  .hero-water-top{
+    top:clamp(-58px,calc(8px - 4vw),-28px)!important;
+    background-size:76% auto!important;
+    background-position:
+      calc(50% + clamp(0px,calc(4vw - 36px),32px))
+      top!important;
+  }
+
+  .hero-moon{
+    background-position:
+      calc(50% + clamp(0px,calc(4vw - 36px),32px))
+      clamp(56px,calc(167px - 6.2vw),112px)!important;
+    filter:none!important;
+    box-shadow:none!important;
+  }
+
+  .hero-water-bottom{
+    top:clamp(600px,calc(532px + 7.5vw),660px)!important;
+    background-size:clamp(94%,calc(128.2% - 2.02vw),110%) auto!important;
+  }
+}
+
+/* DESKTOP WATER SPACING — END */
+
+/* MOBILE MOTION RESTRAINT — START */
+
+@keyframes waterTideMobile{
+  0%,100%{
+    transform:translate3d(-0.25%,1px,0) scale(1.002);
+  }
+  50%{
+    transform:translate3d(0.25%,-2px,0) scale(1.005);
+  }
+}
+
+@keyframes moonBreathMobile{
+  0%,100%{
+    opacity:.98;
+    transform:translate3d(0,-1px,0) scale(1);
+  }
+  50%{
+    opacity:1;
+    transform:translate3d(0,-5px,0) scale(1.006);
+  }
+}
+
+@media(max-width:640px){
+  .hero-moon{
+    top:clamp(34px,9vw,46px)!important;
+  }
+
+  .hero-water{
+    animation:waterTideMobile 17s var(--ease) infinite!important;
+  }
+
+  .hero-water-bottom{
+    animation-delay:-8.5s!important;
+  }
+
+  .rev-moon.in{
+    animation:moonBreathMobile 13s var(--ease) infinite!important;
+  }
+}
+
+/* MOBILE MOTION RESTRAINT — END */
+
+/* CANCER DESKTOP MOON GLOW REMOVAL — START */
+@media(min-width:641px){
+  .ritual-hero::before{
+    display:none!important;
+    content:none!important;
+    background:none!important;
+    filter:none!important;
+  }
+}
+/* CANCER DESKTOP MOON GLOW REMOVAL — END */
+
+/* CANCER HERO MOTION REPAIR — END */
 
 </style>
 </head>
