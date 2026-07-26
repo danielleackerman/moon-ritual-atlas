@@ -139,6 +139,7 @@ h1{margin:0;font-family:var(--display);font-size:clamp(3.7rem,8vw,7.5rem);font-w
 .zodiac-node[data-live="true"]{color:var(--silver);cursor:pointer}
 .zodiac-node[data-sign="Cancer"][data-live="true"]{color:#d8b9b8}
 .zodiac-node[data-sign="Capricorn"][data-live="true"]{color:#c4c7dc}
+.zodiac-node[data-sign="Aquarius"][data-live="true"]{color:#d7e4eb}
 .zodiac-node[data-live="true"]::before{
   content:"";
   position:absolute;
@@ -231,6 +232,7 @@ h2{margin:7px 0 0;font-family:var(--display);font-weight:300;font-size:clamp(2.3
 .entry-symbol{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-family:Georgia,serif;font-size:1rem}
 .moon-entry--cancer .entry-symbol{color:#d8b9b8;border-color:rgba(216,185,184,.3)}
 .moon-entry--capricorn .entry-symbol{color:#c4c7dc;border-color:rgba(196,199,220,.3)}
+.moon-entry--aquarius .entry-symbol{color:#d7e4eb;border-color:rgba(215,228,235,.3)}
 .entry-phase{margin:0 0 5px;color:var(--muted);font-size:.62rem;text-transform:uppercase;letter-spacing:.15em}
 .entry-title{margin:0;font-family:var(--display);font-size:clamp(1.35rem,2.4vw,2rem);font-weight:400;line-height:1.15}
 .entry-detail{position:relative;z-index:2}
@@ -335,7 +337,7 @@ h2{margin:7px 0 0;font-family:var(--display);font-weight:300;font-size:clamp(2.3
           <li class="orbit-item zodiac-item"><span class="zodiac-node" data-sign="Scorpio" data-live="false" aria-disabled="true"><span class="glyph" aria-hidden="true">♏︎</span><span class="name">Scorpio</span></span></li>
           <li class="orbit-item zodiac-item"><span class="zodiac-node" data-sign="Sagittarius" data-live="false" aria-disabled="true"><span class="glyph" aria-hidden="true">♐︎</span><span class="name">Sagittarius</span></span></li>
           <li class="orbit-item zodiac-item"><a class="zodiac-node" data-sign="Capricorn" data-live="true" href="capricorn/index.html" aria-label="Open Full Moon in Capricorn"><span class="glyph" aria-hidden="true">♑︎</span><span class="name">Capricorn</span></a></li>
-          <li class="orbit-item zodiac-item"><span class="zodiac-node" data-sign="Aquarius" data-live="false" aria-disabled="true"><span class="glyph" aria-hidden="true">♒︎</span><span class="name">Aquarius</span></span></li>
+          <li class="orbit-item zodiac-item"><a class="zodiac-node" data-sign="Aquarius" data-live="true" href="aquarius/index.html" aria-label="Open Full Moon in Aquarius"><span class="glyph" aria-hidden="true">♒︎</span><span class="name">Aquarius</span></a></li>
           <li class="orbit-item zodiac-item"><span class="zodiac-node" data-sign="Pisces" data-live="false" aria-disabled="true"><span class="glyph" aria-hidden="true">♓︎</span><span class="name">Pisces</span></span></li>
         </ol>
 
@@ -353,16 +355,16 @@ h2{margin:7px 0 0;font-family:var(--display);font-weight:300;font-size:clamp(2.3
         <div class="center-display" aria-live="polite">
           <div class="center-content">
             <p class="center-kicker" id="center-kicker">Featured moon</p>
-            <span class="center-moon phase--new" id="center-moon" aria-hidden="true"></span>
-            <p class="center-title" id="center-title">New Moon<br>in Cancer</p>
-            <p class="center-meta" id="center-meta">July 14, 2026 · 12 rituals</p>
-            <a class="center-link" id="center-link" href="cancer/index.html">Enter Cancer</a>
+            <span class="center-moon phase--full" id="center-moon" aria-hidden="true"></span>
+            <p class="center-title" id="center-title">Full Moon<br>in Aquarius</p>
+            <p class="center-meta" id="center-meta">July 29, 2026 · 13 rituals</p>
+            <a class="center-link" id="center-link" href="aquarius/index.html">Enter Aquarius</a>
           </div>
         </div>
       </div>
     </div>
     <p class="wheel-note">The luminous signs are open. The others remain in orbit until their ritual worlds are added.</p>
-    <div style="text-align:center"><span class="live-key">2 moons live</span></div>
+    <div style="text-align:center"><span class="live-key">3 moons live</span></div>
   </section>
 
   <section class="archive" id="archive" aria-labelledby="archive-title">
@@ -372,10 +374,23 @@ h2{margin:7px 0 0;font-family:var(--display);font-weight:300;font-size:clamp(2.3
           <p>The growing collection</p>
           <h2 id="archive-title">Moon Archive</h2>
         </div>
-        <span class="archive-count">2 moons · 23 rituals</span>
+        <span class="archive-count">3 moons · 36 rituals</span>
       </div>
 
       <div class="moon-list">
+        <a class="moon-entry moon-entry--aquarius" href="aquarius/index.html">
+          <div class="entry-main">
+            <span class="entry-symbol" aria-hidden="true">♒︎</span>
+            <div>
+              <p class="entry-phase">Full Moon</p>
+              <h3 class="entry-title">Aquarius</h3>
+            </div>
+          </div>
+          <div class="entry-detail"><span class="entry-label">Date</span><span class="entry-value">July 29, 2026</span></div>
+          <div class="entry-detail"><span class="entry-label">Rituals</span><span class="entry-value">13 rituals</span></div>
+          <span class="entry-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </a>
+
         <a class="moon-entry moon-entry--cancer" href="cancer/index.html">
           <div class="entry-main">
             <span class="entry-symbol" aria-hidden="true">♋︎</span>
@@ -421,16 +436,17 @@ h2{margin:7px 0 0;font-family:var(--display);font-weight:300;font-size:clamp(2.3
 
   const defaults = {
     kicker:'Featured moon',
-    title:'New Moon<br>in Cancer',
-    meta:'July 14, 2026 · 12 rituals',
-    href:'cancer/index.html',
-    link:'Enter Cancer',
-    phase:'new'
+    title:'Full Moon<br>in Aquarius',
+    meta:'July 29, 2026 · 13 rituals',
+    href:'aquarius/index.html',
+    link:'Enter Aquarius',
+    phase:'full'
   };
 
   const signData = {
     Cancer:{kicker:'New moon · live',title:'Cancer',meta:'July 14, 2026 · 12 rituals',href:'cancer/index.html',link:'Enter Cancer',phase:'new'},
-    Capricorn:{kicker:'Full moon · live',title:'Capricorn',meta:'June 29, 2026 · 11 rituals',href:'capricorn/index.html',link:'Enter Capricorn',phase:'full'}
+    Capricorn:{kicker:'Full moon · live',title:'Capricorn',meta:'June 29, 2026 · 11 rituals',href:'capricorn/index.html',link:'Enter Capricorn',phase:'full'},
+    Aquarius:{kicker:'Full moon · live',title:'Aquarius',meta:'July 29, 2026 · 13 rituals',href:'aquarius/index.html',link:'Enter Aquarius',phase:'full'}
   };
 
   function layoutOrbit(items, radiusRatio, startAngle){

@@ -1426,6 +1426,9 @@ button:focus-visible,a:focus-visible{
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const mobileMedia = window.matchMedia("(max-width: 760px)");
   const video = document.getElementById("hero-video");
+  const HERO_PLAYBACK_RATE = 1.2;
+  video.defaultPlaybackRate = HERO_PLAYBACK_RATE;
+  video.playbackRate = HERO_PLAYBACK_RATE;
   const topbar = document.getElementById("topbar");
   const pageShell = document.getElementById("page-shell");
   const menuToggle = document.querySelector(".menu-toggle");
