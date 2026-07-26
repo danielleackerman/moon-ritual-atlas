@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Full Moon in Aquarius — Moon Ritual Atlas</title>
+<meta name="description" content="Enter thirteen rituals for the Full Moon in Aquarius—a journey through perception, sovereignty, connection, truth, and conscious participation in the collective.">
+<link rel="canonical" href="https://moon-ritual-atlas.vercel.app/aquarius/index.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Moon Ritual Atlas">
+<meta property="og:title" content="Full Moon in Aquarius — Moon Ritual Atlas">
+<meta property="og:description" content="Enter thirteen rituals for the Full Moon in Aquarius—a journey through perception, sovereignty, connection, truth, and conscious participation in the collective.">
+<meta property="og:url" content="https://moon-ritual-atlas.vercel.app/aquarius/index.html">
+<meta property="og:image" content="https://moon-ritual-atlas.vercel.app/assets/aquarius/hero-desktop-poster.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta property="og:image:alt" content="The Aquarius Water Bearer directs a moon-silver current toward a living gold portal beneath the full moon.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Full Moon in Aquarius — Moon Ritual Atlas">
+<meta name="twitter:description" content="Thirteen rituals for remaining sovereign in the self and conscious in the collective.">
+<meta name="twitter:image" content="https://moon-ritual-atlas.vercel.app/assets/aquarius/hero-desktop-poster.png">
+<meta name="twitter:image:alt" content="The Aquarius Water Bearer directs a moon-silver current toward a living gold portal beneath the full moon.">
+<meta name="theme-color" content="#07080a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Spectral:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --stone-0:#07080a;
+  --stone-1:#0c0e11;
+  --stone-2:#15181d;
+  --stone-3:#242931;
+  --moon:#dfe3e7;
+  --silver:#9ea8b1;
+  --current:#d7e4eb;
+  --ivory:#f1ece2;
+  --gilt:#8d642f;
+  --gold:#e9ab47;
+  --solar:#ffd88a;
+  --ember:#bd7428;
+  --display:"Newsreader",Georgia,serif;
+  --atlas:"Spectral",Georgia,serif;
+  --ui:"Instrument Sans",system-ui,sans-serif;
+  --page:min(1180px,calc(100% - 48px));
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--stone-0)}
+body{
+  margin:0;
+  min-width:320px;
+  color:var(--moon);
+  background:
+    radial-gradient(circle at 50% 18%,rgba(233,171,71,.055),transparent 20rem),
+    radial-gradient(circle at 10% 50%,rgba(215,228,235,.035),transparent 27rem),
+    var(--stone-0);
+  font-family:var(--ui);
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+body.menu-open{overflow:hidden}
+a{color:inherit}
+button,a{font:inherit}
+button{color:inherit}
+button:focus-visible,a:focus-visible{
+  outline:2px solid var(--current);
+  outline-offset:5px;
+}
+.skip-link{
+  position:fixed;
+  z-index:100;
+  top:-5rem;
+  left:1rem;
+  padding:.7rem 1rem;
+  color:var(--stone-0);
+  background:var(--current);
+  text-decoration:none;
+}
+.skip-link:focus{top:1rem}
+.sr-only{
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+
+/* Header */
+.topbar{
+  position:fixed;
+  z-index:40;
+  inset:0 0 auto;
+  color:var(--moon);
+  transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease;
+}
+.topbar.is-scrolled{
+  border-bottom:1px solid rgba(223,227,231,.09);
+  background:rgba(7,8,10,.8);
+  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:blur(18px);
+}
+.topbar-inner{
+  width:var(--page);
+  min-height:78px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:2rem;
+  border-bottom:1px solid rgba(223,227,231,.12);
+}
+.topbar.is-scrolled .topbar-inner{border-bottom-color:transparent}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  font-family:var(--atlas);
+  font-size:1rem;
+  letter-spacing:.025em;
+}
+.brand-mark{
+  position:relative;
+  width:22px;
+  height:22px;
+  flex:0 0 22px;
+  border:1px solid rgba(223,227,231,.34);
+  border-radius:50%;
+}
+.brand-mark::after{
+  content:"";
+  position:absolute;
+  inset:3px 3px 3px 9px;
+  border-radius:50%;
+  background:var(--current);
+  box-shadow:0 0 10px rgba(215,228,235,.22);
+}
+.brand span{display:flex;flex-direction:column;line-height:1.05}
+.brand small{
+  margin-top:4px;
+  color:rgba(158,168,177,.72);
+  font-family:var(--ui);
+  font-size:.52rem;
+  font-weight:500;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.desktop-nav{
+  display:flex;
+  align-items:center;
+  gap:clamp(1.1rem,2.2vw,2.2rem);
+}
+.desktop-nav a{
+  position:relative;
+  color:rgba(223,227,231,.68);
+  font-size:.64rem;
+  font-weight:500;
+  letter-spacing:.16em;
+  text-decoration:none;
+  text-transform:uppercase;
+  transition:color .25s ease;
+}
+.desktop-nav a::after{
+  content:"";
+  position:absolute;
+  right:0;
+  bottom:-8px;
+  left:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  opacity:0;
+  transform:scaleX(.4);
+  transition:opacity .25s ease,transform .25s ease;
+}
+.desktop-nav a:hover,.desktop-nav a:focus-visible{color:var(--ivory)}
+.desktop-nav a:hover::after,.desktop-nav a:focus-visible::after{
+  opacity:1;
+  transform:scaleX(1);
+}
+.menu-toggle{
+  width:44px;
+  height:44px;
+  padding:0;
+  display:none;
+  place-items:center;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+}
+.menu-toggle span{
+  position:absolute;
+  width:21px;
+  height:1px;
+  background:var(--moon);
+  transition:transform .28s ease,opacity .2s ease;
+}
+.menu-toggle span:first-child{transform:translateY(-5px)}
+.menu-toggle span:last-child{transform:translateY(5px)}
+.menu-toggle[aria-expanded="true"] span:first-child{transform:rotate(45deg)}
+.menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-toggle[aria-expanded="true"] span:last-child{transform:rotate(-45deg)}
+.mobile-menu{
+  position:fixed;
+  z-index:35;
+  inset:0;
+  display:none;
+  padding:104px 24px 32px;
+  background:
+    radial-gradient(circle at 70% 12%,rgba(215,228,235,.08),transparent 18rem),
+    radial-gradient(circle at 22% 82%,rgba(233,171,71,.1),transparent 20rem),
+    var(--stone-0);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .28s ease,visibility .28s ease;
+}
+.mobile-menu[aria-hidden="false"]{opacity:1;visibility:visible}
+.mobile-menu nav{
+  width:min(100%,520px);
+  margin:auto;
+  border-top:1px solid rgba(223,227,231,.12);
+}
+.mobile-menu nav a{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  min-height:74px;
+  border-bottom:1px solid rgba(223,227,231,.12);
+  color:var(--ivory);
+  font-family:var(--display);
+  font-size:clamp(1.8rem,8vw,3rem);
+  line-height:1;
+  text-decoration:none;
+}
+.mobile-menu nav a::after{
+  content:"→";
+  color:var(--gold);
+  font-family:var(--ui);
+  font-size:1rem;
+}
+
+/* Hero */
+.hero{
+  position:relative;
+  min-height:max(680px,100svh);
+  overflow:hidden;
+  border-bottom:1px solid rgba(255,216,138,.22);
+  background:var(--stone-1);
+  isolation:isolate;
+}
+.hero-media,.hero-poster,.hero-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+.hero-poster{z-index:-3}
+.hero-poster img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.hero-video{
+  z-index:-2;
+  display:block;
+  object-fit:cover;
+  object-position:center;
+  opacity:0;
+  transition:opacity .8s ease;
+}
+.hero-video.is-ready{opacity:1}
+.hero::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(7,8,10,.84) 0%,rgba(7,8,10,.56) 31%,rgba(7,8,10,.11) 57%,transparent 77%),
+    linear-gradient(180deg,rgba(7,8,10,.42) 0%,transparent 25%,transparent 64%,rgba(7,8,10,.94) 100%);
+  pointer-events:none;
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  left:6%;
+  bottom:-1px;
+  width:39%;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold) 30%,var(--solar) 58%,transparent);
+  box-shadow:0 0 18px 3px rgba(233,171,71,.42);
+  animation:portal-pulse 4.8s ease-in-out infinite;
+  pointer-events:none;
+}
+.hero-lockup{
+  position:absolute;
+  z-index:2;
+  top:clamp(145px,21vh,210px);
+  left:max(24px,calc((100vw - 1180px)/2));
+  width:min(46vw,590px);
+}
+.hero-date{
+  display:flex;
+  align-items:flex-start;
+  gap:.75rem;
+  margin:0 0 1rem;
+  color:var(--current);
+  font-size:.68rem;
+  font-weight:500;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+.hero-date::before{
+  content:"";
+  flex:0 0 2.7rem;
+  width:2.7rem;
+  height:1px;
+  margin-top:.48em;
+  background:linear-gradient(90deg,var(--current),transparent);
+  box-shadow:0 0 8px rgba(215,228,235,.38);
+}
+.hero-date-copy{
+  display:grid;
+  gap:.42rem;
+}
+.hero-phase{color:var(--ivory)}
+.hero-date-meta{
+  color:rgba(215,228,235,.72);
+  font-size:.88em;
+  letter-spacing:.17em;
+}
+.hero h1{
+  margin:0;
+  color:var(--ivory);
+  font-family:var(--display);
+  font-size:clamp(4.7rem,9.2vw,9.5rem);
+  font-weight:400;
+  font-style:italic;
+  letter-spacing:-.07em;
+  line-height:.79;
+  text-shadow:0 3px 32px rgba(0,0,0,.9);
+}
+.hero-world{
+  margin:1.35rem 0 0;
+  color:var(--solar);
+  font-family:var(--display);
+  font-size:clamp(1.5rem,2.6vw,2.35rem);
+  line-height:1.05;
+  text-shadow:0 2px 22px rgba(0,0,0,.95);
+}
+.hero-intro{
+  max-width:40ch;
+  margin:1.1rem 0 0;
+  color:rgba(223,227,231,.76);
+  font-size:.92rem;
+  line-height:1.65;
+  text-shadow:0 2px 16px rgba(0,0,0,.95);
+}
+.hero-scroll{
+  position:absolute;
+  z-index:2;
+  right:max(24px,calc((100vw - 1180px)/2));
+  bottom:32px;
+  display:flex;
+  align-items:center;
+  gap:.8rem;
+  color:rgba(223,227,231,.56);
+  font-size:.6rem;
+  font-weight:500;
+  letter-spacing:.18em;
+  text-decoration:none;
+  text-transform:uppercase;
+}
+.hero-scroll i{
+  position:relative;
+  width:34px;
+  height:34px;
+  border:1px solid rgba(223,227,231,.2);
+  border-radius:50%;
+}
+.hero-scroll i::after{
+  content:"";
+  position:absolute;
+  top:10px;
+  left:13px;
+  width:6px;
+  height:6px;
+  border-right:1px solid var(--current);
+  border-bottom:1px solid var(--current);
+  transform:rotate(45deg);
+}
+
+/* Page current */
+.page-shell{
+  position:relative;
+  overflow:hidden;
+  isolation:isolate;
+}
+.page-current{
+  position:absolute;
+  z-index:-1;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:1px;
+  background:linear-gradient(180deg,rgba(215,228,235,.56),rgba(215,228,235,.18) 50%,rgba(215,228,235,.3) 84%,transparent);
+  box-shadow:0 0 8px rgba(215,228,235,.25),0 0 32px rgba(215,228,235,.08);
+}
+.page-current::before{
+  content:"";
+  position:absolute;
+  inset:0 -12px;
+  background:linear-gradient(180deg,rgba(215,228,235,.08),transparent 24%,rgba(215,228,235,.05) 62%,transparent);
+  filter:blur(7px);
+}
+.current-mote{
+  position:absolute;
+  left:50%;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--current);
+  box-shadow:0 0 8px 2px rgba(215,228,235,.72),0 0 24px 7px rgba(215,228,235,.18);
+  transform:translateX(-50%);
+  animation:signal-travel 8s ease-in-out infinite;
+}
+.current-mote:nth-child(2){animation-delay:-4s}
+.page-shell.is-awake .page-current{
+  animation:current-answer 1.25s ease-out;
+}
+
+.section{
+  position:relative;
+  z-index:1;
+  width:var(--page);
+  margin:0 auto;
+  padding:clamp(5rem,9vw,8.5rem) 0;
+}
+.section + .section{border-top:1px solid rgba(223,227,231,.075)}
+.section-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:.85rem;
+  margin-bottom:1.35rem;
+  color:var(--silver);
+  font-size:.64rem;
+  font-weight:500;
+  letter-spacing:.19em;
+  text-transform:uppercase;
+}
+.section-kicker::before{
+  content:"";
+  width:2.7rem;
+  height:1px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  box-shadow:0 0 8px rgba(233,171,71,.38);
+}
+.section h2{
+  max-width:17ch;
+  margin:0;
+  color:var(--ivory);
+  font-family:var(--display);
+  font-size:clamp(3rem,6.5vw,6rem);
+  font-weight:400;
+  letter-spacing:-.05em;
+  line-height:.9;
+}
+.section-lede{
+  max-width:61ch;
+  margin:1.5rem 0 0;
+  color:var(--silver);
+  line-height:1.75;
+}
+.section-lede strong{color:var(--solar);font-weight:400}
+
+/* Premise */
+.premise-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  margin-top:clamp(3rem,6vw,5rem);
+  border-block:1px solid rgba(223,227,231,.11);
+  background:rgba(223,227,231,.11);
+}
+.light-panel{
+  position:relative;
+  min-height:290px;
+  padding:clamp(1.5rem,3vw,2.6rem);
+  overflow:hidden;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.025),transparent 45%),
+    var(--stone-1);
+}
+.light-panel::after{
+  content:"";
+  position:absolute;
+  right:-80px;
+  bottom:-120px;
+  width:270px;
+  height:270px;
+  border-radius:50%;
+  pointer-events:none;
+}
+.light-panel--silver::after{
+  background:radial-gradient(circle,rgba(215,228,235,.13),transparent 66%);
+}
+.light-panel--gold::after{
+  background:radial-gradient(circle,rgba(233,171,71,.17),transparent 66%);
+}
+.light-id{
+  display:inline-flex;
+  align-items:center;
+  gap:.7rem;
+  color:var(--gold);
+  font-size:.64rem;
+  font-weight:600;
+  letter-spacing:.19em;
+  text-transform:uppercase;
+}
+.light-id::before{
+  content:"";
+  width:1.8rem;
+  height:1px;
+  background:currentColor;
+  box-shadow:0 0 8px currentColor;
+  opacity:.62;
+}
+.light-panel h3{
+  max-width:13ch;
+  margin:3.3rem 0 0;
+  color:var(--ivory);
+  font-family:var(--display);
+  font-size:clamp(1.9rem,3.5vw,3rem);
+  font-weight:400;
+  line-height:.98;
+}
+.light-panel p{
+  max-width:48ch;
+  margin:1rem 0 0;
+  color:var(--silver);
+}
+.axis-statement{
+  position:relative;
+  margin:clamp(4rem,8vw,7rem) auto 0;
+  padding-top:2rem;
+  max-width:760px;
+  color:var(--ivory);
+  font-family:var(--display);
+  font-size:clamp(2rem,4.2vw,3.9rem);
+  line-height:1.02;
+  text-align:center;
+}
+.axis-statement::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  width:min(420px,75vw);
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--current) 35%,var(--gold) 65%,transparent);
+  box-shadow:0 0 12px rgba(215,228,235,.22),0 0 16px rgba(233,171,71,.18);
+  transform:translateX(-50%);
+}
+.axis-statement em{color:var(--gold);font-weight:400}
+
+/* Journey */
+.journey-map{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  margin-top:clamp(3rem,6vw,5rem);
+}
+.journey-map::before{
+  content:"";
+  position:absolute;
+  top:28px;
+  right:8%;
+  left:8%;
+  height:1px;
+  background:linear-gradient(90deg,var(--current),rgba(215,228,235,.45) 72%,var(--gold));
+  box-shadow:0 0 9px rgba(215,228,235,.18);
+}
+.journey-step{
+  position:relative;
+  padding:0 1rem;
+  color:inherit;
+  text-align:center;
+  text-decoration:none;
+}
+.journey-node{
+  position:relative;
+  z-index:1;
+  width:56px;
+  height:56px;
+  margin:0 auto 1.5rem;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(215,228,235,.28);
+  border-radius:50%;
+  color:var(--current);
+  background:var(--stone-0);
+  font-family:var(--display);
+  font-size:1.35rem;
+  box-shadow:0 0 24px rgba(215,228,235,.06);
+  transition:border-color .22s ease,color .22s ease,box-shadow .22s ease;
+}
+.journey-step:last-child .journey-node{
+  border-color:rgba(233,171,71,.48);
+  color:var(--solar);
+  box-shadow:0 0 26px rgba(233,171,71,.1);
+}
+.journey-step:hover .journey-node,.journey-step:focus-visible .journey-node{
+  border-color:var(--gold);
+  color:var(--solar);
+  box-shadow:0 0 24px rgba(233,171,71,.2);
+}
+.journey-step h3{
+  margin:0;
+  color:var(--ivory);
+  font-family:var(--display);
+  font-size:1.55rem;
+  font-weight:400;
+}
+.journey-step p{
+  margin:.55rem auto 0;
+  color:rgba(158,168,177,.78);
+  font-size:.78rem;
+  line-height:1.5;
+}
+
+/* Ritual index */
+.rituals-section{width:min(1280px,calc(100% - 48px))}
+.rituals-head{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(260px,420px);
+  align-items:end;
+  gap:3rem;
+}
+.rituals-head .section-lede{margin:0}
+.movement{
+  position:relative;
+  margin-top:clamp(5rem,9vw,8.5rem);
+  scroll-margin-top:110px;
+}
+.movement-head{
+  display:grid;
+  grid-template-columns:120px minmax(0,1fr) minmax(230px,420px);
+  gap:2rem;
+  align-items:end;
+  padding-bottom:1.35rem;
+  border-bottom:1px solid rgba(223,227,231,.12);
+}
+.movement-id{
+  color:var(--gold);
+  font-family:var(--display);
+  font-size:clamp(2.2rem,4.3vw,4rem);
+  font-style:italic;
+  line-height:.8;
+}
+.movement-title{
+  margin:0;
+  color:var(--ivory);
+  font-family:var(--display);
+  font-size:clamp(2.4rem,4.4vw,4.2rem);
+  font-weight:400;
+  line-height:.88;
+}
+.movement-head p{
+  margin:0;
+  color:var(--silver);
+  font-size:.88rem;
+  line-height:1.6;
+}
+.ritual-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(1rem,2vw,1.4rem);
+  margin-top:1.4rem;
+}
+.ritual-card{
+  --mx:50%;
+  --my:50%;
+  -webkit-appearance:none;
+  appearance:none;
+  position:relative;
+  display:block;
+  width:100%;
+  min-height:390px;
+  padding:clamp(1.4rem,2.5vw,2rem);
+  overflow:hidden;
+  border:1px solid rgba(158,168,177,.22);
+  border-radius:2px;
+  color:var(--moon);
+  background:
+    radial-gradient(circle at 15% 0%,rgba(255,255,255,.04),transparent 36%),
+    linear-gradient(145deg,rgba(36,41,49,.68),transparent 48%),
+    var(--stone-1);
+  box-shadow:inset 0 1px rgba(255,255,255,.03),0 18px 42px rgba(0,0,0,.24);
+  font:inherit;
+  text-align:left;
+  cursor:pointer;
+  isolation:isolate;
+  transition:border-color .22s ease,transform .22s ease,box-shadow .32s ease;
+}
+.ritual-card::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:-12%;
+  opacity:0;
+  background:
+    radial-gradient(circle at var(--mx) var(--my),rgba(255,216,138,.18),transparent 19%),
+    radial-gradient(ellipse at 80% 105%,rgba(233,171,71,.11),transparent 46%),
+    radial-gradient(ellipse at 20% -5%,rgba(215,228,235,.07),transparent 42%);
+  filter:blur(5px);
+  transition:opacity .28s ease;
+}
+.ritual-card::after{
+  content:"";
+  position:absolute;
+  z-index:4;
+  left:var(--mx);
+  top:var(--my);
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  opacity:0;
+  pointer-events:none;
+  background:var(--solar);
+  box-shadow:0 0 7px 2px var(--solar),0 0 25px 9px rgba(233,171,71,.5);
+  transform:translate(-50%,-50%) scale(.2);
+}
+.ritual-card:hover,.ritual-card:focus-visible{
+  border-color:rgba(215,228,235,.43);
+  transform:translateY(-3px);
+  box-shadow:inset 0 1px rgba(255,255,255,.04),0 22px 50px rgba(0,0,0,.34),0 0 24px rgba(215,228,235,.05);
+}
+.ritual-card:hover::before,.ritual-card:focus-visible::before,.ritual-card.is-settled::before{opacity:1}
+.ritual-card.is-charged{
+  border-color:var(--solar);
+  box-shadow:
+    inset 0 0 52px rgba(233,171,71,.14),
+    0 0 3px 1px rgba(255,216,138,.78),
+    0 0 18px rgba(255,216,138,.38),
+    0 0 46px rgba(233,171,71,.25),
+    0 22px 54px rgba(0,0,0,.44);
+  animation:card-crackle .76s steps(2,end);
+}
+.ritual-card.is-charged::before{opacity:1;animation:card-flash .76s ease-out}
+.ritual-card.is-charged::after{animation:spark-burst .76s ease-out}
+.ritual-card.is-settled{
+  border-color:rgba(233,171,71,.62);
+  box-shadow:inset 0 0 34px rgba(233,171,71,.08),0 0 22px rgba(233,171,71,.11),0 20px 46px rgba(0,0,0,.34);
+}
+.card-energy-canvas{
+  position:absolute;
+  z-index:1;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  opacity:1;
+  transition:opacity .8s ease;
+}
+.card-energy-canvas.is-fading{opacity:0}
+.card-topline{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+}
+.card-number{
+  color:var(--silver);
+  font-size:.64rem;
+  font-weight:500;
+  letter-spacing:.19em;
+  text-transform:uppercase;
+}
+.card-copy{
+  position:relative;
+  z-index:2;
+  margin-top:clamp(3.2rem,6vw,5.6rem);
+}
+.card-title{
+  display:block;
+  max-width:12ch;
+  color:var(--ivory);
+  font-family:var(--display);
+  font-size:clamp(2rem,3.15vw,2.85rem);
+  font-weight:400;
+  letter-spacing:-.025em;
+  line-height:.92;
+}
+.card-transformation{
+  display:block;
+  margin-top:1rem;
+  color:var(--current);
+  font-family:var(--display);
+  font-size:1.05rem;
+  font-style:italic;
+  line-height:1.25;
+}
+.card-purpose{
+  display:block;
+  max-width:44ch;
+  margin-top:.9rem;
+  color:rgba(158,168,177,.82);
+  font-size:.79rem;
+  line-height:1.55;
+}
+.card-meta{
+  position:relative;
+  z-index:2;
+  display:flex;
+  flex-wrap:wrap;
+  gap:.45rem 1rem;
+  margin-top:1.35rem;
+  color:rgba(158,168,177,.55);
+  font-size:.58rem;
+  font-weight:500;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.movement-node{
+  position:absolute;
+  z-index:2;
+  top:34px;
+  left:50%;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--current);
+  box-shadow:0 0 10px 3px rgba(215,228,235,.5),0 0 28px 8px rgba(215,228,235,.13);
+  transform:translateX(-50%);
+}
+
+/* The Thirteenth */
+.thirteenth{
+  position:relative;
+  width:100%;
+  margin-top:clamp(5rem,9vw,8.5rem);
+  padding:clamp(5rem,9vw,8rem) max(24px,calc((100vw - 1180px)/2));
+  border-block:1px solid rgba(233,171,71,.16);
+  background:
+    radial-gradient(ellipse at 50% 100%,rgba(233,171,71,.16),transparent 52%),
+    radial-gradient(circle at 75% 20%,rgba(255,216,138,.06),transparent 22rem),
+    var(--stone-1);
+}
+.thirteenth-inner{
+  width:min(1180px,100%);
+  margin:0 auto;
+}
+.thirteenth-head{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(260px,420px);
+  gap:3rem;
+  align-items:end;
+}
+.thirteenth .section-kicker{color:var(--gold)}
+.thirteenth h2{
+  max-width:12ch;
+  margin:0;
+  color:var(--ivory);
+  font-family:var(--display);
+  font-size:clamp(3.3rem,7.2vw,7rem);
+  font-weight:400;
+  letter-spacing:-.055em;
+  line-height:.88;
+}
+.thirteenth-head p{margin:0;color:var(--silver);line-height:1.7}
+.thirteenth .ritual-card{
+  min-height:430px;
+  margin-top:clamp(3rem,6vw,5rem);
+  display:grid;
+  grid-template-columns:180px minmax(0,1fr) minmax(260px,430px);
+  align-items:end;
+  gap:clamp(1.5rem,4vw,4rem);
+  background:
+    radial-gradient(circle at 84% 18%,rgba(255,216,138,.08),transparent 24%),
+    linear-gradient(145deg,rgba(36,41,49,.72),transparent 52%),
+    var(--stone-1);
+}
+.thirteenth .card-topline{align-self:start}
+.thirteenth .card-copy{margin:0}
+.thirteenth .card-title{font-size:clamp(3rem,6vw,5.8rem)}
+.thirteenth .card-detail{
+  position:relative;
+  z-index:2;
+  padding-left:1.5rem;
+  border-left:1px solid rgba(233,171,71,.28);
+}
+.thirteenth .card-purpose{font-size:.9rem}
+
+/* Closing */
+.closing{
+  position:relative;
+  padding:clamp(7rem,14vw,13rem) 24px;
+  text-align:center;
+  background:
+    radial-gradient(ellipse at 50% 100%,rgba(233,171,71,.2),transparent 50%),
+    linear-gradient(180deg,transparent,rgba(141,100,47,.08));
+}
+.closing::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  width:min(460px,70%);
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--solar),transparent);
+  box-shadow:0 0 18px 3px rgba(233,171,71,.28);
+  transform:translateX(-50%);
+}
+.closing p{
+  max-width:21ch;
+  margin:0 auto;
+  color:var(--ivory);
+  font-family:var(--display);
+  font-size:clamp(2.8rem,6.8vw,6.4rem);
+  letter-spacing:-.045em;
+  line-height:.94;
+}
+.closing em{color:var(--gold);font-weight:400}
+.closing small{
+  display:block;
+  max-width:56ch;
+  margin:2rem auto 0;
+  color:var(--silver);
+}
+.site-footer{
+  width:var(--page);
+  margin:0 auto;
+  padding:30px 0 44px;
+  display:flex;
+  justify-content:space-between;
+  gap:2rem;
+  border-top:1px solid rgba(223,227,231,.08);
+  color:rgba(158,168,177,.62);
+  font-size:.61rem;
+  font-weight:500;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+.site-footer a{text-decoration:none}
+.site-footer a:hover{color:var(--ivory)}
+
+/* Reveal */
+.reveal{
+  opacity:0;
+  transform:translateY(22px);
+  transition:opacity .72s ease,transform .72s var(--ease);
+}
+.reveal.is-visible{opacity:1;transform:none}
+
+@keyframes portal-pulse{
+  0%,100%{opacity:.52;filter:brightness(.9)}
+  48%{opacity:1;filter:brightness(1.35)}
+}
+@keyframes signal-travel{
+  0%{top:1%;opacity:0}
+  12%{opacity:1}
+  82%{opacity:.82}
+  100%{top:99%;opacity:0}
+}
+@keyframes current-answer{
+  0%,100%{background-color:transparent;box-shadow:0 0 8px rgba(215,228,235,.25),0 0 32px rgba(215,228,235,.08)}
+  40%{background-color:var(--gold);box-shadow:0 0 11px rgba(255,216,138,.68),0 0 44px rgba(233,171,71,.28)}
+}
+@keyframes card-crackle{
+  0%,100%{transform:translateY(-3px)}
+  18%{transform:translate(-1px,-3px)}
+  35%{transform:translate(1px,-4px)}
+  52%{transform:translate(0,-3px)}
+}
+@keyframes card-flash{
+  0%{opacity:.15}
+  16%{opacity:1}
+  30%{opacity:.26}
+  55%{opacity:.8}
+  100%{opacity:1}
+}
+@keyframes spark-burst{
+  0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}
+  16%{opacity:1}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(5.5)}
+}
+
+@media(max-width:980px){
+  :root{--page:min(100% - 36px,1180px)}
+  .rituals-section{width:min(100% - 36px,1280px)}
+  .ritual-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .movement-head{grid-template-columns:90px minmax(0,1fr)}
+  .movement-head p{grid-column:2}
+  .thirteenth .ritual-card{grid-template-columns:120px minmax(0,1fr)}
+  .thirteenth .card-detail{grid-column:2}
+}
+@media(max-width:760px){
+  :root{--page:min(100% - 32px,1180px)}
+  .desktop-nav{display:none}
+  .menu-toggle{display:grid}
+  .mobile-menu{display:block}
+  .topbar-inner{min-height:70px}
+  .brand{font-size:.93rem}
+  .hero{
+    min-height:100svh;
+    aspect-ratio:auto;
+  }
+  .hero::before{
+    background:
+      linear-gradient(90deg,rgba(7,8,10,.76) 0%,rgba(7,8,10,.13) 77%),
+      linear-gradient(180deg,rgba(7,8,10,.42) 0%,transparent 18%,transparent 73%,rgba(7,8,10,.95) 100%);
+  }
+  .hero-lockup{
+    top:23.5%;
+    left:16px;
+    width:min(88%,570px);
+  }
+  .hero-date{font-size:.61rem;letter-spacing:.17em}
+  .hero h1{font-size:clamp(4.1rem,19vw,7rem)}
+  .hero-world{font-size:clamp(1.35rem,6.1vw,2rem)}
+  .hero-intro{display:none}
+  .hero-scroll{display:none}
+  .hero::after{left:0;width:64%}
+  .page-current{opacity:.56}
+  .premise-grid{grid-template-columns:1fr}
+  .light-panel{min-height:250px}
+  .journey-map{
+    grid-template-columns:1fr;
+    gap:0;
+    margin-left:1rem;
+  }
+  .journey-map::before{
+    top:20px;
+    bottom:20px;
+    left:27px;
+    width:1px;
+    height:auto;
+    background:linear-gradient(180deg,var(--current),rgba(215,228,235,.45) 74%,var(--gold));
+  }
+  .journey-step{
+    min-height:116px;
+    padding:0 0 1.7rem 90px;
+    text-align:left;
+  }
+  .journey-node{
+    position:absolute;
+    top:0;
+    left:0;
+    width:56px;
+    margin:0;
+  }
+  .journey-step p{margin-left:0}
+  .rituals-head,.thirteenth-head{grid-template-columns:1fr}
+  .rituals-head .section-lede,.thirteenth-head p{margin-top:0}
+  .movement-head{grid-template-columns:70px minmax(0,1fr);gap:1rem}
+  .ritual-grid{grid-template-columns:1fr}
+  .ritual-card{min-height:350px}
+  .movement-node{display:none}
+  .thirteenth{padding-right:16px;padding-left:16px}
+  .thirteenth .ritual-card{
+    min-height:480px;
+    display:block;
+  }
+  .thirteenth .card-topline{margin-bottom:4rem}
+  .thirteenth .card-detail{
+    margin-top:1.5rem;
+    padding-top:1.5rem;
+    padding-left:0;
+    border-top:1px solid rgba(233,171,71,.28);
+    border-left:0;
+  }
+  .site-footer{flex-direction:column;gap:.7rem}
+}
+@media(max-width:420px){
+  .topbar-inner{width:calc(100% - 24px)}
+  .brand small{display:none}
+  .hero-lockup{top:25%}
+  .hero h1{font-size:clamp(3.8rem,20vw,5.2rem)}
+  .section h2{font-size:clamp(2.7rem,14vw,4rem)}
+  .movement-head{grid-template-columns:1fr}
+  .movement-id{font-size:1.6rem}
+  .movement-head p{grid-column:1}
+  .ritual-card{min-height:330px}
+  .card-copy{margin-top:3.7rem}
+  .card-title{font-size:clamp(2rem,11vw,2.65rem)}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+  }
+  .reveal{opacity:1;transform:none}
+  .hero-video{display:none}
+  .ritual-card:hover,.ritual-card:focus-visible{transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html" aria-label="Moon Ritual Atlas archive">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>Moon Ritual Atlas<small>Full Moon in Aquarius</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#axis">Two Lights</a>
+      <a href="#journey">The Journey</a>
+      <a href="#rituals">All Rituals</a>
+      <a href="#thirteenth">The Thirteenth</a>
+    </nav>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <nav aria-label="Aquarius page navigation">
+    <a href="#axis">Two Lights</a>
+    <a href="#journey">The Journey</a>
+    <a href="#rituals">All Rituals</a>
+    <a href="#thirteenth">The Thirteenth</a>
+    <a href="../index.html">Atlas Archive</a>
+  </nav>
+</div>
+
+<main id="main">
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="hero-media" aria-hidden="true">
+      <picture class="hero-poster">
+        <source media="(max-width:760px)" srcset="../assets/aquarius/hero-mobile-poster.png">
+        <img src="../assets/aquarius/hero-desktop-poster.png" alt="">
+      </picture>
+      <video class="hero-video" id="hero-video" muted loop playsinline preload="metadata"></video>
+    </div>
+    <div class="hero-lockup">
+      <p class="hero-date">
+        <span class="hero-date-copy">
+          <span class="hero-phase">Full Moon in</span>
+          <span class="hero-date-meta">July 29, 2026 · 6°30′</span>
+        </span>
+      </p>
+      <h1 id="hero-title">Aquarius</h1>
+      <p class="hero-world">The Two Sovereign Lights</p>
+      <p class="hero-intro">A thirteen-part ritual journey for remaining sovereign in the self and conscious in the collective.</p>
+    </div>
+    <a class="hero-scroll" href="#axis"><span>Enter the current</span><i aria-hidden="true"></i></a>
+  </section>
+
+  <div class="page-shell" id="page-shell">
+    <div class="page-current" aria-hidden="true">
+      <span class="current-mote"></span>
+      <span class="current-mote"></span>
+    </div>
+
+    <section class="section" id="axis" aria-labelledby="axis-title">
+      <div class="reveal">
+        <span class="section-kicker">The Aquarius–Leo opposition</span>
+        <h2 id="axis-title">Two lights, neither surrendered.</h2>
+        <p class="section-lede">This is not a generic Aquarius collection. The Aquarius Moon stands with Pluto across from the Leo Sun joined by Jupiter. <strong>The work is to participate in collective life without abandoning direct perception, authentic expression, or the irreducible center of the self.</strong></p>
+      </div>
+      <div class="premise-grid reveal">
+        <article class="light-panel light-panel--silver">
+          <span class="light-id">The Collective Field</span>
+          <h3>Moon–Pluto in Aquarius</h3>
+          <p>Collective reality, hidden power, buried patterns, revelation, systems, networks, liberation, and the future.</p>
+        </article>
+        <article class="light-panel light-panel--gold">
+          <span class="light-id">The Living Center</span>
+          <h3>Sun–Jupiter in Leo</h3>
+          <p>The living heart, inherent value, courage, creative expression, presence, joy, and the gift only the individual can give.</p>
+        </article>
+      </div>
+      <p class="axis-statement reveal">Silver carries the signal. <em>Gold answers from the living center.</em></p>
+    </section>
+
+    <section class="section" id="journey" aria-labelledby="journey-title">
+      <div class="reveal">
+        <span class="section-kicker">The ritual arc</span>
+        <h2 id="journey-title">Thirteen rituals. Five thresholds.</h2>
+        <p class="section-lede">Each ritual is complete in itself. Follow the sequence across a lunar cycle, enter one movement at a time, or begin with the ritual whose work is already alive.</p>
+      </div>
+      <div class="journey-map reveal">
+        <a class="journey-step" href="#see">
+          <span class="journey-node">I</span>
+          <h3>See</h3>
+          <p>Recover perception.</p>
+        </a>
+        <a class="journey-step" href="#separate">
+          <span class="journey-node">II</span>
+          <h3>Separate</h3>
+          <p>Reclaim authority, allegiance, and expression.</p>
+        </a>
+        <a class="journey-step" href="#find">
+          <span class="journey-node">III</span>
+          <h3>Find</h3>
+          <p>Become recognizable to openings and living relationship.</p>
+        </a>
+        <a class="journey-step" href="#transmit">
+          <span class="journey-node">IV</span>
+          <h3>Transmit</h3>
+          <p>Give truth a language, a channel, and a consequence.</p>
+        </a>
+        <a class="journey-step" href="#thirteenth">
+          <span class="journey-node">XIII</span>
+          <h3>The Thirteenth</h3>
+          <p>Create before consequence becomes the condition of worth.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="section rituals-section" id="rituals" aria-labelledby="rituals-title">
+      <div class="rituals-head reveal">
+        <div>
+          <span class="section-kicker">The complete thirteen</span>
+          <h2 id="rituals-title">Choose where the current meets you.</h2>
+        </div>
+        <p class="section-lede">Tap or press a card to awaken its silver signal. The current reaches the stone, flashes gold at contact, then settles into a controlled afterglow.</p>
+      </div>
+
+      <section class="movement" id="see" aria-labelledby="see-title">
+        <span class="movement-node" aria-hidden="true"></span>
+        <div class="movement-head reveal">
+          <span class="movement-id">I</span>
+          <h3 class="movement-title" id="see-title">See</h3>
+          <p>Exterior pressure gives way to subterranean truth, then returns as chosen value.</p>
+        </div>
+        <div class="ritual-grid">
+          <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="The Invisible Fabric">
+            <span class="card-topline"><span class="card-number">Ritual 01</span></span>
+            <span class="card-copy">
+              <span class="card-title">The Invisible Fabric</span>
+              <span class="card-transformation">Confusion becomes self-possessed sight.</span>
+              <span class="card-purpose">Separate direct perception from consensus interpretation and produce one clear witness statement.</span>
+              <span class="card-meta"><span>25–35 minutes</span><span>Moderate</span><span>7 cards</span></span>
+            </span>
+          </button>
+          <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="The Pluto Mirror">
+            <span class="card-topline"><span class="card-number">Ritual 02</span></span>
+            <span class="card-copy">
+              <span class="card-title">The Pluto Mirror</span>
+              <span class="card-transformation">Unnamed pressure becomes conscious knowledge.</span>
+              <span class="card-purpose">Expose the buried feeling, compulsion, fear, or power arrangement beneath the visible story.</span>
+              <span class="card-meta"><span>30–40 minutes</span><span>Deep</span><span>8 cards</span></span>
+            </span>
+          </button>
+          <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="Real Gold / Invisible Gold">
+            <span class="card-topline"><span class="card-number">Ritual 03</span></span>
+            <span class="card-copy">
+              <span class="card-title">Real Gold / Invisible Gold</span>
+              <span class="card-transformation">Assigned value becomes chosen value.</span>
+              <span class="card-purpose">Distinguish inherent value from prestige, performance, approval, and manufactured importance.</span>
+              <span class="card-meta"><span>30–40 minutes</span><span>Restorative</span><span>7 cards</span></span>
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <section class="movement" id="separate" aria-labelledby="separate-title">
+        <span class="movement-node" aria-hidden="true"></span>
+        <div class="movement-head reveal">
+          <span class="movement-id">II</span>
+          <h3 class="movement-title" id="separate-title">Separate</h3>
+          <p>Surrendered authority, false allegiance, and performed identity are returned to conscious choice.</p>
+        </div>
+        <div class="ritual-grid">
+          <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="Where I Handed Over the Keys">
+            <span class="card-topline"><span class="card-number">Ritual 04</span></span>
+            <span class="card-copy">
+              <span class="card-title">Where I Handed Over the Keys</span>
+              <span class="card-transformation">Compliance becomes reclaimed agency.</span>
+              <span class="card-purpose">Identify one decision or domain surrendered to another person, rule, group, or fear—and take it back.</span>
+              <span class="card-meta"><span>30–40 minutes</span><span>Moderate–deep</span><span>8 cards</span></span>
+            </span>
+          </button>
+          <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="Cut the False Thread">
+            <span class="card-topline"><span class="card-number">Ritual 05</span></span>
+            <span class="card-copy">
+              <span class="card-title">Cut the False Thread</span>
+              <span class="card-transformation">Entanglement becomes chosen relationship.</span>
+              <span class="card-purpose">Separate belonging from allegiance that requires self-betrayal while preserving what can hold truth.</span>
+              <span class="card-meta"><span>35–45 minutes</span><span>Deep</span><span>8 cards</span></span>
+            </span>
+          </button>
+          <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="Take Off the Costume">
+            <span class="card-topline"><span class="card-number">Ritual 06</span></span>
+            <span class="card-copy">
+              <span class="card-title">Take Off the Costume</span>
+              <span class="card-transformation">Performance becomes authentic desire.</span>
+              <span class="card-purpose">Reveal the identity shaped for acceptance and recover the expression that existed beneath it.</span>
+              <span class="card-meta"><span>35–45 minutes</span><span>Ends warm</span><span>7 cards</span></span>
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <section class="movement" id="find" aria-labelledby="find-title">
+        <span class="movement-node" aria-hidden="true"></span>
+        <div class="movement-head reveal">
+          <span class="movement-id">III</span>
+          <h3 class="movement-title" id="find-title">Find</h3>
+          <p>The field reopens. Signal, meaningful crossing, and living relationship become possible again.</p>
+        </div>
+        <div class="ritual-grid">
+          <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="Send the True Signal">
+            <span class="card-topline"><span class="card-number">Ritual 07</span></span>
+            <span class="card-copy">
+              <span class="card-title">Send the True Signal</span>
+              <span class="card-transformation">Private identity becomes coherent signal.</span>
+              <span class="card-purpose">Make the authentic self legible enough to be recognized by aligned people, work, and possibilities.</span>
+              <span class="card-meta"><span>30–40 minutes</span><span>Clarifying</span><span>7 cards</span></span>
+            </span>
+          </button>
+          <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="The Synchronicity Ledger">
+            <span class="card-topline"><span class="card-number">Ritual 08</span></span>
+            <span class="card-copy">
+              <span class="card-title">The Synchronicity Ledger</span>
+              <span class="card-transformation">Coincidence becomes conscious participation.</span>
+              <span class="card-purpose">Recognize meaningful openings without demanding that they prove certainty, permanence, or destiny.</span>
+              <span class="card-meta"><span>35–45 minutes</span><span>Gentle–moderate</span><span>7 cards</span></span>
+            </span>
+          </button>
+          <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="The Living Constellation">
+            <span class="card-topline"><span class="card-number">Ritual 09</span></span>
+            <span class="card-copy">
+              <span class="card-title">The Living Constellation</span>
+              <span class="card-transformation">The crowd becomes a living network.</span>
+              <span class="card-purpose">Discern community by the qualities created between people—not proximity, habit, status, or agreement.</span>
+              <span class="card-meta"><span>40–50 minutes</span><span>Relational</span><span>8 cards</span></span>
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <section class="movement" id="transmit" aria-labelledby="transmit-title">
+        <span class="movement-node" aria-hidden="true"></span>
+        <div class="movement-head reveal">
+          <span class="movement-id">IV</span>
+          <h3 class="movement-title" id="transmit-title">Transmit</h3>
+          <p>Recognition becomes exact speech, conscious media practice, and material contribution.</p>
+        </div>
+        <div class="ritual-grid">
+          <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="The Sentence I’m Not Saying">
+            <span class="card-topline"><span class="card-number">Ritual 10</span></span>
+            <span class="card-copy">
+              <span class="card-title">The Sentence I’m Not Saying</span>
+              <span class="card-transformation">Withholding becomes courageous speech.</span>
+              <span class="card-purpose">Give exact, owned language to a truth already known but withheld from the context where it matters.</span>
+              <span class="card-meta"><span>35–45 minutes</span><span>High focus</span><span>8 cards</span></span>
+            </span>
+          </button>
+          <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="The Conscious Signal">
+            <span class="card-topline"><span class="card-number">Ritual 11</span></span>
+            <span class="card-copy">
+              <span class="card-title">The Conscious Signal</span>
+              <span class="card-transformation">Unconscious influence becomes deliberate use.</span>
+              <span class="card-purpose">Examine how media, technology, AI, or another channel conditions attention—and redesign one current.</span>
+              <span class="card-meta"><span>45–60 minutes</span><span>Analytical</span><span>8 cards</span></span>
+            </span>
+          </button>
+          <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="The Signal Sent">
+            <span class="card-topline"><span class="card-number">Ritual 12</span></span>
+            <span class="card-copy">
+              <span class="card-title">The Signal Sent</span>
+              <span class="card-transformation">Intention becomes collective consequence.</span>
+              <span class="card-purpose">Place one true, proportionate, consequential sentence, offer, work, boundary, or beginning into the world.</span>
+              <span class="card-meta"><span>30–45 minutes</span><span>High action</span><span>8 cards</span></span>
+            </span>
+          </button>
+        </div>
+      </section>
+    </section>
+
+    <section class="thirteenth" id="thirteenth" aria-labelledby="thirteenth-title">
+      <div class="thirteenth-inner">
+        <div class="thirteenth-head reveal">
+          <div>
+            <span class="section-kicker">Outside the movements</span>
+            <h2 id="thirteenth-title">The part of you that belongs to itself.</h2>
+          </div>
+          <p>The twelve complete the Aquarian journey through collective life. The Thirteenth breaks its logic. It protects creation before the network assigns a function to what has been made.</p>
+        </div>
+        <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="The Child in the Square">
+          <span class="card-topline"><span class="card-number">Ritual 13</span></span>
+          <span class="card-copy">
+            <span class="card-title">The Child in the Square</span>
+            <span class="card-transformation">The self becomes an uncalculated source of life.</span>
+          </span>
+          <span class="card-detail">
+            <span class="card-purpose">Recover the sovereign creative heart by making one thing that is not required to inform, persuade, serve, prove, perform, improve, or become useful to the collective.</span>
+            <span class="card-meta"><span>35–60 minutes</span><span>Gentle, exposed, alive</span><span>8 cards</span><span>Always available</span></span>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <section class="closing" aria-label="Closing proposition">
+      <p class="reveal">See what is actually there. Separate without self-betrayal. <em>Transmit something true.</em></p>
+      <small class="reveal">Preserve the part of you that exists before usefulness, approval, or consensus.</small>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <span>Full Moon in Aquarius · July 29, 2026 · 6°30′</span>
+  <a href="../index.html">Moon Ritual Atlas Archive</a>
+</footer>
+
+<p class="sr-only" id="card-status" aria-live="polite"></p>
+
+<script>
+(() => {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const mobileMedia = window.matchMedia("(max-width: 760px)");
+  const video = document.getElementById("hero-video");
+  const topbar = document.getElementById("topbar");
+  const pageShell = document.getElementById("page-shell");
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuLinks = Array.from(mobileMenu.querySelectorAll("a"));
+  const cards = Array.from(document.querySelectorAll(".ritual-card"));
+  const status = document.getElementById("card-status");
+
+  let loadedVideo = "";
+  let chargedTimer = 0;
+  let currentTimer = 0;
+
+  function setHeroSource() {
+    const next = mobileMedia.matches
+      ? "../assets/aquarius/hero-mobile.mp4"
+      : "../assets/aquarius/hero-desktop-web.mp4";
+
+    if (loadedVideo === next) return;
+    loadedVideo = next;
+    video.classList.remove("is-ready");
+    video.pause();
+    video.src = next;
+    video.load();
+
+    if (!reducedMotion.matches) {
+      const play = video.play();
+      if (play && typeof play.catch === "function") play.catch(() => {});
+    }
+  }
+
+  video.addEventListener("playing", () => video.classList.add("is-ready"));
+  mobileMedia.addEventListener("change", setHeroSource);
+  reducedMotion.addEventListener("change", () => {
+    if (reducedMotion.matches) {
+      video.pause();
+      video.classList.remove("is-ready");
+    } else {
+      setHeroSource();
+      video.play().catch(() => {});
+    }
+  });
+  setHeroSource();
+
+  function updateHeader() {
+    topbar.classList.toggle("is-scrolled", window.scrollY > 28);
+  }
+  updateHeader();
+  window.addEventListener("scroll", updateHeader, { passive: true });
+
+  function setMenu(open) {
+    menuToggle.setAttribute("aria-expanded", String(open));
+    menuToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+    mobileMenu.setAttribute("aria-hidden", String(!open));
+    document.body.classList.toggle("menu-open", open);
+    if (open) menuLinks[0].focus();
+  }
+
+  menuToggle.addEventListener("click", () => {
+    setMenu(menuToggle.getAttribute("aria-expanded") !== "true");
+  });
+  menuLinks.forEach(link => link.addEventListener("click", () => setMenu(false)));
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
+      setMenu(false);
+      menuToggle.focus();
+    }
+  });
+
+  const revealItems = Array.from(document.querySelectorAll(".reveal"));
+  if (reducedMotion.matches || !("IntersectionObserver" in window)) {
+    revealItems.forEach(item => item.classList.add("is-visible"));
+  } else {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: .08 });
+    revealItems.forEach(item => observer.observe(item));
+  }
+
+  cards.forEach(card => {
+    card.addEventListener("pointermove", event => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+      card.style.setProperty("--my", `${event.clientY - rect.top}px`);
+    });
+
+    card.addEventListener("click", event => {
+      const rect = card.getBoundingClientRect();
+      const x = event.clientX ? event.clientX - rect.left : rect.width / 2;
+      const y = event.clientY ? event.clientY - rect.top : rect.height / 2;
+      activateCard(card, x, y);
+    });
+  });
+
+  function activateCard(card, x, y) {
+    clearTimeout(chargedTimer);
+    clearTimeout(currentTimer);
+
+    cards.forEach(item => {
+      item.classList.remove("is-charged", "is-settled");
+      item.setAttribute("aria-pressed", "false");
+      item.querySelectorAll(".card-energy-canvas").forEach(canvas => canvas.remove());
+    });
+
+    card.style.setProperty("--mx", `${x}px`);
+    card.style.setProperty("--my", `${y}px`);
+    card.classList.add("is-charged");
+    card.setAttribute("aria-pressed", "true");
+    pageShell.classList.remove("is-awake");
+    void pageShell.offsetWidth;
+    pageShell.classList.add("is-awake");
+
+    if (!reducedMotion.matches) drawAtmosphere(card, x, y);
+
+    status.textContent = `${card.dataset.cardName} awakened. Silver signal, gold answer, controlled afterglow.`;
+
+    chargedTimer = window.setTimeout(() => {
+      card.classList.remove("is-charged");
+      card.classList.add("is-settled");
+      card.querySelectorAll(".card-energy-canvas").forEach(canvas => canvas.classList.add("is-fading"));
+    }, reducedMotion.matches ? 0 : 780);
+
+    currentTimer = window.setTimeout(() => pageShell.classList.remove("is-awake"), 1300);
+  }
+
+  function drawAtmosphere(card, originX, originY) {
+    const rect = card.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.className = "card-energy-canvas";
+    canvas.width = Math.round(rect.width * dpr);
+    canvas.height = Math.round(rect.height * dpr);
+    canvas.style.width = `${rect.width}px`;
+    canvas.style.height = `${rect.height}px`;
+    card.prepend(canvas);
+    ctx.scale(dpr, dpr);
+
+    const branches = makeBranches(originX, originY, rect.width, rect.height);
+    const particles = Array.from({ length: 32 }, () => ({
+      angle: Math.random() * Math.PI * 2,
+      speed: 18 + Math.random() * 52,
+      size: .5 + Math.random() * 1.7,
+      delay: Math.random() * .45
+    }));
+    const start = performance.now();
+
+    function frame(now) {
+      const progress = Math.min(1, (now - start) / 900);
+      ctx.clearRect(0, 0, rect.width, rect.height);
+
+      drawVapor(ctx, originX, originY, rect.width, rect.height, progress);
+
+      branches.forEach((points, index) => {
+        const local = Math.max(0, Math.min(1, progress * 1.45 - index * .035));
+        drawBranch(ctx, points, local, index % 3 === 0);
+      });
+
+      particles.forEach(particle => {
+        const local = Math.max(0, (progress - particle.delay) / (1 - particle.delay));
+        if (local <= 0 || local >= 1) return;
+        const distance = particle.speed * Math.sin(local * Math.PI);
+        const px = originX + Math.cos(particle.angle) * distance;
+        const py = originY + Math.sin(particle.angle) * distance;
+        ctx.save();
+        ctx.globalAlpha = Math.sin(local * Math.PI) * .44;
+        ctx.fillStyle = local < .38 ? "#d7e4eb" : "#ffd88a";
+        ctx.shadowColor = ctx.fillStyle;
+        ctx.shadowBlur = 8;
+        ctx.beginPath();
+        ctx.arc(px, py, particle.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      });
+
+      if (progress < 1) {
+        window.setTimeout(() => frame(performance.now()), 16);
+      } else {
+        window.setTimeout(() => canvas.remove(), 900);
+      }
+    }
+    frame(start);
+  }
+
+  function makeBranches(originX, originY, width, height) {
+    const targets = [
+      [width * .04, height * .18],
+      [width * .96, height * .18],
+      [width * .92, height * .78],
+      [width * .12, height * .86],
+      [width * .5, height * .04],
+      [width * .56, height * .96]
+    ];
+
+    return targets.map(([tx, ty], branchIndex) => {
+      const points = [{ x: originX, y: originY }];
+      const segments = 11 + (branchIndex % 4);
+      for (let i = 1; i <= segments; i += 1) {
+        const t = i / segments;
+        const envelope = Math.sin(t * Math.PI);
+        const jitter = (Math.random() - .5) * 34 * envelope;
+        const dx = tx - originX;
+        const dy = ty - originY;
+        const length = Math.max(1, Math.hypot(dx, dy));
+        points.push({
+          x: originX + dx * t + (-dy / length) * jitter,
+          y: originY + dy * t + (dx / length) * jitter
+        });
+      }
+      return points;
+    });
+  }
+
+  function drawBranch(ctx, points, progress, primary) {
+    const segmentCount = Math.max(1, Math.floor((points.length - 1) * progress));
+    const alpha = primary ? .52 : .36;
+    const stroke = progress < .5 ? "215,228,235" : "255,216,138";
+
+    ctx.save();
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.strokeStyle = `rgba(${stroke},${alpha})`;
+    ctx.lineWidth = primary ? 1.05 : .72;
+    ctx.shadowColor = progress < .5 ? "#d7e4eb" : "#e9ab47";
+    ctx.shadowBlur = primary ? 15 : 9;
+    ctx.beginPath();
+    ctx.moveTo(points[0].x, points[0].y);
+    for (let i = 1; i <= segmentCount; i += 1) ctx.lineTo(points[i].x, points[i].y);
+    ctx.stroke();
+
+    if (primary) {
+      ctx.strokeStyle = `rgba(${stroke},.21)`;
+      ctx.lineWidth = 3.6;
+      ctx.shadowBlur = 22;
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  function drawVapor(ctx, x, y, width, height, progress) {
+    const radius = Math.max(width, height) * (.12 + progress * .34);
+    const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
+    gradient.addColorStop(0, `rgba(255,216,138,${.12 * Math.sin(progress * Math.PI)})`);
+    gradient.addColorStop(.28, `rgba(233,171,71,${.075 * Math.sin(progress * Math.PI)})`);
+    gradient.addColorStop(.7, `rgba(215,228,235,${.035 * Math.sin(progress * Math.PI)})`);
+    gradient.addColorStop(1, "rgba(7,8,10,0)");
+    ctx.save();
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, width, height);
+    ctx.restore();
+  }
+})();
+</script>
+</body>
+</html>
