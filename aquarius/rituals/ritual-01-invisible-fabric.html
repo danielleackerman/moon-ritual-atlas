@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>The Invisible Fabric — Moon Ritual Atlas</title>
+  <meta name="description" content="A seven-card Aquarius ritual for separating direct observation from supplied meaning.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Spectral:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --field: #e8e3dc;
+      --field-light: #f2efea;
+      --vellum: rgba(242, 244, 241, .73);
+      --vellum-cool: rgba(232, 236, 234, .69);
+      --vellum-back: rgba(224, 229, 227, .64);
+      --graphite: #1c242a;
+      --graphite-soft: #536068;
+      --signal: #78888b;
+      --signal-pale: #bcc8c8;
+      --gold: #b9782f;
+      --gold-light: #d6a45c;
+      --line: rgba(28, 36, 42, .16);
+      --line-strong: rgba(28, 36, 42, .28);
+      --ritual: "Newsreader", Georgia, serif;
+      --guidance: "Instrument Sans", system-ui, sans-serif;
+      --atlas: "Spectral", Georgia, serif;
+      --ease: cubic-bezier(.22, .61, .36, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    body {
+      color: var(--graphite);
+      background: var(--field);
+      font-family: var(--guidance);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button,
+    textarea {
+      color: inherit;
+      font: inherit;
+    }
+
+    button:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    h1,
+    h2,
+    p,
+    blockquote {
+      margin: 0;
+    }
+
+    .ritual-reader {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      grid-template-rows: 60px 24px minmax(0, 1fr) 70px;
+      isolation: isolate;
+      background:
+        linear-gradient(rgba(28, 36, 42, .034) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(28, 36, 42, .025) 1px, transparent 1px),
+        radial-gradient(circle at 76% 3%, rgba(192, 145, 94, .07), transparent 27rem),
+        radial-gradient(circle at 34% -8%, rgba(255, 255, 255, .78), transparent 39rem),
+        var(--field);
+      background-size: 32px 32px, 32px 32px, auto, auto, auto;
+    }
+
+    .ritual-reader::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .065;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+    }
+
+    .reader-header {
+      position: relative;
+      z-index: 5;
+      padding: 0 clamp(17px, 3.5vw, 48px);
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid var(--line);
+      background:
+        rgba(241, 239, 235, .91);
+      box-shadow: 0 12px 34px -34px rgba(28, 36, 42, .75);
+      backdrop-filter: blur(15px);
+    }
+
+    .reader-exit {
+      width: 35px;
+      height: 35px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .25);
+      cursor: pointer;
+      transition:
+        border-color .2s ease,
+        background .2s ease;
+    }
+
+    .reader-exit:hover {
+      border-color: var(--graphite);
+      background: rgba(255, 255, 255, .58);
+    }
+
+    .reader-exit svg {
+      width: 17px;
+      height: 17px;
+    }
+
+    .reader-identity {
+      min-width: 0;
+    }
+
+    .reader-kicker {
+      overflow: hidden;
+      color: var(--signal);
+      font-size: .61rem;
+      font-weight: 600;
+      letter-spacing: .19em;
+      text-overflow: ellipsis;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .reader-title {
+      overflow: hidden;
+      margin-top: 3px;
+      color: var(--graphite);
+      font-family: var(--ritual);
+      font-size: 1.08rem;
+      line-height: 1;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .reader-tools {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .reader-tool {
+      min-height: 34px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 0;
+      color: var(--graphite-soft);
+      background: transparent;
+      font-size: .76rem;
+      cursor: pointer;
+    }
+
+    .reader-tool:hover {
+      color: var(--graphite);
+    }
+
+    .reader-tool + .reader-tool {
+      position: relative;
+    }
+
+    .reader-tool + .reader-tool::before {
+      content: "";
+      position: absolute;
+      left: -9px;
+      width: 1px;
+      height: 18px;
+      background: var(--line);
+    }
+
+    .reader-tool svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .card-progress {
+      position: relative;
+      z-index: 4;
+      padding: 10px clamp(23px, 4.5vw, 66px) 0;
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 8px;
+      border-bottom: 1px solid rgba(28, 36, 42, .07);
+      background: rgba(237, 242, 243, .67);
+    }
+
+    .progress-step {
+      height: 3px;
+      padding: 0;
+      border: 0;
+      border-radius: 99px;
+      background: rgba(28, 36, 42, .12);
+      cursor: pointer;
+      transition:
+        background .28s var(--ease),
+        transform .28s var(--ease);
+    }
+
+    .progress-step:hover {
+      transform: scaleY(1.55);
+    }
+
+    .progress-step.complete {
+      background: var(--signal);
+    }
+
+    .progress-step.current {
+      background: var(--gold);
+    }
+
+    .reader-scroll {
+      position: relative;
+      z-index: 2;
+      min-height: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding: clamp(44px, 6vw, 76px) clamp(16px, 4vw, 48px) 126px;
+      overscroll-behavior: contain;
+      scroll-behavior: smooth;
+    }
+
+    .card-deck {
+      position: relative;
+      width: min(940px, 100%);
+      margin: 0 auto;
+    }
+
+    .card-deck::before,
+    .card-deck::after {
+      display: none;
+    }
+
+    .ritual-card {
+      position: relative;
+      padding: 0 clamp(4px, 2vw, 18px);
+      transform-origin: center 54%;
+    }
+
+    .ritual-card.enter-forward {
+      animation: cardForward .46s var(--ease) both;
+    }
+
+    .ritual-card.enter-back {
+      animation: cardBack .46s var(--ease) both;
+    }
+
+    @keyframes cardForward {
+      from {
+        opacity: .25;
+        transform: translate(23px, 18px) rotate(.7deg) scale(.985);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @keyframes cardBack {
+      from {
+        opacity: .25;
+        transform: translate(-22px, 10px) rotate(-.55deg) scale(.985);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .ritual-card::after {
+      display: none;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-number {
+      color: var(--signal);
+      font-size: .64rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .card-title {
+      max-width: 15ch;
+      margin-top: 15px;
+      color: var(--graphite);
+      font-family: var(--ritual);
+      font-size: clamp(2.7rem, 5vw, 4.35rem);
+      font-weight: 400;
+      letter-spacing: -.045em;
+      line-height: .9;
+    }
+
+    .card-threshold {
+      max-width: 46ch;
+      margin-top: 20px;
+      color: #5f5854;
+      font-family: var(--ritual);
+      font-size: clamp(1.2rem, 2.15vw, 1.48rem);
+      font-style: italic;
+      line-height: 1.42;
+    }
+
+    .ritual-copy {
+      max-width: 70ch;
+      margin-top: 33px;
+      color: #30383d;
+      font-family: var(--ritual);
+      font-size: clamp(1.06rem, 1.75vw, 1.17rem);
+      line-height: 1.72;
+    }
+
+    .material-stage {
+      position: relative;
+      width: min(790px, 96%);
+      min-height: 390px;
+      margin: 52px auto 0;
+      perspective: 1200px;
+    }
+
+    .material-sheet {
+      position: absolute;
+      inset: 0;
+      min-height: 360px;
+      padding: clamp(25px, 4.2vw, 42px);
+      border: 1px solid rgba(72, 84, 87, .22);
+      border-radius: 3px;
+      transition:
+        opacity .7s ease,
+        transform .86s var(--ease),
+        box-shadow .7s ease;
+    }
+
+    .evidence-paper {
+      z-index: 1;
+      color: var(--graphite);
+      background:
+        repeating-linear-gradient(180deg, transparent 0 32px, rgba(28, 36, 42, .065) 32px 33px),
+        #f5f2eb;
+      box-shadow:
+        8px 10px 0 rgba(103, 91, 75, .08),
+        0 24px 48px -38px rgba(28, 36, 42, .35);
+    }
+
+    .vellum-paper {
+      z-index: 2;
+      color: rgba(28, 36, 42, .77);
+      background:
+        linear-gradient(112deg, rgba(255, 255, 255, .55), rgba(231, 235, 233, .2) 58%, rgba(255, 255, 255, .18)),
+        rgba(239, 242, 239, .76);
+      box-shadow:
+        inset 0 1px rgba(255, 255, 255, .92),
+        inset -1px 0 rgba(73, 87, 89, .07),
+        0 4px 7px rgba(28, 36, 42, .08),
+        0 22px 46px -32px rgba(28, 36, 42, .36);
+      backdrop-filter: blur(2px) saturate(.86);
+      transform-origin: 8% 8%;
+    }
+
+    .vellum-paper::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(98deg, transparent 0 24%, rgba(255, 255, 255, .15) 42%, transparent 61%);
+    }
+
+    .sheet-pin {
+      position: absolute;
+      top: 17px;
+      right: 17px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow:
+        0 0 0 5px rgba(185, 120, 47, .1),
+        0 2px 3px rgba(28, 36, 42, .18);
+    }
+
+    .material-label {
+      color: var(--gold);
+      font-family: var(--guidance);
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .material-writing {
+      margin-top: 31px;
+      color: #586164;
+      font-family: var(--ritual);
+      font-size: clamp(1.14rem, 2.1vw, 1.43rem);
+      font-style: italic;
+      line-height: 1.75;
+    }
+
+    .material-writing p + p {
+      margin-top: 4px;
+    }
+
+    .material-stage.state-aside .vellum-paper {
+      opacity: .56;
+      transform: translate(48%, 9%) rotate(5deg);
+    }
+
+    .material-stage.state-aside .evidence-paper {
+      transform: translate(-2%, 0) rotate(-.35deg);
+    }
+
+    .material-stage.state-aligned .vellum-paper {
+      opacity: .88;
+      transform: translate(1.3%, 1.8%) rotate(-.5deg);
+    }
+
+    .material-stage.state-lifted .vellum-paper,
+    .material-stage.manual-lift .vellum-paper {
+      opacity: .38;
+      transform: translate(-46%, -18%) rotate(-9deg) rotateY(-14deg);
+      box-shadow: 24px 28px 46px rgba(28, 36, 42, .12);
+    }
+
+    .material-stage.state-evidence .vellum-paper {
+      opacity: .25;
+      transform: translate(37%, 11%) rotate(7deg);
+    }
+
+    .material-stage.state-folded .vellum-paper {
+      opacity: .42;
+      transform: translate(6%, 18%) scaleY(.62) rotate(1.5deg);
+      transform-origin: center bottom;
+    }
+
+    .material-controls {
+      width: min(790px, 96%);
+      margin: 22px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .material-toggle {
+      min-height: 42px;
+      padding: 0 18px;
+      border: 1px solid var(--graphite);
+      border-radius: 999px;
+      color: var(--field-light);
+      background: var(--graphite);
+      font-size: .8rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .material-state {
+      color: var(--graphite-soft);
+      font-size: .76rem;
+      line-height: 1.4;
+    }
+
+    .ritual-copy p + p {
+      margin-top: 17px;
+    }
+
+    .ritual-copy h2 {
+      margin: 34px 0 13px;
+      color: var(--graphite);
+      font-family: var(--ritual);
+      font-size: 1.34rem;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .ritual-copy h2:first-child {
+      margin-top: 0;
+    }
+
+    .ritual-copy hr {
+      height: 1px;
+      margin: 34px 0;
+      border: 0;
+      background: var(--line);
+    }
+
+    .ritual-copy strong {
+      font-weight: 500;
+    }
+
+    .ritual-copy em {
+      color: #675b56;
+    }
+
+    .ritual-copy ul,
+    .ritual-copy ol {
+      margin: 20px 0 0;
+      padding-left: 1.25em;
+    }
+
+    .ritual-copy li {
+      margin: 8px 0;
+      padding-left: .25em;
+    }
+
+    .ritual-copy li::marker {
+      color: var(--gold);
+    }
+
+    .ritual-copy blockquote {
+      margin: 25px 0 0;
+      padding: 6px 0 6px 23px;
+      border-left: 2px solid var(--gold);
+      color: #4f4642;
+      font-size: clamp(1.2rem, 2.2vw, 1.46rem);
+      font-style: italic;
+      line-height: 1.52;
+    }
+
+    .ritual-copy blockquote p + p {
+      margin-top: 8px;
+    }
+
+    .journal-fields {
+      max-width: 760px;
+      margin: 48px auto 0;
+      display: grid;
+      gap: 24px;
+    }
+
+    .journal-field label {
+      display: block;
+      color: var(--graphite);
+      font-family: var(--ritual);
+      font-size: 1.22rem;
+      font-style: italic;
+      line-height: 1.35;
+    }
+
+    .journal-field textarea {
+      width: 100%;
+      min-height: 112px;
+      margin-top: 10px;
+      padding: 14px 15px;
+      resize: vertical;
+      border: 0;
+      border-top: 1px solid var(--line-strong);
+      border-bottom: 1px solid var(--line);
+      border-radius: 0;
+      color: var(--graphite);
+      background:
+        repeating-linear-gradient(180deg, transparent 0 31px, rgba(28, 36, 42, .07) 31px 32px),
+        rgba(255, 252, 246, .28);
+      font-family: var(--ritual);
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+
+    .journal-field textarea::placeholder {
+      color: rgba(83, 96, 104, .58);
+    }
+
+    .saved-note {
+      min-height: 16px;
+      margin-top: 6px;
+      color: var(--signal);
+      font-family: var(--guidance);
+      font-size: .62rem;
+      letter-spacing: .06em;
+    }
+
+    .reader-footer {
+      position: relative;
+      z-index: 5;
+      padding: 0 clamp(17px, 3.5vw, 48px);
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 16px;
+      border-top: 1px solid var(--line);
+      background:
+        rgba(241, 239, 235, .94);
+      backdrop-filter: blur(15px);
+    }
+
+    .card-nav {
+      min-height: 44px;
+      padding: 0 19px;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      color: var(--graphite);
+      background: rgba(255, 255, 255, .3);
+      font-size: .82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+    }
+
+    .card-nav:hover:not(:disabled) {
+      border-color: var(--graphite);
+      background: rgba(255, 255, 255, .6);
+      transform: translateY(-1px);
+    }
+
+    .card-nav:disabled {
+      opacity: .3;
+      cursor: default;
+    }
+
+    .card-nav.back {
+      justify-self: start;
+    }
+
+    .card-nav.next {
+      justify-self: end;
+      border-color: var(--graphite);
+      color: var(--field-light);
+      background: var(--graphite);
+    }
+
+    .card-nav.next:hover:not(:disabled) {
+      background: #10181d;
+    }
+
+    .card-nav svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .reader-status {
+      color: var(--signal);
+      font-size: .63rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .toast {
+      position: fixed;
+      z-index: 20;
+      left: 50%;
+      bottom: 102px;
+      padding: 11px 17px;
+      border-radius: 999px;
+      color: var(--field-light);
+      background: var(--graphite);
+      font-size: .76rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 14px);
+      transition:
+        opacity .25s ease,
+        transform .25s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 720px) {
+      .ritual-reader {
+        grid-template-rows: 56px 22px minmax(0, 1fr) 66px;
+      }
+
+      .reader-header {
+        padding-inline: 13px;
+        gap: 11px;
+      }
+
+      .reader-title { font-size: .98rem; }
+
+      .reader-tool {
+        width: 34px;
+        padding: 0;
+        justify-content: center;
+      }
+
+      .reader-tool span,
+      .reader-tool + .reader-tool::before {
+        display: none;
+      }
+
+      .reader-tools {
+        gap: 5px;
+      }
+
+      .card-progress {
+        padding-inline: 16px;
+        gap: 5px;
+      }
+
+      .reader-scroll {
+        padding: 39px 13px 106px;
+      }
+
+      .card-deck {
+        width: 100%;
+      }
+
+      .ritual-card {
+        padding: 0 9px 34px;
+      }
+
+      .card-title {
+        max-width: 14ch;
+        font-size: clamp(2.35rem, 10.5vw, 3.15rem);
+      }
+
+      .ritual-copy {
+        font-size: 1.06rem;
+      }
+
+      .material-stage {
+        width: calc(100% - 18px);
+        min-height: 330px;
+        margin-top: 42px;
+      }
+
+      .material-sheet {
+        min-height: 310px;
+        padding: 24px 20px;
+      }
+
+      .material-stage.state-aside .vellum-paper {
+        transform: translate(58%, 8%) rotate(5deg);
+      }
+
+      .material-stage.state-lifted .vellum-paper,
+      .material-stage.manual-lift .vellum-paper {
+        transform: translate(-55%, -13%) rotate(-7deg) rotateY(-10deg);
+      }
+
+      .material-controls {
+        width: calc(100% - 18px);
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .reader-footer {
+        padding-inline: 13px;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .reader-status {
+        display: none;
+      }
+
+      .card-nav {
+        min-height: 42px;
+        padding-inline: 14px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .reader-kicker {
+        font-size: .55rem;
+      }
+
+      .reader-exit {
+        width: 38px;
+        height: 38px;
+      }
+
+      .card-nav {
+        font-size: .78rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="ritual-reader">
+    <header class="reader-header">
+      <button class="reader-exit" type="button" aria-label="Return to the Aquarius index">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M19 12H5m6 6-6-6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="reader-identity">
+        <p class="reader-kicker">Full Moon in Aquarius · Ritual 01</p>
+        <p class="reader-title">The Invisible Fabric</p>
+      </div>
+
+      <div class="reader-tools">
+        <button class="reader-tool" id="copyNotes" type="button" aria-label="Copy ritual notes">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M5 15V5a2 2 0 0 1 2-2h8" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          <span>Copy notes</span>
+        </button>
+        <button class="reader-tool" id="exportNotes" type="button" aria-label="Export ritual notes">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 4v11m0 0-4-4m4 4 4-4M5 19h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Export</span>
+        </button>
+      </div>
+    </header>
+
+    <nav class="card-progress" id="cardProgress" aria-label="Seven-card ritual sequence"></nav>
+
+    <section class="reader-scroll" id="readerScroll" aria-label="Current ritual card">
+      <div class="card-deck">
+        <article class="ritual-card" id="ritualCard" aria-live="polite">
+          <div class="card-content">
+            <p class="card-number" id="cardNumber">Card 01 of 07</p>
+            <h1 class="card-title" id="cardTitle">Enter the Room</h1>
+            <p class="card-threshold" id="cardThreshold">Choose one bounded situation where your direct experience and the accepted explanation do not fully agree.</p>
+            <div class="ritual-copy" id="cardCopy"></div>
+
+            <div class="material-stage state-aside" id="materialStage" role="group" aria-label="Opaque evidence paper and translucent vellum">
+              <div class="material-sheet evidence-paper">
+                <p class="material-label">Opaque sheet · direct evidence</p>
+                <div class="material-writing">
+                  <p>I saw…</p>
+                  <p>I heard…</p>
+                  <p>The response was…</p>
+                  <p>This happened…</p>
+                </div>
+              </div>
+              <div class="material-sheet vellum-paper">
+                <span class="sheet-pin" aria-hidden="true"></span>
+                <p class="material-label">Translucent sheet · supplied meaning</p>
+                <div class="material-writing">
+                  <p>I was told this meant…</p>
+                  <p>Everyone behaves as though…</p>
+                  <p>A loyal person is expected to say…</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="material-controls" id="materialControls">
+              <button class="material-toggle" id="materialToggle" type="button" aria-pressed="false">Lift consensus layer</button>
+              <p class="material-state" id="materialState">The translucent sheet is set aside.</p>
+            </div>
+
+            <div class="journal-fields" id="journalFields"></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer class="reader-footer">
+      <button class="card-nav back" id="previousCard" type="button">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M19 12H5m6 6-6-6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back
+      </button>
+      <p class="reader-status" id="readerStatus"></p>
+      <button class="card-nav next" id="nextCard" type="button">
+        <span>Continue</span>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <template id="card-1-copy">
+    <h2>Page identity</h2>
+    <p><strong>Movement:</strong> I — SEE</p>
+    <p><strong>Purpose:</strong> Separate direct observation from the meaning supplied by a group, institution, relationship, platform, or social atmosphere.</p>
+    <p><strong>Transformation:</strong> Confusion becomes self-possessed sight.</p>
+    <p><strong>Estimated time:</strong> 25–35 minutes</p>
+    <p><strong>Intensity:</strong> Moderate</p>
+    <p><strong>Result:</strong> A clear witness statement grounded in what the participant actually observed.</p>
+
+    <h2>Source foundation</h2>
+    <p>This ritual grows from the image of a crowd agreeing to admire what no one can see. The mechanism is not simple deception. It is the fear that naming one’s actual perception will lead to exclusion, humiliation, or loss of standing.</p>
+    <p>Aquarius supplies the collective field. Pluto intensifies the pressure within that field. The full moon supplies illumination. Leo supplies the heart-courage required to remain present to what one sees.</p>
+
+    <h2>Materials</h2>
+    <ul>
+      <li>One sheet of ordinary opaque paper</li>
+      <li>One sheet of tracing paper, translucent vellum, baking parchment, or another see-through writing surface</li>
+      <li>A dark pen</li>
+      <li>A lighter-colored pen or pencil</li>
+      <li>One small object to hold the translucent sheet in place</li>
+      <li>Optional: a window, lamp, or moonlit surface where both layers can be viewed together</li>
+    </ul>
+
+    <h2>Opening threshold</h2>
+    <p>Choose one current situation in which your direct experience and the accepted explanation do not fully agree.</p>
+    <p>Do not begin with the largest or most dangerous situation in your life. Choose something bounded enough to examine honestly: a conversation, group norm, workplace story, family assumption, online consensus, friendship dynamic, creative expectation, or decision being treated as inevitable.</p>
+    <p>Your task is to discover what you actually know before fear, interpretation, and consensus speak for you—not to prove that you are right.</p>
+
+    <hr>
+
+    <p>Place the opaque sheet in front of you. Set the translucent sheet aside.</p>
+    <p>Write the name of the situation at the top of the opaque page. Beneath it, complete:</p>
+    <blockquote>
+      <p><strong>The room I am examining is…</strong></p>
+    </blockquote>
+    <p>“The room” may be literal or symbolic. It might be a family, church, workplace, friendship, industry, platform, audience, institution, or private relationship with its own rules about what may be seen and said.</p>
+    <p>Then answer:</p>
+    <ul>
+      <li>Who is in this room?</li>
+      <li>What must a person understand in order to belong here?</li>
+      <li>What does everyone appear to agree about?</li>
+    </ul>
+    <p>Keep this first description neutral. You are identifying the field, not issuing a verdict.</p>
+  </template>
+
+  <template id="card-1-fields">
+    <div class="journal-field">
+      <label for="room">The room I am examining is…</label>
+      <textarea id="room" name="room"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+  </template>
+
+  <template id="card-2-copy">
+    <p>On the opaque sheet, record only what you directly observed. Use short statements. Begin each one with:</p>
+    <ul>
+      <li>I saw…</li>
+      <li>I heard…</li>
+      <li>I was told…</li>
+      <li>I asked…</li>
+      <li>The response was…</li>
+      <li>This happened…</li>
+      <li>This did not happen…</li>
+    </ul>
+    <p>Do not write “they wanted,” “she felt,” “he was trying,” or “everyone knew.” Those may become relevant later, but they are interpretations—not direct observations.</p>
+    <p>When you finish, underline any statement that another present person could independently verify.</p>
+    <p>Circle any statement that only you may have witnessed or experienced.</p>
+    <p>This page is not the whole truth. It is the stable layer: what happened before meaning was assigned to it.</p>
+  </template>
+
+  <template id="card-2-fields">
+    <div class="journal-field">
+      <label for="evidence">On the opaque sheet, record only what you directly observed.</label>
+      <textarea id="evidence" name="evidence"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+  </template>
+
+  <template id="card-3-copy">
+    <p>Place the translucent sheet over the evidence page.</p>
+    <p>On the translucent layer, write the explanations, judgments, and social meanings that have been placed over what happened.</p>
+    <ul>
+      <li>I was told this meant…</li>
+      <li>Everyone behaves as though…</li>
+      <li>The acceptable interpretation is…</li>
+      <li>A good or loyal person is expected to say…</li>
+      <li>If I disagree, it will be taken as proof that I am…</li>
+      <li>The version of me this room prefers is…</li>
+    </ul>
+    <p>Write each statement over the evidence it claims to explain.</p>
+    <p>Let the layers become visually crowded. Notice how quickly direct observation can disappear beneath explanation—even when the explanation is written on something transparent.</p>
+    <p>This upper sheet is <strong>the invisible fabric</strong>: not necessarily a deliberate lie, but a shared interpretation made powerful by repetition and the social cost of questioning it.</p>
+  </template>
+
+  <template id="card-3-fields">
+    <div class="journal-field">
+      <label for="told-meant">I was told this meant…</label>
+      <textarea id="told-meant" name="told-meant"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+    <div class="journal-field">
+      <label for="behaves-as-though">Everyone behaves as though…</label>
+      <textarea id="behaves-as-though" name="behaves-as-though"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+    <div class="journal-field">
+      <label for="acceptable-interpretation">The acceptable interpretation is…</label>
+      <textarea id="acceptable-interpretation" name="acceptable-interpretation"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+    <div class="journal-field">
+      <label for="loyal-person">A good or loyal person is expected to say…</label>
+      <textarea id="loyal-person" name="loyal-person"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+    <div class="journal-field">
+      <label for="if-disagree">If I disagree, it will be taken as proof that I am…</label>
+      <textarea id="if-disagree" name="if-disagree"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+    <div class="journal-field">
+      <label for="preferred-version">The version of me this room prefers is…</label>
+      <textarea id="preferred-version" name="preferred-version"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+  </template>
+
+  <template id="card-4-copy">
+    <p>Along the outer edge of the translucent page, complete:</p>
+    <blockquote>
+      <p><strong>If I say that I do not see what the room says is there, I fear I will be called…</strong></p>
+    </blockquote>
+    <p>Then:</p>
+    <blockquote>
+      <p><strong>I fear I could lose…</strong></p>
+    </blockquote>
+    <p>Be specific. Possible costs include:</p>
+    <ul>
+      <li>belonging,</li>
+      <li>approval,</li>
+      <li>access,</li>
+      <li>status,</li>
+      <li>safety,</li>
+      <li>opportunity,</li>
+      <li>affection,</li>
+      <li>spiritual legitimacy,</li>
+      <li>professional credibility,</li>
+      <li>the identity of being “good,” “easy,” “smart,” “grateful,” or “reasonable.”</li>
+    </ul>
+    <p>Now ask:</p>
+    <blockquote>
+      <p><strong>Is the apparent agreement in this room based on shared perception—or on a shared fear of the cost of dissent?</strong></p>
+    </blockquote>
+    <p>You do not need a final answer. Name the possibility honestly.</p>
+  </template>
+
+  <template id="card-4-fields">
+    <div class="journal-field">
+      <label for="called">If I say that I do not see what the room says is there, I fear I will be called…</label>
+      <textarea id="called" name="called"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+    <div class="journal-field">
+      <label for="lose">I fear I could lose…</label>
+      <textarea id="lose" name="lose"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+  </template>
+
+  <template id="card-5-copy">
+    <p>Keep both pages layered. Read the translucent statements aloud first, then read the evidence statements beneath them.</p>
+    <p>Notice the difference between the body’s response to <strong>what happened</strong> and its response to <strong>what you are required to call it</strong>:</p>
+    <ul>
+      <li>Does your breath become shallow or full?</li>
+      <li>Does your body brace, go numb, become agitated, or relax?</li>
+      <li>Do you feel pressure to explain yourself before anyone has challenged you?</li>
+      <li>Do you become less certain of facts you recorded only minutes ago?</li>
+    </ul>
+    <p>The body is not an infallible judge; it can carry old fear. It is nevertheless part of the evidence when the accepted story requires you to become absent from yourself.</p>
+    <p>Complete:</p>
+    <blockquote>
+      <p><strong>When I repeat the room’s version, I feel…</strong></p>
+    </blockquote>
+    <blockquote>
+      <p><strong>When I name only what I observed, I feel…</strong></p>
+    </blockquote>
+    <p>Now remove the small object and slowly lift the translucent sheet away. Do not destroy it. The collective interpretation still exists, but it returns to its proper place: one layer of meaning rather than the substance of reality.</p>
+    <p>Set it beside the evidence page. Read only what remains.</p>
+    <p>Then say:</p>
+    <blockquote>
+      <p><strong>This is what I can presently verify.</strong></p>
+      <p><strong>Everything beyond it must be examined, not obeyed.</strong></p>
+    </blockquote>
+    <p>Remain with the uncovered page for several breaths.</p>
+  </template>
+
+  <template id="card-5-fields">
+    <div class="journal-field">
+      <label for="room-version">When I repeat the room’s version, I feel…</label>
+      <textarea id="room-version" name="room-version"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+    <div class="journal-field">
+      <label for="observed-version">When I name only what I observed, I feel…</label>
+      <textarea id="observed-version" name="observed-version"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+  </template>
+
+  <template id="card-6-copy">
+    <p>On the bottom of the evidence page, write one sentence beginning:</p>
+    <blockquote>
+      <p><strong>What is actually there is…</strong></p>
+    </blockquote>
+    <p>The sentence must be:</p>
+    <ul>
+      <li>specific,</li>
+      <li>observable,</li>
+      <li>free of exaggeration,</li>
+      <li>free of apology,</li>
+      <li>free of diagnosis,</li>
+      <li>understandable without the entire backstory.</li>
+    </ul>
+    <p>Examples of form—not content:</p>
+    <ul>
+      <li>“What is actually there is a promise that has been postponed three times without a new date.”</li>
+      <li>“What is actually there is a rule that is enforced against some people and waived for others.”</li>
+      <li>“What is actually there is praise for the persona and silence toward the work I most care about.”</li>
+    </ul>
+    <p>Read your sentence aloud once. If it becomes vague, return to the evidence page and revise it.</p>
+    <p>This is not yet a confrontation, announcement, or decision. It is a recovered act of perception.</p>
+  </template>
+
+  <template id="card-6-fields">
+    <div class="journal-field">
+      <label for="witness">What is actually there is…</label>
+      <textarea id="witness" name="witness"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+  </template>
+
+  <template id="card-7-copy">
+    <p>Fold the translucent page once and place it behind the evidence page. The collective interpretation remains part of the record, but it no longer covers what happened.</p>
+    <p>For the next lunar cycle, use this three-part check whenever a situation begins to feel confusing:</p>
+    <ol>
+      <li>What did I directly observe?</li>
+      <li>What was I told it meant?</li>
+      <li>What do I know only because I fear the cost of questioning it?</li>
+    </ol>
+    <p>Keep the witness statement somewhere private and accessible.</p>
+
+    <h2>Closing declaration</h2>
+    <blockquote>
+      <p>I can examine what I see without borrowing the crowd’s eyes.</p>
+      <p>I do not need consensus in order to notice.</p>
+      <p>I will distinguish evidence from interpretation.</p>
+      <p>I will not call absence substance merely because belonging asks me to.</p>
+    </blockquote>
+
+    <h2>Material-world integration</h2>
+    <p>Within seventy-two hours, revisit the situation once. Add only new direct observations to the opaque page. Do not add theories. This turns the ritual into a living record rather than a single emotional conclusion.</p>
+  </template>
+
+  <template id="card-7-fields"></template>
+
+  <script>
+    (() => {
+      const cards = [
+        {
+          title: "Enter the Room",
+          threshold: "Your task is to discover what you actually know before fear, interpretation, and consensus speak for you—not to prove that you are right."
+        },
+        {
+          title: "The Evidence Beneath",
+          threshold: "This page is not the whole truth. It is the stable layer: what happened before meaning was assigned to it."
+        },
+        {
+          title: "Construct the Fabric",
+          threshold: "This upper sheet is the invisible fabric: not necessarily a deliberate lie, but a shared interpretation made powerful by repetition and the social cost of questioning it."
+        },
+        {
+          title: "The Price of Not Seeing It",
+          threshold: "You do not need a final answer. Name the possibility honestly."
+        },
+        {
+          title: "Lift the Fabric",
+          threshold: "The collective interpretation still exists, but it returns to its proper place: one layer of meaning rather than the substance of reality."
+        },
+        {
+          title: "The Witness Statement",
+          threshold: "This is not yet a confrontation, announcement, or decision. It is a recovered act of perception."
+        },
+        {
+          title: "Keep Your Own Eyes",
+          threshold: "The collective interpretation remains part of the record, but it no longer covers what happened."
+        }
+      ];
+
+      const materialStates = ["aside", "aside", "aligned", "aligned", "lifted", "evidence", "folded"];
+      const materialMessages = [
+        "Set the translucent sheet aside.",
+        "This page is the stable layer: what happened before meaning was assigned to it.",
+        "Let the layers become visually crowded.",
+        "Along the outer edge of the translucent page, complete the statements.",
+        "Set it beside the evidence page. Read only what remains.",
+        "What is actually there is…",
+        "The collective interpretation remains part of the record, but it no longer covers what happened."
+      ];
+
+      const card = document.getElementById("ritualCard");
+      const cardNumber = document.getElementById("cardNumber");
+      const cardTitle = document.getElementById("cardTitle");
+      const cardThreshold = document.getElementById("cardThreshold");
+      const cardCopy = document.getElementById("cardCopy");
+      const journalFields = document.getElementById("journalFields");
+      const materialStage = document.getElementById("materialStage");
+      const materialToggle = document.getElementById("materialToggle");
+      const materialState = document.getElementById("materialState");
+      const progress = document.getElementById("cardProgress");
+      const previous = document.getElementById("previousCard");
+      const next = document.getElementById("nextCard");
+      const status = document.getElementById("readerStatus");
+      const scroll = document.getElementById("readerScroll");
+      const toast = document.getElementById("toast");
+      const notes = {};
+      let current = 0;
+      let toastTimer;
+
+      const storage = {
+        get(key) {
+          try {
+            return window.localStorage.getItem(key) || "";
+          } catch (_) {
+            return notes[key] || "";
+          }
+        },
+        set(key, value) {
+          notes[key] = value;
+          try {
+            window.localStorage.setItem(key, value);
+          } catch (_) {}
+        }
+      };
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove("show"), 1800);
+      }
+
+      function bindFields() {
+        journalFields.querySelectorAll("textarea").forEach((field) => {
+          const key = `aquarius-r1-${field.name}`;
+          field.value = storage.get(key);
+          field.addEventListener("input", () => {
+            storage.set(key, field.value);
+            const saved = field.parentElement.querySelector(".saved-note");
+            saved.textContent = "Saved privately in this browser";
+          });
+        });
+      }
+
+      function render(direction = "forward") {
+        const item = cards[current];
+        const copyTemplate = document.getElementById(`card-${current + 1}-copy`);
+        const fieldTemplate = document.getElementById(`card-${current + 1}-fields`);
+
+        cardNumber.textContent = `Card ${String(current + 1).padStart(2, "0")} of 07`;
+        cardTitle.textContent = item.title;
+        cardThreshold.textContent = item.threshold;
+        cardCopy.replaceChildren(copyTemplate.content.cloneNode(true));
+        journalFields.replaceChildren(fieldTemplate.content.cloneNode(true));
+        materialStage.className = `material-stage state-${materialStates[current]}`;
+        materialToggle.setAttribute("aria-pressed", "false");
+        materialToggle.textContent = "Lift consensus layer";
+        materialState.textContent = materialMessages[current];
+        status.textContent = `Card ${String(current + 1).padStart(2, "0")} of 07`;
+        previous.disabled = current === 0;
+        next.querySelector("span").textContent = current === cards.length - 1 ? "Complete ritual" : "Continue";
+
+        progress.querySelectorAll(".progress-step").forEach((step, index) => {
+          step.classList.toggle("complete", index < current);
+          step.classList.toggle("current", index === current);
+          if (index === current) step.setAttribute("aria-current", "step");
+          else step.removeAttribute("aria-current");
+        });
+
+        card.classList.remove("enter-forward", "enter-back");
+        void card.offsetWidth;
+        card.classList.add(direction === "back" ? "enter-back" : "enter-forward");
+        scroll.scrollTo({ top: 0, behavior: "smooth" });
+        bindFields();
+      }
+
+      progress.innerHTML = cards.map((item, index) =>
+        `<button class="progress-step" type="button" data-card="${index}" aria-label="Go to card ${index + 1}: ${item.title}"></button>`
+      ).join("");
+
+      progress.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-card]");
+        if (!button) return;
+        const target = Number(button.dataset.card);
+        const direction = target < current ? "back" : "forward";
+        current = target;
+        render(direction);
+      });
+
+      previous.addEventListener("click", () => {
+        if (current === 0) return;
+        current -= 1;
+        render("back");
+      });
+
+      next.addEventListener("click", () => {
+        if (current === cards.length - 1) {
+          showToast("Ritual complete");
+          return;
+        }
+        current += 1;
+        render("forward");
+      });
+
+      materialToggle.addEventListener("click", () => {
+        const lifted = materialStage.classList.toggle("manual-lift");
+        materialToggle.setAttribute("aria-pressed", String(lifted));
+        materialToggle.textContent = lifted ? "Replace consensus layer" : "Lift consensus layer";
+        materialState.textContent = lifted
+          ? "Set it beside the evidence page. Read only what remains."
+          : materialMessages[current];
+      });
+
+      function collectedNotes() {
+        const lines = ["THE INVISIBLE FABRIC", "Full Moon in Aquarius · Ritual 01", ""];
+        cards.forEach((item, index) => {
+          const fieldTemplate = document.getElementById(`card-${index + 1}-fields`);
+          const fields = fieldTemplate.content.querySelectorAll("textarea");
+          const values = [];
+          fields.forEach((field) => {
+            const value = storage.get(`aquarius-r1-${field.name}`).trim();
+            if (value) values.push(`${field.previousElementSibling.textContent}\n${value}`);
+          });
+          if (values.length) lines.push(`CARD ${String(index + 1).padStart(2, "0")} · ${item.title.toUpperCase()}`, ...values, "");
+        });
+        return lines.join("\n");
+      }
+
+      document.getElementById("copyNotes").addEventListener("click", async () => {
+        const text = collectedNotes();
+        try {
+          await navigator.clipboard.writeText(text);
+          showToast("Notes copied");
+        } catch (_) {
+          showToast("Copy is unavailable in this browser");
+        }
+      });
+
+      document.getElementById("exportNotes").addEventListener("click", () => {
+        const blob = new Blob([collectedNotes()], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "aquarius-the-invisible-fabric-notes.txt";
+        link.click();
+        URL.revokeObjectURL(url);
+        showToast("Notes exported");
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>

@@ -708,6 +708,7 @@ button:focus-visible,a:focus-visible{
   isolation:isolate;
   transition:border-color .22s ease,transform .22s ease,box-shadow .32s ease;
 }
+.ritual-card[href]{text-decoration:none}
 .ritual-card::before{
   content:"";
   position:absolute;
@@ -1239,7 +1240,7 @@ button:focus-visible,a:focus-visible{
           <p>Exterior pressure gives way to subterranean truth, then returns as chosen value.</p>
         </div>
         <div class="ritual-grid">
-          <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="The Invisible Fabric">
+          <a class="ritual-card reveal" href="rituals/01-invisible-fabric.html" data-card-name="The Invisible Fabric">
             <span class="card-topline"><span class="card-number">Ritual 01</span></span>
             <span class="card-copy">
               <span class="card-title">The Invisible Fabric</span>
@@ -1247,7 +1248,7 @@ button:focus-visible,a:focus-visible{
               <span class="card-purpose">Separate direct perception from consensus interpretation and produce one clear witness statement.</span>
               <span class="card-meta"><span>25–35 minutes</span><span>Moderate</span><span>7 cards</span></span>
             </span>
-          </button>
+          </a>
           <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="The Pluto Mirror">
             <span class="card-topline"><span class="card-number">Ritual 02</span></span>
             <span class="card-copy">
@@ -1533,14 +1534,14 @@ button:focus-visible,a:focus-visible{
 
     cards.forEach(item => {
       item.classList.remove("is-charged", "is-settled");
-      item.setAttribute("aria-pressed", "false");
+      if (item.hasAttribute("aria-pressed")) item.setAttribute("aria-pressed", "false");
       item.querySelectorAll(".card-energy-canvas").forEach(canvas => canvas.remove());
     });
 
     card.style.setProperty("--mx", `${x}px`);
     card.style.setProperty("--my", `${y}px`);
     card.classList.add("is-charged");
-    card.setAttribute("aria-pressed", "true");
+    if (card.hasAttribute("aria-pressed")) card.setAttribute("aria-pressed", "true");
     pageShell.classList.remove("is-awake");
     void pageShell.offsetWidth;
     pageShell.classList.add("is-awake");
