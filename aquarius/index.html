@@ -589,7 +589,9 @@ button:focus-visible,a:focus-visible{
 .journey-step{
   position:relative;
   padding:0 1rem;
+  color:inherit;
   text-align:center;
+  text-decoration:none;
 }
 .journey-node{
   position:relative;
@@ -606,11 +608,17 @@ button:focus-visible,a:focus-visible{
   font-family:var(--display);
   font-size:1.35rem;
   box-shadow:0 0 24px rgba(215,228,235,.06);
+  transition:border-color .22s ease,color .22s ease,box-shadow .22s ease;
 }
 .journey-step:last-child .journey-node{
   border-color:rgba(233,171,71,.48);
   color:var(--solar);
   box-shadow:0 0 26px rgba(233,171,71,.1);
+}
+.journey-step:hover .journey-node,.journey-step:focus-visible .journey-node{
+  border-color:var(--gold);
+  color:var(--solar);
+  box-shadow:0 0 24px rgba(233,171,71,.2);
 }
 .journey-step h3{
   margin:0;
@@ -750,11 +758,6 @@ button:focus-visible,a:focus-visible{
   border-color:rgba(233,171,71,.62);
   box-shadow:inset 0 0 34px rgba(233,171,71,.08),0 0 22px rgba(233,171,71,.11),0 20px 46px rgba(0,0,0,.34);
 }
-.ritual-card.is-settled .card-sigil{
-  border-color:rgba(233,171,71,.55);
-  color:var(--gold);
-  box-shadow:0 0 14px rgba(233,171,71,.12);
-}
 .card-energy-canvas{
   position:absolute;
   z-index:1;
@@ -780,20 +783,6 @@ button:focus-visible,a:focus-visible{
   font-weight:500;
   letter-spacing:.19em;
   text-transform:uppercase;
-}
-.card-sigil{
-  position:relative;
-  width:35px;
-  height:35px;
-  flex:0 0 35px;
-  display:grid;
-  place-items:center;
-  border:1px solid rgba(158,168,177,.28);
-  border-radius:50%;
-  color:var(--silver);
-  font-family:var(--display);
-  font-size:1.05rem;
-  transition:border-color .28s ease,color .28s ease,box-shadow .28s ease;
 }
 .card-copy{
   position:relative;
@@ -1205,31 +1194,31 @@ button:focus-visible,a:focus-visible{
         <p class="section-lede">Each ritual is complete in itself. Follow the sequence across a lunar cycle, enter one movement at a time, or begin with the ritual whose work is already alive.</p>
       </div>
       <div class="journey-map reveal">
-        <article class="journey-step">
+        <a class="journey-step" href="#see">
           <span class="journey-node">I</span>
           <h3>See</h3>
           <p>Recover perception.</p>
-        </article>
-        <article class="journey-step">
+        </a>
+        <a class="journey-step" href="#separate">
           <span class="journey-node">II</span>
           <h3>Separate</h3>
           <p>Reclaim authority, allegiance, and expression.</p>
-        </article>
-        <article class="journey-step">
+        </a>
+        <a class="journey-step" href="#find">
           <span class="journey-node">III</span>
           <h3>Find</h3>
           <p>Become recognizable to openings and living relationship.</p>
-        </article>
-        <article class="journey-step">
+        </a>
+        <a class="journey-step" href="#transmit">
           <span class="journey-node">IV</span>
           <h3>Transmit</h3>
           <p>Give truth a language, a channel, and a consequence.</p>
-        </article>
-        <article class="journey-step">
+        </a>
+        <a class="journey-step" href="#thirteenth">
           <span class="journey-node">XIII</span>
           <h3>The Thirteenth</h3>
           <p>Create before consequence becomes the condition of worth.</p>
-        </article>
+        </a>
       </div>
     </section>
 
@@ -1251,7 +1240,7 @@ button:focus-visible,a:focus-visible{
         </div>
         <div class="ritual-grid">
           <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="The Invisible Fabric">
-            <span class="card-topline"><span class="card-number">Ritual 01</span><span class="card-sigil" aria-hidden="true">Ⅰ</span></span>
+            <span class="card-topline"><span class="card-number">Ritual 01</span></span>
             <span class="card-copy">
               <span class="card-title">The Invisible Fabric</span>
               <span class="card-transformation">Confusion becomes self-possessed sight.</span>
@@ -1260,7 +1249,7 @@ button:focus-visible,a:focus-visible{
             </span>
           </button>
           <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="The Pluto Mirror">
-            <span class="card-topline"><span class="card-number">Ritual 02</span><span class="card-sigil" aria-hidden="true">Ⅱ</span></span>
+            <span class="card-topline"><span class="card-number">Ritual 02</span></span>
             <span class="card-copy">
               <span class="card-title">The Pluto Mirror</span>
               <span class="card-transformation">Unnamed pressure becomes conscious knowledge.</span>
@@ -1269,7 +1258,7 @@ button:focus-visible,a:focus-visible{
             </span>
           </button>
           <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="Real Gold / Invisible Gold">
-            <span class="card-topline"><span class="card-number">Ritual 03</span><span class="card-sigil" aria-hidden="true">Ⅲ</span></span>
+            <span class="card-topline"><span class="card-number">Ritual 03</span></span>
             <span class="card-copy">
               <span class="card-title">Real Gold / Invisible Gold</span>
               <span class="card-transformation">Assigned value becomes chosen value.</span>
@@ -1289,7 +1278,7 @@ button:focus-visible,a:focus-visible{
         </div>
         <div class="ritual-grid">
           <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="Where I Handed Over the Keys">
-            <span class="card-topline"><span class="card-number">Ritual 04</span><span class="card-sigil" aria-hidden="true">Ⅳ</span></span>
+            <span class="card-topline"><span class="card-number">Ritual 04</span></span>
             <span class="card-copy">
               <span class="card-title">Where I Handed Over the Keys</span>
               <span class="card-transformation">Compliance becomes reclaimed agency.</span>
@@ -1298,7 +1287,7 @@ button:focus-visible,a:focus-visible{
             </span>
           </button>
           <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="Cut the False Thread">
-            <span class="card-topline"><span class="card-number">Ritual 05</span><span class="card-sigil" aria-hidden="true">Ⅴ</span></span>
+            <span class="card-topline"><span class="card-number">Ritual 05</span></span>
             <span class="card-copy">
               <span class="card-title">Cut the False Thread</span>
               <span class="card-transformation">Entanglement becomes chosen relationship.</span>
@@ -1307,7 +1296,7 @@ button:focus-visible,a:focus-visible{
             </span>
           </button>
           <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="Take Off the Costume">
-            <span class="card-topline"><span class="card-number">Ritual 06</span><span class="card-sigil" aria-hidden="true">Ⅵ</span></span>
+            <span class="card-topline"><span class="card-number">Ritual 06</span></span>
             <span class="card-copy">
               <span class="card-title">Take Off the Costume</span>
               <span class="card-transformation">Performance becomes authentic desire.</span>
@@ -1327,7 +1316,7 @@ button:focus-visible,a:focus-visible{
         </div>
         <div class="ritual-grid">
           <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="Send the True Signal">
-            <span class="card-topline"><span class="card-number">Ritual 07</span><span class="card-sigil" aria-hidden="true">Ⅶ</span></span>
+            <span class="card-topline"><span class="card-number">Ritual 07</span></span>
             <span class="card-copy">
               <span class="card-title">Send the True Signal</span>
               <span class="card-transformation">Private identity becomes coherent signal.</span>
@@ -1336,7 +1325,7 @@ button:focus-visible,a:focus-visible{
             </span>
           </button>
           <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="The Synchronicity Ledger">
-            <span class="card-topline"><span class="card-number">Ritual 08</span><span class="card-sigil" aria-hidden="true">Ⅷ</span></span>
+            <span class="card-topline"><span class="card-number">Ritual 08</span></span>
             <span class="card-copy">
               <span class="card-title">The Synchronicity Ledger</span>
               <span class="card-transformation">Coincidence becomes conscious participation.</span>
@@ -1345,7 +1334,7 @@ button:focus-visible,a:focus-visible{
             </span>
           </button>
           <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="The Living Constellation">
-            <span class="card-topline"><span class="card-number">Ritual 09</span><span class="card-sigil" aria-hidden="true">Ⅸ</span></span>
+            <span class="card-topline"><span class="card-number">Ritual 09</span></span>
             <span class="card-copy">
               <span class="card-title">The Living Constellation</span>
               <span class="card-transformation">The crowd becomes a living network.</span>
@@ -1365,7 +1354,7 @@ button:focus-visible,a:focus-visible{
         </div>
         <div class="ritual-grid">
           <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="The Sentence I’m Not Saying">
-            <span class="card-topline"><span class="card-number">Ritual 10</span><span class="card-sigil" aria-hidden="true">Ⅹ</span></span>
+            <span class="card-topline"><span class="card-number">Ritual 10</span></span>
             <span class="card-copy">
               <span class="card-title">The Sentence I’m Not Saying</span>
               <span class="card-transformation">Withholding becomes courageous speech.</span>
@@ -1374,7 +1363,7 @@ button:focus-visible,a:focus-visible{
             </span>
           </button>
           <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="The Conscious Signal">
-            <span class="card-topline"><span class="card-number">Ritual 11</span><span class="card-sigil" aria-hidden="true">Ⅺ</span></span>
+            <span class="card-topline"><span class="card-number">Ritual 11</span></span>
             <span class="card-copy">
               <span class="card-title">The Conscious Signal</span>
               <span class="card-transformation">Unconscious influence becomes deliberate use.</span>
@@ -1383,7 +1372,7 @@ button:focus-visible,a:focus-visible{
             </span>
           </button>
           <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="The Signal Sent">
-            <span class="card-topline"><span class="card-number">Ritual 12</span><span class="card-sigil" aria-hidden="true">Ⅻ</span></span>
+            <span class="card-topline"><span class="card-number">Ritual 12</span></span>
             <span class="card-copy">
               <span class="card-title">The Signal Sent</span>
               <span class="card-transformation">Intention becomes collective consequence.</span>
@@ -1405,7 +1394,7 @@ button:focus-visible,a:focus-visible{
           <p>The twelve complete the Aquarian journey through collective life. The Thirteenth breaks its logic. It protects creation before the network assigns a function to what has been made.</p>
         </div>
         <button class="ritual-card reveal" type="button" aria-pressed="false" data-card-name="The Child in the Square">
-          <span class="card-topline"><span class="card-number">Ritual 13</span><span class="card-sigil" aria-hidden="true">ⅩⅢ</span></span>
+          <span class="card-topline"><span class="card-number">Ritual 13</span></span>
           <span class="card-copy">
             <span class="card-title">The Child in the Square</span>
             <span class="card-transformation">The self becomes an uncalculated source of life.</span>
