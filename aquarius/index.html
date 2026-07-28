@@ -573,7 +573,7 @@ button:focus-visible,a:focus-visible{
 .journey-map{
   position:relative;
   display:grid;
-  grid-template-columns:repeat(5,minmax(0,1fr));
+  grid-template-columns:repeat(6,minmax(0,1fr));
   margin-top:clamp(3rem,6vw,5rem);
 }
 .journey-map::before{
@@ -738,9 +738,9 @@ button:focus-visible,a:focus-visible{
   transform:translate(-50%,-50%) scale(.2);
 }
 .ritual-card:hover,.ritual-card:focus-visible{
-  border-color:rgba(215,228,235,.43);
+  border-color:rgba(233,171,71,.62);
   transform:translateY(-3px);
-  box-shadow:inset 0 1px rgba(255,255,255,.04),0 22px 50px rgba(0,0,0,.34),0 0 24px rgba(215,228,235,.05);
+  box-shadow:inset 0 0 34px rgba(233,171,71,.08),0 0 22px rgba(233,171,71,.11),0 20px 46px rgba(0,0,0,.34);
 }
 .ritual-card:hover::before,.ritual-card:focus-visible::before,.ritual-card.is-settled::before{opacity:1}
 .ritual-card.is-charged{
@@ -1120,7 +1120,7 @@ button:focus-visible,a:focus-visible{
       <a href="#axis">Two Lights</a>
       <a href="#journey">The Journey</a>
       <a href="#rituals">All Rituals</a>
-      <a href="#thirteenth">The Thirteenth</a>
+      <a href="#thirteenth">Movement VI</a>
     </nav>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation">
       <span></span><span></span><span></span>
@@ -1133,7 +1133,7 @@ button:focus-visible,a:focus-visible{
     <a href="#axis">Two Lights</a>
     <a href="#journey">The Journey</a>
     <a href="#rituals">All Rituals</a>
-    <a href="#thirteenth">The Thirteenth</a>
+    <a href="#thirteenth">Movement VI</a>
     <a href="../index.html">Atlas Archive</a>
   </nav>
 </div>
@@ -1191,34 +1191,39 @@ button:focus-visible,a:focus-visible{
     <section class="section" id="journey" aria-labelledby="journey-title">
       <div class="reveal">
         <span class="section-kicker">The ritual arc</span>
-        <h2 id="journey-title">Thirteen rituals. Five thresholds.</h2>
+        <h2 id="journey-title">Thirteen rituals. Six movements.</h2>
         <p class="section-lede">Each ritual is complete in itself. Follow the sequence across a lunar cycle, enter one movement at a time, or begin with the ritual whose work is already alive.</p>
       </div>
       <div class="journey-map reveal">
         <a class="journey-step" href="#see">
           <span class="journey-node">I</span>
-          <h3>See</h3>
-          <p>Recover perception.</p>
+          <h3>The Borrowed Reality Cracks</h3>
+          <p>A story that once made life coherent begins to fail.</p>
         </a>
         <a class="journey-step" href="#separate">
           <span class="journey-node">II</span>
-          <h3>Separate</h3>
-          <p>Reclaim authority, allegiance, and expression.</p>
+          <h3>The Old Self Is Allowed to Die</h3>
+          <p>This is the lowest point of the journey. Do not hurry through it.</p>
         </a>
         <a class="journey-step" href="#find">
           <span class="journey-node">III</span>
-          <h3>Find</h3>
-          <p>Become recognizable to openings and living relationship.</p>
+          <h3>Real Desire Returns</h3>
+          <p>First, notice what survived. Then let the body feel it.</p>
+        </a>
+        <a class="journey-step" href="#facing-future">
+          <span class="journey-node">IV</span>
+          <h3>Facing the Future</h3>
+          <p>The future is not confirmed by applause.</p>
         </a>
         <a class="journey-step" href="#transmit">
-          <span class="journey-node">IV</span>
-          <h3>Transmit</h3>
-          <p>Give truth a language, a channel, and a consequence.</p>
+          <span class="journey-node">V</span>
+          <h3>The Channel Is Reclaimed</h3>
+          <p>Expression now leaves the private chamber.</p>
         </a>
         <a class="journey-step" href="#thirteenth">
-          <span class="journey-node">XIII</span>
-          <h3>The Thirteenth</h3>
-          <p>Create before consequence becomes the condition of worth.</p>
+          <span class="journey-node">VI</span>
+          <h3>Joy Survives Beyond Usefulness</h3>
+          <p>Now one act is allowed to owe nothing.</p>
         </a>
       </div>
     </section>
@@ -1236,8 +1241,8 @@ button:focus-visible,a:focus-visible{
         <span class="movement-node" aria-hidden="true"></span>
         <div class="movement-head reveal">
           <span class="movement-id">I</span>
-          <h3 class="movement-title" id="see-title">See</h3>
-          <p>Exterior pressure gives way to subterranean truth, then returns as chosen value.</p>
+          <h3 class="movement-title" id="see-title">The Borrowed Reality Cracks</h3>
+          <p>A story that once made life coherent begins to fail.</p>
         </div>
         <div class="ritual-grid">
           <a class="ritual-card reveal" href="rituals/01-invisible-fabric.html" data-card-name="The Story No Longer Holds">
@@ -1274,8 +1279,8 @@ button:focus-visible,a:focus-visible{
         <span class="movement-node" aria-hidden="true"></span>
         <div class="movement-head reveal">
           <span class="movement-id">II</span>
-          <h3 class="movement-title" id="separate-title">Separate</h3>
-          <p>Surrendered authority, false allegiance, and performed identity are returned to conscious choice.</p>
+          <h3 class="movement-title" id="separate-title">The Old Self Is Allowed to Die</h3>
+          <p>This is the lowest point of the journey. Do not hurry through it.</p>
         </div>
         <div class="ritual-grid">
           <a class="ritual-card reveal" href="rituals/04-handed-over-the-keys.html" data-card-name="Let the Old Self Die">
@@ -1312,8 +1317,8 @@ button:focus-visible,a:focus-visible{
         <span class="movement-node" aria-hidden="true"></span>
         <div class="movement-head reveal">
           <span class="movement-id">III</span>
-          <h3 class="movement-title" id="find-title">Find</h3>
-          <p>The field reopens. Signal, meaningful crossing, and living relationship become possible again.</p>
+          <h3 class="movement-title" id="find-title">Real Desire Returns</h3>
+          <p>First, notice what survived. Then let the body feel it.</p>
         </div>
         <div class="ritual-grid">
           <a class="ritual-card reveal" href="rituals/07-send-the-true-signal.html" data-card-name="Send the True Signal">
@@ -1334,6 +1339,17 @@ button:focus-visible,a:focus-visible{
               <span class="card-meta"><span>35–45 minutes</span><span>Gentle–moderate</span><span>7 cards</span></span>
             </span>
           </a>
+        </div>
+      </section>
+
+      <section class="movement" id="facing-future" aria-labelledby="facing-future-title">
+        <span class="movement-node" aria-hidden="true"></span>
+        <div class="movement-head reveal">
+          <span class="movement-id">IV</span>
+          <h3 class="movement-title" id="facing-future-title">Facing the Future</h3>
+          <p>The future is not confirmed by applause.</p>
+        </div>
+        <div class="ritual-grid">
           <a class="ritual-card reveal" href="rituals/09-the-living-constellation.html" data-card-name="The Living Constellation">
             <span class="card-topline"><span class="card-number">Ritual 09</span></span>
             <span class="card-copy">
@@ -1343,17 +1359,6 @@ button:focus-visible,a:focus-visible{
               <span class="card-meta"><span>40–50 minutes</span><span>Relational</span><span>8 cards</span></span>
             </span>
           </a>
-        </div>
-      </section>
-
-      <section class="movement" id="transmit" aria-labelledby="transmit-title">
-        <span class="movement-node" aria-hidden="true"></span>
-        <div class="movement-head reveal">
-          <span class="movement-id">IV</span>
-          <h3 class="movement-title" id="transmit-title">Transmit</h3>
-          <p>Recognition becomes exact speech, conscious media practice, and material contribution.</p>
-        </div>
-        <div class="ritual-grid">
           <a class="ritual-card reveal" href="rituals/10-the-sentence-im-not-saying.html" data-card-name="The Sentence I’m Not Saying">
             <span class="card-topline"><span class="card-number">Ritual 10</span></span>
             <span class="card-copy">
@@ -1363,6 +1368,17 @@ button:focus-visible,a:focus-visible{
               <span class="card-meta"><span>35–45 minutes</span><span>High focus</span><span>8 cards</span></span>
             </span>
           </a>
+        </div>
+      </section>
+
+      <section class="movement" id="transmit" aria-labelledby="transmit-title">
+        <span class="movement-node" aria-hidden="true"></span>
+        <div class="movement-head reveal">
+          <span class="movement-id">V</span>
+          <h3 class="movement-title" id="transmit-title">The Channel Is Reclaimed</h3>
+          <p>Expression now leaves the private chamber.</p>
+        </div>
+        <div class="ritual-grid">
           <a class="ritual-card reveal" href="rituals/11-the-conscious-signal.html" data-card-name="The Conscious Signal">
             <span class="card-topline"><span class="card-number">Ritual 11</span></span>
             <span class="card-copy">
@@ -1389,10 +1405,10 @@ button:focus-visible,a:focus-visible{
       <div class="thirteenth-inner">
         <div class="thirteenth-head reveal">
           <div>
-            <span class="section-kicker">Outside the movements</span>
-            <h2 id="thirteenth-title">The part of you that belongs to itself.</h2>
+            <span class="section-kicker">Movement VI</span>
+            <h2 id="thirteenth-title">Joy Survives Beyond Usefulness</h2>
           </div>
-          <p>The twelve complete the Aquarian journey through collective life. The Thirteenth breaks its logic. It protects creation before the network assigns a function to what has been made.</p>
+          <p>Now one act is allowed to owe nothing.</p>
         </div>
         <a class="ritual-card reveal" href="rituals/13-the-child-in-the-square.html" data-card-name="The Child in the Square">
           <span class="card-topline"><span class="card-number">Ritual 13</span></span>
@@ -1409,7 +1425,7 @@ button:focus-visible,a:focus-visible{
     </section>
 
     <section class="closing" aria-label="Closing proposition">
-      <p class="reveal">See what is actually there. Separate without self-betrayal. <em>Transmit something true.</em></p>
+      <p class="reveal">The borrowed reality cracks. The old self is allowed to die. <em>Joy survives beyond usefulness.</em></p>
       <small class="reveal">Preserve the part of you that exists before usefulness, approval, or consensus.</small>
     </section>
   </div>
@@ -1441,6 +1457,7 @@ button:focus-visible,a:focus-visible{
   let loadedVideo = "";
   let chargedTimer = 0;
   let currentTimer = 0;
+  let navigationTimer = 0;
 
   function setHeroSource() {
     const next = mobileMedia.matches
@@ -1521,10 +1538,30 @@ button:focus-visible,a:focus-visible{
     });
 
     card.addEventListener("click", event => {
+      const destination = card.getAttribute("href");
+      const isModifiedClick =
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey;
+
+      if (destination && isModifiedClick) return;
+      if (destination) event.preventDefault();
+
+      clearTimeout(navigationTimer);
+
       const rect = card.getBoundingClientRect();
       const x = event.clientX ? event.clientX - rect.left : rect.width / 2;
       const y = event.clientY ? event.clientY - rect.top : rect.height / 2;
+
       activateCard(card, x, y);
+
+      if (destination) {
+        navigationTimer = window.setTimeout(() => {
+          window.location.assign(destination);
+        }, reducedMotion.matches ? 0 : 900);
+      }
     });
   });
 
