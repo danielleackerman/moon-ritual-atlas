@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>The Child in the Square — Moon Ritual Atlas</title>
+  <meta name="description" content="The Thirteenth of the Aquarius room: an eight-card ritual for recovering the sovereign creative heart by making one thing that reception cannot judge.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Spectral:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Daylight observatory: near-neutral pale stone, a breath of warmth, never beige, never blue. */
+      --field: #e4e3e0;
+      --field-high: #edecea;
+
+      /* Paper, kept for the resting cover. */
+      --vellum: rgba(246, 245, 242, .94);
+      --ink: #1c242a;
+      --ink-soft: #566068;
+      --silver: #9ea8b1;
+      --rule: rgba(28, 36, 42, .1);
+      --edge: rgba(28, 36, 42, .16);
+
+      /* Index gold, adapted for a light ground. Rationed — here it is the warmth the square earns as you create. */
+      --gold: #b9782f;
+      --gilt: #8d642f;
+      --gold-wash: rgba(185, 120, 47, .07);
+
+      --display: "Newsreader", Georgia, serif;
+      --atlas: "Spectral", Georgia, serif;
+      --ui: "Instrument Sans", system-ui, sans-serif;
+
+      --ease: cubic-bezier(.22, .61, .36, 1);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { height: 100%; margin: 0; }
+
+    body {
+      color: var(--ink);
+      font-family: var(--ui);
+      -webkit-font-smoothing: antialiased;
+      /* The chart the square is drawn on: a fine graphite drafting grid. */
+      background:
+        repeating-linear-gradient(0deg, rgba(28, 36, 42, .05) 0 1px, transparent 1px 132px),
+        repeating-linear-gradient(90deg, rgba(28, 36, 42, .05) 0 1px, transparent 1px 132px),
+        repeating-linear-gradient(0deg, rgba(28, 36, 42, .022) 0 1px, transparent 1px 33px),
+        repeating-linear-gradient(90deg, rgba(28, 36, 42, .022) 0 1px, transparent 1px 33px),
+        radial-gradient(circle at 78% -8%, rgba(255, 255, 255, .6), transparent 34rem),
+        radial-gradient(ellipse at 16% 114%, rgba(185, 120, 47, .05), transparent 40rem),
+        var(--field);
+    }
+
+    .ritual-reader {
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      height: 100dvh;
+    }
+
+    /* ============================================================
+       Header — one thin strip. (Same chrome as the twelve.)
+       ============================================================ */
+    .reader-header {
+      z-index: 6;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 14px;
+      height: 56px;
+      padding: 0 clamp(14px, 3vw, 34px);
+      border-bottom: 1px solid var(--rule);
+      background: rgba(237, 236, 234, .86);
+      backdrop-filter: blur(12px);
+    }
+
+    .reader-exit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      margin-left: -8px;
+      border-radius: 50%;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color .2s ease, background-color .2s ease;
+    }
+
+    .reader-exit:hover,
+    .reader-exit:focus-visible {
+      color: var(--ink);
+      background: rgba(28, 36, 42, .06);
+    }
+
+    .reader-exit svg { width: 19px; height: 19px; }
+
+    .reader-identity {
+      min-width: 0;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .reader-kicker {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: .63rem;
+      font-weight: 500;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .reader-title {
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: var(--ink);
+      font-family: var(--atlas);
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: .01em;
+    }
+
+    .reader-tools { display: flex; gap: 6px; }
+
+    .reader-tool {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 38px;
+      padding: 0 12px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      color: var(--ink-soft);
+      background: none;
+      font-family: var(--ui);
+      font-size: .73rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      cursor: pointer;
+      transition: color .2s ease, border-color .2s ease;
+    }
+
+    .reader-tool:hover,
+    .reader-tool:focus-visible {
+      color: var(--ink);
+      border-color: var(--edge);
+    }
+
+    .reader-tool svg { width: 15px; height: 15px; flex: none; }
+
+    /* ============================================================
+       Stage — the marked square. No deck, no progress: the
+       Thirteenth is not a ranked sequence. One room you enter.
+       ============================================================ */
+    .reader-stage {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 0;
+      padding: clamp(20px, 4vh, 54px) clamp(16px, 4vw, 48px);
+    }
+
+    .square {
+      position: relative;
+      width: min(680px, 100%);
+      aspect-ratio: 1 / 1;   /* graceful default; JS refines to an exact square for the stage */
+      max-height: 100%;
+      isolation: isolate;
+    }
+
+    /* The boundary, drawn in the atlas's own line language: a fine
+       graphite stroke on the chart, gilded by the timer as you make. */
+    .square-line {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .line-base {
+      fill: none;
+      stroke: rgba(28, 36, 42, .2);
+      stroke-width: 1;
+      transition: stroke .5s ease;
+    }
+
+    .line-travel {
+      fill: none;
+      stroke: url(#giltTravel);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;      /* hidden until a round begins */
+      filter: drop-shadow(0 0 3px rgba(185, 120, 47, .45));
+      transition: stroke-dashoffset .18s linear;
+    }
+
+    .square.timer-complete .line-base { stroke: rgba(185, 120, 47, .55); }
+
+    /* Corner marks — kin to the gilt pin on the twelve. */
+    .square-corner {
+      position: absolute;
+      z-index: 1;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--gilt);
+      box-shadow: 0 0 0 4px rgba(141, 100, 47, .1), 0 1px 3px rgba(28, 36, 42, .3);
+      opacity: .55;
+      transition: opacity .45s ease, box-shadow .45s ease, background-color .45s ease;
+    }
+
+    .square.timer-running .square-corner,
+    .square.timer-complete .square-corner {
+      opacity: 1;
+      background: var(--gold);
+      box-shadow: 0 0 0 5px rgba(185, 120, 47, .14), 0 0 15px 2px rgba(185, 120, 47, .4);
+    }
+
+    .square-corner.tl { top: -4.5px; left: -4.5px; }
+    .square-corner.tr { top: -4.5px; right: -4.5px; }
+    .square-corner.br { bottom: -4.5px; right: -4.5px; }
+    .square-corner.bl { bottom: -4.5px; left: -4.5px; }
+
+    /* You move within the square; its content scrolls, the boundary stays. */
+    .square-content {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: clamp(24px, 4.4vw, 46px);
+      scrollbar-width: thin;
+      scrollbar-color: rgba(28, 36, 42, .25) transparent;
+      transition: opacity .26s var(--ease), transform .26s var(--ease);
+    }
+
+    .square-content.is-leaving { opacity: 0; transform: translateY(6px); }
+
+    /* The protective close: the work is covered, not published. */
+    .square-cover {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(152deg, rgba(255, 255, 255, .5), transparent 44%),
+        var(--vellum);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      transition: opacity .8s ease;
+    }
+
+    .square.resting .square-cover { opacity: 1; pointer-events: auto; }
+    .square.resting .square-content { opacity: .1; }
+
+    .square-cover p {
+      max-width: 24ch;
+      margin: 0;
+      color: var(--ink-soft);
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.4vw, 1.32rem);
+      line-height: 1.5;
+    }
+
+    /* ------------------------------------------------------------
+       Within-square typography (same faces & rhythm as the twelve).
+       ------------------------------------------------------------ */
+    .card-number {
+      margin: 0 0 16px;
+      color: var(--ink-soft);
+      font-size: .64rem;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .card-number strong { color: var(--gilt); font-weight: 600; }
+
+    .card-title {
+      margin: 0;
+      max-width: 16ch;
+      color: var(--ink);
+      font-family: var(--display);
+      font-size: clamp(1.9rem, 4.6vw, 2.7rem);
+      font-weight: 300;
+      letter-spacing: -.02em;
+      line-height: 1.03;
+    }
+
+    .title-sheet .card-title {
+      max-width: 13ch;
+      font-size: clamp(2.5rem, 7vw, 3.9rem);
+      line-height: .99;
+      letter-spacing: -.025em;
+    }
+
+    .sheet-transformation {
+      margin: .8em 0 0;
+      color: var(--ink-soft);
+      font-family: var(--display);
+      font-size: clamp(1.08rem, 2.3vw, 1.3rem);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.4;
+    }
+
+    .sheet-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 30px;
+      margin-top: clamp(20px, 3.4vw, 30px);
+      padding-top: 18px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .sheet-meta p { margin: 0; display: grid; gap: 4px; }
+
+    .sheet-meta .meta-label {
+      color: var(--ink-soft);
+      font-size: .59rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .sheet-meta .meta-value {
+      color: var(--ink);
+      font-family: var(--display);
+      font-size: .97rem;
+    }
+
+    .ritual-copy { margin-top: clamp(20px, 3.4vw, 32px); }
+
+    .ritual-copy p {
+      margin: .8em 0;
+      color: rgba(28, 36, 42, .88);
+      font-family: var(--display);
+      font-size: clamp(1.04rem, 2vw, 1.15rem);
+      line-height: 1.76;
+    }
+
+    .ritual-copy ul,
+    .ritual-copy ol {
+      margin: .8em 0;
+      padding-left: 1.25em;
+      color: rgba(28, 36, 42, .88);
+      font-family: var(--display);
+      font-size: clamp(1.04rem, 2vw, 1.15rem);
+      line-height: 1.66;
+    }
+
+    .ritual-copy li { margin: .28em 0; }
+    .ritual-copy li::marker { color: var(--silver); }
+    .ritual-copy ol li::marker { color: var(--gilt); font-weight: 500; }
+
+    .ritual-copy blockquote {
+      margin: 1.3em 0;
+      padding: .1em 0 .1em 1.1em;
+      border-left: 2px solid var(--gilt);
+    }
+
+    .ritual-copy blockquote p {
+      margin: .38em 0;
+      color: var(--ink);
+      font-size: clamp(1.12rem, 2.2vw, 1.26rem);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.58;
+    }
+
+    .ritual-copy blockquote strong { font-style: italic; font-weight: 400; }
+    .ritual-copy strong { font-weight: 500; }
+
+    .ritual-copy h2 {
+      margin: 2em 0 .5em;
+      padding-top: 1.1em;
+      border-top: 1px solid var(--rule);
+      color: var(--gilt);
+      font-family: var(--ui);
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .begin-ritual {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 50px;
+      margin-top: clamp(26px, 4vw, 36px);
+      padding: 0 28px;
+      border: 1px solid rgba(141, 100, 47, .55);
+      border-radius: 999px;
+      color: var(--gilt);
+      background: var(--gold-wash);
+      font-family: var(--ui);
+      font-size: .9rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      cursor: pointer;
+      transition: background-color .25s ease, box-shadow .25s ease, transform .25s ease;
+    }
+
+    .begin-ritual:hover,
+    .begin-ritual:focus-visible {
+      background: rgba(185, 120, 47, .13);
+      box-shadow: 0 6px 22px -10px rgba(141, 100, 47, .5);
+      transform: translateY(-1px);
+    }
+
+    .begin-ritual svg { width: 16px; height: 16px; }
+
+    /* ------------------------------------------------------------
+       Timer — the two thirteen-minute rounds, fused to the square.
+       Ambient, not a countdown: it gilds the boundary as you make.
+       ------------------------------------------------------------ */
+    .timer {
+      margin-top: clamp(24px, 3.6vw, 34px);
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .timer-lead {
+      margin: 0 0 14px;
+      color: var(--ink-soft);
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 1.02rem;
+      line-height: 1.5;
+    }
+
+    .timer-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .timer-choices { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .timer-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 0 22px;
+      border: 1px solid rgba(141, 100, 47, .55);
+      border-radius: 999px;
+      color: var(--gilt);
+      background: var(--gold-wash);
+      font-family: var(--ui);
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .04em;
+      cursor: pointer;
+      transition: background-color .25s ease, box-shadow .25s ease;
+    }
+
+    .timer-btn:hover,
+    .timer-btn:focus-visible {
+      background: rgba(185, 120, 47, .13);
+      box-shadow: 0 6px 20px -10px rgba(141, 100, 47, .5);
+    }
+
+    .timer-readout {
+      font-family: var(--display);
+      font-variant-numeric: tabular-nums;
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--ink-soft);
+      letter-spacing: .02em;
+      min-width: 3.4ch;
+    }
+
+    .timer-reset {
+      border: 0;
+      background: none;
+      color: var(--ink-soft);
+      font-family: var(--ui);
+      font-size: .72rem;
+      letter-spacing: .06em;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .timer-reset:hover,
+    .timer-reset:focus-visible { color: var(--ink); }
+
+    .timer-note {
+      min-height: 15px;
+      margin: 12px 0 0;
+      color: var(--gilt);
+      font-family: var(--ui);
+      font-size: .72rem;
+      letter-spacing: .05em;
+    }
+
+    /* ------------------------------------------------------------
+       Journal — an optional drawer, closed by default.
+       ------------------------------------------------------------ */
+    .journal {
+      margin-top: clamp(24px, 3.6vw, 34px);
+      border-top: 1px solid var(--rule);
+    }
+
+    .journal summary {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 48px;
+      color: var(--ink-soft);
+      font-family: var(--ui);
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      cursor: pointer;
+      list-style: none;
+      transition: color .2s ease;
+    }
+
+    .journal summary::-webkit-details-marker { display: none; }
+
+    .journal summary:hover,
+    .journal summary:focus-visible { color: var(--ink); }
+
+    .journal summary svg {
+      width: 14px;
+      height: 14px;
+      flex: none;
+      transition: transform .25s var(--ease);
+    }
+
+    .journal[open] summary svg { transform: rotate(90deg); }
+
+    .journal-fields {
+      display: grid;
+      gap: 20px;
+      padding: 4px 0 10px;
+    }
+
+    .journal-field label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-family: var(--display);
+      font-size: 1.06rem;
+      font-style: italic;
+    }
+
+    .journal-field textarea {
+      width: 100%;
+      min-height: 92px;
+      padding: 13px 14px;
+      border: 1px solid rgba(28, 36, 42, .22);
+      border-radius: 2px;
+      resize: vertical;
+      color: var(--ink);
+      background:
+        repeating-linear-gradient(180deg, transparent 0 30px, rgba(28, 36, 42, .07) 30px 31px),
+        rgba(255, 255, 255, .6);
+      font-family: var(--display);
+      font-size: 1.02rem;
+      line-height: 1.65;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .journal-field textarea:focus {
+      outline: none;
+      border-color: var(--gilt);
+      box-shadow: 0 0 0 1px var(--gilt);
+    }
+
+    .saved-note {
+      min-height: 15px;
+      margin: 6px 0 0;
+      color: var(--gilt);
+      font-family: var(--ui);
+      font-size: .67rem;
+      letter-spacing: .05em;
+    }
+
+    /* ============================================================
+       Footer navigation
+       ============================================================ */
+    .reader-footer {
+      z-index: 6;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 14px;
+      padding: 12px clamp(14px, 3vw, 34px);
+      border-top: 1px solid var(--rule);
+      background: rgba(237, 236, 234, .88);
+      backdrop-filter: blur(12px);
+    }
+
+    .card-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 0 22px;
+      border: 1px solid rgba(28, 36, 42, .24);
+      border-radius: 999px;
+      color: var(--ink);
+      background: none;
+      font-family: var(--ui);
+      font-size: .87rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color .2s ease, background-color .25s ease, box-shadow .25s ease;
+    }
+
+    .card-nav:hover:not(:disabled),
+    .card-nav:focus-visible { border-color: var(--ink); }
+
+    .card-nav.next {
+      border-color: rgba(141, 100, 47, .55);
+      color: var(--gilt);
+      background: var(--gold-wash);
+    }
+
+    .card-nav.next:hover,
+    .card-nav.next:focus-visible {
+      background: rgba(185, 120, 47, .13);
+      box-shadow: 0 6px 20px -10px rgba(141, 100, 47, .5);
+    }
+
+    .card-nav:disabled { opacity: .3; pointer-events: none; }
+    .card-nav svg { width: 15px; height: 15px; }
+
+    .reader-status {
+      margin: 0;
+      overflow: hidden;
+      color: var(--ink-soft);
+      font-size: .68rem;
+      letter-spacing: .16em;
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 86px;
+      left: 50%;
+      z-index: 20;
+      padding: 11px 20px;
+      border: 1px solid rgba(141, 100, 47, .4);
+      border-radius: 999px;
+      color: var(--field-high);
+      background: rgba(28, 36, 42, .95);
+      font-size: .8rem;
+      letter-spacing: .03em;
+      opacity: 0;
+      transform: translate(-50%, 8px);
+      pointer-events: none;
+      transition: opacity .3s ease, transform .3s ease;
+    }
+
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    [hidden] { display: none !important; }
+
+    /* Responsive */
+    @media (max-width: 720px) {
+      .reader-header { height: 52px; gap: 10px; }
+      .reader-kicker { display: none; }
+      .reader-tool span { display: none; }
+      .reader-tool { width: 40px; padding: 0; justify-content: center; }
+
+      .reader-stage { padding: clamp(14px, 3vh, 28px) clamp(12px, 4vw, 24px); }
+
+      .sheet-meta { gap: 10px 22px; }
+
+      .reader-footer { padding: 10px 14px; }
+      .reader-status { font-size: .6rem; }
+      .card-nav { padding: 0 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+  <main class="ritual-reader">
+    <header class="reader-header">
+      <a class="reader-exit" href="../index.html" aria-label="Return to the Aquarius index">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M19 12H5m6 6-6-6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+      <div class="reader-identity">
+        <p class="reader-kicker">Full Moon in Aquarius · The Thirteenth</p>
+        <p class="reader-title">The Child in the Square</p>
+      </div>
+
+      <div class="reader-tools">
+        <button class="reader-tool" id="copyNotes" type="button" aria-label="Copy ritual notes">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M5 15V5a2 2 0 0 1 2-2h8" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          <span>Copy notes</span>
+        </button>
+        <button class="reader-tool" id="exportNotes" type="button" aria-label="Export ritual notes">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 4v11m0 0-4-4m4 4 4-4M5 19h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Export</span>
+        </button>
+      </div>
+    </header>
+
+    <section class="reader-stage" aria-label="The marked square">
+      <div class="square" id="square">
+        <svg class="square-line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="giltTravel" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#8d642f"/>
+              <stop offset="0.55" stop-color="#b9782f"/>
+              <stop offset="1" stop-color="#c88a3e"/>
+            </linearGradient>
+          </defs>
+          <rect class="line-base" x="1.4" y="1.4" width="97.2" height="97.2" rx="1.2" pathLength="1000" vector-effect="non-scaling-stroke"/>
+          <rect class="line-travel" id="lineTravel" x="1.4" y="1.4" width="97.2" height="97.2" rx="1.2" pathLength="1000" vector-effect="non-scaling-stroke"/>
+        </svg>
+        <span class="square-corner tl" aria-hidden="true"></span>
+        <span class="square-corner tr" aria-hidden="true"></span>
+        <span class="square-corner br" aria-hidden="true"></span>
+        <span class="square-corner bl" aria-hidden="true"></span>
+
+        <div class="square-content" id="cardContent" aria-live="polite"></div>
+
+        <div class="square-cover" id="squareCover" aria-hidden="true">
+          <p>The act was alive before reception arrived.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="reader-footer">
+      <button class="card-nav back" id="previousCard" type="button">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M19 12H5m6 6-6-6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back
+      </button>
+      <p class="reader-status" id="readerStatus"></p>
+      <button class="card-nav next" id="nextCard" type="button">
+        <span>Continue</span>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- The threshold: an invitation, not a summit. The Thirteenth belongs to itself. -->
+  <template id="title-sheet">
+    <p class="card-number">Full Moon in Aquarius · Outside the Movements</p>
+    <h1 class="card-title">The Child in the Square</h1>
+    <p class="sheet-transformation">The self ceases to be only a participant, signal, function, or node and becomes an uncalculated source of life.</p>
+
+    <div class="sheet-meta">
+      <p><span class="meta-label">Estimated time</span><span class="meta-value">35–60 minutes</span></p>
+      <p><span class="meta-label">Intensity</span><span class="meta-value">Gentle, exposed, alive</span></p>
+      <p><span class="meta-label">Entry</span><span class="meta-value">Always available</span></p>
+    </div>
+
+    <div class="ritual-copy">
+      <h2>Purpose</h2>
+      <p>Recover the sovereign creative heart by making one thing that is not required to inform, persuade, serve, prove, perform, improve, or become useful to the collective.</p>
+      <p><strong>Result:</strong> One complete-enough act of creative joy whose worth is not tested through usefulness, ranking, explanation, or immediate reception.</p>
+
+      <h2>Source foundation</h2>
+      <p>In <em>The Emperor’s New Clothes</em>, the child in the square is not the most powerful, educated, strategic, or sophisticated person present. She is the person who has not yet learned to exchange the evidence of her own eyes for the safety of belonging to the crowd.</p>
+      <p>That child first entered the journey through perception. Here, after the twelve Aquarian rituals are complete, she returns through creation.</p>
+      <p>The Leo Sun–Jupiter conjunction represents creativity, courage, presence, joy, inherent value, and the living center of the individual. Its medicine is not applause. The sources distinguish creative expression from the need to make expression acceptable, profitable, perfect, socially legible, or useful for advancement. The creative impulse is alive before it is evaluated.</p>
+      <p>Aquarius remains necessary. The twelve rituals have restored conscious participation in groups, relationships, systems, media, and the future. But a person who exists only through contribution is still governed by the collective. The Thirteenth protects the part of the self that can create before the network assigns a function to what has been made.</p>
+      <p>This ritual is not anti-audience, anti-community, anti-discipline, or anti-craft. Work may later be refined, shared, performed, sold, taught, gifted, or brought into service. The condition is simpler:</p>
+      <blockquote>
+        <p><strong>For the duration of the ritual, reception cannot determine existence.</strong></p>
+      </blockquote>
+
+      <h2>Materials</h2>
+      <ul>
+        <li>Masking tape, string, ribbon, chalk, four objects, or another simple way to mark a square</li>
+        <li>Thirteen minutes on a timer, with the alarm sound chosen in advance</li>
+        <li>One creative medium that can be used immediately</li>
+        <li>Any basic materials that medium requires</li>
+        <li>One blank card and a pen</li>
+        <li>A cloth, envelope, folder, box, closed drawer, or other place where the finished act can rest unseen</li>
+        <li>Optional: the artifact from Ritual 03, <strong>Real Gold / Invisible Gold</strong></li>
+        <li>Optional: the completion evidence from Ritual 12, <strong>The Signal Sent</strong></li>
+      </ul>
+      <p>The medium may be:</p>
+      <ul>
+        <li>voice,</li>
+        <li>rhythm,</li>
+        <li>movement,</li>
+        <li>drawing,</li>
+        <li>color,</li>
+        <li>collage,</li>
+        <li>clay,</li>
+        <li>fabric,</li>
+        <li>dress,</li>
+        <li>arrangement,</li>
+        <li>story,</li>
+        <li>poetry,</li>
+        <li>prayer,</li>
+        <li>food,</li>
+        <li>flowers,</li>
+        <li>found objects,</li>
+        <li>sound,</li>
+        <li>image,</li>
+        <li>or another form that allows something alive to take form.</li>
+      </ul>
+      <p>Choose a medium available now. Do not turn material selection into a search for the ideal project.</p>
+
+      <h2>The gate</h2>
+      <p>The participant is ready to leave the four movements when they can complete:</p>
+      <blockquote>
+        <p><strong>What I have given the shared world is ______. What I am now ready to make without asking the shared world to need, reward, rank, or understand it is ______.</strong></p>
+      </blockquote>
+      <p>The first blank honors contribution.</p>
+      <p>The second breaks contribution’s rule.</p>
+      <p>Do not enter the Thirteenth by asking:</p>
+      <ul>
+        <li>What should I post next?</li>
+        <li>What would be most useful?</li>
+        <li>What fits the strategy?</li>
+        <li>What will prove I have changed?</li>
+        <li>What will perform well?</li>
+        <li>What does the group need from me?</li>
+      </ul>
+      <p>The Thirteenth begins where the signal no longer needs a destination.</p>
+      <p>It belongs to the sovereign creative heart.</p>
+
+      <h2>Opening threshold</h2>
+      <p>If you have completed Ritual 12, place its evidence outside the area where you will work. Say:</p>
+      <blockquote>
+        <p><strong>I have contributed. The shared world has received what I chose to send.</strong></p>
+      </blockquote>
+      <p>If you have not completed the twelve, enter directly. The Thirteenth is always accessible because the creative heart is not a prize awarded for successful completion.</p>
+      <p>Silence notifications. Close feeds, analytics, messages, reference boards, tutorials, and any window through which an audience can enter before the work exists.</p>
+      <p>This is not a vow of permanent privacy. It is a temporary removal of reception from the act of creation.</p>
+      <p>Complete:</p>
+      <blockquote>
+        <p><strong>For this hour, nothing I make has to leave this room.</strong></p>
+      </blockquote>
+      <p>Then begin.</p>
+    </div>
+
+    <button class="begin-ritual" id="beginRitual" type="button">
+      <span>Enter the square</span>
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </template>
+
+  <template id="card-1-copy">
+    <p>On the blank card, write:</p>
+    <blockquote>
+      <p><strong>THESE VOICES REMAIN OUTSIDE THE SQUARE</strong></p>
+    </blockquote>
+    <p>List the standards that usually arrive before you have begun.</p>
+    <p>They may sound like:</p>
+    <ul>
+      <li>Is it good?</li>
+      <li>Is it original?</li>
+      <li>Will anyone understand it?</li>
+      <li>Does it fit what I am known for?</li>
+      <li>Can it become content?</li>
+      <li>Could I sell it?</li>
+      <li>Is it worth the materials?</li>
+      <li>Am I too old, late, inexperienced, inconsistent, or untrained?</li>
+      <li>What will the algorithm do with it?</li>
+      <li>What would the expert change?</li>
+      <li>Is there a better use of this time?</li>
+    </ul>
+    <p>Do not argue with the voices. Do not prove them wrong. Place the card outside the area where you will make.</p>
+    <p>Then write one additional line:</p>
+    <blockquote>
+      <p><strong>Even praise must wait outside.</strong></p>
+    </blockquote>
+    <p>The imagined admirer can direct the work as completely as the imagined critic. Both require the act to anticipate reception.</p>
+    <p>For this ritual, the audience is not rejected.</p>
+    <p>It is simply late.</p>
+  </template>
+
+  <template id="card-1-fields">
+    <div class="journal-field">
+      <label for="voices-outside">The voices that remain outside the square…</label>
+      <textarea id="voices-outside" name="voices-outside"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+  </template>
+
+  <template id="card-2-copy">
+    <p>Use tape, string, chalk, ribbon, or four objects to mark a square large enough to contain your body and your chosen materials.</p>
+    <p>This is not a stage.</p>
+    <p>It is the boundary inside which the work is temporarily released from:</p>
+    <ul>
+      <li>usefulness,</li>
+      <li>prestige,</li>
+      <li>comparison,</li>
+      <li>improvement,</li>
+      <li>explanation,</li>
+      <li>monetization,</li>
+      <li>strategy,</li>
+      <li>and social rank.</li>
+    </ul>
+    <p>Stand or sit inside it.</p>
+    <p>Notice the actual conditions:</p>
+    <ul>
+      <li>the weight of your body,</li>
+      <li>the temperature of the air,</li>
+      <li>the available light,</li>
+      <li>the sound already present,</li>
+      <li>the material in front of you,</li>
+      <li>the distance between your hands and the first action.</li>
+    </ul>
+    <p>Take one full breath.</p>
+    <p>Say:</p>
+    <blockquote>
+      <p><strong>Inside this square, the living thing does not have to earn permission to appear.</strong></p>
+    </blockquote>
+    <p>Do not wait to feel confident. The square is not a feeling. It is a temporary condition you have made.</p>
+  </template>
+
+  <template id="card-2-fields"></template>
+
+  <template id="card-3-copy">
+    <p>Ask:</p>
+    <blockquote>
+      <p><strong>What do I want to make, move, sound, arrange, wear, taste, or say before I know why?</strong></p>
+    </blockquote>
+    <p>Write five impulses without judging scale or seriousness.</p>
+    <p>Examples:</p>
+    <ul>
+      <li>cover a page in one impossible color,</li>
+      <li>sing a phrase that has no lyrics,</li>
+      <li>build a small figure from scraps,</li>
+      <li>move until one gesture feels true,</li>
+      <li>arrange ordinary objects into a private constellation,</li>
+      <li>write the scene that has no place in the project,</li>
+      <li>dress for an event that does not exist,</li>
+      <li>make food beautiful for no occasion,</li>
+      <li>invent a prayer,</li>
+      <li>draw the creature,</li>
+      <li>cut the shape,</li>
+      <li>tell the ridiculous story,</li>
+      <li>make the sound you were taught not to make.</li>
+    </ul>
+    <p>Choose the impulse that creates the clearest increase in attention.</p>
+    <p>Do not choose the most meaningful, impressive, marketable, healing, spiritual, or productive option.</p>
+    <p>Choose the one that makes you lean toward it.</p>
+    <p>Complete:</p>
+    <blockquote>
+      <p><strong>The living spark is ______.</strong></p>
+    </blockquote>
+    <p>Gather only what is required to begin it now.</p>
+  </template>
+
+  <template id="card-3-fields">
+    <div class="journal-field">
+      <label for="five-impulses">Five impulses, without judging scale or seriousness…</label>
+      <textarea id="five-impulses" name="five-impulses"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+    <div class="journal-field">
+      <label for="living-spark">The living spark is…</label>
+      <textarea id="living-spark" name="living-spark"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+  </template>
+
+  <template id="card-4-copy">
+    <p>Set the timer for thirteen minutes.</p>
+    <p>When it begins, make the first irreversible-enough gesture within ten seconds:</p>
+    <ul>
+      <li>draw the line,</li>
+      <li>strike the note,</li>
+      <li>tear the paper,</li>
+      <li>place the object,</li>
+      <li>speak the first phrase,</li>
+      <li>make the movement,</li>
+      <li>cut the fabric,</li>
+      <li>mix the color,</li>
+      <li>light the candle,</li>
+      <li>begin the pattern,</li>
+      <li>write the sentence,</li>
+      <li>or touch the material.</li>
+    </ul>
+    <p>During the thirteen minutes:</p>
+    <ul>
+      <li>do not erase the first gesture,</li>
+      <li>do not start over on a cleaner version,</li>
+      <li>do not search for reference,</li>
+      <li>do not ask whether the idea is working,</li>
+      <li>do not photograph progress,</li>
+      <li>do not explain the work to anyone,</li>
+      <li>and do not prepare it for display.</li>
+    </ul>
+    <p>Speed is temporary here. Its function is to let existence precede evaluation.</p>
+    <p>If you freeze, repeat the last mark, word, note, movement, shape, color, or placement until the next one becomes available.</p>
+    <p>When the timer ends, stop for one breath even if you want to continue.</p>
+    <p>Notice: something now exists that did not exist thirteen minutes ago.</p>
+  </template>
+
+  <template id="card-4-fields"></template>
+
+  <template id="card-5-copy">
+    <p>Look at, listen to, taste, touch, wear, or stand inside what has begun.</p>
+    <p>Do not ask:</p>
+    <ul>
+      <li>Is it good?</li>
+      <li>What is it?</li>
+      <li>What does it mean?</li>
+      <li>What should it become?</li>
+    </ul>
+    <p>Ask:</p>
+    <ul>
+      <li>Where does my attention brighten?</li>
+      <li>Which part has heat, humor, surprise, tenderness, force, strangeness, or pleasure?</li>
+      <li>Which part feels dutiful?</li>
+      <li>Which part feels borrowed?</li>
+      <li>What wants to be repeated?</li>
+      <li>What wants more room?</li>
+      <li>What wants to become louder, quieter, larger, smaller, rougher, simpler, brighter, or more exact?</li>
+    </ul>
+    <p>Choose one living quality.</p>
+    <p>Give it a second round of thirteen minutes.</p>
+    <p>This time, follow it deliberately. You may refine, extend, remove, rearrange, rehearse, intensify, or transform. Craft is allowed. Control is allowed. Skill is allowed.</p>
+    <p>The prohibition is not against discernment.</p>
+    <p>It is against making reception the hidden author.</p>
+  </template>
+
+  <template id="card-5-fields"></template>
+
+  <template id="card-6-copy">
+    <p>Pause at the place where you can predict how another person, group, teacher, market, platform, tradition, or version of yourself would correct the work.</p>
+    <p>Name the expected correction:</p>
+    <blockquote>
+      <p><strong>To make this more acceptable, I would ______.</strong></p>
+    </blockquote>
+    <p>Then ask:</p>
+    <ul>
+      <li>Would the correction make the work more fully itself?</li>
+      <li>Or would it make the work easier to recognize, rank, reward, explain, or absorb?</li>
+    </ul>
+    <p>Craft corrections may strengthen the living thing.</p>
+    <p>Consensus corrections often make it resemble what already belongs.</p>
+    <p>Choose one element that you would normally remove only because it is:</p>
+    <ul>
+      <li>too strange,</li>
+      <li>too simple,</li>
+      <li>too joyful,</li>
+      <li>too earnest,</li>
+      <li>too decorative,</li>
+      <li>too loud,</li>
+      <li>too quiet,</li>
+      <li>too young,</li>
+      <li>too unfashionable,</li>
+      <li>too beautiful,</li>
+      <li>too awkward,</li>
+      <li>or insufficiently useful.</li>
+    </ul>
+    <p>Leave that element present.</p>
+    <p>If the work has become unsafe, appropriative, factually deceptive, or invasive of another person’s privacy, correct it. Sovereignty does not excuse harm.</p>
+    <p>What remains uncorrected should be the living particular—not preventable damage.</p>
+  </template>
+
+  <template id="card-6-fields">
+    <div class="journal-field">
+      <label for="expected-correction">To make this more acceptable, I would…</label>
+      <textarea id="expected-correction" name="expected-correction"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+  </template>
+
+  <template id="card-7-copy">
+    <p>Completion in this ritual does not mean mastery, polish, readiness for publication, or proof of talent.</p>
+    <p>Ask:</p>
+    <blockquote>
+      <p><strong>Has the living spark become present enough that I can recognize it?</strong></p>
+    </blockquote>
+    <p>If the answer is no, give the work one final bounded round.</p>
+    <p>Choose one:</p>
+    <ul>
+      <li>five minutes,</li>
+      <li>thirteen minutes,</li>
+      <li>one verse,</li>
+      <li>one page,</li>
+      <li>one circuit of movement,</li>
+      <li>one layer,</li>
+      <li>one arrangement,</li>
+      <li>one final gesture,</li>
+      <li>or one complete repetition.</li>
+    </ul>
+    <p>At the end of that boundary, stop.</p>
+    <p>Add only:</p>
+    <ul>
+      <li>a date,</li>
+      <li>a private title if one arrives,</li>
+      <li>and one mark that means <strong>complete enough for tonight</strong>.</li>
+    </ul>
+    <p>Do not grade it.</p>
+    <p>Do not write a defense of it.</p>
+    <p>Do not convert it into a lesson.</p>
+    <p>Complete:</p>
+    <blockquote>
+      <p><strong>I recognize the life in this because ______.</strong></p>
+    </blockquote>
+    <p>Name an observable quality in the act—not a prediction of how others will receive it.</p>
+  </template>
+
+  <template id="card-7-fields">
+    <div class="journal-field">
+      <label for="recognize-life">I recognize the life in this because…</label>
+      <textarea id="recognize-life" name="recognize-life"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+  </template>
+
+  <template id="card-8-copy">
+    <p>Place the work in the cloth, envelope, folder, box, drawer, or resting place you prepared.</p>
+    <p>If the act cannot be stored—because it was movement, sound, food, dress, prayer, arrangement, or another temporary form—choose one trace:</p>
+    <ul>
+      <li>one written phrase,</li>
+      <li>one material fragment,</li>
+      <li>one ingredient,</li>
+      <li>one color,</li>
+      <li>one gesture repeated once,</li>
+      <li>one object from the arrangement,</li>
+      <li>or one brief private recording made only after the act is complete.</li>
+    </ul>
+    <p>Keep the work or trace out of circulation for seventy-two hours.</p>
+    <p>During that interval:</p>
+    <ul>
+      <li>do not post it,</li>
+      <li>do not solicit critique,</li>
+      <li>do not measure its relevance,</li>
+      <li>do not redesign it for an audience,</li>
+      <li>do not decide that privacy makes it trivial,</li>
+      <li>and do not decide that sharing would contaminate it forever.</li>
+    </ul>
+    <p>The pause protects one fact:</p>
+    <blockquote>
+      <p><strong>The act was alive before reception arrived.</strong></p>
+    </blockquote>
+    <p>After seventy-two hours, choose freely:</p>
+    <ul>
+      <li>keep it private,</li>
+      <li>continue it,</li>
+      <li>refine it,</li>
+      <li>transform it,</li>
+      <li>share it,</li>
+      <li>perform it,</li>
+      <li>give it,</li>
+      <li>sell it,</li>
+      <li>teach from it,</li>
+      <li>return it to its materials,</li>
+      <li>or let it remain complete.</li>
+    </ul>
+    <p>No later destination can retroactively create or cancel the worth of the original act.</p>
+    <p>If you completed Ritual 12, place the Thirteenth’s work or trace beside—but not inside—the line of twelve artifacts.</p>
+    <p>The twelve belong to the journey through collective life.</p>
+    <p>The Thirteenth belongs to itself.</p>
+
+    <h2>Closing declaration</h2>
+    <blockquote>
+      <p>I have made something before asking what it can do for me.</p>
+      <p>I have let life take form before reception could name its value.</p>
+      <p>I may refine it, share it, protect it, change it, or let it end here.</p>
+      <p>Its first permission came from the living source itself.</p>
+      <p>I belong to the collective, but I am not manufactured by it.</p>
+      <p>I can enter the square without leaving my center behind.</p>
+    </blockquote>
+
+    <h2>Material-world integration</h2>
+    <p>For the remainder of this lunar cycle, return to the square once each week for thirteen minutes.</p>
+    <p>Use the same boundary and one available medium. Each return must begin without:</p>
+    <ul>
+      <li>a content plan,</li>
+      <li>a productivity target,</li>
+      <li>a promise to share,</li>
+      <li>a skill benchmark,</li>
+      <li>or a requirement that the session continue beyond thirteen minutes.</li>
+    </ul>
+    <p>At the next full moon, place the traces together and ask:</p>
+    <ul>
+      <li>Which acts made me more present?</li>
+      <li>Which impulses repeated without being assigned?</li>
+      <li>Where did play reveal a serious desire?</li>
+      <li>Where did seriousness conceal a dead form?</li>
+      <li>Which piece wants craft, discipline, audience, or service now?</li>
+      <li>Which piece wants to remain outside those demands?</li>
+      <li>What changed when I let creation precede justification?</li>
+    </ul>
+    <p>Do not rank the traces against one another.</p>
+    <p>The integration is not a portfolio review.</p>
+    <p>It is evidence that the source remains available.</p>
+  </template>
+
+  <template id="card-8-fields"></template>
+
+  <script>
+    (() => {
+      const cards = [
+        { title: "Dismiss the Invisible Audience" },
+        { title: "Mark the Square" },
+        { title: "Find the Living Spark" },
+        { title: "Make Before Taste Can Vote", timer: 780 },
+        { title: "Follow Aliveness", timer: 780 },
+        { title: "Leave One Thing Uncorrected" },
+        { title: "Finish by Recognition", timerOptional: true },
+        { title: "Protect the Source" }
+      ];
+
+      const total = cards.length;
+      const pad = (n) => String(n).padStart(2, "0");
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+      const square = document.getElementById("square");
+      const content = document.getElementById("cardContent");
+      const cover = document.getElementById("squareCover");
+      const lineTravel = document.getElementById("lineTravel");
+      const previous = document.getElementById("previousCard");
+      const next = document.getElementById("nextCard");
+      const status = document.getElementById("readerStatus");
+      const toast = document.getElementById("toast");
+      const notes = {};
+      let current = -1; /* -1 = threshold */
+      let animating = false;
+      let toastTimer;
+
+      /* ---- the square is a true square, sized to its stage ---- */
+      function sizeSquare() {
+        const stage = square.parentElement;
+        const cs = getComputedStyle(stage);
+        const availW = stage.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+        const availH = stage.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+        const size = Math.max(240, Math.min(680, availW, availH));
+        square.style.width = size + "px";
+        square.style.height = size + "px";
+      }
+
+      /* ---- private notes storage, with in-memory fallback ---- */
+      const storage = {
+        get(key) {
+          try { return window.localStorage.getItem(key) || ""; }
+          catch (_) { return notes[key] || ""; }
+        },
+        set(key, value) {
+          notes[key] = value;
+          try { window.localStorage.setItem(key, value); } catch (_) {}
+        }
+      };
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove("show"), 2200);
+      }
+
+      /* ============================================================
+         The timer, fused to the square's boundary.
+         Elapsing minutes gild the perimeter; the readout is quiet.
+         ============================================================ */
+      let timerRAF = null;
+      let timerState = null;
+
+      function setReadout(el, seconds) {
+        const m = Math.floor(seconds / 60);
+        const s = Math.floor(seconds % 60);
+        el.textContent = `${m}:${String(s).padStart(2, "0")}`;
+      }
+
+      function resetBoundary() {
+        square.classList.remove("timer-running", "timer-complete");
+        lineTravel.style.transition = "stroke-dashoffset .35s ease";
+        lineTravel.style.strokeDashoffset = "1000";
+      }
+
+      function stopTimer() {
+        if (timerRAF) window.cancelAnimationFrame(timerRAF);
+        timerRAF = null;
+        timerState = null;
+      }
+
+      function chime(duration) {
+        try {
+          const Ctx = window.AudioContext || window.webkitAudioContext;
+          if (!Ctx) return;
+          const ctx = new Ctx();
+          const now = ctx.currentTime;
+          [[660, 0], [990, 0.2]].forEach(([freq, offset]) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = "sine";
+            osc.frequency.value = freq;
+            gain.gain.setValueAtTime(0, now + offset);
+            gain.gain.linearRampToValueAtTime(0.08, now + offset + 0.04);
+            gain.gain.exponentialRampToValueAtTime(0.0008, now + offset + 1.2);
+            osc.connect(gain).connect(ctx.destination);
+            osc.start(now + offset);
+            osc.stop(now + offset + 1.3);
+          });
+        } catch (_) {}
+      }
+
+      function tick(now, duration, readout, note, toggle) {
+        if (!timerState || !timerState.running) return;
+        const elapsed = (now - timerState.startedAt) / 1000 + timerState.elapsedBefore;
+        const remaining = Math.max(0, duration - elapsed);
+        const fraction = Math.min(1, elapsed / duration);
+        lineTravel.style.strokeDashoffset = String(1000 * (1 - fraction));
+        setReadout(readout, remaining);
+        if (remaining <= 0) {
+          timerState.running = false;
+          square.classList.remove("timer-running");
+          square.classList.add("timer-complete");
+          note.textContent = duration === 780
+            ? "The thirteen minutes are complete."
+            : "The round is complete.";
+          toggle.textContent = "Begin again";
+          toggle.dataset.mode = "idle";
+          chime(duration);
+          return;
+        }
+        timerRAF = window.requestAnimationFrame((t) => tick(t, duration, readout, note, toggle));
+      }
+
+      function startRun(duration, readout, note, toggle) {
+        stopTimer();
+        square.classList.remove("timer-complete");
+        square.classList.add("timer-running");
+        lineTravel.style.transition = "stroke-dashoffset .18s linear";
+        timerState = { duration, startedAt: performance.now(), elapsedBefore: 0, running: true };
+        timerRAF = window.requestAnimationFrame((t) => tick(t, duration, readout, note, toggle));
+      }
+
+      function buildTimer(card) {
+        const wrap = document.createElement("div");
+        wrap.className = "timer";
+
+        const readout = document.createElement("span");
+        readout.className = "timer-readout";
+        const note = document.createElement("p");
+        note.className = "timer-note";
+        note.setAttribute("aria-live", "polite");
+
+        const row = document.createElement("div");
+        row.className = "timer-row";
+
+        const reset = document.createElement("button");
+        reset.type = "button";
+        reset.className = "timer-reset";
+        reset.textContent = "Reset";
+        reset.hidden = true;
+
+        function attachToggle(duration, label) {
+          const toggle = document.createElement("button");
+          toggle.type = "button";
+          toggle.className = "timer-btn";
+          toggle.dataset.mode = "idle";
+          toggle.textContent = label;
+          toggle.addEventListener("click", () => {
+            const mode = toggle.dataset.mode;
+            if (mode === "idle") {
+              startRun(duration, readout, note, toggle);
+              toggle.textContent = "Pause";
+              toggle.dataset.mode = "running";
+              note.textContent = "";
+              reset.hidden = false;
+            } else if (mode === "running") {
+              // pause
+              if (timerRAF) window.cancelAnimationFrame(timerRAF);
+              timerRAF = null;
+              if (timerState) {
+                timerState.elapsedBefore += (performance.now() - timerState.startedAt) / 1000;
+                timerState.running = false;
+              }
+              toggle.textContent = "Resume";
+              toggle.dataset.mode = "paused";
+            } else if (mode === "paused") {
+              // resume
+              square.classList.add("timer-running");
+              if (timerState) {
+                timerState.startedAt = performance.now();
+                timerState.running = true;
+              } else {
+                startRun(duration, readout, note, toggle);
+              }
+              timerRAF = window.requestAnimationFrame((t) => tick(t, duration, readout, note, toggle));
+              toggle.textContent = "Pause";
+              toggle.dataset.mode = "running";
+            }
+          });
+          return toggle;
+        }
+
+        if (card.timer) {
+          setReadout(readout, card.timer);
+          const toggle = attachToggle(card.timer, "Begin the thirteen minutes");
+          row.append(toggle, readout, reset);
+          reset.addEventListener("click", () => {
+            stopTimer();
+            resetBoundary();
+            setReadout(readout, card.timer);
+            note.textContent = "";
+            toggle.textContent = "Begin the thirteen minutes";
+            toggle.dataset.mode = "idle";
+            reset.hidden = true;
+          });
+          wrap.append(row, note);
+        } else {
+          // optional final round: 5 or 13 minutes
+          const lead = document.createElement("p");
+          lead.className = "timer-lead";
+          lead.textContent = "Optional: give the work one final bounded round.";
+
+          const choices = document.createElement("div");
+          choices.className = "timer-choices";
+          const running = document.createElement("div");
+          running.className = "timer-row";
+          running.hidden = true;
+
+          let activeToggle = null;
+
+          [["Five minutes", 300], ["Thirteen minutes", 780]].forEach(([label, dur]) => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "timer-btn";
+            btn.textContent = label;
+            btn.addEventListener("click", () => {
+              setReadout(readout, dur);
+              activeToggle = attachToggle(dur, "Pause");
+              activeToggle.dataset.mode = "running";
+              startRun(dur, readout, note, activeToggle);
+              note.textContent = "";
+              choices.hidden = true;
+              running.replaceChildren(activeToggle, readout, reset);
+              running.hidden = false;
+              reset.hidden = false;
+            });
+            choices.appendChild(btn);
+          });
+
+          reset.addEventListener("click", () => {
+            stopTimer();
+            resetBoundary();
+            note.textContent = "";
+            running.hidden = true;
+            reset.hidden = true;
+            choices.hidden = false;
+          });
+
+          wrap.append(lead, choices, running, note);
+        }
+
+        return wrap;
+      }
+
+      function bindFields() {
+        content.querySelectorAll(".journal-fields textarea").forEach((field) => {
+          const key = `aquarius-r13-${field.name}`;
+          field.value = storage.get(key);
+          field.addEventListener("input", () => {
+            storage.set(key, field.value);
+            const saved = field.parentElement.querySelector(".saved-note");
+            saved.textContent = "Saved privately in this browser";
+          });
+        });
+      }
+
+      function paint() {
+        square.classList.remove("resting");
+        cover.setAttribute("aria-hidden", "true");
+        stopTimer();
+        resetBoundary();
+
+        if (current === -1) {
+          content.classList.add("title-sheet");
+          content.replaceChildren(document.getElementById("title-sheet").content.cloneNode(true));
+          content.querySelector("#beginRitual").addEventListener("click", () => goTo(0, "forward"));
+          previous.disabled = true;
+          next.querySelector("span").textContent = "Enter the square";
+          status.textContent = "Threshold";
+        } else {
+          content.classList.remove("title-sheet");
+          const item = cards[current];
+          const copyTemplate = document.getElementById(`card-${current + 1}-copy`);
+          const fieldTemplate = document.getElementById(`card-${current + 1}-fields`);
+          const hasFields = fieldTemplate.content.querySelector("textarea") !== null;
+
+          const number = document.createElement("p");
+          number.className = "card-number";
+          number.innerHTML = `The Thirteenth · Card <strong>${pad(current + 1)}</strong>`;
+
+          const title = document.createElement("h1");
+          title.className = "card-title";
+          title.textContent = item.title;
+
+          const copy = document.createElement("div");
+          copy.className = "ritual-copy";
+          copy.appendChild(copyTemplate.content.cloneNode(true));
+
+          content.replaceChildren(number, title, copy);
+
+          if (item.timer || item.timerOptional) {
+            content.appendChild(buildTimer(item));
+          }
+
+          if (hasFields) {
+            const journal = document.createElement("details");
+            journal.className = "journal";
+            journal.innerHTML = `
+              <summary>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Record your notes</span>
+              </summary>`;
+            const fields = document.createElement("div");
+            fields.className = "journal-fields";
+            fields.appendChild(fieldTemplate.content.cloneNode(true));
+            journal.appendChild(fields);
+            content.appendChild(journal);
+          }
+
+          previous.disabled = false;
+          next.querySelector("span").textContent = current === total - 1 ? "Set it to rest" : "Continue";
+
+          bindFields();
+        }
+
+        status.textContent = current === -1 ? "Threshold" : cards[current].title;
+        content.scrollTo({ top: 0, behavior: reducedMotion.matches ? "auto" : "smooth" });
+      }
+
+      function goTo(target, direction) {
+        if (animating || target === current || target < -1 || target > total - 1) return;
+
+        if (reducedMotion.matches) {
+          current = target;
+          paint();
+          return;
+        }
+
+        animating = true;
+        content.classList.add("is-leaving");
+        window.setTimeout(() => {
+          current = target;
+          paint();
+          content.classList.remove("is-leaving");
+          animating = false;
+        }, 260);
+      }
+
+      function restAndReturn() {
+        stopTimer();
+        cover.setAttribute("aria-hidden", "false");
+        square.classList.add("resting");
+        showToast("Resting — the act was alive before reception arrived");
+        window.setTimeout(() => { window.location.href = "../index.html"; }, reducedMotion.matches ? 900 : 2400);
+      }
+
+      previous.addEventListener("click", () => goTo(current - 1, "back"));
+
+      next.addEventListener("click", () => {
+        if (current === total - 1) {
+          restAndReturn();
+          return;
+        }
+        goTo(current + 1, "forward");
+      });
+
+      function collectedNotes() {
+        const lines = ["THE CHILD IN THE SQUARE", "Full Moon in Aquarius · The Thirteenth", ""];
+        cards.forEach((item, index) => {
+          const fieldTemplate = document.getElementById(`card-${index + 1}-fields`);
+          const fields = fieldTemplate.content.querySelectorAll("textarea");
+          const values = [];
+          fields.forEach((field) => {
+            const value = storage.get(`aquarius-r13-${field.name}`).trim();
+            if (value) values.push(`${field.previousElementSibling.textContent}\n${value}`);
+          });
+          if (values.length) lines.push(`CARD ${pad(index + 1)} · ${item.title.toUpperCase()}`, ...values, "");
+        });
+        return lines.join("\n");
+      }
+
+      document.getElementById("copyNotes").addEventListener("click", async () => {
+        const text = collectedNotes();
+        try {
+          await navigator.clipboard.writeText(text);
+          showToast("Notes copied");
+        } catch (_) {
+          showToast("Copy is unavailable in this browser");
+        }
+      });
+
+      document.getElementById("exportNotes").addEventListener("click", () => {
+        const blob = new Blob([collectedNotes()], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "aquarius-the-child-in-the-square-notes.txt";
+        link.click();
+        URL.revokeObjectURL(url);
+        showToast("Notes exported");
+      });
+
+      let resizeTimer;
+      window.addEventListener("resize", () => {
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(sizeSquare, 120);
+      });
+
+      sizeSquare();
+      paint();
+    })();
+  </script>
+</body>
+</html>
