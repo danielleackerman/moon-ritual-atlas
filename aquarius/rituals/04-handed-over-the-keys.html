@@ -644,10 +644,13 @@
 
       .card-progress { padding: 10px 16px 8px; gap: 5px; }
 
-      .reader-scroll { padding-top: 20px; }
-      .card-deck { width: calc(100% - 28px); }
-      .card-deck::before { transform: translate(11px, 12px) rotate(.5deg); }
-      .card-deck::after { transform: translate(5px, 6px) rotate(.24deg); }
+      .reader-scroll {
+        padding-top: 20px;
+        overflow-x: hidden;
+      }
+      .card-deck { width: calc(100% - 36px); }
+      .card-deck::before { transform: translate(7px, 10px) rotate(.18deg); }
+      .card-deck::after { transform: translate(4px, 5px) rotate(.1deg); }
 
       .ritual-card { padding: 24px 19px 32px; }
       .ritual-card::after { top: 14px; right: 14px; }
