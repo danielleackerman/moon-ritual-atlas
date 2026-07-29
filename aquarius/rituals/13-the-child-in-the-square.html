@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>The Child in the Square — Moon Ritual Atlas</title>
-  <meta name="description" content="The Thirteenth of the Aquarius room: an eight-card ritual for recovering the sovereign creative heart by making one thing that reception cannot judge.">
+  <title>Joy That Owes Nothing — Moon Ritual Atlas</title>
+  <meta name="description" content="A seven-step Aquarius ritual for making one creative act that owes nothing to usefulness: put the judges outside, begin before evaluation can speak, follow delight, and protect the act from immediate use.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=Spectral:wght@400;500&display=swap" rel="stylesheet">
@@ -14,15 +14,17 @@
       --field: #e4e3e0;
       --field-high: #edecea;
 
-      /* Paper, kept for the resting cover. */
+      /* The sheet */
       --vellum: rgba(246, 245, 242, .94);
+      --vellum-under: rgba(233, 232, 228, .85);
+      --vellum-under-2: rgba(222, 221, 216, .7);
       --ink: #1c242a;
       --ink-soft: #566068;
       --silver: #9ea8b1;
       --rule: rgba(28, 36, 42, .1);
       --edge: rgba(28, 36, 42, .16);
 
-      /* Index gold, adapted for a light ground. Rationed — here it is the warmth the square earns as you create. */
+      /* Index gold, adapted for a light ground. Rationed. */
       --gold: #b9782f;
       --gilt: #8d642f;
       --gold-wash: rgba(185, 120, 47, .07);
@@ -42,7 +44,7 @@
       color: var(--ink);
       font-family: var(--ui);
       -webkit-font-smoothing: antialiased;
-      /* The chart the square is drawn on: a fine graphite drafting grid. */
+      /* The chart the sheets rest on: a fine graphite drafting grid. */
       background:
         repeating-linear-gradient(0deg, rgba(28, 36, 42, .05) 0 1px, transparent 1px 132px),
         repeating-linear-gradient(90deg, rgba(28, 36, 42, .05) 0 1px, transparent 1px 132px),
@@ -55,12 +57,12 @@
 
     .ritual-reader {
       display: grid;
-      grid-template-rows: auto minmax(0, 1fr) auto;
+      grid-template-rows: auto auto minmax(0, 1fr) auto;
       height: 100dvh;
     }
 
     /* ============================================================
-       Header — one thin strip. (Same chrome as the twelve.)
+       Header — one thin strip.
        ============================================================ */
     .reader-header {
       z-index: 6;
@@ -154,132 +156,168 @@
     .reader-tool svg { width: 15px; height: 15px; flex: none; }
 
     /* ============================================================
-       Stage — the marked square. No deck, no progress: the
-       Thirteenth is not a ranked sequence. One room you enter.
+       Progress — graphite marks on the chart; gold once earned.
+       Hidden until the title sheet is lifted.
        ============================================================ */
-    .reader-stage {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 0;
-      padding: clamp(20px, 4vh, 54px) clamp(16px, 4vw, 48px);
+    .card-progress {
+      z-index: 5;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(0, 1fr);
+      gap: 7px;
+      padding: 12px clamp(20px, 4.5vw, 62px) 10px;
+      border-bottom: 1px solid rgba(28, 36, 42, .06);
     }
 
-    .square {
+    .card-progress[hidden] { display: none; }
+
+    .progress-step {
       position: relative;
-      width: min(680px, 100%);
-      aspect-ratio: 1 / 1;   /* graceful default; JS refines to an exact square for the stage */
-      max-height: 100%;
+      height: 20px;
+      padding: 0;
+      border: 0;
+      background: none;
+      cursor: pointer;
+    }
+
+    .progress-step::before {
+      content: "";
+      position: absolute;
+      inset: 9px 0 8px;
+      border-radius: 999px;
+      background: rgba(28, 36, 42, .14);
+      transition: background-color .3s ease, box-shadow .3s ease;
+    }
+
+    .progress-step:hover::before,
+    .progress-step:focus-visible::before {
+      background: rgba(28, 36, 42, .32);
+    }
+
+    .progress-step.complete::before { background: var(--gilt); }
+
+    .progress-step.current::before {
+      background: var(--gold);
+      box-shadow: 0 1px 6px rgba(185, 120, 47, .4);
+    }
+
+    .progress-step:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 1px;
+      border-radius: 999px;
+    }
+
+    /* ============================================================
+       Stage — the deck of vellum sheets.
+       ============================================================ */
+    .reader-scroll {
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: clamp(28px, 4.5vw, 52px) 0 clamp(56px, 7vw, 84px);
+      scrollbar-width: thin;
+      scrollbar-color: rgba(28, 36, 42, .25) transparent;
+    }
+
+    .card-deck {
+      position: relative;
+      width: min(720px, calc(100% - 44px));
+      margin: 0 auto;
       isolation: isolate;
+      perspective: 1400px;
     }
 
-    /* The boundary, drawn in the atlas's own line language: a fine
-       graphite stroke on the chart, gilded by the timer as you make. */
-    .square-line {
+    /* The rest of the deck resting beneath. */
+    .card-deck::before,
+    .card-deck::after {
+      content: "";
       position: absolute;
       inset: 0;
-      width: 100%;
-      height: 100%;
-      overflow: visible;
+      z-index: -2;
+      border: 1px solid rgba(28, 36, 42, .12);
+      border-radius: 3px;
       pointer-events: none;
-      z-index: 0;
+      background: var(--vellum-under-2);
+      box-shadow: 0 26px 62px -44px rgba(28, 36, 42, .6);
+      transform: translate(20px, 22px) rotate(.6deg);
     }
 
-    .line-base {
-      fill: none;
-      stroke: rgba(28, 36, 42, .2);
-      stroke-width: 1;
-      transition: stroke .5s ease;
+    .card-deck::after {
+      z-index: -1;
+      background: var(--vellum-under);
+      box-shadow: 0 20px 50px -40px rgba(28, 36, 42, .55);
+      transform: translate(10px, 11px) rotate(.28deg);
     }
 
-    .line-travel {
-      fill: none;
-      stroke: url(#giltTravel);
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;      /* hidden until a round begins */
-      filter: drop-shadow(0 0 3px rgba(185, 120, 47, .45));
-      transition: stroke-dashoffset .18s linear;
+    .ritual-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(30px, 5.4vw, 56px) clamp(24px, 5.8vw, 58px) clamp(38px, 5.6vw, 56px);
+      border: 1px solid var(--edge);
+      border-radius: 3px;
+      color: var(--ink);
+      /* The sheet: translucent enough that the chart grid ghosts through its edges. */
+      background:
+        linear-gradient(152deg, rgba(255, 255, 255, .55), transparent 44%),
+        var(--vellum);
+      backdrop-filter: blur(2.5px);
+      -webkit-backdrop-filter: blur(2.5px);
+      box-shadow:
+        inset 0 1px rgba(255, 255, 255, .9),
+        0 34px 84px -50px rgba(28, 36, 42, .65);
+      transform-origin: 12% 6%;
     }
 
-    .square.timer-complete .line-base { stroke: rgba(185, 120, 47, .55); }
-
-    /* Corner marks — kin to the gilt pin on the twelve. */
-    .square-corner {
+    /* Paper fiber. */
+    .ritual-card::before {
+      content: "";
       position: absolute;
-      z-index: 1;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: .55;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.14 0 0 0 0 0.16 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23f)'/%3E%3C/svg%3E");
+    }
+
+    /* The pin holding this sheet to the record. */
+    .ritual-card::after {
+      content: "";
+      position: absolute;
+      top: 20px;
+      right: 20px;
       width: 9px;
       height: 9px;
       border-radius: 50%;
       background: var(--gilt);
-      box-shadow: 0 0 0 4px rgba(141, 100, 47, .1), 0 1px 3px rgba(28, 36, 42, .3);
-      opacity: .55;
-      transition: opacity .45s ease, box-shadow .45s ease, background-color .45s ease;
+      box-shadow:
+        0 0 0 4px rgba(141, 100, 47, .14),
+        0 1px 3px rgba(28, 36, 42, .35);
     }
 
-    .square.timer-running .square-corner,
-    .square.timer-complete .square-corner {
-      opacity: 1;
-      background: var(--gold);
-      box-shadow: 0 0 0 5px rgba(185, 120, 47, .14), 0 0 15px 2px rgba(185, 120, 47, .4);
+    .card-content { position: relative; z-index: 1; }
+
+    /* Turning a sheet: the current vellum lifts away; the next slides from the pile. */
+    .ritual-card.leave-forward { animation: sheet-lift .4s var(--ease) forwards; }
+    .ritual-card.enter-forward { animation: sheet-arrive .45s var(--ease); }
+    .ritual-card.leave-back { animation: sheet-return-out .4s var(--ease) forwards; }
+    .ritual-card.enter-back { animation: sheet-settle .45s var(--ease); }
+
+    @keyframes sheet-lift {
+      to { opacity: 0; transform: translate(-7%, -5%) rotate(-7deg) rotateY(-14deg); }
     }
-
-    .square-corner.tl { top: -4.5px; left: -4.5px; }
-    .square-corner.tr { top: -4.5px; right: -4.5px; }
-    .square-corner.br { bottom: -4.5px; right: -4.5px; }
-    .square-corner.bl { bottom: -4.5px; left: -4.5px; }
-
-    /* You move within the square; its content scrolls, the boundary stays. */
-    .square-content {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      padding: clamp(24px, 4.4vw, 46px);
-      scrollbar-width: thin;
-      scrollbar-color: rgba(28, 36, 42, .25) transparent;
-      transition: opacity .26s var(--ease), transform .26s var(--ease);
+    @keyframes sheet-arrive {
+      from { opacity: 0; transform: translate(9px, 11px) rotate(.4deg); }
+      to { opacity: 1; transform: none; }
     }
-
-    .square-content.is-leaving { opacity: 0; transform: translateY(6px); }
-
-    /* The protective close: the work is covered, not published. */
-    .square-cover {
-      position: absolute;
-      inset: 0;
-      z-index: 3;
-      display: grid;
-      place-items: center;
-      padding: 28px;
-      text-align: center;
-      opacity: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(152deg, rgba(255, 255, 255, .5), transparent 44%),
-        var(--vellum);
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px);
-      transition: opacity .8s ease;
+    @keyframes sheet-return-out {
+      to { opacity: 0; transform: translate(9px, 11px) rotate(.4deg); }
     }
-
-    .square.resting .square-cover { opacity: 1; pointer-events: auto; }
-    .square.resting .square-content { opacity: .1; }
-
-    .square-cover p {
-      max-width: 24ch;
-      margin: 0;
-      color: var(--ink-soft);
-      font-family: var(--display);
-      font-style: italic;
-      font-size: clamp(1.1rem, 2.4vw, 1.32rem);
-      line-height: 1.5;
+    @keyframes sheet-settle {
+      from { opacity: 0; transform: translate(-6%, -4%) rotate(-6deg); }
+      to { opacity: 1; transform: none; }
     }
 
     /* ------------------------------------------------------------
-       Within-square typography (same faces & rhythm as the twelve).
+       On-sheet typography
        ------------------------------------------------------------ */
     .card-number {
       margin: 0 0 16px;
@@ -294,19 +332,20 @@
 
     .card-title {
       margin: 0;
-      max-width: 16ch;
+      max-width: 15ch;
       color: var(--ink);
       font-family: var(--display);
-      font-size: clamp(1.9rem, 4.6vw, 2.7rem);
+      font-size: clamp(2rem, 5vw, 2.9rem);
       font-weight: 300;
       letter-spacing: -.02em;
-      line-height: 1.03;
+      line-height: 1.02;
     }
 
+    /* Title-sheet variants */
     .title-sheet .card-title {
-      max-width: 13ch;
-      font-size: clamp(2.5rem, 7vw, 3.9rem);
-      line-height: .99;
+      max-width: 12ch;
+      font-size: clamp(2.7rem, 7.4vw, 4.4rem);
+      line-height: .98;
       letter-spacing: -.025em;
     }
 
@@ -314,17 +353,16 @@
       margin: .8em 0 0;
       color: var(--ink-soft);
       font-family: var(--display);
-      font-size: clamp(1.08rem, 2.3vw, 1.3rem);
+      font-size: clamp(1.12rem, 2.4vw, 1.35rem);
       font-style: italic;
       font-weight: 300;
-      line-height: 1.4;
     }
 
     .sheet-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px 30px;
-      margin-top: clamp(20px, 3.4vw, 30px);
+      gap: 10px 32px;
+      margin-top: clamp(22px, 3.6vw, 32px);
       padding-top: 18px;
       border-top: 1px solid var(--rule);
     }
@@ -345,13 +383,13 @@
       font-size: .97rem;
     }
 
-    .ritual-copy { margin-top: clamp(20px, 3.4vw, 32px); }
+    .ritual-copy { margin-top: clamp(22px, 3.6vw, 34px); }
 
     .ritual-copy p {
       margin: .8em 0;
       color: rgba(28, 36, 42, .88);
       font-family: var(--display);
-      font-size: clamp(1.04rem, 2vw, 1.15rem);
+      font-size: clamp(1.05rem, 2.1vw, 1.17rem);
       line-height: 1.76;
     }
 
@@ -361,7 +399,7 @@
       padding-left: 1.25em;
       color: rgba(28, 36, 42, .88);
       font-family: var(--display);
-      font-size: clamp(1.04rem, 2vw, 1.15rem);
+      font-size: clamp(1.05rem, 2.1vw, 1.17rem);
       line-height: 1.66;
     }
 
@@ -378,7 +416,7 @@
     .ritual-copy blockquote p {
       margin: .38em 0;
       color: var(--ink);
-      font-size: clamp(1.12rem, 2.2vw, 1.26rem);
+      font-size: clamp(1.13rem, 2.3vw, 1.28rem);
       font-style: italic;
       font-weight: 300;
       line-height: 1.58;
@@ -404,7 +442,7 @@
       align-items: center;
       gap: 12px;
       min-height: 50px;
-      margin-top: clamp(26px, 4vw, 36px);
+      margin-top: clamp(26px, 4vw, 38px);
       padding: 0 28px;
       border: 1px solid rgba(141, 100, 47, .55);
       border-radius: 999px;
@@ -428,98 +466,14 @@
     .begin-ritual svg { width: 16px; height: 16px; }
 
     /* ------------------------------------------------------------
-       Timer — the two thirteen-minute rounds, fused to the square.
-       Ambient, not a countdown: it gilds the boundary as you make.
-       ------------------------------------------------------------ */
-    .timer {
-      margin-top: clamp(24px, 3.6vw, 34px);
-      padding-top: 20px;
-      border-top: 1px solid var(--rule);
-    }
-
-    .timer-lead {
-      margin: 0 0 14px;
-      color: var(--ink-soft);
-      font-family: var(--display);
-      font-style: italic;
-      font-size: 1.02rem;
-      line-height: 1.5;
-    }
-
-    .timer-row {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .timer-choices { display: flex; gap: 10px; flex-wrap: wrap; }
-
-    .timer-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      min-height: 46px;
-      padding: 0 22px;
-      border: 1px solid rgba(141, 100, 47, .55);
-      border-radius: 999px;
-      color: var(--gilt);
-      background: var(--gold-wash);
-      font-family: var(--ui);
-      font-size: .85rem;
-      font-weight: 500;
-      letter-spacing: .04em;
-      cursor: pointer;
-      transition: background-color .25s ease, box-shadow .25s ease;
-    }
-
-    .timer-btn:hover,
-    .timer-btn:focus-visible {
-      background: rgba(185, 120, 47, .13);
-      box-shadow: 0 6px 20px -10px rgba(141, 100, 47, .5);
-    }
-
-    .timer-readout {
-      font-family: var(--display);
-      font-variant-numeric: tabular-nums;
-      font-size: 1.4rem;
-      font-weight: 300;
-      color: var(--ink-soft);
-      letter-spacing: .02em;
-      min-width: 3.4ch;
-    }
-
-    .timer-reset {
-      border: 0;
-      background: none;
-      color: var(--ink-soft);
-      font-family: var(--ui);
-      font-size: .72rem;
-      letter-spacing: .06em;
-      cursor: pointer;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
-
-    .timer-reset:hover,
-    .timer-reset:focus-visible { color: var(--ink); }
-
-    .timer-note {
-      min-height: 15px;
-      margin: 12px 0 0;
-      color: var(--gilt);
-      font-family: var(--ui);
-      font-size: .72rem;
-      letter-spacing: .05em;
-    }
-
-    /* ------------------------------------------------------------
        Journal — an optional drawer, closed by default.
        ------------------------------------------------------------ */
     .journal {
       margin-top: clamp(24px, 3.6vw, 34px);
       border-top: 1px solid var(--rule);
     }
+
+    .journal[hidden] { display: none; }
 
     .journal summary {
       display: flex;
@@ -630,7 +584,9 @@
     }
 
     .card-nav:hover:not(:disabled),
-    .card-nav:focus-visible { border-color: var(--ink); }
+    .card-nav:focus-visible {
+      border-color: var(--ink);
+    }
 
     .card-nav.next {
       border-color: rgba(141, 100, 47, .55);
@@ -649,13 +605,10 @@
 
     .reader-status {
       margin: 0;
-      overflow: hidden;
       color: var(--ink-soft);
       font-size: .68rem;
       letter-spacing: .16em;
       text-align: center;
-      text-overflow: ellipsis;
-      white-space: nowrap;
       text-transform: uppercase;
     }
 
@@ -689,7 +642,15 @@
       .reader-tool span { display: none; }
       .reader-tool { width: 40px; padding: 0; justify-content: center; }
 
-      .reader-stage { padding: clamp(14px, 3vh, 28px) clamp(12px, 4vw, 24px); }
+      .card-progress { padding: 10px 16px 8px; gap: 5px; }
+
+      .reader-scroll { padding-top: 20px; }
+      .card-deck { width: calc(100% - 28px); }
+      .card-deck::before { transform: translate(11px, 12px) rotate(.5deg); }
+      .card-deck::after { transform: translate(5px, 6px) rotate(.24deg); }
+
+      .ritual-card { padding: 24px 19px 32px; }
+      .ritual-card::after { top: 14px; right: 14px; }
 
       .sheet-meta { gap: 10px 22px; }
 
@@ -722,8 +683,8 @@
       </a>
 
       <div class="reader-identity">
-        <p class="reader-kicker">Full Moon in Aquarius · The Thirteenth</p>
-        <p class="reader-title">The Child in the Square</p>
+        <p class="reader-kicker">Full Moon in Aquarius · Ritual 13</p>
+        <p class="reader-title">Joy That Owes Nothing</p>
       </div>
 
       <div class="reader-tools">
@@ -743,29 +704,13 @@
       </div>
     </header>
 
-    <section class="reader-stage" aria-label="The marked square">
-      <div class="square" id="square">
-        <svg class="square-line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="giltTravel" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#8d642f"/>
-              <stop offset="0.55" stop-color="#b9782f"/>
-              <stop offset="1" stop-color="#c88a3e"/>
-            </linearGradient>
-          </defs>
-          <rect class="line-base" x="1.4" y="1.4" width="97.2" height="97.2" rx="1.2" pathLength="1000" vector-effect="non-scaling-stroke"/>
-          <rect class="line-travel" id="lineTravel" x="1.4" y="1.4" width="97.2" height="97.2" rx="1.2" pathLength="1000" vector-effect="non-scaling-stroke"/>
-        </svg>
-        <span class="square-corner tl" aria-hidden="true"></span>
-        <span class="square-corner tr" aria-hidden="true"></span>
-        <span class="square-corner br" aria-hidden="true"></span>
-        <span class="square-corner bl" aria-hidden="true"></span>
+    <nav class="card-progress" id="cardProgress" aria-label="Seven-step ritual sequence" hidden></nav>
 
-        <div class="square-content" id="cardContent" aria-live="polite"></div>
-
-        <div class="square-cover" id="squareCover" aria-hidden="true">
-          <p>The act was alive before reception arrived.</p>
-        </div>
+    <section class="reader-scroll" id="readerScroll" aria-label="Ritual content">
+      <div class="card-deck" id="cardDeck">
+        <article class="ritual-card" id="ritualCard" aria-live="polite">
+          <div class="card-content" id="cardContent"></div>
+        </article>
       </div>
     </section>
 
@@ -788,104 +733,50 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <!-- The threshold: an invitation, not a summit. The Thirteenth belongs to itself. -->
   <template id="title-sheet">
-    <p class="card-number">Full Moon in Aquarius · Outside the Movements</p>
-    <h1 class="card-title">The Child in the Square</h1>
-    <p class="sheet-transformation">The self ceases to be only a participant, signal, function, or node and becomes an uncalculated source of life.</p>
+    <p class="card-number">Full Moon in Aquarius · Movement VI — Joy Survives Beyond Usefulness · Ritual <strong>13</strong></p>
+    <h1 class="card-title">Joy That Owes Nothing</h1>
+    <p class="sheet-transformation">Joy survives beyond usefulness.</p>
 
     <div class="sheet-meta">
-      <p><span class="meta-label">Estimated time</span><span class="meta-value">35–60 minutes</span></p>
-      <p><span class="meta-label">Intensity</span><span class="meta-value">Gentle, exposed, alive</span></p>
-      <p><span class="meta-label">Entry</span><span class="meta-value">Always available</span></p>
+      <p><span class="meta-label">Estimated time</span><span class="meta-value">15–20 minutes</span></p>
+      <p><span class="meta-label">Emotional arc</span><span class="meta-value">Performance pressure and usefulness → freedom</span></p>
+      <p><span class="meta-label">Result</span><span class="meta-value">One act exists before usefulness claims it, then its trace is protected from immediate conversion into value.</span></p>
     </div>
 
     <div class="ritual-copy">
-      <h2>Purpose</h2>
-      <p>Recover the sovereign creative heart by making one thing that is not required to inform, persuade, serve, prove, perform, improve, or become useful to the collective.</p>
-      <p><strong>Result:</strong> One complete-enough act of creative joy whose worth is not tested through usefulness, ranking, explanation, or immediate reception.</p>
-
-      <h2>Source foundation</h2>
-      <p>In <em>The Emperor’s New Clothes</em>, the child in the square is not the most powerful, educated, strategic, or sophisticated person present. She is the person who has not yet learned to exchange the evidence of her own eyes for the safety of belonging to the crowd.</p>
-      <p>That child first entered the journey through perception. Here, after the twelve Aquarian rituals are complete, she returns through creation.</p>
-      <p>The Leo Sun–Jupiter conjunction represents creativity, courage, presence, joy, inherent value, and the living center of the individual. Its medicine is not applause. The sources distinguish creative expression from the need to make expression acceptable, profitable, perfect, socially legible, or useful for advancement. The creative impulse is alive before it is evaluated.</p>
-      <p>Aquarius remains necessary. The twelve rituals have restored conscious participation in groups, relationships, systems, media, and the future. But a person who exists only through contribution is still governed by the collective. The Thirteenth protects the part of the self that can create before the network assigns a function to what has been made.</p>
-      <p>This ritual is not anti-audience, anti-community, anti-discipline, or anti-craft. Work may later be refined, shared, performed, sold, taught, gifted, or brought into service. The condition is simpler:</p>
-      <blockquote>
-        <p><strong>For the duration of the ritual, reception cannot determine existence.</strong></p>
-      </blockquote>
+      <h2>Orientation</h2>
+      <p>The creative fire has already been asked to do a great deal.</p>
+      <p>It has revealed truth, survived an old identity, entered relationship, traveled through a collective field, and helped the future touch the ground.</p>
+      <p>Now it is released from service.</p>
+      <p>For thirteen minutes, nothing you make has to become:</p>
+      <ul>
+        <li>content,</li>
+        <li>proof,</li>
+        <li>healing,</li>
+        <li>income,</li>
+        <li>identity,</li>
+        <li>message,</li>
+        <li>strategy,</li>
+        <li>offering,</li>
+        <li>improvement,</li>
+        <li>or evidence that you have changed.</li>
+      </ul>
+      <p>The act may be beautiful, foolish, quiet, decorative, unfinished, sensual, strange, earnest, funny, repetitive, or private.</p>
+      <p>It owes nothing.</p>
 
       <h2>Materials</h2>
       <ul>
-        <li>Masking tape, string, ribbon, chalk, four objects, or another simple way to mark a square</li>
-        <li>Thirteen minutes on a timer, with the alarm sound chosen in advance</li>
-        <li>One creative medium that can be used immediately</li>
-        <li>Any basic materials that medium requires</li>
-        <li>One blank card and a pen</li>
-        <li>A cloth, envelope, folder, box, closed drawer, or other place where the finished act can rest unseen</li>
-        <li>Optional: the artifact from Ritual 03, <strong>Real Gold / Invisible Gold</strong></li>
-        <li>Optional: the completion evidence from Ritual 12, <strong>The Signal Sent</strong></li>
+        <li>One immediately available creative medium</li>
+        <li>Timer</li>
+        <li>Two cards</li>
+        <li>Pen</li>
+        <li>Optional marked space</li>
       </ul>
-      <p>The medium may be:</p>
-      <ul>
-        <li>voice,</li>
-        <li>rhythm,</li>
-        <li>movement,</li>
-        <li>drawing,</li>
-        <li>color,</li>
-        <li>collage,</li>
-        <li>clay,</li>
-        <li>fabric,</li>
-        <li>dress,</li>
-        <li>arrangement,</li>
-        <li>story,</li>
-        <li>poetry,</li>
-        <li>prayer,</li>
-        <li>food,</li>
-        <li>flowers,</li>
-        <li>found objects,</li>
-        <li>sound,</li>
-        <li>image,</li>
-        <li>or another form that allows something alive to take form.</li>
-      </ul>
-      <p>Choose a medium available now. Do not turn material selection into a search for the ideal project.</p>
-
-      <h2>The gate</h2>
-      <p>The participant is ready to leave the four movements when they can complete:</p>
-      <blockquote>
-        <p><strong>What I have given the shared world is ______. What I am now ready to make without asking the shared world to need, reward, rank, or understand it is ______.</strong></p>
-      </blockquote>
-      <p>The first blank honors contribution.</p>
-      <p>The second breaks contribution’s rule.</p>
-      <p>Do not enter the Thirteenth by asking:</p>
-      <ul>
-        <li>What should I post next?</li>
-        <li>What would be most useful?</li>
-        <li>What fits the strategy?</li>
-        <li>What will prove I have changed?</li>
-        <li>What will perform well?</li>
-        <li>What does the group need from me?</li>
-      </ul>
-      <p>The Thirteenth begins where the signal no longer needs a destination.</p>
-      <p>It belongs to the sovereign creative heart.</p>
-
-      <h2>Opening threshold</h2>
-      <p>If you have completed Ritual 12, place its evidence outside the area where you will work. Say:</p>
-      <blockquote>
-        <p><strong>I have contributed. The shared world has received what I chose to send.</strong></p>
-      </blockquote>
-      <p>If you have not completed the twelve, enter directly. The Thirteenth is always accessible because the creative heart is not a prize awarded for successful completion.</p>
-      <p>Silence notifications. Close feeds, analytics, messages, reference boards, tutorials, and any window through which an audience can enter before the work exists.</p>
-      <p>This is not a vow of permanent privacy. It is a temporary removal of reception from the act of creation.</p>
-      <p>Complete:</p>
-      <blockquote>
-        <p><strong>For this hour, nothing I make has to leave this room.</strong></p>
-      </blockquote>
-      <p>Then begin.</p>
     </div>
 
     <button class="begin-ritual" id="beginRitual" type="button">
-      <span>Enter the square</span>
+      <span>Take up the first card</span>
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
         <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -893,402 +784,223 @@
   </template>
 
   <template id="card-1-copy">
-    <p>On the blank card, write:</p>
+    <p>On the first card, complete:</p>
     <blockquote>
-      <p><strong>THESE VOICES REMAIN OUTSIDE THE SQUARE</strong></p>
+      <p><strong>I tell myself I cannot make because…</strong></p>
     </blockquote>
-    <p>List the standards that usually arrive before you have begun.</p>
-    <p>They may sound like:</p>
+    <p>Write the actual disqualification:</p>
     <ul>
-      <li>Is it good?</li>
-      <li>Is it original?</li>
-      <li>Will anyone understand it?</li>
-      <li>Does it fit what I am known for?</li>
-      <li>Can it become content?</li>
-      <li>Could I sell it?</li>
-      <li>Is it worth the materials?</li>
-      <li>Am I too old, late, inexperienced, inconsistent, or untrained?</li>
-      <li>What will the algorithm do with it?</li>
-      <li>What would the expert change?</li>
-      <li>Is there a better use of this time?</li>
+      <li>I am not an artist.</li>
+      <li>I cannot sing.</li>
+      <li>I started too late.</li>
+      <li>Other people are better.</li>
+      <li>It will not become anything.</li>
+      <li>I cannot justify the time.</li>
+      <li>If I cannot share it, it has no purpose.</li>
     </ul>
-    <p>Do not argue with the voices. Do not prove them wrong. Place the card outside the area where you will make.</p>
-    <p>Then write one additional line:</p>
+    <p>Turn the card face down.</p>
+    <p>On the second card, list the audience that arrives before the work exists:</p>
+    <ul>
+      <li>family,</li>
+      <li>teachers,</li>
+      <li>clients,</li>
+      <li>critics,</li>
+      <li>admirers,</li>
+      <li>markets,</li>
+      <li>platforms,</li>
+      <li>peers,</li>
+      <li>trends,</li>
+      <li>or the former self who knows how to be rewarded.</li>
+    </ul>
+    <p>Write beneath the list:</p>
     <blockquote>
       <p><strong>Even praise must wait outside.</strong></p>
     </blockquote>
-    <p>The imagined admirer can direct the work as completely as the imagined critic. Both require the act to anticipate reception.</p>
-    <p>For this ritual, the audience is not rejected.</p>
-    <p>It is simply late.</p>
+    <p>Place the card beyond your working space.</p>
   </template>
 
   <template id="card-1-fields">
     <div class="journal-field">
-      <label for="voices-outside">The voices that remain outside the square…</label>
-      <textarea id="voices-outside" name="voices-outside"></textarea>
+      <label for="disqualification">I tell myself I cannot make because…</label>
+      <textarea id="disqualification" name="disqualification"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+    <div class="journal-field">
+      <label for="imagined-audience">The audience that arrives before the work exists…</label>
+      <textarea id="imagined-audience" name="imagined-audience"></textarea>
       <p class="saved-note" aria-live="polite"></p>
     </div>
   </template>
 
   <template id="card-2-copy">
-    <p>Use tape, string, chalk, ribbon, or four objects to mark a square large enough to contain your body and your chosen materials.</p>
-    <p>This is not a stage.</p>
-    <p>It is the boundary inside which the work is temporarily released from:</p>
-    <ul>
-      <li>usefulness,</li>
-      <li>prestige,</li>
-      <li>comparison,</li>
-      <li>improvement,</li>
-      <li>explanation,</li>
-      <li>monetization,</li>
-      <li>strategy,</li>
-      <li>and social rank.</li>
-    </ul>
-    <p>Stand or sit inside it.</p>
-    <p>Notice the actual conditions:</p>
-    <ul>
-      <li>the weight of your body,</li>
-      <li>the temperature of the air,</li>
-      <li>the available light,</li>
-      <li>the sound already present,</li>
-      <li>the material in front of you,</li>
-      <li>the distance between your hands and the first action.</li>
-    </ul>
-    <p>Take one full breath.</p>
-    <p>Say:</p>
-    <blockquote>
-      <p><strong>Inside this square, the living thing does not have to earn permission to appear.</strong></p>
-    </blockquote>
-    <p>Do not wait to feel confident. The square is not a feeling. It is a temporary condition you have made.</p>
-  </template>
-
-  <template id="card-2-fields"></template>
-
-  <template id="card-3-copy">
+    <p>Look at the materials already available.</p>
     <p>Ask:</p>
     <blockquote>
       <p><strong>What do I want to make, move, sound, arrange, wear, taste, or say before I know why?</strong></p>
     </blockquote>
-    <p>Write five impulses without judging scale or seriousness.</p>
-    <p>Examples:</p>
-    <ul>
-      <li>cover a page in one impossible color,</li>
-      <li>sing a phrase that has no lyrics,</li>
-      <li>build a small figure from scraps,</li>
-      <li>move until one gesture feels true,</li>
-      <li>arrange ordinary objects into a private constellation,</li>
-      <li>write the scene that has no place in the project,</li>
-      <li>dress for an event that does not exist,</li>
-      <li>make food beautiful for no occasion,</li>
-      <li>invent a prayer,</li>
-      <li>draw the creature,</li>
-      <li>cut the shape,</li>
-      <li>tell the ridiculous story,</li>
-      <li>make the sound you were taught not to make.</li>
-    </ul>
-    <p>Choose the impulse that creates the clearest increase in attention.</p>
-    <p>Do not choose the most meaningful, impressive, marketable, healing, spiritual, or productive option.</p>
-    <p>Choose the one that makes you lean toward it.</p>
-    <p>Complete:</p>
-    <blockquote>
-      <p><strong>The living spark is ______.</strong></p>
-    </blockquote>
-    <p>Gather only what is required to begin it now.</p>
+    <p>Choose the impulse that creates the clearest increase in attention—not the one that seems most meaningful, marketable, healing, original, or impressive.</p>
+    <p>Choose the one you lean toward.</p>
+    <p>If useful, mark a small working space with cloth, tape, string, or four objects.</p>
+    <p>This is not a stage. It is a temporary place where usefulness has no vote.</p>
   </template>
 
-  <template id="card-3-fields">
+  <template id="card-2-fields">
     <div class="journal-field">
-      <label for="five-impulses">Five impulses, without judging scale or seriousness…</label>
-      <textarea id="five-impulses" name="five-impulses"></textarea>
-      <p class="saved-note" aria-live="polite"></p>
-    </div>
-    <div class="journal-field">
-      <label for="living-spark">The living spark is…</label>
-      <textarea id="living-spark" name="living-spark"></textarea>
+      <label for="uncalculated-act">What do I want to make, move, sound, arrange, wear, taste, or say before I know why?</label>
+      <textarea id="uncalculated-act" name="uncalculated-act"></textarea>
       <p class="saved-note" aria-live="polite"></p>
     </div>
   </template>
 
-  <template id="card-4-copy">
+  <template id="card-3-copy">
     <p>Set the timer for thirteen minutes.</p>
-    <p>When it begins, make the first irreversible-enough gesture within ten seconds:</p>
+    <p>Make the first gesture within ten seconds:</p>
     <ul>
       <li>draw the line,</li>
       <li>strike the note,</li>
       <li>tear the paper,</li>
+      <li>move the body,</li>
       <li>place the object,</li>
-      <li>speak the first phrase,</li>
-      <li>make the movement,</li>
-      <li>cut the fabric,</li>
       <li>mix the color,</li>
-      <li>light the candle,</li>
-      <li>begin the pattern,</li>
+      <li>cut the fabric,</li>
+      <li>speak the phrase,</li>
       <li>write the sentence,</li>
-      <li>or touch the material.</li>
+      <li>or begin the pattern.</li>
     </ul>
     <p>During the thirteen minutes:</p>
     <ul>
-      <li>do not erase the first gesture,</li>
-      <li>do not start over on a cleaner version,</li>
+      <li>do not start again on a cleaner version,</li>
       <li>do not search for reference,</li>
-      <li>do not ask whether the idea is working,</li>
       <li>do not photograph progress,</li>
-      <li>do not explain the work to anyone,</li>
+      <li>do not explain the act,</li>
       <li>and do not prepare it for display.</li>
     </ul>
-    <p>Speed is temporary here. Its function is to let existence precede evaluation.</p>
-    <p>If you freeze, repeat the last mark, word, note, movement, shape, color, or placement until the next one becomes available.</p>
-    <p>When the timer ends, stop for one breath even if you want to continue.</p>
-    <p>Notice: something now exists that did not exist thirteen minutes ago.</p>
+    <p>If you freeze, repeat the last mark, sound, word, movement, or placement until another becomes available.</p>
+  </template>
+
+  <template id="card-3-fields"></template>
+
+  <template id="card-4-copy">
+    <p>When you stop, ask:</p>
+    <ul>
+      <li>What wants more room?</li>
+      <li>What creates a flicker of pleasure or attention?</li>
+      <li>What feels unexpectedly tender, funny, exact, excessive, simple, or strange?</li>
+      <li>What would I remove only to make the work easier to approve?</li>
+      <li>What becomes possible when I stop asking what this is for?</li>
+    </ul>
+    <p>Choose one living quality and follow it for one final bounded interval of five minutes, if you have capacity.</p>
+    <p>Do not force joy.</p>
+    <p>Aliveness may be quiet.</p>
   </template>
 
   <template id="card-4-fields"></template>
 
   <template id="card-5-copy">
-    <p>Look at, listen to, taste, touch, wear, or stand inside what has begun.</p>
-    <p>Do not ask:</p>
+    <p>Choose one element you would normally remove because it is:</p>
     <ul>
-      <li>Is it good?</li>
-      <li>What is it?</li>
-      <li>What does it mean?</li>
-      <li>What should it become?</li>
+      <li>too decorative,</li>
+      <li>too earnest,</li>
+      <li>too young,</li>
+      <li>too strange,</li>
+      <li>too small,</li>
+      <li>too sensual,</li>
+      <li>too joyful,</li>
+      <li>too quiet,</li>
+      <li>too obvious,</li>
+      <li>or not useful enough.</li>
     </ul>
-    <p>Ask:</p>
-    <ul>
-      <li>Where does my attention brighten?</li>
-      <li>Which part has heat, humor, surprise, tenderness, force, strangeness, or pleasure?</li>
-      <li>Which part feels dutiful?</li>
-      <li>Which part feels borrowed?</li>
-      <li>What wants to be repeated?</li>
-      <li>What wants more room?</li>
-      <li>What wants to become louder, quieter, larger, smaller, rougher, simpler, brighter, or more exact?</li>
-    </ul>
-    <p>Choose one living quality.</p>
-    <p>Give it a second round of thirteen minutes.</p>
-    <p>This time, follow it deliberately. You may refine, extend, remove, rearrange, rehearse, intensify, or transform. Craft is allowed. Control is allowed. Skill is allowed.</p>
-    <p>The prohibition is not against discernment.</p>
-    <p>It is against making reception the hidden author.</p>
+    <p>Leave it present.</p>
+    <p>If the work invades another person’s privacy, appropriates what is not yours, or creates preventable harm, correct that. Freedom is not exemption from responsibility.</p>
+    <p>Then complete:</p>
+    <blockquote>
+      <p><strong>The part that owes nothing is…</strong></p>
+    </blockquote>
   </template>
 
-  <template id="card-5-fields"></template>
+  <template id="card-5-fields">
+    <div class="journal-field">
+      <label for="part-that-owes-nothing">The part that owes nothing is…</label>
+      <textarea id="part-that-owes-nothing" name="part-that-owes-nothing"></textarea>
+      <p class="saved-note" aria-live="polite"></p>
+    </div>
+  </template>
 
   <template id="card-6-copy">
-    <p>Pause at the place where you can predict how another person, group, teacher, market, platform, tradition, or version of yourself would correct the work.</p>
-    <p>Name the expected correction:</p>
-    <blockquote>
-      <p><strong>To make this more acceptable, I would ______.</strong></p>
-    </blockquote>
-    <p>Then ask:</p>
-    <ul>
-      <li>Would the correction make the work more fully itself?</li>
-      <li>Or would it make the work easier to recognize, rank, reward, explain, or absorb?</li>
-    </ul>
-    <p>Craft corrections may strengthen the living thing.</p>
-    <p>Consensus corrections often make it resemble what already belongs.</p>
-    <p>Choose one element that you would normally remove only because it is:</p>
-    <ul>
-      <li>too strange,</li>
-      <li>too simple,</li>
-      <li>too joyful,</li>
-      <li>too earnest,</li>
-      <li>too decorative,</li>
-      <li>too loud,</li>
-      <li>too quiet,</li>
-      <li>too young,</li>
-      <li>too unfashionable,</li>
-      <li>too beautiful,</li>
-      <li>too awkward,</li>
-      <li>or insufficiently useful.</li>
-    </ul>
-    <p>Leave that element present.</p>
-    <p>If the work has become unsafe, appropriative, factually deceptive, or invasive of another person’s privacy, correct it. Sovereignty does not excuse harm.</p>
-    <p>What remains uncorrected should be the living particular—not preventable damage.</p>
-  </template>
-
-  <template id="card-6-fields">
-    <div class="journal-field">
-      <label for="expected-correction">To make this more acceptable, I would…</label>
-      <textarea id="expected-correction" name="expected-correction"></textarea>
-      <p class="saved-note" aria-live="polite"></p>
-    </div>
-  </template>
-
-  <template id="card-7-copy">
-    <p>Completion in this ritual does not mean mastery, polish, readiness for publication, or proof of talent.</p>
-    <p>Ask:</p>
-    <blockquote>
-      <p><strong>Has the living spark become present enough that I can recognize it?</strong></p>
-    </blockquote>
-    <p>If the answer is no, give the work one final bounded round.</p>
-    <p>Choose one:</p>
-    <ul>
-      <li>five minutes,</li>
-      <li>thirteen minutes,</li>
-      <li>one verse,</li>
-      <li>one page,</li>
-      <li>one circuit of movement,</li>
-      <li>one layer,</li>
-      <li>one arrangement,</li>
-      <li>one final gesture,</li>
-      <li>or one complete repetition.</li>
-    </ul>
-    <p>At the end of that boundary, stop.</p>
-    <p>Add only:</p>
-    <ul>
-      <li>a date,</li>
-      <li>a private title if one arrives,</li>
-      <li>and one mark that means <strong>complete enough for tonight</strong>.</li>
-    </ul>
-    <p>Do not grade it.</p>
-    <p>Do not write a defense of it.</p>
-    <p>Do not convert it into a lesson.</p>
-    <p>Complete:</p>
-    <blockquote>
-      <p><strong>I recognize the life in this because ______.</strong></p>
-    </blockquote>
-    <p>Name an observable quality in the act—not a prediction of how others will receive it.</p>
-  </template>
-
-  <template id="card-7-fields">
-    <div class="journal-field">
-      <label for="recognize-life">I recognize the life in this because…</label>
-      <textarea id="recognize-life" name="recognize-life"></textarea>
-      <p class="saved-note" aria-live="polite"></p>
-    </div>
-  </template>
-
-  <template id="card-8-copy">
-    <p>Place the work in the cloth, envelope, folder, box, drawer, or resting place you prepared.</p>
-    <p>If the act cannot be stored—because it was movement, sound, food, dress, prayer, arrangement, or another temporary form—choose one trace:</p>
-    <ul>
-      <li>one written phrase,</li>
-      <li>one material fragment,</li>
-      <li>one ingredient,</li>
-      <li>one color,</li>
-      <li>one gesture repeated once,</li>
-      <li>one object from the arrangement,</li>
-      <li>or one brief private recording made only after the act is complete.</li>
-    </ul>
-    <p>Keep the work or trace out of circulation for seventy-two hours.</p>
-    <p>During that interval:</p>
+    <p>Place the work in a cloth, envelope, folder, box, drawer, or resting place.</p>
+    <p>If the act cannot be stored, keep one trace: a phrase, fragment, ingredient, color, gesture, object, or private recording made after the act ends.</p>
+    <p>For seventy-two hours:</p>
     <ul>
       <li>do not post it,</li>
+      <li>do not sell it,</li>
+      <li>do not ask what it teaches,</li>
+      <li>do not turn it into a plan,</li>
       <li>do not solicit critique,</li>
-      <li>do not measure its relevance,</li>
-      <li>do not redesign it for an audience,</li>
-      <li>do not decide that privacy makes it trivial,</li>
-      <li>and do not decide that sharing would contaminate it forever.</li>
+      <li>and do not decide that privacy makes it trivial.</li>
     </ul>
-    <p>The pause protects one fact:</p>
-    <blockquote>
-      <p><strong>The act was alive before reception arrived.</strong></p>
-    </blockquote>
-    <p>After seventy-two hours, choose freely:</p>
-    <ul>
-      <li>keep it private,</li>
-      <li>continue it,</li>
-      <li>refine it,</li>
-      <li>transform it,</li>
-      <li>share it,</li>
-      <li>perform it,</li>
-      <li>give it,</li>
-      <li>sell it,</li>
-      <li>teach from it,</li>
-      <li>return it to its materials,</li>
-      <li>or let it remain complete.</li>
-    </ul>
-    <p>No later destination can retroactively create or cancel the worth of the original act.</p>
-    <p>If you completed Ritual 12, place the Thirteenth’s work or trace beside—but not inside—the line of twelve artifacts.</p>
-    <p>The twelve belong to the journey through collective life.</p>
-    <p>The Thirteenth belongs to itself.</p>
-
-    <h2>Closing declaration</h2>
-    <blockquote>
-      <p>I have made something before asking what it can do for me.</p>
-      <p>I have let life take form before reception could name its value.</p>
-      <p>I may refine it, share it, protect it, change it, or let it end here.</p>
-      <p>Its first permission came from the living source itself.</p>
-      <p>I belong to the collective, but I am not manufactured by it.</p>
-      <p>I can enter the square without leaving my center behind.</p>
-    </blockquote>
-
-    <h2>Material-world integration</h2>
-    <p>For the remainder of this lunar cycle, return to the square once each week for thirteen minutes.</p>
-    <p>Use the same boundary and one available medium. Each return must begin without:</p>
-    <ul>
-      <li>a content plan,</li>
-      <li>a productivity target,</li>
-      <li>a promise to share,</li>
-      <li>a skill benchmark,</li>
-      <li>or a requirement that the session continue beyond thirteen minutes.</li>
-    </ul>
-    <p>At the next full moon, place the traces together and ask:</p>
-    <ul>
-      <li>Which acts made me more present?</li>
-      <li>Which impulses repeated without being assigned?</li>
-      <li>Where did play reveal a serious desire?</li>
-      <li>Where did seriousness conceal a dead form?</li>
-      <li>Which piece wants craft, discipline, audience, or service now?</li>
-      <li>Which piece wants to remain outside those demands?</li>
-      <li>What changed when I let creation precede justification?</li>
-    </ul>
-    <p>Do not rank the traces against one another.</p>
-    <p>The integration is not a portfolio review.</p>
-    <p>It is evidence that the source remains available.</p>
+    <p>After seventy-two hours, choose freely what happens next.</p>
+    <p>The later destination cannot retroactively create or cancel the life of the original act.</p>
   </template>
 
-  <template id="card-8-fields"></template>
+  <template id="card-6-fields"></template>
+
+  <template id="card-7-copy">
+    <p>Say:</p>
+    <blockquote>
+      <p>I have made something that owes nothing to usefulness.</p>
+      <p>It does not need to prove that I am healed, talented, original, or worthy.</p>
+      <p>It may remain private or enter the world later.</p>
+      <p>Its first permission came from life itself.</p>
+      <p>Joy, play, pleasure, stillness, or strangeness may exist without becoming a product.</p>
+    </blockquote>
+    <p>Schedule one more thirteen-minute act within seven days with no content plan, productivity target, promise to share, or skill benchmark.</p>
+    <p><strong>The ritual is complete when one act has existed before usefulness claimed it and its trace has been protected from immediate conversion into value.</strong></p>
+  </template>
+
+  <template id="card-7-fields"></template>
 
   <script>
     (() => {
       const cards = [
-        { title: "Dismiss the Invisible Audience" },
-        { title: "Mark the Square" },
-        { title: "Find the Living Spark" },
-        { title: "Make Before Taste Can Vote", timer: 780 },
-        { title: "Follow Aliveness", timer: 780 },
-        { title: "Leave One Thing Uncorrected" },
-        { title: "Finish by Recognition", timerOptional: true },
-        { title: "Protect the Source" }
+        { title: "Put the Judges Outside" },
+        { title: "Choose the Act That Leans Toward You" },
+        { title: "Begin Before Evaluation Can Speak" },
+        { title: "Follow Delight, Curiosity, or Relief" },
+        { title: "Let the Unnecessary Thing Remain" },
+        { title: "Protect the Act from Immediate Use" },
+        { title: "Completion" }
       ];
 
       const total = cards.length;
       const pad = (n) => String(n).padStart(2, "0");
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-      const square = document.getElementById("square");
+      const card = document.getElementById("ritualCard");
       const content = document.getElementById("cardContent");
-      const cover = document.getElementById("squareCover");
-      const lineTravel = document.getElementById("lineTravel");
+      const progress = document.getElementById("cardProgress");
       const previous = document.getElementById("previousCard");
       const next = document.getElementById("nextCard");
       const status = document.getElementById("readerStatus");
+      const scroll = document.getElementById("readerScroll");
       const toast = document.getElementById("toast");
       const notes = {};
-      let current = -1; /* -1 = threshold */
+      let current = -1;
       let animating = false;
       let toastTimer;
 
-      /* ---- the square is a true square, sized to its stage ---- */
-      function sizeSquare() {
-        const stage = square.parentElement;
-        const cs = getComputedStyle(stage);
-        const availW = stage.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
-        const availH = stage.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
-        const size = Math.max(240, Math.min(680, availW, availH));
-        square.style.width = size + "px";
-        square.style.height = size + "px";
-      }
-
-      /* ---- private notes storage, with in-memory fallback ---- */
       const storage = {
         get(key) {
-          try { return window.localStorage.getItem(key) || ""; }
-          catch (_) { return notes[key] || ""; }
+          try {
+            return window.localStorage.getItem(key) || "";
+          } catch (_) {
+            return notes[key] || "";
+          }
         },
         set(key, value) {
           notes[key] = value;
-          try { window.localStorage.setItem(key, value); } catch (_) {}
+          try {
+            window.localStorage.setItem(key, value);
+          } catch (_) {}
         }
       };
 
@@ -1296,206 +1008,7 @@
         toast.textContent = message;
         toast.classList.add("show");
         window.clearTimeout(toastTimer);
-        toastTimer = window.setTimeout(() => toast.classList.remove("show"), 2200);
-      }
-
-      /* ============================================================
-         The timer, fused to the square's boundary.
-         Elapsing minutes gild the perimeter; the readout is quiet.
-         ============================================================ */
-      let timerRAF = null;
-      let timerState = null;
-
-      function setReadout(el, seconds) {
-        const m = Math.floor(seconds / 60);
-        const s = Math.floor(seconds % 60);
-        el.textContent = `${m}:${String(s).padStart(2, "0")}`;
-      }
-
-      function resetBoundary() {
-        square.classList.remove("timer-running", "timer-complete");
-        lineTravel.style.transition = "stroke-dashoffset .35s ease";
-        lineTravel.style.strokeDashoffset = "1000";
-      }
-
-      function stopTimer() {
-        if (timerRAF) window.cancelAnimationFrame(timerRAF);
-        timerRAF = null;
-        timerState = null;
-      }
-
-      function chime(duration) {
-        try {
-          const Ctx = window.AudioContext || window.webkitAudioContext;
-          if (!Ctx) return;
-          const ctx = new Ctx();
-          const now = ctx.currentTime;
-          [[660, 0], [990, 0.2]].forEach(([freq, offset]) => {
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
-            osc.type = "sine";
-            osc.frequency.value = freq;
-            gain.gain.setValueAtTime(0, now + offset);
-            gain.gain.linearRampToValueAtTime(0.08, now + offset + 0.04);
-            gain.gain.exponentialRampToValueAtTime(0.0008, now + offset + 1.2);
-            osc.connect(gain).connect(ctx.destination);
-            osc.start(now + offset);
-            osc.stop(now + offset + 1.3);
-          });
-        } catch (_) {}
-      }
-
-      function tick(now, duration, readout, note, toggle) {
-        if (!timerState || !timerState.running) return;
-        const elapsed = (now - timerState.startedAt) / 1000 + timerState.elapsedBefore;
-        const remaining = Math.max(0, duration - elapsed);
-        const fraction = Math.min(1, elapsed / duration);
-        lineTravel.style.strokeDashoffset = String(1000 * (1 - fraction));
-        setReadout(readout, remaining);
-        if (remaining <= 0) {
-          timerState.running = false;
-          square.classList.remove("timer-running");
-          square.classList.add("timer-complete");
-          note.textContent = duration === 780
-            ? "The thirteen minutes are complete."
-            : "The round is complete.";
-          toggle.textContent = "Begin again";
-          toggle.dataset.mode = "idle";
-          chime(duration);
-          return;
-        }
-        timerRAF = window.requestAnimationFrame((t) => tick(t, duration, readout, note, toggle));
-      }
-
-      function startRun(duration, readout, note, toggle) {
-        stopTimer();
-        square.classList.remove("timer-complete");
-        square.classList.add("timer-running");
-        lineTravel.style.transition = "stroke-dashoffset .18s linear";
-        timerState = { duration, startedAt: performance.now(), elapsedBefore: 0, running: true };
-        timerRAF = window.requestAnimationFrame((t) => tick(t, duration, readout, note, toggle));
-      }
-
-      function buildTimer(card) {
-        const wrap = document.createElement("div");
-        wrap.className = "timer";
-
-        const readout = document.createElement("span");
-        readout.className = "timer-readout";
-        const note = document.createElement("p");
-        note.className = "timer-note";
-        note.setAttribute("aria-live", "polite");
-
-        const row = document.createElement("div");
-        row.className = "timer-row";
-
-        const reset = document.createElement("button");
-        reset.type = "button";
-        reset.className = "timer-reset";
-        reset.textContent = "Reset";
-        reset.hidden = true;
-
-        function attachToggle(duration, label) {
-          const toggle = document.createElement("button");
-          toggle.type = "button";
-          toggle.className = "timer-btn";
-          toggle.dataset.mode = "idle";
-          toggle.textContent = label;
-          toggle.addEventListener("click", () => {
-            const mode = toggle.dataset.mode;
-            if (mode === "idle") {
-              startRun(duration, readout, note, toggle);
-              toggle.textContent = "Pause";
-              toggle.dataset.mode = "running";
-              note.textContent = "";
-              reset.hidden = false;
-            } else if (mode === "running") {
-              // pause
-              if (timerRAF) window.cancelAnimationFrame(timerRAF);
-              timerRAF = null;
-              if (timerState) {
-                timerState.elapsedBefore += (performance.now() - timerState.startedAt) / 1000;
-                timerState.running = false;
-              }
-              toggle.textContent = "Resume";
-              toggle.dataset.mode = "paused";
-            } else if (mode === "paused") {
-              // resume
-              square.classList.add("timer-running");
-              if (timerState) {
-                timerState.startedAt = performance.now();
-                timerState.running = true;
-              } else {
-                startRun(duration, readout, note, toggle);
-              }
-              timerRAF = window.requestAnimationFrame((t) => tick(t, duration, readout, note, toggle));
-              toggle.textContent = "Pause";
-              toggle.dataset.mode = "running";
-            }
-          });
-          return toggle;
-        }
-
-        if (card.timer) {
-          setReadout(readout, card.timer);
-          const toggle = attachToggle(card.timer, "Begin the thirteen minutes");
-          row.append(toggle, readout, reset);
-          reset.addEventListener("click", () => {
-            stopTimer();
-            resetBoundary();
-            setReadout(readout, card.timer);
-            note.textContent = "";
-            toggle.textContent = "Begin the thirteen minutes";
-            toggle.dataset.mode = "idle";
-            reset.hidden = true;
-          });
-          wrap.append(row, note);
-        } else {
-          // optional final round: 5 or 13 minutes
-          const lead = document.createElement("p");
-          lead.className = "timer-lead";
-          lead.textContent = "Optional: give the work one final bounded round.";
-
-          const choices = document.createElement("div");
-          choices.className = "timer-choices";
-          const running = document.createElement("div");
-          running.className = "timer-row";
-          running.hidden = true;
-
-          let activeToggle = null;
-
-          [["Five minutes", 300], ["Thirteen minutes", 780]].forEach(([label, dur]) => {
-            const btn = document.createElement("button");
-            btn.type = "button";
-            btn.className = "timer-btn";
-            btn.textContent = label;
-            btn.addEventListener("click", () => {
-              setReadout(readout, dur);
-              activeToggle = attachToggle(dur, "Pause");
-              activeToggle.dataset.mode = "running";
-              startRun(dur, readout, note, activeToggle);
-              note.textContent = "";
-              choices.hidden = true;
-              running.replaceChildren(activeToggle, readout, reset);
-              running.hidden = false;
-              reset.hidden = false;
-            });
-            choices.appendChild(btn);
-          });
-
-          reset.addEventListener("click", () => {
-            stopTimer();
-            resetBoundary();
-            note.textContent = "";
-            running.hidden = true;
-            reset.hidden = true;
-            choices.hidden = false;
-          });
-
-          wrap.append(lead, choices, running, note);
-        }
-
-        return wrap;
+        toastTimer = window.setTimeout(() => toast.classList.remove("show"), 1800);
       }
 
       function bindFields() {
@@ -1511,20 +1024,16 @@
       }
 
       function paint() {
-        square.classList.remove("resting");
-        cover.setAttribute("aria-hidden", "true");
-        stopTimer();
-        resetBoundary();
-
         if (current === -1) {
-          content.classList.add("title-sheet");
+          card.classList.add("title-sheet");
           content.replaceChildren(document.getElementById("title-sheet").content.cloneNode(true));
           content.querySelector("#beginRitual").addEventListener("click", () => goTo(0, "forward"));
+          progress.hidden = true;
           previous.disabled = true;
-          next.querySelector("span").textContent = "Enter the square";
-          status.textContent = "Threshold";
+          next.querySelector("span").textContent = "Begin";
+          status.textContent = "Opening threshold";
         } else {
-          content.classList.remove("title-sheet");
+          card.classList.remove("title-sheet");
           const item = cards[current];
           const copyTemplate = document.getElementById(`card-${current + 1}-copy`);
           const fieldTemplate = document.getElementById(`card-${current + 1}-fields`);
@@ -1532,7 +1041,7 @@
 
           const number = document.createElement("p");
           number.className = "card-number";
-          number.innerHTML = `The Thirteenth · Card <strong>${pad(current + 1)}</strong>`;
+          number.innerHTML = `Sheet <strong>${pad(current + 1)}</strong> of ${pad(total)}`;
 
           const title = document.createElement("h1");
           title.className = "card-title";
@@ -1543,10 +1052,6 @@
           copy.appendChild(copyTemplate.content.cloneNode(true));
 
           content.replaceChildren(number, title, copy);
-
-          if (item.timer || item.timerOptional) {
-            content.appendChild(buildTimer(item));
-          }
 
           if (hasFields) {
             const journal = document.createElement("details");
@@ -1565,14 +1070,22 @@
             content.appendChild(journal);
           }
 
+          progress.hidden = false;
           previous.disabled = false;
-          next.querySelector("span").textContent = current === total - 1 ? "Set it to rest" : "Continue";
+          next.querySelector("span").textContent = current === total - 1 ? "Complete ritual" : "Continue";
+
+          progress.querySelectorAll(".progress-step").forEach((step, index) => {
+            step.classList.toggle("complete", index < current);
+            step.classList.toggle("current", index === current);
+            if (index === current) step.setAttribute("aria-current", "step");
+            else step.removeAttribute("aria-current");
+          });
 
           bindFields();
         }
 
-        status.textContent = current === -1 ? "Threshold" : cards[current].title;
-        content.scrollTo({ top: 0, behavior: reducedMotion.matches ? "auto" : "smooth" });
+        status.textContent = current === -1 ? "Opening threshold" : `Sheet ${pad(current + 1)} of ${pad(total)}`;
+        scroll.scrollTo({ top: 0, behavior: reducedMotion.matches ? "auto" : "smooth" });
       }
 
       function goTo(target, direction) {
@@ -1584,36 +1097,48 @@
           return;
         }
 
+        const leaveClass = direction === "back" ? "leave-back" : "leave-forward";
+        const enterClass = direction === "back" ? "enter-back" : "enter-forward";
+
         animating = true;
-        content.classList.add("is-leaving");
+        card.classList.remove("leave-forward", "leave-back", "enter-forward", "enter-back");
+        void card.offsetWidth;
+        card.classList.add(leaveClass);
+
         window.setTimeout(() => {
           current = target;
           paint();
-          content.classList.remove("is-leaving");
+          card.classList.remove(leaveClass);
+          void card.offsetWidth;
+          card.classList.add(enterClass);
           animating = false;
-        }, 260);
+        }, 380);
       }
 
-      function restAndReturn() {
-        stopTimer();
-        cover.setAttribute("aria-hidden", "false");
-        square.classList.add("resting");
-        showToast("Resting — the act was alive before reception arrived");
-        window.setTimeout(() => { window.location.href = "../index.html"; }, reducedMotion.matches ? 900 : 2400);
-      }
+      progress.innerHTML = cards.map((item, index) =>
+        `<button class="progress-step" type="button" data-card="${index}" aria-label="Go to sheet ${index + 1}: ${item.title}"></button>`
+      ).join("");
+
+      progress.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-card]");
+        if (!button) return;
+        const target = Number(button.dataset.card);
+        goTo(target, target < current ? "back" : "forward");
+      });
 
       previous.addEventListener("click", () => goTo(current - 1, "back"));
 
       next.addEventListener("click", () => {
         if (current === total - 1) {
-          restAndReturn();
+          showToast("Ritual complete");
+          window.setTimeout(() => { window.location.href = "../index.html"; }, 1400);
           return;
         }
         goTo(current + 1, "forward");
       });
 
       function collectedNotes() {
-        const lines = ["THE CHILD IN THE SQUARE", "Full Moon in Aquarius · The Thirteenth", ""];
+        const lines = ["JOY THAT OWES NOTHING", "Full Moon in Aquarius · Ritual 13", ""];
         cards.forEach((item, index) => {
           const fieldTemplate = document.getElementById(`card-${index + 1}-fields`);
           const fields = fieldTemplate.content.querySelectorAll("textarea");
@@ -1622,7 +1147,7 @@
             const value = storage.get(`aquarius-r13-${field.name}`).trim();
             if (value) values.push(`${field.previousElementSibling.textContent}\n${value}`);
           });
-          if (values.length) lines.push(`CARD ${pad(index + 1)} · ${item.title.toUpperCase()}`, ...values, "");
+          if (values.length) lines.push(`SHEET ${pad(index + 1)} · ${item.title.toUpperCase()}`, ...values, "");
         });
         return lines.join("\n");
       }
@@ -1642,19 +1167,12 @@
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
-        link.download = "aquarius-the-child-in-the-square-notes.txt";
+        link.download = "aquarius-joy-that-owes-nothing-notes.txt";
         link.click();
         URL.revokeObjectURL(url);
         showToast("Notes exported");
       });
 
-      let resizeTimer;
-      window.addEventListener("resize", () => {
-        window.clearTimeout(resizeTimer);
-        resizeTimer = window.setTimeout(sizeSquare, 120);
-      });
-
-      sizeSquare();
       paint();
     })();
   </script>
